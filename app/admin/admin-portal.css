@@ -1,0 +1,148 @@
+/* Control-room additions: sign-in form, session banner, sign-out control. */
+
+.admin-login-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 38px;
+}
+
+.admin-login-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-login-form span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.admin-login-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.28);
+  color: #f4f0e8;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: border-color 200ms ease;
+}
+
+.admin-login-form input:focus {
+  outline: none;
+  border-color: #9a2944;
+}
+
+.admin-login-form button {
+  margin-top: 8px;
+  padding: 15px 18px;
+  border: 0;
+  background: #f4f0e8;
+  color: #111;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.admin-login-form button:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.admin-login-error {
+  margin: 0;
+  color: #e8879e;
+  font-size: 11px;
+}
+
+.admin-login-warning {
+  margin-top: 26px;
+  padding: 14px 16px;
+  border-left: 2px solid #c85872;
+  background: rgba(200, 88, 114, 0.09);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.admin-login-warning strong {
+  color: #fff;
+}
+
+/* Banners above the dashboard ------------------------------------ */
+
+.admin-alert {
+  position: relative;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 14px clamp(20px, 4vw, 44px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #14161b;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+
+.admin-alert strong {
+  color: #fff;
+}
+
+.admin-alert code {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 10.5px;
+}
+
+.admin-alert a {
+  margin-left: auto;
+  color: #e8879e;
+  white-space: nowrap;
+}
+
+.admin-alert-danger {
+  border-bottom-color: rgba(200, 88, 114, 0.5);
+  background: #2a1017;
+}
+
+/* Sign out -------------------------------------------------------- */
+
+.admin-signout {
+  position: fixed;
+  z-index: 70;
+  right: clamp(16px, 3vw, 30px);
+  top: clamp(16px, 3vw, 30px);
+  padding: 9px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  background: rgba(11, 12, 15, 0.85);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(18px);
+  transition: 200ms ease;
+}
+
+.admin-signout:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 900px) {
+  .admin-signout {
+    right: 12px;
+    top: auto;
+    bottom: 12px;
+  }
+}
