@@ -1,0 +1,157 @@
+/* ------------------------------------------------------------------
+   Artimist opening sequence
+
+   A drafting-table reveal: the measuring grid is set out first, then the
+   wordmark is wiped in over it. The mark is vector, so it stays sharp at
+   2K, 4K and on a phone. Plays once per browser session, skips on any
+   input, and never runs for visitors who ask for reduced motion.
+   ------------------------------------------------------------------ */
+
+.intro {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fbfaf8;
+  animation: intro-curtain 700ms cubic-bezier(0.7, 0, 0.3, 1) 2250ms both;
+}
+
+html[data-intro="skip"] .intro,
+html[data-intro="done"] .intro {
+  display: none;
+}
+
+html[data-intro="play"] body {
+  overflow: hidden;
+}
+
+/* Measuring grid ------------------------------------------------- */
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+}
+
+.intro-grid i {
+  position: absolute;
+  background: rgba(110, 20, 28, 0.16);
+}
+
+.intro-grid i.v {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  animation: intro-line 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.intro-grid i.h {
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  animation: intro-line 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.intro-grid i:nth-child(1) { left: 12%; animation-delay: 40ms; }
+.intro-grid i:nth-child(2) { left: 30%; animation-delay: 110ms; }
+.intro-grid i:nth-child(3) { left: 70%; animation-delay: 180ms; }
+.intro-grid i:nth-child(4) { left: 88%; animation-delay: 250ms; }
+.intro-grid i:nth-child(5) { top: 22%; animation-delay: 90ms; }
+.intro-grid i:nth-child(6) { top: 50%; animation-delay: 160ms; background: rgba(110, 20, 28, 0.26); }
+.intro-grid i:nth-child(7) { top: 78%; animation-delay: 230ms; }
+
+/* Wordmark -------------------------------------------------------- */
+
+.intro-mark {
+  position: relative;
+  width: min(74vw, 1180px);
+  aspect-ratio: 1628 / 640;
+  animation: intro-settle 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 1500ms both;
+}
+
+.intro-mark img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.intro-mark .intro-ink {
+  clip-path: inset(0 100% 0 0);
+  animation: intro-wipe 1050ms cubic-bezier(0.16, 0.84, 0.28, 1) 380ms both;
+}
+
+.intro-mark .intro-accent {
+  clip-path: inset(0 100% 0 0);
+  animation: intro-wipe 1080ms cubic-bezier(0.16, 0.84, 0.28, 1) 620ms both;
+}
+
+/* Sweep of light that follows the wipe --------------------------- */
+
+.intro-sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 26vw;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  animation: intro-sweep 1250ms ease-out 460ms both;
+}
+
+.intro-skip {
+  position: absolute;
+  right: clamp(18px, 4vw, 48px);
+  bottom: clamp(18px, 4vw, 44px);
+  color: rgba(17, 17, 19, 0.4);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  animation: intro-fade-in 500ms ease 1400ms both;
+}
+
+@keyframes intro-line {
+  to { transform: none; }
+}
+
+@keyframes intro-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes intro-sweep {
+  from { left: -30vw; opacity: 0; }
+  30% { opacity: 1; }
+  to { left: 105vw; opacity: 0; }
+}
+
+@keyframes intro-settle {
+  from { transform: scale(0.985); }
+  to { transform: none; }
+}
+
+@keyframes intro-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes intro-curtain {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: scale(1.06); visibility: hidden; }
+}
+
+@media (max-width: 720px) {
+  .intro-mark { width: 86vw; }
+  .intro-grid i:nth-child(1) { left: 8%; }
+  .intro-grid i:nth-child(4) { left: 92%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+}
