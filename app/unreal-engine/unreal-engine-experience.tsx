@@ -15,7 +15,7 @@ const capabilities = [
 const pipeline = ["Architectural data", "Optimized geometry", "Materials + lighting", "Real-time interaction", "Cinematic delivery"];
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
 }
 
 export function UnrealEngineExperience({ settings }: { settings: SiteSettings }) {
@@ -67,7 +67,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
       <section className="ue-capabilities" id="capabilities">
         <header><span>Capability matrix / 04</span><h2>Built for<br /><em>presence.</em></h2></header>
         <div className="ue-cap-grid">
-          {capabilities.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p><i>↗</i></article>)}
+          {capabilities.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p><i>↗︎</i></article>)}
         </div>
       </section>
 
