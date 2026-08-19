@@ -4,6 +4,7 @@ import "./editorial.css";
 import "./intro.css";
 import "./team/team.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.artimistproductions.com"),
@@ -28,6 +29,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <IntroScript />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1PWWCTSMW4" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1PWWCTSMW4');`}</Script>
       </head>
       <body className="antialiased">
         <IntroCurtain />
