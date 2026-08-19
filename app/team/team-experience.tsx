@@ -23,7 +23,7 @@ const portraitPosition: Record<string, string> = {
 };
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
 }
 
 function Monogram({ name }: { name: string }) {
