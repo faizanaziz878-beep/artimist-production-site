@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+Architectural Visualization & Unreal Engine Studio | Artimistimport type { Metadata } from "next";
 import "./globals.css";
 import "./editorial.css";
 import "./intro.css";
