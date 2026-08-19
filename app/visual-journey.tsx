@@ -86,7 +86,7 @@ export function VisualJourney({ kind, eyebrow, title, intro, chapters, technical
       )}
 
       <section className="vj-end">
-        <span>End of sequence</span><h2>See the work.<br /><em>Feel the space.</em></h2><div><Link href="/">Return to studio <b>↗</b></Link><Link href="/contact">Start a project <b>↗</b></Link></div>
+        <span>End of sequence</span><h2>See the work.<br /><em>Feel the space.</em></h2><div><Link href="/">Return to studio <b>↗︎</b></Link><Link href="/contact">Start a project <b>↗︎</b></Link></div>
       </section>
     </main>
   );
