@@ -25,7 +25,7 @@ const decideScript = `(function(){
     if (d.getAttribute('data-intro') !== 'play') return;
     d.setAttribute('data-intro', 'done');
   };
-  var timer = setTimeout(end, 4950);
+  var timer = setTimeout(end, 2600);
   var skip = function () { clearTimeout(timer); end(); };
   ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (evt) {
     window.addEventListener(evt, skip, { once: true, passive: true });
