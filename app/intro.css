@@ -1,0 +1,162 @@
+/* ------------------------------------------------------------------
+   Artimist opening sequence — a drafting sequence, not a fade.
+
+   Construction geometry is struck first, then a pen nib travels left to
+   right and the inked mark is uncovered behind it. The guides are erased
+   and the finished mark holds for a beat. Around two and a half seconds
+   end to end.
+
+   Only transforms and opacity animate once the guides are down, so the
+   reveal runs on the compositor at full frame rate. The letterforms are
+   drawn once and never re-rasterised. Plays once per session, skips on
+   any input, never runs for visitors who ask for reduced motion.
+   ------------------------------------------------------------------ */
+
+.intro {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fbfaf8;
+  animation: intro-curtain 560ms cubic-bezier(0.7, 0, 0.3, 1) 2000ms both;
+}
+
+html[data-intro="skip"] .intro,
+html[data-intro="done"] .intro {
+  display: none;
+}
+
+html[data-intro="play"] body {
+  overflow: hidden;
+}
+
+.intro-paper {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(110, 20, 28, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 20, 28, 0.04) 1px, transparent 1px);
+  background-size: 68px 68px;
+  opacity: 0;
+  animation: intro-fade-in 360ms ease both, intro-fade-out 400ms ease 1500ms both;
+}
+
+/* Stage ----------------------------------------------------------
+
+   Both layers are promoted so the browser rasterises the letterforms and
+   the guides once each and then only moves textures around. Without this
+   the uncover repaints the newly exposed slice of artwork every frame. */
+
+.intro-stage {
+  position: relative;
+  width: min(78vw, 1240px);
+}
+
+.intro-art {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+/* The cover slides off to the right, uncovering the inked mark from the
+   left. A single composited transform — nothing repaints. */
+.intro-cover {
+  position: absolute;
+  top: -8%;
+  bottom: -8%;
+  left: -1%;
+  right: -3%;
+  background: #fbfaf8;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: intro-uncover 880ms cubic-bezier(0.36, 0.02, 0.22, 1) 480ms both;
+}
+
+/* The nib rides the cover's leading edge. */
+.intro-nib {
+  position: absolute;
+  top: -9%;
+  bottom: -9%;
+  left: -1%;
+  width: 100%;
+  border-left: 2px solid #6e141c;
+  will-change: transform, opacity;
+  animation: intro-uncover 880ms cubic-bezier(0.36, 0.02, 0.22, 1) 480ms both,
+             intro-fade-out 260ms ease 1320ms both;
+}
+
+.intro-guides line,
+.intro-guides path {
+  fill: none;
+  stroke: #6e141c;
+  stroke-width: 1.3;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+  animation: intro-draw 380ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.intro-grid {
+  animation: intro-fade-out 380ms ease 1480ms both;
+}
+
+/* Captions ------------------------------------------------------- */
+
+.intro-skip,
+.intro-stamp {
+  position: absolute;
+  bottom: clamp(18px, 4vw, 44px);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.intro-skip {
+  right: clamp(18px, 4vw, 48px);
+  color: rgba(17, 17, 19, 0.38);
+  letter-spacing: 0.22em;
+  animation: intro-fade-in 320ms ease 520ms both;
+}
+
+.intro-stamp {
+  left: clamp(18px, 4vw, 48px);
+  color: rgba(110, 20, 28, 0.42);
+  letter-spacing: 0.26em;
+  animation: intro-fade-in 340ms ease 1050ms both;
+}
+
+/* Keyframes ------------------------------------------------------ */
+
+@keyframes intro-draw { to { stroke-dashoffset: 0; } }
+@keyframes intro-uncover { to { transform: translate3d(104%, 0, 0); } }
+@keyframes intro-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes intro-fade-out { to { opacity: 0; } }
+
+@keyframes intro-curtain {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: scale(1.04); visibility: hidden; }
+}
+
+@media (max-width: 720px) {
+  .intro-stage { width: 88vw; }
+  .intro-paper { background-size: 44px 44px; }
+  .intro-stamp { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+}
