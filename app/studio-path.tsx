@@ -233,6 +233,9 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
       });
       const result = await response.json() as { error?: string };
       if (!response.ok) throw new Error(result.error || "Unable to send your brief.");
+      if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: unknown }).gtag === "function") {
+        ((window as unknown as { gtag: (...a: unknown[]) => void }).gtag)("event", "generate_lead", { form_name: "project_brief" });
+      }
       form.reset();
       setProjectType("");
       setStatus("Brief received. It is now inside the admin portal and the studio will reply by email.");
