@@ -6,7 +6,7 @@ import type { SiteSettings } from "../../lib/content";
 import { getStudioOffices, serviceWorlds as defaultServices } from "../../lib/content";
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
 }
 
 function AboutTrace() {
@@ -154,7 +154,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
         <div className="ed-about-service-list">
           {services.map((service) => (
             <article key={service.code} data-ed-reveal>
-              <span>{service.code}</span><p>{service.title}</p><h3>{service.subtitle}</h3><div>{service.copy}</div><i>↗</i>
+              <span>{service.code}</span><p>{service.title}</p><h3>{service.subtitle}</h3><div>{service.copy}</div><i>↗︎</i>
             </article>
           ))}
         </div>
