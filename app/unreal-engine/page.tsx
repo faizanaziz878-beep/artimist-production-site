@@ -6,8 +6,8 @@ import "./unreal-engine.css";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Unreal Engine & Real-Time Experiences — Artimist Production",
-  description: "High-end Unreal Engine architectural visualization, cinematic real-time environments and interactive spatial experiences by Artimist Production.",
+  title: "Unreal Engine Architectural Visualization | Real-Time 3D",
+  description: "Unreal Engine architectural visualization studio: real-time 3D walkthroughs, interactive sales suites, cinematic environments and virtual tours for developers and architects.",
 };
 
 export default async function UnrealEnginePage() {
