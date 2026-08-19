@@ -6,7 +6,7 @@ import type { SiteSettings } from "../../lib/content";
 import { getStudioOffices } from "../../lib/content";
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
 }
 
 function FounderTrace() {
