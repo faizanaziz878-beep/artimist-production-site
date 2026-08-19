@@ -338,7 +338,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
         <button className="ed-menu-close" onClick={() => setMenuOpen(false)}>Close <span>×</span></button>
         <div className="ed-menu-index"><span>INDEX / 2026</span><strong>ARTIMIST</strong></div>
         <nav>
-          {[["Work", "#work"], ["Recent", "#recent-projects"], ["Unreal Engine", "/unreal-engine"], ["Residential", "/residential"], ["Render atlas", "/visual-archive"], ["Services", "/services"], ["Process", "/process"], ["Team", "/team"], ["About", "/about"], ["Founder", "/founder-message"], ["Lab", "#lab"], ["Contact", "/contact"]].map(([label, href], index) => (
+          {[["Work", "#work"], ["Recent", "#recent-projects"], ["Unreal Engine", "/unreal-engine"], ["Residential", "/residential"], ["Render atlas", "/visual-archive"], ["Services", "/services"], ["Process", "/process"], ["Team", "/team"], ["About", "/about"], ["Founder", "/founder-message"], ["Lab", "#lab"], ["Partners", "/partners"], ["Contact", "/contact"]].map(([label, href], index) => (
             <a key={label} href={href} onClick={() => setMenuOpen(false)}><small>{String(index + 1).padStart(2, "0")}</small><span>{label}</span><Arrow /></a>
           ))}
         </nav>
