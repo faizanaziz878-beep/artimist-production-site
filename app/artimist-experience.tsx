@@ -126,7 +126,7 @@ function walkthroughFor(project: Project): WalkthroughMoment[] {
 }
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
 }
 
 function Monogram({ name }: { name: string }) {
@@ -390,7 +390,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
               ? <video src={activePreview.src} poster={activeProject.image} autoPlay muted loop playsInline aria-label={`${activeProject.title} preview`} />
               : <img src={activePreview.src} alt={activeProject.title} style={{ objectFit: activePreview.fit || "cover", objectPosition: activePreview.position || "center" }} />)}
             <span className="ed-selected-camera" aria-hidden="true"><i /><i /><i /><i /></span>
-            <span className="ed-selected-walk">Move pointer / Open to walk ↗</span>
+            <span className="ed-selected-walk">Move pointer / Open to walk ↗︎</span>
           </button>
         </div>
         <div className="ed-project-tabs" role="tablist" aria-label="Featured projects">
@@ -499,7 +499,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
                 <div className={`ed-person-portrait ${portrait ? "" : "is-reserved"}`}>{portrait ? <img src={portrait} alt={person.name} style={portraitStyle} /> : <Monogram name={person.name} />}<span>{String(index + 1).padStart(2, "0")}</span></div>
                 <div className="ed-person-name"><p>{person.role}</p><h3>{person.name}</h3></div>
                 <span className="ed-person-bio">{person.bio}</span>
-                {person.linkedin && <a href={person.linkedin} target="_blank" rel="noreferrer" aria-label={`${person.name} on LinkedIn`}>in ↗</a>}
+                {person.linkedin && <a href={person.linkedin} target="_blank" rel="noreferrer" aria-label={`${person.name} on LinkedIn`}>in ↗︎</a>}
               </article>
             );
           })}
@@ -527,7 +527,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
         <div className="ed-recent-rail">
           {recentProjects.map((project, index) => (
             <button key={project.slug} className="ed-recent-card" onClick={() => setSelectedProject(project)} data-ed-reveal>
-              <span className="ed-recent-image"><img src={project.image} alt="" /><i>{String(index + 1).padStart(2, "0")}</i><b>Open project ↗</b></span>
+              <span className="ed-recent-image"><img src={project.image} alt="" /><i>{String(index + 1).padStart(2, "0")}</i><b>Open project ↗︎</b></span>
               <span className="ed-recent-copy"><small>{project.category} / {project.year}</small><strong>{project.title}</strong><em>{project.summary}</em><span>{project.location}</span></span>
             </button>
           ))}
@@ -545,7 +545,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
         <div className="ed-archive-grid">
           {archiveProjects.map((project, index) => (
             <button className="ed-archive-card" key={project.slug} style={{ "--ed-card-delay": `${index * -1.35}s` } as CSSProperties} onClick={() => setSelectedProject(project)} onPointerMove={tilt} onPointerLeave={clearTilt} data-ed-reveal>
-              <span className={`ed-archive-image ${["Identity", "Digital", "Technical", "Lab"].includes(project.category) ? "is-document" : ""}`}><img src={project.image} alt="" /><span aria-hidden="true"><b>Walkthrough</b><em>{walkthroughFor(project).length} scenes</em></span><i>Enter ↗</i></span>
+              <span className={`ed-archive-image ${["Identity", "Digital", "Technical", "Lab"].includes(project.category) ? "is-document" : ""}`}><img src={project.image} alt="" /><span aria-hidden="true"><b>Walkthrough</b><em>{walkthroughFor(project).length} scenes</em></span><i>Enter ↗︎</i></span>
               <span className="ed-archive-meta"><small>{String(index + 1).padStart(3, "0")} / {project.category}</small><strong>{project.title}</strong><em>{project.location} · {project.year}</em></span>
             </button>
           ))}
