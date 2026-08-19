@@ -3,8 +3,8 @@ import { atlasChapters, technicalBoards } from "../../lib/visual-content";
 import { VisualJourney } from "../visual-journey";
 
 export const metadata: Metadata = {
-  title: "Render Atlas — Artimist Production",
-  description: "The complete Artimist visual archive: architecture, interiors, hospitality, landscape and full technical presentation plates.",
+  title: "Architectural Rendering Portfolio | 3D Visualization Gallery",
+  description: "Browse our architectural rendering portfolio: 37 photorealistic 3D visualizations across architecture, interiors, hospitality and landscape, plus full technical plates.",
 };
 
 export default function VisualArchivePage() {
