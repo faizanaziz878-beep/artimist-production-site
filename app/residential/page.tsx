@@ -3,8 +3,8 @@ import { residentialChapters } from "../../lib/visual-content";
 import { VisualJourney } from "../visual-journey";
 
 export const metadata: Metadata = {
-  title: "Residential Atmospheres — Artimist Production",
-  description: "A complete scroll-through collection of residential exterior and interior visualization by Artimist Production.",
+  title: "Residential 3D Rendering & Interior Visualization | Artimist",
+  description: "Photorealistic residential architectural rendering: exterior and interior 3D visualization for homes, villas and residential developments by Artimist Production.",
 };
 
 export default function ResidentialPage() {
