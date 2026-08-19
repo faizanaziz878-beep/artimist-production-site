@@ -5,8 +5,8 @@ import { ServicesExperience } from "../studio-path";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Services — Artimist Production",
-  description: "Architecture, interiors, visualization, Unreal Engine real-time experiences, motion, identity, digital products, growth and research through one multidisciplinary studio.",
+  title: "Architectural Visualization Services | 3D Rendering & CGI",
+  description: "Architectural visualization services for developers, architects and brands: photoreal 3D rendering, CGI, animation, Unreal Engine real-time experiences and BIM documentation.",
 };
 
 export default async function ServicesPage() {
