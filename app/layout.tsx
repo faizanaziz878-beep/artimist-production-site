@@ -1,4 +1,4 @@
-Architectural Visualization & Unreal Engine Studio | Artimistimport type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import "./editorial.css";
 import "./intro.css";
@@ -9,7 +9,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.artimistproductions.com"),
   verification: { google: "lsk4HfeRzYO3lwG_jcZAoexrOwBkDMyneJKREIpOxvM" },
-  title: "Artimist Production — Architecture, Unreal Engine, Identity & Motion",
+  title: "Architectural Visualization & Unreal Engine Studio | Artimist",
   description:
     "Artimist Production is a multidisciplinary creative studio connecting architecture, interiors, visualization, Unreal Engine real-time experiences, branding, motion, digital products and strategy.",
   other: {
