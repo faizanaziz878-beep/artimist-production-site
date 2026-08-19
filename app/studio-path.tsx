@@ -163,14 +163,14 @@ export function ServicesExperience({ settings }: { settings: SiteSettings }) {
               <SectionCode>{service.code} / Service world</SectionCode>
               <h2>{service.subtitle}</h2>
               <p>{service.copy}</p>
-              <ul>{serviceOutputs[index % serviceOutputs.length].map((output) => <li key={output}>{output}<span>↗</span></li>)}</ul>
-              <Link href={`/contact?service=${encodeURIComponent(service.subtitle)}`}>Discuss this service <span>↗</span></Link>
+              <ul>{serviceOutputs[index % serviceOutputs.length].map((output) => <li key={output}>{output}<span>↗︎</span></li>)}</ul>
+              <Link href={`/contact?service=${encodeURIComponent(service.subtitle)}`}>Discuss this service <span>↗︎</span></Link>
             </div>
           </article>
         ))}
       </section>
 
-      <section className="sp-page-cta"><div><SectionCode>Next / 02</SectionCode><h2>How does the work<br /><em>move forward?</em></h2></div><Link href="/process"><span>Enter the process</span><b>↗</b></Link></section>
+      <section className="sp-page-cta"><div><SectionCode>Next / 02</SectionCode><h2>How does the work<br /><em>move forward?</em></h2></div><Link href="/process"><span>Enter the process</span><b>↗︎</b></Link></section>
     </main>
   );
 }
@@ -202,7 +202,7 @@ export function ProcessExperience() {
         ))}
       </section>
 
-      <section className="sp-page-cta"><div><SectionCode>Next / 03</SectionCode><h2>Bring us the brief.<br /><em>Or just the beginning.</em></h2></div><Link href="/contact"><span>Open a conversation</span><b>↗</b></Link></section>
+      <section className="sp-page-cta"><div><SectionCode>Next / 03</SectionCode><h2>Bring us the brief.<br /><em>Or just the beginning.</em></h2></div><Link href="/contact"><span>Open a conversation</span><b>↗︎</b></Link></section>
     </main>
   );
 }
@@ -261,14 +261,14 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
           <label><span>Budget</span><select name="budget" defaultValue=""><option value="">Let&apos;s discuss</option><option>Under $2,500</option><option>$2,500–$7,500</option><option>$7,500–$20,000</option><option>$20,000+</option></select></label>
           <label><span>Timeline</span><input name="timeline" placeholder="e.g. 4–6 weeks" maxLength={80} /></label>
           <label className="is-wide"><span>Brief *</span><textarea name="message" required minLength={20} maxLength={4000} rows={7} placeholder="What are you making, for whom, and what needs to change?" /></label>
-          <button type="submit"><span>Send project brief</span><b>↗</b></button>{status && <p role="status">{status}</p>}
+          <button type="submit"><span>Send project brief</span><b>↗︎</b></button>{status && <p role="status">{status}</p>}
         </form>
       </section>
 
       <section className="sp-contact-direct" data-sp-reveal>
         <div><SectionCode>{String(offices.length).padStart(2, "0")} offices / Worldwide</SectionCode><h2>Close to the work,<br /><em>wherever it lives.</em></h2></div>
         <div className="sp-office-grid">{offices.map((office) => <article key={office.code}><span>{office.code} / {office.region}</span><strong>{office.label}</strong><i /></article>)}</div>
-        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><b>↗</b></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><b>↗</b></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"><span>WhatsApp</span><strong>{settings.whatsapp}</strong><b>↗</b></a></div>
+        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><b>↗︎</b></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><b>↗︎</b></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"><span>WhatsApp</span><strong>{settings.whatsapp}</strong><b>↗︎</b></a></div>
       </section>
 
       <footer className="sp-contact-end"><span>{settings.availability}</span><Link href="/services">Services</Link><Link href="/process">Process</Link><Link href="/team">Team</Link><Link href="/">Studio home</Link></footer>
