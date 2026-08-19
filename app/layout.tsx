@@ -6,9 +6,11 @@ import "./team/team.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.artimistproductions.com"),
   title: "Artimist Production — Architecture, Unreal Engine, Identity & Motion",
   description:
     "Artimist Production is a multidisciplinary creative studio connecting architecture, interiors, visualization, Unreal Engine real-time experiences, branding, motion, digital products and strategy.",
+  alternates: { canonical: "/" },
   other: {
     "codex-preview": "development",
   },
