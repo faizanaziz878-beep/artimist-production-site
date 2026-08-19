@@ -46,7 +46,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <div className="ue-hero-grid" aria-hidden="true" />
         <div className="ue-hero-copy">
           <span>Artimist / Real-time production / 2026</span>
-          <h1>UNREAL<br /><em>ENGINE.</em></h1>
+          <h1>UNREAL{" "}<br /><em>ENGINE.</em></h1>
           <p>Architecture you do not just look at. You enter it, move through it, change it and feel it in real time.</p>
           <Link href="#capabilities">Explore the system <Arrow down /></Link>
         </div>
