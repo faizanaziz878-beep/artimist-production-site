@@ -7,6 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${BASE}/`,                       lastModified, changeFrequency: 'weekly',  priority: 1.0 },
     { url: `${BASE}/services`,                lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services/architectural-rendering`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services/3d-interior-rendering`,  lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services/real-estate-rendering`,  lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services/architectural-animation`,lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/residential`,             lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/unreal-engine`,           lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/visual-archive`,          lastModified, changeFrequency: 'weekly',  priority: 0.8 },
