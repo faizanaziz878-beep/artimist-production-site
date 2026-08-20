@@ -210,6 +210,7 @@ export function ProcessExperience() {
 export function ContactExperience({ settings }: { settings: SiteSettings }) {
   const { theme, toggleTheme } = useStudioShell();
   const [status, setStatus] = useState("");
+  const [fallbackHref, setFallbackHref] = useState("");
   const [projectType, setProjectType] = useState("");
   const services = useMemo(() => parseServices(settings), [settings]);
   const offices = getStudioOffices(settings);
@@ -224,23 +225,46 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("Sending your brief…");
+    setFallbackHref("");
     const form = event.currentTarget;
+    const entries = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const track = (name: string, params: Record<string, string>) => {
+      if (typeof window === "undefined") return;
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+      if (typeof w.gtag === "function") w.gtag("event", name, params);
+    };
     try {
       const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        body: JSON.stringify(entries),
       });
       const result = await response.json() as { error?: string };
       if (!response.ok) throw new Error(result.error || "Unable to send your brief.");
-      if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: unknown }).gtag === "function") {
-        ((window as unknown as { gtag: (...a: unknown[]) => void }).gtag)("event", "generate_lead", { form_name: "project_brief" });
-      }
+      track("generate_lead", { form_name: "project_brief" });
       form.reset();
       setProjectType("");
-      setStatus("Brief received. It is now inside the admin portal and the studio will reply by email.");
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : "Please try again.");
+      setStatus("Brief received. The studio will reply by email.");
+    } catch {
+      // The studio inbox could not be reached from this host. Never drop the
+      // lead: hand the visitor a one-click email with their brief prefilled.
+      const subject = `New project brief — ${entries.name || "Website enquiry"}`;
+      const body = [
+        `Name: ${entries.name || ""}`,
+        `Email: ${entries.email || ""}`,
+        `Company: ${entries.company || ""}`,
+        `Project type: ${entries.projectType || ""}`,
+        `Budget: ${entries.budget || ""}`,
+        `Timeline: ${entries.timeline || ""}`,
+        "",
+        "Brief:",
+        entries.message || "",
+      ].join("\n");
+      setFallbackHref(
+        `mailto:Faizan@artimistproductions.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      );
+      track("lead_fallback_email", { form_name: "project_brief" });
+      setStatus("We could not reach the studio inbox from this page. Your brief is ready below — send it in one click and it reaches us directly.");
     }
   }
 
@@ -264,7 +288,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
           <label><span>Budget</span><select name="budget" defaultValue=""><option value="">Let&apos;s discuss</option><option>Under $2,500</option><option>$2,500–$7,500</option><option>$7,500–$20,000</option><option>$20,000+</option></select></label>
           <label><span>Timeline</span><input name="timeline" placeholder="e.g. 4–6 weeks" maxLength={80} /></label>
           <label className="is-wide"><span>Brief *</span><textarea name="message" required minLength={20} maxLength={4000} rows={7} placeholder="What are you making, for whom, and what needs to change?" /></label>
-          <button type="submit"><span>Send project brief</span><b>↗︎</b></button>{status && <p role="status">{status}</p>}
+          <button type="submit"><span>Send project brief</span><b>↗︎</b></button>{status && <p role="status">{status}</p>}{fallbackHref && <p><a className="sp-lead-fallback" href={fallbackHref} style={{ textDecoration: "underline", fontWeight: 600 }}>Send your brief by email <b>↗︎</b></a></p>}
         </form>
       </section>
 
