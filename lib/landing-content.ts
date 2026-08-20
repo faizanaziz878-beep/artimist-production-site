@@ -1,6 +1,4 @@
-TESTLINE_ONE
-TESTLINE_TWO
-const x = "üî×—";// US search-acquisition landing pages: three hubs and six money pages.
+// US search-acquisition landing pages: three hubs and six money pages.
 // Each entry is deliberately distinct — different search intent, different
 // copy — so no two pages read as thin variants of one another.
 
