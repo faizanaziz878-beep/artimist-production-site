@@ -324,7 +324,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
 
       <header className="ed-header">
         <a href="#top" className="ed-logo" aria-label="Artimist Production home">
-          <strong>ARTIMIST</strong><span>Creative Production</span>
+          <strong><span className="ed-a">A</span>RTIMIST</strong><span>Creative Production</span>
         </a>
         <div className="ed-header-actions">
           <button className="ed-theme" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "day" : "night"} mode`}>
@@ -336,7 +336,7 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
 
       <aside className={`ed-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
         <button className="ed-menu-close" onClick={() => setMenuOpen(false)}>Close <span>×</span></button>
-        <div className="ed-menu-index"><span>INDEX / 2026</span><strong>ARTIMIST</strong></div>
+        <div className="ed-menu-index"><span>INDEX / 2026</span><strong><span className="ed-a">A</span>RTIMIST</strong></div>
         <nav>
           {[["Work", "#work"], ["Recent", "#recent-projects"], ["Unreal Engine", "/unreal-engine"], ["Residential", "/residential"], ["Render atlas", "/visual-archive"], ["Services", "/services"], ["Process", "/process"], ["Team", "/team"], ["About", "/about"], ["Founder", "/founder-message"], ["Lab", "#lab"], ["Partners", "/partners"], ["Contact", "/contact"]].map(([label, href], index) => (
             <a key={label} href={href} onClick={() => setMenuOpen(false)}><small>{String(index + 1).padStart(2, "0")}</small><span>{label}</span><Arrow /></a>
@@ -351,8 +351,8 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
         <div className="ed-drawing-grid" aria-hidden="true"><i /><i /><i /><i /><i /></div>
         <ArchitecturalTrace className="ed-hero-trace" />
         <div className="ed-hero-title" data-ed-reveal>
-          <h1>ARTIMIST</h1>
-          <p>Creative Production</p>
+          <span className="ed-hero-wordmark"><span className="ed-a">A</span>RTIMIST</span>
+          <h1 className="ed-hero-positioning">Architecture, BIM &amp; Visualization Services</h1>
         </div>
         <p className="ed-hero-statement" data-ed-reveal key={`statement-${theme}`}>{heroWorld.statement}</p>
         <div className="ed-hero-coordinates" aria-hidden="true">
