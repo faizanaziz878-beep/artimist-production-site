@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Architectural Visualization Services | 3D Rendering & CGI",
   description: "Architectural visualization services for developers, architects and brands: photoreal 3D rendering, CGI, animation, Unreal Engine real-time experiences and BIM documentation.",
+  alternates: { canonical: "/services" },
 };
 
 export default async function ServicesPage() {
