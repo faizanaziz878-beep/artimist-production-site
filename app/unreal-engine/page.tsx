@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Unreal Engine Architectural Visualization | Real-Time 3D",
   description: "Unreal Engine architectural visualization studio: real-time 3D walkthroughs, interactive sales suites, cinematic environments and virtual tours for developers and architects.",
+  alternates: { canonical: "/unreal-engine" },
 };
 
 export default async function UnrealEnginePage() {
