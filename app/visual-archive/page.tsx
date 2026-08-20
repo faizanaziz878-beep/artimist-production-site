@@ -5,6 +5,7 @@ import { VisualJourney } from "../visual-journey";
 export const metadata: Metadata = {
   title: "Architectural Rendering Portfolio | 3D Visualization Gallery",
   description: "Browse our architectural rendering portfolio: 37 photorealistic 3D visualizations across architecture, interiors, hospitality and landscape, plus full technical plates.",
+  alternates: { canonical: "/visual-archive" },
 };
 
 export default function VisualArchivePage() {
