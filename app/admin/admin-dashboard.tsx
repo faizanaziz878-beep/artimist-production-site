@@ -129,6 +129,8 @@ export function AdminDashboard(props: DashboardProps) {
   });
   const [busy, setBusy] = useState("");
   const [notice, setNotice] = useState("");
+  const [replyFor, setReplyFor] = useState<number | null>(null);
+  const [replyText, setReplyText] = useState("");
 
   const stats = useMemo(() => ({
     liveProjects: props.projects.filter((project) => project.published).length,
@@ -149,6 +151,33 @@ export function AdminDashboard(props: DashboardProps) {
       window.setTimeout(() => window.location.reload(), 500);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Please try again.");
+      setBusy("");
+    }
+  }
+
+  async function sendReply(id: number) {
+    const message = replyText.trim();
+    if (message.length < 2) {
+      setNotice("Write a reply before sending.");
+      return;
+    }
+    setBusy(`reply-${id}`);
+    setNotice("");
+    try {
+      const response = await fetch(`/api/admin/inquiries/${id}/reply`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ message }),
+      });
+      const result = (await response.json()) as { error?: string };
+      if (!response.ok) throw new Error(result.error || "The reply could not be sent.");
+      setInquiryRows((rows) => rows.map((row) => (row.id === id ? { ...row, status: "contacted" } : row)));
+      setReplyFor(null);
+      setReplyText("");
+      setNotice("Reply sent. The conversation is marked as contacted.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Please try again.");
+    } finally {
       setBusy("");
     }
   }
@@ -386,7 +415,25 @@ export function AdminDashboard(props: DashboardProps) {
                 <article className={`admin-inquiry is-${inquiry.status}`} key={inquiry.id}>
                   <header><div><span>{String(inquiry.id).padStart(3, "0")}</span><div><h3>{inquiry.name}</h3><p>{inquiry.company || "Independent"} · {inquiry.projectType}</p></div></div><time>{prettyDate(inquiry.createdAt)}</time></header>
                   <div className="admin-inquiry-body"><p>{inquiry.message}</p><dl><div><dt>Email</dt><dd><a href={`mailto:${inquiry.email}`}>{inquiry.email}</a></dd></div><div><dt>Budget</dt><dd>{inquiry.budget || "Not specified"}</dd></div><div><dt>Timeline</dt><dd>{inquiry.timeline || "Not specified"}</dd></div></dl></div>
-                  <footer><span className={`admin-status is-${inquiry.status}`}>{inquiry.status}</span><div><a href={`mailto:${inquiry.email}?subject=${encodeURIComponent(`Artimist × ${inquiry.projectType}`)}`}>Reply by email ↗</a><select value={inquiry.status} onChange={(event) => updateStatus("inquiry", inquiry.id, event.target.value)} disabled={busy !== ""}><option value="new">New</option><option value="contacted">Contacted</option><option value="closed">Closed</option></select></div></footer>
+                  <footer><span className={`admin-status is-${inquiry.status}`}>{inquiry.status}</span><div><button type="button" className="admin-reply-toggle" onClick={() => { setReplyFor(replyFor === inquiry.id ? null : inquiry.id); setReplyText(""); }}>{replyFor === inquiry.id ? "Cancel" : "Reply"}</button><a href={`mailto:${inquiry.email}?subject=${encodeURIComponent(`Artimist × ${inquiry.projectType}`)}`}>Open in mail ↗</a><select value={inquiry.status} onChange={(event) => updateStatus("inquiry", inquiry.id, event.target.value)} disabled={busy !== ""}><option value="new">New</option><option value="contacted">Contacted</option><option value="closed">Closed</option></select></div></footer>
+                  {replyFor === inquiry.id && (
+                    <div className="admin-reply">
+                      <label htmlFor={`reply-${inquiry.id}`}>Reply to {inquiry.name} &middot; {inquiry.email}</label>
+                      <textarea
+                        id={`reply-${inquiry.id}`}
+                        rows={7}
+                        value={replyText}
+                        onChange={(event) => setReplyText(event.target.value)}
+                        placeholder={`Write your reply. It is sent from the studio address and threaded with the confirmation ${inquiry.name.split(" ")[0]} already received.`}
+                      />
+                      <div className="admin-reply-actions">
+                        <small>{replyText.trim().length} characters</small>
+                        <button type="button" onClick={() => sendReply(inquiry.id)} disabled={busy !== "" || replyText.trim().length < 2}>
+                          {busy === `reply-${inquiry.id}` ? "Sending…" : "Send reply"}
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </article>
               ))}
               {!inquiryRows.length && <div className="admin-zero"><span>00</span><h3>The pipeline is clear.</h3><p>New project briefs submitted through the public site will appear here.</p></div>}
