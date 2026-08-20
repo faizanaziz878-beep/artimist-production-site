@@ -3,7 +3,9 @@ import "./globals.css";
 import "./editorial.css";
 import "./intro.css";
 import "./team/team.css";
+import "./ask-bot.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
+import { AskBot } from "./ask-bot";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -54,6 +56,7 @@ export default function RootLayout({
         {children}
         {/* Vercel Web Analytics. Collects page views with no cookies and no
             personal data; the numbers appear in the project's Analytics tab. */}
+        <AskBot />
         <script defer src="/_vercel/insights/script.js" />
       </body>
     </html>
