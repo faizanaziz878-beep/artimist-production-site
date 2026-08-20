@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "About — Artimist Production",
   description: "The vision, services and multidisciplinary process behind Artimist Production.",
+  alternates: { canonical: "/about" },
 };
 
 export default async function AboutPage() {
