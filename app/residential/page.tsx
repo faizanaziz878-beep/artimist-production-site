@@ -5,6 +5,7 @@ import { VisualJourney } from "../visual-journey";
 export const metadata: Metadata = {
   title: "Residential 3D Rendering & Interior Visualization | Artimist",
   description: "Photorealistic residential architectural rendering: exterior and interior 3D visualization for homes, villas and residential developments by Artimist Production.",
+  alternates: { canonical: "/residential" },
 };
 
 export default function ResidentialPage() {
