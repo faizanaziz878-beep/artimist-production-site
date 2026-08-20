@@ -146,3 +146,61 @@
     bottom: 12px;
   }
 }
+
+/* Reply composer — answer a brief without leaving the control room. */
+.admin-reply-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: inherit;
+  font: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.admin-reply-toggle:hover { border-color: rgba(255, 255, 255, 0.55); background: rgba(255, 255, 255, 0.04); }
+
+.admin-reply { padding: 0 22px 22px; }
+.admin-reply label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 9px;
+}
+.admin-reply textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 14px 16px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.admin-reply textarea:focus { outline: none; border-color: rgba(255, 255, 255, 0.42); }
+.admin-reply-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+.admin-reply-actions small { font-size: 11px; opacity: 0.4; letter-spacing: 0.06em; }
+.admin-reply-actions button {
+  background: #f4f2ef;
+  color: #0b0b0b;
+  border: 0;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  cursor: pointer;
+}
+.admin-reply-actions button:disabled { opacity: 0.35; cursor: not-allowed; }
