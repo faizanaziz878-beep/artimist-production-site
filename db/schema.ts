@@ -1,8 +1,12 @@
 import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { boolean, integer, pgTable, serial, text } from "drizzle-orm/pg-core";
 
-export const projects = sqliteTable("projects", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+// Timestamps stay as text so every existing consumer (admin portal, public
+// content mapper, seed) keeps working unchanged after the move off SQLite.
+const now = sql`(now()::text)`;
+
+export const projects = pgTable("projects", {
+  id: serial("id").primaryKey(),
   slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   category: text("category").notNull(),
@@ -13,28 +17,28 @@ export const projects = sqliteTable("projects", {
   year: text("year").notNull().default(""),
   location: text("location").notNull().default(""),
   services: text("services").notNull().default("[]"),
-  featured: integer("featured", { mode: "boolean" }).notNull().default(false),
-  published: integer("published", { mode: "boolean" }).notNull().default(true),
+  featured: boolean("featured").notNull().default(false),
+  published: boolean("published").notNull().default(true),
   sortOrder: integer("sort_order").notNull().default(0),
-  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at").notNull().default(now),
+  updatedAt: text("updated_at").notNull().default(now),
 });
 
-export const teamMembers = sqliteTable("team_members", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const teamMembers = pgTable("team_members", {
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   role: text("role").notNull(),
   bio: text("bio").notNull().default(""),
   image: text("image").notNull().default(""),
   linkedin: text("linkedin").notNull().default(""),
-  published: integer("published", { mode: "boolean" }).notNull().default(true),
+  published: boolean("published").notNull().default(true),
   sortOrder: integer("sort_order").notNull().default(0),
-  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at").notNull().default(now),
+  updatedAt: text("updated_at").notNull().default(now),
 });
 
-export const testimonials = sqliteTable("testimonials", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const testimonials = pgTable("testimonials", {
+  id: serial("id").primaryKey(),
   clientName: text("client_name").notNull(),
   role: text("role").notNull().default(""),
   company: text("company").notNull().default(""),
@@ -44,12 +48,12 @@ export const testimonials = sqliteTable("testimonials", {
   status: text("status", { enum: ["pending", "published", "rejected"] })
     .notNull()
     .default("pending"),
-  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at").notNull().default(now),
   publishedAt: text("published_at"),
 });
 
-export const inquiries = sqliteTable("inquiries", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const inquiries = pgTable("inquiries", {
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
   company: text("company").notNull().default(""),
@@ -60,11 +64,11 @@ export const inquiries = sqliteTable("inquiries", {
   status: text("status", { enum: ["new", "contacted", "closed"] })
     .notNull()
     .default("new"),
-  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at").notNull().default(now),
 });
 
-export const siteSettings = sqliteTable("site_settings", {
+export const siteSettings = pgTable("site_settings", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),
-  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(now),
 });
