@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Team — Artimist Production",
   description: "Meet the main multidisciplinary team behind Artimist Production and the wider specialist network around the studio.",
+  alternates: { canonical: "/team" },
 };
 
 export default async function TeamPage() {
