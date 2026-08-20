@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Founder’s Message — Artimist Production",
   description: "A message from Faizan Aziz, founder and creative director of Artimist Production.",
+  alternates: { canonical: "/founder-message" },
 };
 
 export default async function FounderMessagePage() {
