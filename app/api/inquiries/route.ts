@@ -1,8 +1,21 @@
 import { inquiries } from "../../../db/schema";
-import { notifyTarget, sendNotification } from "../../../lib/notify";
+import { notifyTarget, sendNotification, sendReceiptConfirmation } from "../../../lib/notify";
 
 function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+// Courtesy confirmation to the sender. Never allowed to fail a lead: the
+// enquiry is already safe by the time this runs.
+async function confirmReceipt(
+  email: string,
+  fields: { name: string; company: string; projectType: string; budget: string; timeline: string; message: string },
+) {
+  try {
+    await sendReceiptConfirmation(email, fields);
+  } catch {
+    // Ignored on purpose.
+  }
 }
 
 export async function POST(request: Request) {
@@ -44,6 +57,7 @@ export async function POST(request: Request) {
   try {
     const { getDb } = await import("../../../db");
     await getDb().insert(inquiries).values({ name, email, company, projectType, budget, timeline, message });
+    await confirmReceipt(email, { name, company, projectType, budget, timeline, message });
     return Response.json({ ok: true }, { status: 201 });
   } catch {
     // No database binding on this host — fall through to email.
@@ -63,7 +77,10 @@ export async function POST(request: Request) {
     email,
   );
 
-  if (emailed) return Response.json({ ok: true }, { status: 201 });
+  if (emailed) {
+    await confirmReceipt(email, { name, company, projectType, budget, timeline, message });
+    return Response.json({ ok: true }, { status: 201 });
+  }
 
   return Response.json(
     {
