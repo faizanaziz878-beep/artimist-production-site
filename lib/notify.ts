@@ -178,3 +178,76 @@ export async function sendReceiptConfirmation(
     return false;
   }
 }
+
+/**
+ * A reply written by the studio in the control room and sent to the person who
+ * submitted the brief. Threaded by subject so it lands in the same conversation
+ * as the confirmation of receipt.
+ */
+export async function sendStudioReply(
+  to: string,
+  recipientName: string,
+  bodyText: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!notifyConfigured()) {
+    return { ok: false, error: "Email is not configured on this deployment." };
+  }
+
+  const esc = (value: string) =>
+    value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+  const firstName = recipientName.trim().split(/\s+/)[0] || "there";
+  const studio = notifyTarget();
+
+  const html = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artimist Production</title></head>
+<body style="margin:0;padding:0;background:#080808;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#080808;padding:40px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#0d0d0d;border:1px solid #1c1c1c;">
+        <tr><td style="padding:36px 36px 0 36px;">
+          <div style="color:#e8e6e3;font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:0.34em;">ARTIMIST</div>
+          <div style="margin-top:6px;color:#5c5c5c;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;">Architecture &middot; BIM &middot; Visualization</div>
+        </td></tr>
+        <tr><td style="padding:30px 36px 0 36px;">
+          <p style="margin:0 0 16px 0;color:#f4f2ef;font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.72;">${esc(firstName)},</p>
+          <div style="color:#c9c7c4;font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.78;white-space:pre-wrap;">${esc(bodyText)}</div>
+        </td></tr>
+        <tr><td style="padding:30px 36px 36px 36px;">
+          <div style="border-top:1px solid #1c1c1c;padding-top:22px;">
+            <p style="margin:0;color:#8a8a8a;font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:1.7;">
+              Artimist Production &mdash; <a href="mailto:${esc(studio)}" style="color:#e8e6e3;text-decoration:none;border-bottom:1px solid #3a3a3a;">${esc(studio)}</a>
+            </p>
+            <p style="margin:10px 0 0 0;color:#3d3d3d;font-family:Helvetica,Arial,sans-serif;font-size:11px;">
+              <a href="https://www.artimistproductions.com" style="color:#5c5c5c;text-decoration:none;">artimistproductions.com</a>
+            </p>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+
+  try {
+    const response = await fetch(RESEND_ENDPOINT, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${process.env.RESEND_API_KEY!.trim()}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.INQUIRY_FROM_EMAIL!.trim(),
+        to: [to],
+        subject: "Your brief reached the studio — Artimist Production",
+        html,
+        text: `${firstName},\n\n${bodyText}\n\n—\nArtimist Production\n${studio}\nartimistproductions.com`,
+        reply_to: studio,
+      }),
+    });
+    if (response.ok) return { ok: true };
+    const detail = (await response.json().catch(() => null)) as { message?: string } | null;
+    return { ok: false, error: detail?.message || `Email provider returned ${response.status}.` };
+  } catch {
+    return { ok: false, error: "Could not reach the email provider." };
+  }
+}
