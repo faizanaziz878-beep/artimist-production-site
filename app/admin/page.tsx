@@ -1,12 +1,12 @@
 import "./admin-portal.css";
-import { asc, desc } from "drizzle-orm";
+import { asc, desc, sql } from "drizzle-orm";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { inquiries, projects, siteSettings, teamMembers, testimonials } from "../../db/schema";
 import { defaultProjects, defaultSettings, defaultTeam, defaultTestimonials } from "../../lib/content";
 import { getAdminUser } from "../../lib/admin-auth";
 import { usingDefaultPassword } from "../../lib/site-auth";
-import { AdminDashboard } from "./admin-dashboard";
+import { AdminDashboard, type VisitorStats } from "./admin-dashboard";
 import { LogoutButton } from "./logout-button";
 
 export const dynamic = "force-dynamic";
@@ -102,6 +102,7 @@ export default async function AdminPage() {
 
   const readOnly = data === null;
   const rows = data ?? bundledRows();
+  const visitors = readOnly ? emptyVisitors : await readVisitorStats();
 
   return (
     <>
@@ -136,6 +137,7 @@ export default async function AdminPage() {
         team={rows.team}
         testimonials={rows.testimonials}
         inquiries={rows.inquiries}
+        visitors={visitors}
         settings={rows.settings}
       />
     </>
