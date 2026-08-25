@@ -72,3 +72,22 @@ export const siteSettings = pgTable("site_settings", {
   value: text("value").notNull(),
   updatedAt: text("updated_at").notNull().default(now),
 });
+
+/**
+ * Visitor log for the studio control room.
+ *
+ * One row per page view. `visitorId` is a random id kept in the visitor's own
+ * browser for the session only — no cookies, no personal data, nothing that
+ * identifies a person. It exists so "visitors" can be counted separately from
+ * "page views".
+ */
+export const pageViews = pgTable("page_views", {
+  id: serial("id").primaryKey(),
+  path: text("path").notNull(),
+  referrer: text("referrer").notNull().default(""),
+  visitorId: text("visitor_id").notNull().default(""),
+  country: text("country").notNull().default(""),
+  city: text("city").notNull().default(""),
+  device: text("device").notNull().default(""),
+  createdAt: text("created_at").notNull().default(now),
+});
