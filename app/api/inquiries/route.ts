@@ -1,5 +1,5 @@
 import { inquiries } from "../../../db/schema";
-import { notifyTarget, sendNotification, sendReceiptConfirmation } from "../../../lib/notify";
+import { publicContactEmail, sendNotification, sendReceiptConfirmation } from "../../../lib/notify";
 
 function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -54,15 +54,17 @@ export async function POST(request: Request) {
 
   // Preferred path: persist to the studio database so the enquiry appears in
   // the control room.
+  let stored = false;
   try {
     const { getDb } = await import("../../../db");
     await getDb().insert(inquiries).values({ name, email, company, projectType, budget, timeline, message });
-    await confirmReceipt(email, { name, company, projectType, budget, timeline, message });
-    return Response.json({ ok: true }, { status: 201 });
+    stored = true;
   } catch {
-    // No database binding on this host — fall through to email.
+    // No database binding on this host — the email copy below is then the only record.
   }
 
+  // A copy always goes to the studio inbox, whether or not the enquiry was
+  // stored, so a lead is visible without opening the control room.
   const emailed = await sendNotification(
     `New studio enquiry — ${name}`,
     {
@@ -77,14 +79,14 @@ export async function POST(request: Request) {
     email,
   );
 
-  if (emailed) {
+  if (stored || emailed) {
     await confirmReceipt(email, { name, company, projectType, budget, timeline, message });
     return Response.json({ ok: true }, { status: 201 });
   }
 
   return Response.json(
     {
-      error: `The studio inbox is temporarily unavailable. Please email us directly at ${notifyTarget()} and we will reply the same day.`,
+      error: `The studio inbox is temporarily unavailable. Please email us directly at ${publicContactEmail()} and we will reply the same day.`,
     },
     { status: 503 },
   );

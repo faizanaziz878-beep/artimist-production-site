@@ -6,7 +6,7 @@
  * username/password session that works on any host.
  *
  * Configure with environment variables:
- *   ADMIN_USERNAME         defaults to "admin"
+ *   ADMIN_USERNAME         defaults to "faizan"
  *   ADMIN_PASSWORD         defaults to "admin"  <-- change this
  *   ADMIN_SESSION_SECRET   optional; derived from the credentials when unset
  */
@@ -15,7 +15,7 @@ export const ADMIN_COOKIE = "artimist_studio_session";
 const SESSION_DAYS = 7;
 
 export function adminUsername(): string {
-  return process.env.ADMIN_USERNAME?.trim() || "admin";
+  return process.env.ADMIN_USERNAME?.trim() || "faizan";
 }
 
 function adminPassword(): string {

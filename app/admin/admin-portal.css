@@ -204,3 +204,48 @@
   cursor: pointer;
 }
 .admin-reply-actions button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Visitors panel — daily bars and ranked lists. */
+.admin-spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 132px;
+  padding: 16px 0 0;
+}
+
+.admin-spark i {
+  flex: 1;
+  min-height: 3px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, #b93b50, rgba(185, 59, 80, 0.28));
+}
+
+.admin-rank {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-rank li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.admin-rank li:last-child { border-bottom: 0; }
+
+.admin-rank span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-rank b {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
