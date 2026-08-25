@@ -509,6 +509,15 @@ export const defaultTeam: TeamMember[] = [
     published: true,
     sortOrder: 13,
   },
+  {
+    name: "Hamza Rizwan",
+    role: "Interior Designer — SketchUp & CAD Workflow",
+    bio: "Develops interior packages through SketchUp modelling and AutoCAD documentation, translating concept layouts into coordinated, buildable drawing sets.",
+    image: "/media/team/hamza-rizwan.webp",
+    linkedin: "",
+    published: true,
+    sortOrder: 14,
+  },
 ];
 
 export const serviceWorlds = [
