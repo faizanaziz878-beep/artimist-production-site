@@ -3,8 +3,9 @@
 .site-index-trigger {
   position: fixed;
   z-index: 9000;
-  top: 18px;
-  left: 18px;
+  /* Sits just below the site header so it never covers the wordmark. */
+  top: 84px;
+  left: 20px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -144,7 +145,7 @@
 @keyframes siteIndexSlide { from { transform: translateX(-14px); opacity: 0; } to { transform: none; opacity: 1; } }
 
 @media (max-width: 560px) {
-  .site-index-trigger { top: 12px; left: 12px; padding: 8px 12px; font-size: 8.5px; }
+  .site-index-trigger { top: 72px; left: 12px; padding: 8px 12px; font-size: 8.5px; }
   .site-index-sheet { width: 100%; padding: 66px 22px 26px; border-right: 0; }
 }
 
