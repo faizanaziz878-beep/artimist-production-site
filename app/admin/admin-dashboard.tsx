@@ -3,7 +3,7 @@
 import { type FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
 
-type Tab = "overview" | "projects" | "team" | "testimonials" | "inquiries" | "settings";
+type Tab = "overview" | "projects" | "team" | "testimonials" | "inquiries" | "visitors" | "settings";
 
 type ProjectRow = {
   id: number;
@@ -65,12 +65,29 @@ type InquiryRow = {
 
 type ServiceWorld = { code: string; title: string; subtitle: string; copy: string };
 
+/** Visit numbers for the control room. Zeroed when no database is attached. */
+export type VisitorStats = {
+  available: boolean;
+  totalViews: number;
+  totalVisitors: number;
+  viewsToday: number;
+  visitorsToday: number;
+  views7d: number;
+  visitors7d: number;
+  topPages: Array<{ path: string; views: number }>;
+  topReferrers: Array<{ referrer: string; views: number }>;
+  countries: Array<{ country: string; views: number }>;
+  devices: Array<{ device: string; views: number }>;
+  daily: Array<{ day: string; views: number }>;
+};
+
 type DashboardProps = {
   user: { name: string; email: string };
   projects: ProjectRow[];
   team: TeamRow[];
   testimonials: TestimonialRow[];
   inquiries: InquiryRow[];
+  visitors: VisitorStats;
   settings: Record<string, string>;
 };
 
@@ -80,7 +97,8 @@ const nav: Array<{ id: Tab; label: string; index: string }> = [
   { id: "team", label: "Team", index: "03" },
   { id: "testimonials", label: "Reviews", index: "04" },
   { id: "inquiries", label: "Inquiries", index: "05" },
-  { id: "settings", label: "Site system", index: "06" },
+  { id: "visitors", label: "Visitors", index: "06" },
+  { id: "settings", label: "Site system", index: "07" },
 ];
 
 function Arrow() {
@@ -308,6 +326,7 @@ export function AdminDashboard(props: DashboardProps) {
               <button onClick={() => setActive("projects")}><span>Live projects</span><strong>{String(stats.liveProjects).padStart(2, "0")}</strong><small>{stats.hiddenProjects} held in private</small></button>
               <button onClick={() => setActive("testimonials")}><span>Reviews to curate</span><strong>{String(stats.pendingReviews).padStart(2, "0")}</strong><small>Nothing publishes without you</small></button>
               <button onClick={() => setActive("inquiries")}><span>New project briefs</span><strong>{String(stats.newInquiries).padStart(2, "0")}</strong><small>{inquiryRows.length} conversations total</small></button>
+              <button onClick={() => setActive("visitors")}><span>Visitors (7 days)</span><strong>{String(props.visitors.visitors7d).padStart(2, "0")}</strong><small>{props.visitors.views7d} page views</small></button>
               <button onClick={() => setActive("team")}><span>Studio network</span><strong>{String(props.team.filter((person) => person.published).length).padStart(2, "0")}</strong><small>Visible collaborators</small></button>
             </section>
             <div className="admin-overview-grid">
