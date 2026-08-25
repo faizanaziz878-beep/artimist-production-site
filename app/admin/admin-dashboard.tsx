@@ -308,7 +308,6 @@ export function AdminDashboard(props: DashboardProps) {
               <button onClick={() => setActive("projects")}><span>Live projects</span><strong>{String(stats.liveProjects).padStart(2, "0")}</strong><small>{stats.hiddenProjects} held in private</small></button>
               <button onClick={() => setActive("testimonials")}><span>Reviews to curate</span><strong>{String(stats.pendingReviews).padStart(2, "0")}</strong><small>Nothing publishes without you</small></button>
               <button onClick={() => setActive("inquiries")}><span>New project briefs</span><strong>{String(stats.newInquiries).padStart(2, "0")}</strong><small>{inquiryRows.length} conversations total</small></button>
-              <button onClick={() => setActive("visitors")}><span>Visitors (7 days)</span><strong>{String(props.visitors.visitors7d).padStart(2, "0")}</strong><small>{props.visitors.views7d} page views</small></button>
               <button onClick={() => setActive("team")}><span>Studio network</span><strong>{String(props.team.filter((person) => person.published).length).padStart(2, "0")}</strong><small>Visible collaborators</small></button>
             </section>
             <div className="admin-overview-grid">
@@ -439,6 +438,82 @@ export function AdminDashboard(props: DashboardProps) {
               ))}
               {!inquiryRows.length && <div className="admin-zero"><span>00</span><h3>The pipeline is clear.</h3><p>New project briefs submitted through the public site will appear here.</p></div>}
             </div>
+          </div>
+        )}
+
+        {active === "visitors" && (
+          <div className="admin-panel">
+            <div className="admin-section-intro">
+              <div>
+                <p className="admin-kicker">Audience</p>
+                <h2>Who is reading the studio.</h2>
+                <p>Every page view on the public site, counted here. No cookies and nothing that identifies a person &mdash; paths, sources, country and device only.</p>
+              </div>
+              <div className="admin-count-pill">{props.visitors.visitorsToday} today</div>
+            </div>
+
+            {!props.visitors.available ? (
+              <div className="admin-alert">
+                <strong>Visit counting needs the database.</strong>
+                <span>Attach Postgres storage to this project and views start recording on the next page load.</span>
+              </div>
+            ) : (
+              <>
+                <section className="admin-stat-grid">
+                  <button type="button"><span>Visitors today</span><strong>{String(props.visitors.visitorsToday).padStart(2, "0")}</strong><small>{props.visitors.viewsToday} page views</small></button>
+                  <button type="button"><span>Visitors / 7 days</span><strong>{String(props.visitors.visitors7d).padStart(2, "0")}</strong><small>{props.visitors.views7d} page views</small></button>
+                  <button type="button"><span>Visitors all time</span><strong>{String(props.visitors.totalVisitors).padStart(2, "0")}</strong><small>{props.visitors.totalViews} page views</small></button>
+                  <button type="button" onClick={() => setActive("inquiries")}><span>Briefs received</span><strong>{String(inquiryRows.length).padStart(2, "0")}</strong><small>{stats.newInquiries} still unread</small></button>
+                </section>
+
+                <div className="admin-overview-grid">
+                  <section className="admin-surface">
+                    <div className="admin-surface-head"><div><span>Last 14 days</span><h3>Daily page views</h3></div></div>
+                    <div className="admin-spark" role="img" aria-label={`Daily page views: ${props.visitors.daily.map((d) => `${d.day} ${d.views}`).join(", ")}`}>
+                      {props.visitors.daily.map((day) => {
+                        const peak = Math.max(1, ...props.visitors.daily.map((entry) => entry.views));
+                        return (
+                          <i key={day.day} style={{ height: `${Math.max(3, (day.views / peak) * 100)}%` }} title={`${day.day} — ${day.views} views`} />
+                        );
+                      })}
+                    </div>
+                  </section>
+
+                  <section className="admin-surface">
+                    <div className="admin-surface-head"><div><span>Most read</span><h3>Top pages</h3></div></div>
+                    <ul className="admin-rank">
+                      {props.visitors.topPages.length === 0 ? <li><span>No views recorded yet</span></li> : null}
+                      {props.visitors.topPages.map((page) => (
+                        <li key={page.path}><span>{page.path}</span><b>{page.views}</b></li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+
+                <div className="admin-overview-grid">
+                  <section className="admin-surface">
+                    <div className="admin-surface-head"><div><span>Where from</span><h3>Sources</h3></div></div>
+                    <ul className="admin-rank">
+                      {props.visitors.topReferrers.length === 0 ? <li><span>Direct visits only so far</span></li> : null}
+                      {props.visitors.topReferrers.map((source) => (
+                        <li key={source.referrer}><span>{source.referrer}</span><b>{source.views}</b></li>
+                      ))}
+                    </ul>
+                  </section>
+                  <section className="admin-surface">
+                    <div className="admin-surface-head"><div><span>Reach</span><h3>Country &amp; device</h3></div></div>
+                    <ul className="admin-rank">
+                      {props.visitors.countries.map((entry) => (
+                        <li key={`c-${entry.country}`}><span>{entry.country || "Unknown"}</span><b>{entry.views}</b></li>
+                      ))}
+                      {props.visitors.devices.map((entry) => (
+                        <li key={`d-${entry.device}`}><span>{entry.device || "Unknown device"}</span><b>{entry.views}</b></li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+              </>
+            )}
           </div>
         )}
 
