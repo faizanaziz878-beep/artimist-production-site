@@ -4,8 +4,11 @@ import "./editorial.css";
 import "./intro.css";
 import "./team/team.css";
 import "./ask-bot.css";
+import "./site-index.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 import { AskBot } from "./ask-bot";
+import { SiteIndex } from "./site-index";
+import { VisitorTracker } from "./visitor-tracker";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -51,6 +54,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <IntroCurtain />
+        <SiteIndex />
+        <VisitorTracker />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.artimistproductions.com/#organization\",\"name\":\"Artimist Production\",\"url\":\"https://www.artimistproductions.com\",\"email\":\"Faizan@artimistproductions.com\",\"description\":\"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.\",\"location\":[{\"@type\":\"Place\",\"name\":\"Artimist Production — Vancouver\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Vancouver\",\"addressRegion\":\"British Columbia\",\"addressCountry\":\"CA\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Ohio\",\"address\":{\"@type\":\"PostalAddress\",\"addressRegion\":\"Ohio\",\"addressCountry\":\"US\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Stockholm\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Stockholm\",\"addressCountry\":\"SE\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Lahore\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Lahore\",\"addressRegion\":\"Punjab\",\"addressCountry\":\"PK\"}}],\"areaServed\":[\"United States\",\"Canada\",\"Sweden\",\"Pakistan\",\"Worldwide\"]}" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.artimistproductions.com/#website\",\"url\":\"https://www.artimistproductions.com\",\"name\":\"Artimist Production\",\"publisher\":{\"@id\":\"https://www.artimistproductions.com/#organization\"},\"inLanguage\":\"en\"}" }} />
         {children}
