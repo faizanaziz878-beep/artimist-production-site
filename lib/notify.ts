@@ -14,8 +14,20 @@
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
+/**
+ * Where studio enquiries are delivered.
+ *
+ * This is a private tracking inbox. It is used to address outbound mail only
+ * and must never be rendered on the public site — use `publicContactEmail()`
+ * for anything a visitor can see.
+ */
 export function notifyTarget(): string {
-  return process.env.INQUIRY_TO_EMAIL?.trim() || "Faizan@artimistproductions.com";
+  return process.env.INQUIRY_TO_EMAIL?.trim() || "faizanaziz878@gmail.com";
+}
+
+/** The address shown to visitors. Deliberately not the tracking inbox. */
+export function publicContactEmail(): string {
+  return process.env.PUBLIC_CONTACT_EMAIL?.trim() || "Faizan@artimistproductions.com";
 }
 
 export function notifyConfigured(): boolean {
@@ -77,7 +89,7 @@ export async function sendReceiptConfirmation(
     value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
   const firstName = fields.name.trim().split(/\s+/)[0] || "there";
-  const studio = notifyTarget();
+  const studio = publicContactEmail();
 
   const row = (label: string, value: string) =>
     value
@@ -197,7 +209,7 @@ export async function sendStudioReply(
     value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
   const firstName = recipientName.trim().split(/\s+/)[0] || "there";
-  const studio = notifyTarget();
+  const studio = publicContactEmail();
 
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artimist Production</title></head>
