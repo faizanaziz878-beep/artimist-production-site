@@ -399,3 +399,131 @@ img { image-rendering: auto; backface-visibility: hidden; }
   .partners-v2-person { margin-top: 30px; }
   .partners-v2-person>img { width: 96px; height: 96px; flex-basis: 96px; }
 }
+
+
+/* Services hero rebalance — calmer hierarchy, sharper shell, no dashboard clock */
+.ap-header {
+  height: 72px;
+  background:
+    linear-gradient(180deg,rgba(8,9,11,.9),rgba(8,9,11,.76));
+  -webkit-backdrop-filter: blur(20px) saturate(1.22);
+  backdrop-filter: blur(20px) saturate(1.22);
+  border-bottom-color: rgba(255,255,255,.12);
+  box-shadow: 0 12px 42px rgba(0,0,0,.16);
+}
+.ap-wordmark span {
+  font-family: ArtimistUI,"Helvetica Neue",Arial,sans-serif;
+  font-size: 21px;
+  font-weight: 560;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  letter-spacing: .022em;
+}
+.ap-wordmark small,.ap-pill,.ap-cta {
+  font-family: ArtimistUI,"Helvetica Neue",Arial,sans-serif;
+}
+.ap-wordmark small { font-size: 7px; font-weight: 620; letter-spacing: .22em; }
+.ap-pill,.ap-cta {
+  min-height: 42px;
+  padding: 10px 16px;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .075em;
+}
+.ap-pill { gap: 9px; background: rgba(255,255,255,.045); }
+.ap-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.services-v2-hero {
+  height: min(88svh,920px);
+  min-height: 700px;
+  align-items: center;
+  isolation: isolate;
+}
+.services-v2-hero>img {
+  transform: translate3d(0,var(--parallax,0),0) scale(1.025);
+  animation: none;
+  object-position: center 48%;
+}
+.services-v2-hero>div:not(.services-v2-copy) {
+  background:
+    linear-gradient(90deg,rgba(3,5,7,.84) 0,rgba(3,5,7,.48) 48%,rgba(3,5,7,.18) 78%),
+    linear-gradient(0deg,rgba(3,5,7,.78) 0,transparent 58%);
+}
+.services-v2-copy {
+  padding: 108px 0 54px;
+}
+.services-v2-hero h1 {
+  max-width: 1280px;
+  margin: 24px 0 38px;
+  font-size: clamp(66px,5.55vw,112px);
+  line-height: .88;
+  letter-spacing: -.05em;
+}
+.services-v2-hero h1 em {
+  display: inline-block;
+  font-size: .9em;
+  line-height: .92;
+  letter-spacing: -.045em;
+}
+.services-v2-hero footer {
+  align-items: center;
+  gap: 42px;
+  padding-top: 22px;
+}
+.services-v2-hero footer>p {
+  max-width: 590px;
+  color: rgba(255,255,255,.78);
+  font-size: 17px;
+}
+.services-v2-hero footer>a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0 3px;
+  border-bottom: 1px solid rgba(255,255,255,.62);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .08em;
+}
+.services-v2-hero footer>a:hover { color: #f0c4cb; border-color: currentColor; }
+
+/* This page's mode switch changes material and color temperature, not opacity. */
+html[data-mode="night"] .services-v2 { background: #090d12; color: #f2f4f5; }
+html[data-mode="night"] .services-v2-index {
+  background: rgba(10,14,20,.95);
+  border-color: rgba(255,255,255,.14);
+}
+html[data-mode="night"] .services-v2-index a { border-color: rgba(255,255,255,.12); }
+html[data-mode="night"] .services-v2-index a:hover { background: #151c25; }
+html[data-mode="night"] .services-v2-index small,
+html[data-mode="night"] .services-v2-story h3 { color: #87d7e2; }
+html[data-mode="night"] .services-v2-intro>div,
+html[data-mode="night"] .services-v2-stories>article,
+html[data-mode="night"] .services-v2-story ul,
+html[data-mode="night"] .services-v2-story li { border-color: rgba(255,255,255,.16); }
+html[data-mode="night"] .services-v2-intro>div p,
+html[data-mode="night"] .services-v2-story>p:not(.eyebrow) { color: rgba(238,243,247,.66); }
+html[data-mode="night"] .services-v2-hero>img { filter: saturate(.72) contrast(1.08) hue-rotate(5deg); }
+
+@media(max-width:980px) {
+  .services-v2-hero { height: auto; min-height: 760px; }
+  .services-v2-hero h1 { font-size: clamp(62px,10.5vw,96px); }
+  .services-v2-copy { padding: 128px 0 54px; }
+}
+@media(max-width:680px) {
+  .ap-header { height: 66px; }
+  .ap-pill,.ap-cta { min-height: 40px; padding: 9px 12px; font-size: 9px; }
+  .services-v2-hero { min-height: 700px; }
+  .services-v2-copy { padding: 110px 0 38px; }
+  .services-v2-hero h1 { font-size: clamp(52px,15vw,72px); line-height: .9; margin-bottom: 32px; }
+  .services-v2-hero footer { display: grid; gap: 18px; }
+  .services-v2-hero footer>p { font-size: 15px; }
+}

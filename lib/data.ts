@@ -39,6 +39,7 @@ const currentPortraitNames = new Set([
   "Rohma Fatima",
   "Eunica Amir",
   "Shumail",
+  "Hamza Rizwan",
 ]);
 
 export async function getPublicContent(): Promise<{
