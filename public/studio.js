@@ -23,12 +23,41 @@
     { image: D + 'drive-12.webp', label: 'HOSPITALITY / ADAPTIVE REUSE', note: 'Old fabric, new atmosphere' }
   ];
 
-  var WALL = [
-    { img: D + 'waterfront-foundry-02.webp', title: 'Waterfront Foundry', meta: 'HOSPITALITY / ADAPTIVE REUSE', href: '#archive' },
-    { img: D + 'cultural-campus-02.webp', title: 'Cultural Campus', meta: 'PUBLIC / ARCHITECTURE', href: '#archive' },
-    { img: D + 'tropical-club-02.webp', title: 'Tropical Club', meta: 'HOSPITALITY / WELLNESS', href: '#archive' },
-    { img: D + 'city-apartment-01.webp', title: 'City Apartment', meta: 'RESIDENTIAL / INTERIOR', href: '#archive' },
-    { img: D + 'patisserie-01.webp', title: 'Patisserie', meta: 'RETAIL / F&B', href: '#archive' }
+  var P = '/media/projects/';
+  var MO = '/media/motion/';
+  var WK = '/media/walkthrough/';
+
+  /* The five pieces the studio leads with. Where a walkthrough set exists the
+     card opens the frames in place; everything else goes to the archive. */
+  var FEATURED = [
+    { no: '01', title: 'Bowl Stroke', cat: 'SPACE', meta: 'INTERNATIONAL / 2026',
+      img: P + 'bowl-stroke.webp', video: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp',
+      copy: 'A cinematic hospitality experience developed across exterior, dining, bar and private-room environments.',
+      services: 'Architecture \u00b7 Interior \u00b7 3D Visualization \u00b7 Animation',
+      frames: [WK + 'bowl/exterior-hero.webp', WK + 'bowl/exterior-arrival.webp', WK + 'bowl/interior-dining.webp', WK + 'bowl/interior-bar.webp', WK + 'bowl/interior-private.webp'] },
+    { no: '02', title: 'Harmonic Horizons', cat: 'SPACE', meta: 'LAKESIDE CULTURAL DISTRICT / 2026',
+      img: P + 'music-campus.webp', video: MO + 'music-campus-teaser.mp4',
+      copy: 'A nature-integrated campus at Khanpur Dam where sound becomes landscape, sequence and form.',
+      services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' },
+    { no: '03', title: 'Parametric Canopy Studies', cat: 'LAB', meta: 'ARTIMIST LAB / 2026',
+      img: P + 'parametric-canopy.webp',
+      copy: 'Computational structures shaped through repeatable geometry, performance studies and human scale.',
+      services: 'Grasshopper \u00b7 Computational Design \u00b7 Research \u00b7 Visualization' },
+    { no: '04', title: 'Connected Learning Auditorium', cat: 'SPACE', meta: 'CONCEPT STUDY / 2026',
+      img: P + 'auditorium.webp',
+      copy: 'A public architecture study connecting civic purpose, learning, circulation and landscape.',
+      services: 'Architecture \u00b7 Urban Strategy \u00b7 Presentation \u00b7 Visualization' },
+    { no: '05', title: 'Residential Atmospheres', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+      img: P + 'residential.webp', video: MO + 'residential-build.mp4',
+      copy: 'Quiet residential environments built around daylight, warm materiality and believable everyday life.',
+      services: 'Interior \u00b7 Lighting \u00b7 3D Visualization' }
+  ];
+
+  /* The moving-image reel. Each entry is a real file in /media/motion. */
+  var REELS = [
+    { title: 'Bowl Stroke', note: 'Hospitality \u2014 exterior to private room', src: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp' },
+    { title: 'Harmonic Horizons', note: 'Cultural campus \u2014 landscape and sequence', src: MO + 'music-campus-teaser.mp4', poster: P + 'music-campus.webp' },
+    { title: 'Residential Atmospheres', note: 'Interior \u2014 daylight and material', src: MO + 'residential-build.mp4', poster: P + 'residential.webp' }
   ];
 
   var ROWS = [
@@ -63,13 +92,13 @@
     ['Sufyan Ilyas', 'Studio Collaborator', 'sufyan-team-2026.webp'],
     ['Zarmeen Khan', 'People & Operations', 'zarmeen.webp'],
     ['Abdur Rehman', '2D / 3D Animator & Graphics', 'abdur-profile-2026.webp'],
-    ['Farwa Kashif', 'Revit / BIM / CAD Expert', 'farwa-profile-2026.webp'],
+    ['Farwa Kashif', 'Revit / BIM / CAD Expert', 'farwanew.webp'],
     ['Hanan Shahid', 'Unreal Engine Engineer & Architect', 'hanan-profile-2026.webp'],
     ['Rohma Fatima', 'Multidisciplinary Studio Team', 'rohma-profile-2026.webp'],
     ['Eunica Amir', 'Multidisciplinary Studio Team', 'eunica-profile-2026.webp'],
     ['Ezza Shahid', 'Interior Designer', 'ezza.jpeg'],
     ['Shumail', 'Studio Collaborator', 'shumail-profile-2026.webp'],
-    ['Hamza Rizwan', 'Interior Designer — SketchUp & CAD', 'hamza-rizwan.webp']
+    ['Hamza Rizwan', 'Interior Designer — SketchUp & CAD', 'hamzanew.webp']
   ];
 
   var CLIENTS = [
@@ -127,12 +156,134 @@
     scenesHost.appendChild(d);
   });
 
-  var wall = byId('wall');
-  WALL.forEach(function (w) {
-    wall.insertAdjacentHTML('beforeend',
-      '<a href="' + w.href + '"><img src="' + w.img + '" alt="' + esc(w.title) + '" loading="lazy">' +
-      '<figcaption><h3>' + esc(w.title) + '</h3><small>' + esc(w.meta) + '</small></figcaption></a>');
+  /* ---- selected work ---------------------------------------------------- */
+  var featMedia = byId('featMedia'), featTabs = byId('featTabs');
+  var featIndex = -1;
+
+  FEATURED.forEach(function (f, i) {
+    var b = el('button', 'st-feature-tab');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.innerHTML = '<small>' + f.no + '</small><span>' + esc(f.title) + '</span>';
+    b.addEventListener('click', function () { showFeature(i); });
+    featTabs.appendChild(b);
   });
+
+  function showFeature(i) {
+    if (i === featIndex) return;
+    var f = FEATURED[i];
+    featIndex = i;
+
+    /* The video is the hero when there is one; the still is always underneath
+       so there is never an empty frame while the file loads. */
+    var media = '<img src="' + f.img + '" alt="' + esc(f.title) + '" loading="lazy">';
+    if (f.video) {
+      media += '<video muted loop playsinline preload="none"' +
+        (f.poster ? ' poster="' + f.poster + '"' : '') +
+        '><source src="' + f.video + '" type="video/mp4"></video>';
+    }
+    featMedia.innerHTML = media;
+    var v = featMedia.querySelector('video');
+    if (v) {
+      v.addEventListener('canplay', function () { v.setAttribute('data-ready', '1'); }, { once: true });
+      v.play().catch(function () {});
+    }
+
+    byId('featNo').textContent = f.no;
+    byId('featCat').textContent = f.cat;
+    byId('featTitle').textContent = f.title;
+    byId('featCopy').textContent = f.copy;
+    byId('featServices').textContent = f.services;
+    byId('featMeta').textContent = f.meta;
+
+    var cta = byId('featCta');
+    if (f.frames && f.frames.length) {
+      cta.textContent = 'ENTER WALKTHROUGH \u2197';
+      cta.setAttribute('href', '#work');
+      cta.dataset.frames = '1';
+    } else {
+      cta.textContent = 'VIEW IN THE ARCHIVE \u2197';
+      cta.setAttribute('href', '#archive');
+      delete cta.dataset.frames;
+    }
+
+    [].forEach.call(featTabs.children, function (b, n) {
+      b.setAttribute('aria-selected', n === i ? 'true' : 'false');
+    });
+  }
+
+  byId('featCta').addEventListener('click', function (e) {
+    var f = FEATURED[featIndex];
+    if (!f || !f.frames) return;
+    e.preventDefault();
+    openFrames(f);
+  });
+
+  showFeature(0);
+
+  /* ---- walkthrough lightbox --------------------------------------------- */
+  var lb = byId('lightbox'), lbImg = byId('lbImg'), lbCap = byId('lbCap'), lbNo = byId('lbNo');
+  var lbFrames = [], lbAt = 0, lbTitle = '';
+
+  function openFrames(f) {
+    lbFrames = f.frames; lbAt = 0; lbTitle = f.title;
+    paintFrame();
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    byId('lbClose').focus();
+  }
+  function paintFrame() {
+    lbImg.src = lbFrames[lbAt];
+    lbImg.alt = lbTitle + ' \u2014 frame ' + (lbAt + 1);
+    lbCap.textContent = lbTitle;
+    lbNo.textContent = String(lbAt + 1).padStart(2, '0') + ' / ' + String(lbFrames.length).padStart(2, '0');
+  }
+  function stepFrame(d) {
+    if (!lbFrames.length) return;
+    lbAt = (lbAt + d + lbFrames.length) % lbFrames.length;
+    paintFrame();
+  }
+  function closeFrames() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  byId('lbClose').addEventListener('click', closeFrames);
+  byId('lbPrev').addEventListener('click', function () { stepFrame(-1); });
+  byId('lbNext').addEventListener('click', function () { stepFrame(1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeFrames(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeFrames();
+    if (e.key === 'ArrowRight') stepFrame(1);
+    if (e.key === 'ArrowLeft') stepFrame(-1);
+  });
+
+  /* ---- moving image ------------------------------------------------------ */
+  var reelVideo = byId('reelVideo'), reelList = byId('reelList');
+  var reelAt = -1;
+  REELS.forEach(function (r, i) {
+    var b = el('button', 'st-reel-pick');
+    b.type = 'button';
+    b.innerHTML = '<img src="' + r.poster + '" alt="" loading="lazy"><span><b>' + esc(r.title) + '</b><small>' + esc(r.note) + '</small></span>';
+    b.addEventListener('click', function () { showReel(i, true); });
+    reelList.appendChild(b);
+  });
+  function showReel(i, play) {
+    var r = REELS[i];
+    if (i !== reelAt) {
+      reelAt = i;
+      reelVideo.poster = r.poster;
+      reelVideo.innerHTML = '<source src="' + r.src + '" type="video/mp4">';
+      reelVideo.load();
+      byId('reelTitle').textContent = r.title;
+      byId('reelNote').textContent = r.note;
+      [].forEach.call(reelList.children, function (b, n) {
+        b.setAttribute('aria-current', n === i ? 'true' : 'false');
+      });
+    }
+    if (play) reelVideo.play().catch(function () {});
+  }
+  showReel(0, false);
 
   var rows = byId('rows');
   ROWS.forEach(function (r) {
@@ -496,5 +647,59 @@
       note.className = 'st-note is-error';
       note.textContent = 'That did not send. Email Faizan@artimistproductions.com and we will pick it up.';
     }).then(function () { submit.disabled = false; });
+  });
+
+  /* ---- ask a question ---------------------------------------------------
+     Same endpoint as the brief, flagged so the studio can tell a quick
+     question apart from a full brief in the inbox. */
+  var askBtn = byId('askBtn'), askPanel = byId('askPanel'), askForm = byId('askForm');
+  var askNote = byId('askNote'), askSend = byId('askSend');
+
+  function setAsk(open) {
+    askPanel.hidden = !open;
+    askBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    askBtn.classList.toggle('is-open', open);
+    if (open) byId('a-name').focus();
+  }
+  askBtn.addEventListener('click', function () { setAsk(askPanel.hidden); });
+  byId('askClose').addEventListener('click', function () { setAsk(false); askBtn.focus(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !askPanel.hidden) { setAsk(false); askBtn.focus(); }
+  });
+
+  askForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = askForm.name.value.trim();
+    var email = askForm.email.value.trim();
+    var message = askForm.message.value.trim();
+    askNote.className = 'st-ask-note';
+    if (!name || !/^\S+@\S+\.\S+$/.test(email) || message.length < 10) {
+      askNote.className = 'st-ask-note is-error';
+      askNote.textContent = 'Name, a valid email and a question of at least ten characters, please.';
+      return;
+    }
+    askSend.disabled = true;
+    askNote.textContent = 'Sending\u2026';
+    fetch('/api/inquiries', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        name: name, email: email, company: '',
+        projectType: 'Question', budget: '', timeline: '',
+        message: 'QUESTION FROM THE SITE\n\n' + message
+      })
+    }).then(function (r) { return r.ok; }).then(function (ok) {
+      if (ok) {
+        askForm.reset();
+        askNote.className = 'st-ask-note is-ok';
+        askNote.textContent = 'Sent. You will get a reply from a person.';
+      } else {
+        askNote.className = 'st-ask-note is-error';
+        askNote.textContent = 'That did not send. Email Faizan@artimistproductions.com instead.';
+      }
+    }).catch(function () {
+      askNote.className = 'st-ask-note is-error';
+      askNote.textContent = 'That did not send. Email Faizan@artimistproductions.com instead.';
+    }).then(function () { askSend.disabled = false; });
   });
 })();

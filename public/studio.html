@@ -141,7 +141,23 @@
     <section class="st-dark" id="work">
       <div class="st-shell">
         <div class="st-kicker" data-reveal><b>02</b> SELECTED WORK</div>
-        <div class="st-wall" id="wall" data-reveal></div>
+        <div class="st-feature" data-reveal>
+          <div class="st-feature-stage">
+            <div class="st-feature-media" id="featMedia"></div>
+            <div class="st-feature-no" id="featNo">01</div>
+          </div>
+          <div class="st-feature-body">
+            <p class="st-feature-cat" id="featCat">SPACE</p>
+            <h3 class="st-feature-title" id="featTitle">Bowl Stroke</h3>
+            <p class="st-feature-copy" id="featCopy"></p>
+            <p class="st-feature-services" id="featServices"></p>
+            <div class="st-feature-act">
+              <a class="st-feature-cta" id="featCta" href="/visual-archive">ENTER WALKTHROUGH &#8599;</a>
+              <span class="st-feature-meta" id="featMeta"></span>
+            </div>
+            <div class="st-feature-tabs" id="featTabs" role="tablist" aria-label="Selected work"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -186,6 +202,16 @@
             <h2 class="st-h2" style="color:#fff">Every frame<br><em style="color:#e9bcc4">has a reason.</em></h2>
             <p class="st-lead" style="color:rgba(255,255,255,.66)">Architectural films, walkthroughs, product motion and visual stories &mdash; with direction, pacing, sound and finish.</p>
             <a class="st-underline" href="/services/architectural-animation" style="display:inline-block;margin-top:24px;color:#fff">ENTER THE ANIMATION STUDIO &#8599;</a>
+          </div>
+        </div>
+        <div class="st-reel" data-reveal>
+          <div class="st-reel-stage">
+            <video id="reelVideo" controls playsinline preload="none" aria-label="Studio reel"></video>
+          </div>
+          <div class="st-reel-side">
+            <p class="st-reel-title" id="reelTitle">Bowl Stroke</p>
+            <p class="st-reel-note" id="reelNote"></p>
+            <div class="st-reel-list" id="reelList"></div>
           </div>
         </div>
       </div>
@@ -317,6 +343,39 @@
       <span>ARCHITECTURE &middot; BIM &middot; VISUALIZATION</span>
     </div>
   </footer>
+
+  <!-- WALKTHROUGH LIGHTBOX -->
+  <div class="st-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project walkthrough">
+    <button class="st-lb-close" id="lbClose" type="button" aria-label="Close walkthrough">&times;</button>
+    <button class="st-lb-nav is-prev" id="lbPrev" type="button" aria-label="Previous frame">&#8592;</button>
+    <figure class="st-lb-frame">
+      <img id="lbImg" alt="">
+      <figcaption><span id="lbCap"></span><span id="lbNo"></span></figcaption>
+    </figure>
+    <button class="st-lb-nav is-next" id="lbNext" type="button" aria-label="Next frame">&#8594;</button>
+  </div>
+
+  <!-- ASK A QUESTION -->
+  <button class="st-ask-btn" id="askBtn" type="button" aria-expanded="false" aria-controls="askPanel">
+    <i aria-hidden="true">?</i> ASK A QUESTION
+  </button>
+  <div class="st-ask" id="askPanel" role="dialog" aria-modal="false" aria-label="Ask a question" hidden>
+    <div class="st-ask-top">
+      <p>ASK A QUESTION</p>
+      <button type="button" id="askClose" aria-label="Close">&times;</button>
+    </div>
+    <p class="st-ask-lead">A person reads this, not a bot. Short questions are welcome &mdash; scope, budget, timelines, file formats.</p>
+    <form id="askForm" novalidate>
+      <label for="a-name">Your name</label>
+      <input id="a-name" name="name" required autocomplete="name">
+      <label for="a-email">Email</label>
+      <input id="a-email" name="email" type="email" required autocomplete="email">
+      <label for="a-msg">Your question</label>
+      <textarea id="a-msg" name="message" required minlength="10" rows="4"></textarea>
+      <button type="submit" id="askSend">Send it</button>
+      <p class="st-ask-note" id="askNote"></p>
+    </form>
+  </div>
 </div>
 <script src="/studio.js"></script>
 </body>
