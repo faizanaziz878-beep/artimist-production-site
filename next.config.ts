@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
       fallback: [],
     };
   },
+  async redirects() {
+    return [
+      { source: "/services/architecture", destination: "/architecture", permanent: true },
+      { source: "/services/bim-drafting", destination: "/bim-drafting", permanent: true },
+      { source: "/services/visualization", destination: "/visualization", permanent: true },
+      ];
+  },
 };
 
 export default nextConfig;
