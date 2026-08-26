@@ -311,3 +311,6 @@
 .st-wordmark b { color: var(--rose); font-weight: 400; }
 .st-wordmark small { margin-top: 3px; font-family: var(--sans); font-size: 6.5px;
   letter-spacing: .34em; color: rgba(255,255,255,.62); }
+
+.st-portal spatial-model{position:relative;z-index:0}
+.st-stage-bar,.st-stage-fallback{z-index:5}
