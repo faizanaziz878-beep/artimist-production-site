@@ -13,6 +13,14 @@
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function replayWording(node) {
+    if (!node || reduceMotion || !node.classList.contains('st-wording')) return;
+    node.classList.remove('is-wording-in');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { node.classList.add('is-wording-in'); });
+    });
+  }
+
   /* ---- data ------------------------------------------------------------ */
   var D = '/img/';
 
@@ -31,48 +39,48 @@
      card opens the frames in place; everything else goes to the archive. */
   var FEATURED = [
     { no: '01', title: 'Bowl Stroke', cat: 'SPACE', meta: 'INTERNATIONAL / 2026',
-      img: P + 'bowl-stroke.webp', video: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp',
+      img: P + 'bowl-stroke.webp', poster: MO + 'bowlstroke-poster.webp',
       copy: 'A cinematic hospitality experience developed across exterior, dining, bar and private-room environments.',
       services: 'Architecture \u00b7 Interior \u00b7 3D Visualization \u00b7 Animation',
       frames: [WK + 'bowl/exterior-hero.webp', WK + 'bowl/exterior-arrival.webp', WK + 'bowl/interior-dining.webp', WK + 'bowl/interior-bar.webp', WK + 'bowl/interior-private.webp'] },
-    { no: '02', title: 'Harmonic Horizons', cat: 'SPACE', meta: 'LAKESIDE CULTURAL DISTRICT / 2026',
-      img: P + 'music-campus.webp', video: MO + 'music-campus-teaser.mp4',
-      copy: 'A nature-integrated campus at Khanpur Dam where sound becomes landscape, sequence and form.',
-      services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' },
-    { no: '03', title: 'Residential Exteriors', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+    { no: '02', title: 'Residential Exteriors', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
       img: D + 'resext03.webp',
       copy: 'Houses read from the street and the approach \u2014 timber, glass and standing pine, shot at the hour the light does the most work.',
       services: 'Architecture \u00b7 Landscape \u00b7 3D Visualization',
       frames: [D + 'resext03.webp', D + 'resext01.webp', D + 'resext02.webp', D + 'resext04.webp'] },
-    { no: '04', title: 'Residential \u2014 Exterior & Interior', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+    { no: '03', title: 'Residential \u2014 Exterior & Interior', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
       img: D + 'resid01.webp', video: MO + 'residential-build.mp4',
       copy: 'One house carried from the courtyard and the pool through to the stair, the spa and the room you actually live in.',
       services: 'Architecture \u00b7 Interior \u00b7 Lighting \u00b7 3D Visualization',
       frames: [D + 'resid01.webp', D + 'resid02.webp', D + 'resid03.webp', D + 'resid04.webp', D + 'resid05.webp', D + 'resid06.webp'] },
-    { no: '05', title: 'Home Interior', cat: 'IMAGE', meta: 'INTERIOR APPLICATION / 2026',
+    { no: '04', title: 'Home Interior', cat: 'IMAGE', meta: 'INTERIOR APPLICATION / 2026',
       img: D + 'homeint03.webp',
       copy: 'A full interior application \u2014 bedrooms, dressing, media and play, each room resolved in material and light rather than styled after the fact.',
       services: 'Interior Design \u00b7 Joinery \u00b7 Lighting \u00b7 Visualization',
       frames: [D + 'homeint03.webp', D + 'homeint01.webp', D + 'homeint02.webp', D + 'homeint04.webp', D + 'homeint05.webp', D + 'homeint06.webp', D + 'homeint07.webp', D + 'homeint08.webp', D + 'homeint09.webp', D + 'homeint10.webp', D + 'homeint11.webp'] },
-    { no: '06', title: 'Commercial Interior', cat: 'IMAGE', meta: 'REFORMER PILATES STUDIO / 2026',
+    { no: '05', title: 'Commercial Interior', cat: 'IMAGE', meta: 'REFORMER PILATES STUDIO / 2026',
       img: D + 'comint01.webp',
       copy: 'A reformer pilates floor built around arched bays, warm oak and a lighting rhythm that keeps the equipment quiet.',
       services: 'Interior Design \u00b7 Branding \u00b7 Lighting \u00b7 Visualization' },
-    { no: '07', title: 'EV Charging Station', cat: 'SPACE', meta: 'CONCEPT TO RENDER / 2026',
+    { no: '06', title: 'EV Charging Station', cat: 'SPACE', meta: 'CONCEPT TO RENDER / 2026',
       img: D + 'ev01.webp',
       copy: 'A charging canopy taken from annotated concept sketch to finished frame \u2014 the thinking and the result shown side by side.',
       services: 'Concept Design \u00b7 Architecture \u00b7 Visualization',
       frames: [D + 'ev01.webp', D + 'ev02.webp', D + 'ev03.webp'] },
-    { no: '08', title: 'RV Park Design', cat: 'SPACE', meta: 'UNITED STATES / 2026',
+    { no: '07', title: 'RV Park Design', cat: 'SPACE', meta: 'UNITED STATES / 2026',
       img: D + 'rvpark.webp',
       copy: 'A wooded RV resort planned around a looped drive, a central green and a timber pavilion \u2014 every pad angled to keep the trees and the privacy between them.',
       services: 'Site Planning \u00b7 Landscape \u00b7 Architecture \u00b7 Aerial Visualization',
       frames: [D + 'rvpark.webp', D + 'airsidepark.webp'] },
-    { no: '09', title: 'Permit Application Packages', cat: 'TECHNICAL', meta: 'UNITED STATES / 2026',
+    { no: '08', title: 'Permit Application Packages', cat: 'TECHNICAL', meta: 'UNITED STATES / 2026',
       img: D + 'permit01.webp',
       copy: 'Complete, code-compliant submittal sets \u2014 cover sheets, code data, egress, schedules and MEP coordination, organized the way a plan reviewer reads them.',
       services: 'Permit Drawings \u00b7 Code Review \u00b7 MEP Coordination \u00b7 Submittal Sets',
-      frames: [D + 'permit01.webp', D + 'permit02.webp', D + 'permit03.webp', D + 'permit04.webp', D + 'permit05.webp', D + 'permit06.webp', D + 'permit07.webp', D + 'permit08.webp'] }
+      frames: [D + 'permit01.webp', D + 'permit02.webp', D + 'permit03.webp', D + 'permit04.webp', D + 'permit05.webp', D + 'permit06.webp', D + 'permit07.webp', D + 'permit08.webp'] },
+    { no: '09', title: 'Harmonic Horizons', cat: 'SPACE', meta: 'LAKESIDE CULTURAL DISTRICT / 2026',
+      img: P + 'music-campus.webp', video: MO + 'music-campus-teaser.mp4',
+      copy: 'A nature-integrated campus at Khanpur Dam where sound becomes landscape, sequence and form.',
+      services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' }
   ];
 
   /* The moving-image reel. Each entry is a real file in /media/motion. */
@@ -83,15 +91,15 @@
   ];
 
   var ROWS = [
-    { no: '01', img: D + 'airside-district-01.webp', tags: 'Masterplan · Architecture · Visualization', title: 'Airside District', copy: 'A mixed-use district organised around civic rooms, arrival sequences and a continuous public ground.', meta: 'UNITED STATES / 2026' },
-    { no: '02', img: D + 'marina-arts-center-01.webp', tags: 'Culture · Real-time · Unreal', title: 'Marina Arts Center', copy: 'A waterfront arts building developed as a real-time environment so the client could walk it before committing.', meta: 'EUROPE / 2026' },
-    { no: '03', img: D + 'water-research-01.webp', tags: 'Research · Parametric · Lab', title: 'Water Research Station', copy: 'A parametric shell study driven by daylight, prevailing wind and the rhythm of the tidal edge.', meta: 'RESEARCH / 2026' },
-    { no: '04', img: D + 'tropical-club-03.webp', tags: 'Hospitality · Interior · Landscape', title: 'Tropical Club', copy: 'Pool, pavilion and planting treated as one social landscape rather than three separate packages.', meta: 'ASIA PACIFIC / 2026' },
-    { no: '05', img: D + 'waterfront-foundry-02.webp', tags: 'Hospitality · Adaptive Reuse · Visualization', title: 'Waterfront Foundry', copy: 'A brick industrial shell reimagined as a layered waterfront destination for culture, food and gathering.', meta: 'NORTH AMERICA / 2026' },
-    { no: '06', img: D + 'city-apartment-02.webp', tags: 'Residential · Interior', title: 'City Apartment', copy: 'A compact urban interior resolved through material warmth, storage discipline and borrowed light.', meta: 'EUROPE / 2026' },
-    { no: '07', img: D + 'rvpark.webp', tags: 'Site Planning \u00b7 Landscape \u00b7 Visualization', title: 'RV Park Design', copy: 'A looped drive, a central green and a timber pavilion, set into standing pine so the pads keep their privacy.', meta: 'UNITED STATES / 2026' },
-    { no: '08', img: D + 'ev01.webp', tags: 'Concept \u00b7 Architecture \u00b7 Visualization', title: 'EV Charging Station', copy: 'A charging canopy developed from annotated sketch through to a finished dusk frame.', meta: 'CONCEPT STUDY / 2026' },
-    { no: '09', img: D + 'comint01.webp', tags: 'Interior \u00b7 Branding \u00b7 Lighting', title: 'Reformer Pilates Studio', copy: 'Arched bays, warm oak and a lighting rhythm that keeps the equipment quiet.', meta: 'COMMERCIAL / 2026' }
+    { no: '01', href: '/visual-archive', img: D + 'airside-district-01.webp', frames: [D + 'airside-district-01.webp', D + 'airsidepark.webp'], tags: 'Masterplan · Architecture · Visualization', title: 'Airside District', copy: 'A mixed-use district organised around civic rooms, arrival sequences and a continuous public ground.', meta: 'UNITED STATES / 2026' },
+    { no: '02', href: '/unreal-engine', img: D + 'marina-arts-center-01.webp', tags: 'Culture · Real-time · Unreal', title: 'Marina Arts Center', copy: 'A waterfront arts building developed as a real-time environment so the client could walk it before committing.', meta: 'EUROPE / 2026' },
+    { no: '03', href: '/visual-archive#technical-plates', img: D + 'water-research-01.webp', tags: 'Research · Parametric · Lab', title: 'Water Research Station', copy: 'A parametric shell study driven by daylight, prevailing wind and the rhythm of the tidal edge.', meta: 'RESEARCH / 2026' },
+    { no: '04', href: '/visual-archive', img: D + 'tropical-club-03.webp', frames: [D + 'tropical-club-01.webp', D + 'tropical-club-02.webp', D + 'tropical-club-03.webp', D + 'tropical-club-04.webp'], tags: 'Hospitality · Interior · Landscape', title: 'Tropical Club', copy: 'Pool, pavilion and planting treated as one social landscape rather than three separate packages.', meta: 'ASIA PACIFIC / 2026' },
+    { no: '05', href: '/visual-archive', img: D + 'waterfront-foundry-02.webp', tags: 'Hospitality · Adaptive Reuse · Visualization', title: 'Waterfront Foundry', copy: 'A brick industrial shell reimagined as a layered waterfront destination for culture, food and gathering.', meta: 'NORTH AMERICA / 2026' },
+    { no: '06', href: '/residential', img: D + 'city-apartment-02.webp', frames: [D + 'city-apartment-01.webp', D + 'city-apartment-02.webp'], tags: 'Residential · Interior', title: 'City Apartment', copy: 'A compact urban interior resolved through material warmth, storage discipline and borrowed light.', meta: 'EUROPE / 2026' },
+    { no: '07', href: '/visual-archive', img: D + 'rvpark.webp', frames: [D + 'rvpark.webp', D + 'airsidepark.webp'], tags: 'Site Planning \u00b7 Landscape \u00b7 Visualization', title: 'RV Park Design', copy: 'A looped drive, a central green and a timber pavilion, set into standing pine so the pads keep their privacy.', meta: 'UNITED STATES / 2026' },
+    { no: '08', href: '/visual-archive', img: D + 'ev01.webp', frames: [D + 'ev01.webp', D + 'ev02.webp', D + 'ev03.webp'], tags: 'Concept \u00b7 Architecture \u00b7 Visualization', title: 'EV Charging Station', copy: 'A charging canopy developed from annotated sketch through to a finished dusk frame.', meta: 'CONCEPT STUDY / 2026' },
+    { no: '09', href: '/visual-archive', img: D + 'comint01.webp', tags: 'Interior \u00b7 Branding \u00b7 Lighting', title: 'Reformer Pilates Studio', copy: 'Arched bays, warm oak and a lighting rhythm that keeps the equipment quiet.', meta: 'COMMERCIAL / 2026' }
   ];
 
   var DISCIPLINES = [
@@ -220,7 +228,9 @@
 
     byId('featNo').textContent = f.no;
     byId('featCat').textContent = f.cat;
-    byId('featTitle').textContent = f.title;
+    var featureTitle = byId('featTitle');
+    featureTitle.textContent = f.title;
+    replayWording(featureTitle);
     byId('featCopy').textContent = f.copy;
     byId('featServices').textContent = f.services;
     byId('featMeta').textContent = f.meta;
@@ -315,16 +325,26 @@
     }
     if (play) reelVideo.play().catch(function () {});
   }
-  showReel(0, false);
+  if (REELS.length > 1) showReel(0, false);
+  else reelAt = 0; /* keep preload="none" intact until the visitor chooses play */
 
   var rows = byId('rows');
   ROWS.forEach(function (r) {
     rows.insertAdjacentHTML('beforeend',
-      '<article class="st-row" data-reveal>' +
-        '<div class="st-row-media"><img src="' + r.img + '" alt="' + esc(r.title) + '" loading="lazy"><span class="st-row-no">' + r.no + '</span></div>' +
+      '<a class="st-row" href="' + r.href + '" aria-label="View ' + esc(r.title) + '"' + (r.frames ? ' data-row-gallery="' + i + '"' : '') + ' data-reveal>' +
+        '<div class="st-row-media"><img src="' + r.img + '" alt="' + esc(r.title) + '" loading="lazy" width="1600" height="1000"><span class="st-row-no">' + r.no + '</span></div>' +
         '<div><p class="st-row-tags">' + esc(r.tags) + '</p><h3>' + esc(r.title) + '</h3>' +
-        '<p>' + esc(r.copy) + '</p><p class="st-row-meta">' + esc(r.meta) + '</p></div>' +
-      '</article>');
+        '<p>' + esc(r.copy) + '</p><p class="st-row-meta">' + esc(r.meta) + '</p>' +
+        '<span class="st-row-action">' + (r.frames ? 'View ' + String(r.frames.length).padStart(2, '0') + ' images' : 'Explore project') + ' <i aria-hidden="true">↗</i></span></div>' +
+      '</a>');
+  });
+  rows.addEventListener('click', function (event) {
+    var link = event.target.closest ? event.target.closest('[data-row-gallery]') : null;
+    if (!link) return;
+    var project = ROWS[Number(link.getAttribute('data-row-gallery'))];
+    if (!project || !project.frames || !project.frames.length) return;
+    event.preventDefault();
+    openFrames(project);
   });
 
   var dl = byId('disciplineList');
@@ -603,6 +623,29 @@
     revealables.forEach(function (n) { io.observe(n); });
     /* Failsafe: nothing may stay invisible because an observer misfired. */
     setTimeout(showAll, 4000);
+  }
+
+  /* ---- animated wording ------------------------------------------------
+     Editorial headings reveal independently from their surrounding layout.
+     No text is split into inaccessible spans; screen readers keep natural copy. */
+  var wordings = [].slice.call(document.querySelectorAll(
+    '.st-hero h1, .st-portal-head h2, .st-h2, .st-feature-title, .st-row h3, .st-footer h3'
+  ));
+  wordings.forEach(function (node) { node.classList.add('st-wording'); });
+  function showWording(node) { node.classList.add('is-wording-in'); }
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    wordings.forEach(showWording);
+  } else {
+    var wordingObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          showWording(entry.target);
+          wordingObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    wordings.forEach(function (node) { wordingObserver.observe(node); });
+    setTimeout(function () { wordings.forEach(showWording); }, 4000);
   }
 
   /* ---- visitor tracking ------------------------------------------------
