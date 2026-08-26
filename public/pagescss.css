@@ -527,3 +527,37 @@ html[data-mode="night"] .services-v2-hero>img { filter: saturate(.72) contrast(1
   .services-v2-hero footer { display: grid; gap: 18px; }
   .services-v2-hero footer>p { font-size: 15px; }
 }
+
+
+/* Canonical primary navigation shared with the homepage and Next.js routes */
+.ap-primary-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px,2.1vw,34px);
+  margin-left: auto;
+  margin-right: clamp(10px,1.5vw,24px);
+}
+.ap-primary-nav a {
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255,255,255,.76);
+  font-family: ArtimistUI,"Helvetica Neue",Arial,sans-serif;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .075em;
+}
+.ap-primary-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 7px;
+  height: 1px;
+  background: currentColor;
+  transition: right .28s ease;
+}
+.ap-primary-nav a:hover { color: #fff; }
+.ap-primary-nav a:hover::after { right: 0; }
+@media(max-width:1080px) { .ap-primary-nav { display: none; } }

@@ -43,6 +43,7 @@
   shell.innerHTML =
     '<header class="ap-header">' +
       '<a class="ap-wordmark" href="/"><span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small></a>' +
+      '<nav class="ap-primary-nav" aria-label="Primary navigation"><a href="/#work">WORK</a><a href="/services">SERVICES</a><a href="/team">TEAM</a><a href="/#plans">PLANS</a><a href="/#brief">BRIEF</a></nav>' +
       '<div class="ap-header-right">' +
         '<button class="ap-pill" id="apMode" type="button" aria-pressed="false"><svg class="ap-icon ap-mode-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25"></circle><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16"></path></svg><span id="apModeLabel">DAY</span></button>' +
         '<button class="ap-pill" id="apMenu" type="button" aria-expanded="false" aria-controls="apIndex">MENU<svg class="ap-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"></path></svg></button>' +
