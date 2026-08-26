@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artimist Productions — Architecture, BIM &amp; Visualization</title>
+<meta name="description" content="Architecture, visualization and creative production for places, products and worlds people can believe in.">
+<link rel="stylesheet" href="/studio-design.css">
+<script type="importmap">{"imports":{"three":"https://esm.sh/three@0.169.0","three/addons/":"https://esm.sh/three@0.169.0/examples/jsm/"}}</script>
+<script type="module" src="/spatial-model.js"></script>
+</head>
+<body>
+<div class="st" id="top" data-mode="day">
+
+  <div class="st-progress" id="progress"></div>
+  <div class="st-aura" id="aura" aria-hidden="true"></div>
+
+  <header class="st-header">
+    <a href="#top" aria-label="Artimist home"><img src="/media/design/artimist-logo-full-light.png" alt="Artimist Production"></a>
+    <nav class="st-nav">
+      <a href="#work">Work</a><a href="#disciplines">Services</a><a href="#team">Team</a><a href="#plans">Plans</a><a href="#brief">Brief</a>
+    </nav>
+    <div class="st-head-right">
+      <button class="st-pill" id="modeBtn" type="button" aria-pressed="false"><i></i><span id="modeLabel">DAY</span>&nbsp;/&nbsp;<span id="clock">00:00</span></button>
+      <button class="st-pill" id="menuBtn" type="button" aria-expanded="false" aria-controls="indexPanel">MENU&nbsp;<span aria-hidden="true">&#10683;</span></button>
+      <a class="st-cta" href="#brief">START A PROJECT <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </header>
+
+  <nav class="st-rail" aria-label="Jump to section" id="rail"></nav>
+
+  <div class="st-index" id="indexPanel" role="dialog" aria-modal="true" aria-label="Site index">
+    <div class="st-index-top">
+      <span>INDEX / 2026</span>
+      <button class="st-index-close" id="indexClose" type="button">CLOSE <i aria-hidden="true">&times;</i></button>
+    </div>
+    <div class="st-index-mark" aria-hidden="true"><b>A</b>RTIMIST</div>
+    <nav class="st-index-list" id="indexList" aria-label="All sections"></nav>
+    <div class="st-index-foot">
+      <span>VANCOUVER &middot; OHIO &middot; STOCKHOLM &middot; LAHORE</span>
+      <a href="mailto:Faizan@artimistproductions.com">FAIZAN@ARTIMISTPRODUCTIONS.COM</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="st-hero">
+      <div id="scenes"></div>
+      <div class="st-hero-veil"></div>
+      <div class="st-hero-grid" aria-hidden="true"></div>
+      <div class="st-hero-body st-shell">
+        <p class="st-eyebrow">ARTIMIST / CREATIVE PRODUCTION</p>
+        <h1>Atmosphere begins<br>before <em>the door.</em></h1>
+        <div class="st-hero-foot">
+          <p>Architecture, visualization and creative production for places, products and worlds people can believe in.</p>
+          <a class="st-underline" href="#work">ENTER SELECTED WORK <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+      <a class="st-scroll-cue" href="#portal" aria-label="Enter the spatial portal">&#8595;</a>
+      <div class="st-ticker">
+        <button id="pauseBtn" type="button">PAUSE</button>
+        <div class="st-ticker-bar"><i id="sceneBar" style="width:25%"></i></div>
+        <strong id="sceneNo">01</strong><span style="opacity:.6">/&nbsp;04</span>
+        <div class="st-ticker-meta"><small id="sceneLabel"></small><b id="sceneNote" style="font-weight:400"></b></div>
+        <button id="nextBtn" type="button" style="justify-self:end;font-size:12px" aria-label="Next scene">&#8594;</button>
+      </div>
+    </section>
+
+    <section class="st-offices">
+      <span>YVR</span><span>OH</span><span>STO</span><span>LHE</span>
+      <p>04 OFFICES / WORKING WORLDWIDE</p>
+      <a href="#brief">START A PROJECT &#8599;</a>
+    </section>
+
+    <!-- SPATIAL PORTAL -->
+    <section class="st-portal" id="portal">
+      <div class="st-shell">
+        <div class="st-portal-head" data-reveal>
+          <p class="st-eyebrow">01 / SPATIAL PORTAL</p>
+          <div>
+            <h2>Do not just see the work.<br><em>Move through it.</em></h2>
+            <p class="st-portal-lead">A live model of the building, opened up. X-ray shows the structure and every service run &mdash; ducts, cable tray, wet mains, waste stacks &mdash; colour-coded through three storeys around a central courtyard void. Drag to orbit.</p>
+          </div>
+        </div>
+        <div class="st-stage" data-reveal>
+          <spatial-model id="model" src="/media/models/artimist-digital-campus.glb" mode="xray" storeys="3"></spatial-model>
+          <div class="st-stage-fallback">LOADING THE MODEL &mdash; DRAG TO ORBIT ONCE IT ARRIVES</div>
+          <div class="st-stage-bar">
+            <button class="st-chip" type="button" data-model-mode="xray" aria-pressed="true">X-ray</button>
+            <button class="st-chip" type="button" data-model-mode="rendered" aria-pressed="false">Rendered</button>
+            <button class="st-chip" type="button" data-model-view="orbit" aria-pressed="true">Orbit</button>
+            <button class="st-chip" type="button" data-model-view="aerial" aria-pressed="false">Aerial</button>
+            <button class="st-chip" type="button" data-model-view="eye" aria-pressed="false">Eye</button>
+            <button class="st-chip" type="button" data-model-view="detail" aria-pressed="false">Detail</button>
+            <span class="st-stage-status" id="stageStatus">X-RAY / STRUCTURE + SERVICES</span>
+          </div>
+        </div>
+        <div class="st-legend">
+          <span><i style="background:#4fc3f7"></i>HVAC</span>
+          <span><i style="background:#ffcf4a"></i>ELECTRICAL</span>
+          <span><i style="background:#ff4d4d"></i>FIRE</span>
+          <span><i style="background:#5fd39a"></i>PLUMBING</span>
+          <span><i style="background:#e6ded2"></i>STRUCTURE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="st-dark" id="work">
+      <div class="st-shell">
+        <div class="st-kicker" data-reveal><b>02</b> SELECTED WORK</div>
+        <div class="st-wall" id="wall" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- COMPLETE INDEX -->
+    <section class="st-dark" id="archive" style="padding-top:0">
+      <div class="st-shell">
+        <div class="st-kicker" data-reveal><b>03</b> COMPLETE INDEX</div>
+        <div class="st-index-rows" id="rows"></div>
+      </div>
+    </section>
+
+    <!-- DISCIPLINES -->
+    <section class="st-paper" id="disciplines">
+      <div class="st-shell st-split" data-reveal>
+        <p class="st-eyebrow">04 / ONE DIRECTION, DIFFERENT DISCIPLINES</p>
+        <div>
+          <h2 class="st-h2">We turn early ideas<br>into <em>built atmosphere.</em></h2>
+          <p class="st-lead">Engage one specialist service or connect the full chain. The direction stays coherent and the delivery stays accountable.</p>
+          <div class="st-list" id="disciplineList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL-TIME -->
+    <section class="st-realtime" id="realtime">
+      <img src="/media/design/marina-arts-center-01.webp" alt="Marina arts centre real-time environment">
+      <div class="st-veil"></div>
+      <div class="st-realtime-body st-shell" data-reveal>
+        <p class="st-eyebrow">05 / REAL-TIME &amp; UNREAL</p>
+        <h2 class="st-h2" style="color:#fff">Architecture you<br>do not view. <em style="color:#e9bcc4">You enter it.</em></h2>
+        <p class="st-lead" style="color:rgba(255,255,255,.72)">Real-time walkthroughs, interactive environments, immersive sales tools and digital twins &mdash; built in Unreal Engine so an audience can move, compare, change and decide.</p>
+        <a class="st-underline" href="/unreal-engine" style="display:inline-block;margin-top:24px;color:#fff">ENTER REAL-TIME PRODUCTION &#8599;</a>
+      </div>
+    </section>
+
+    <!-- ANIMATION -->
+    <section class="st-film" id="animation">
+      <div class="st-shell st-film-inner">
+        <div class="st-split" data-reveal>
+          <p class="st-eyebrow">06 / MOVING IMAGE</p>
+          <div>
+            <h2 class="st-h2" style="color:#fff">Every frame<br><em style="color:#e9bcc4">has a reason.</em></h2>
+            <p class="st-lead" style="color:rgba(255,255,255,.66)">Architectural films, walkthroughs, product motion and visual stories &mdash; with direction, pacing, sound and finish.</p>
+            <a class="st-underline" href="/services/architectural-animation" style="display:inline-block;margin-top:24px;color:#fff">ENTER THE ANIMATION STUDIO &#8599;</a>
+          </div>
+        </div>
+      </div>
+      <div class="st-stat-ribbon st-shell" data-reveal>
+        <div class="st-stat"><strong>350+</strong><small>Projects delivered across the world</small></div>
+        <div class="st-stat"><strong>47</strong><small>Countries reached</small></div>
+        <div class="st-stat"><strong>3</strong><small>Project awards</small></div>
+        <div class="st-stat"><strong style="font-size:clamp(20px,2.1vw,34px)">Young minds.<br><em>Better work.</em></strong></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="st-paper" id="team">
+      <div class="st-shell st-split" data-reveal style="padding-bottom:52px">
+        <p class="st-eyebrow">07 / STUDIO / MAIN TEAM</p>
+        <div>
+          <h2 class="st-h2">This is our main team.<br><em>Not the whole team.</em></h2>
+          <p class="st-lead">The people here give Artimist continuity across architecture, visualization, BIM, animation, graphics, real-time engineering, interiors and studio operations. Around them is a trusted specialist network assembled per project.</p>
+        </div>
+      </div>
+      <div class="st-ring" id="ring">
+        <div class="st-ring-o a"></div><div class="st-ring-o b"></div>
+        <div class="st-ring-x"></div><div class="st-ring-y"></div>
+        <div class="st-ring-core">
+          <span>MAIN TEAM / NOT THE WHOLE TEAM</span>
+          <strong id="teamCount">14</strong>
+          <small>Our core creative group, supported by a wider specialist network.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="st-paper-alt" id="plans">
+      <div class="st-shell">
+        <div class="st-split" data-reveal>
+          <p class="st-eyebrow">08 / MONTHLY STUDIO</p>
+          <div>
+            <h2 class="st-h2">A complete creative<br>team, <em>without the overhead.</em></h2>
+            <p class="st-lead">Simple monthly capacity for architecture, BIM, visualization and digital work. Pause or cancel when the project rhythm changes. USD &middot; monthly &middot; no setup fee.</p>
+          </div>
+        </div>
+        <div class="st-plans" id="planGrid" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- BRIEF -->
+    <section class="st-brief" id="brief">
+      <div class="st-shell">
+        <div class="st-split" data-reveal>
+          <p class="st-eyebrow">09 / PROJECT BRIEF</p>
+          <div>
+            <h2 class="st-h2" style="color:#f2ede7">What are we <em style="color:#e9bcc4">making?</em></h2>
+            <p class="st-lead" style="color:rgba(242,237,231,.66)">Tell us the problem rather than the deliverable. We will come back with the right scope, a named lead and a route to a decision.</p>
+          </div>
+        </div>
+        <form class="st-form" id="briefForm" novalidate>
+          <div class="st-field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
+          <div class="st-field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="st-field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+          <div class="st-field"><label for="f-type">Project type</label>
+            <select id="f-type" name="projectType" required>
+              <option value="">Select&hellip;</option>
+              <option>Architecture &amp; interior</option>
+              <option>Visualization &amp; stills</option>
+              <option>Animation &amp; motion</option>
+              <option>BIM / Revit / CAD production</option>
+              <option>Unreal &amp; interactive</option>
+              <option>Brand, web &amp; commerce</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="st-field"><label for="f-budget">Budget</label>
+            <select id="f-budget" name="budget">
+              <option value="">Select&hellip;</option>
+              <option>$200 &mdash; 1k</option><option>$1k &mdash; 5k</option><option>$5k &mdash; 20k</option>
+              <option>$20k &mdash; 50k</option><option>$50k+</option><option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="st-field"><label for="f-timeline">Timeline</label><input id="f-timeline" name="timeline" placeholder="e.g. six weeks, or ongoing"></div>
+          <div class="st-field is-wide"><label for="f-message">The brief</label><textarea id="f-message" name="message" required minlength="20" placeholder="What is the project, who is it for, and what does success look like?"></textarea></div>
+          <div class="st-submit">
+            <button type="submit" id="briefSubmit">Send the brief</button>
+            <p class="st-note" id="briefNote">We read every brief personally. Expect a reply from a person, not a queue.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="st-clients" id="clients">
+      <div class="st-shell"><div class="st-kicker"><b>10</b> PROUD CLIENTS</div></div>
+      <div class="st-marquee"><div class="st-marquee-track" id="marquee"></div></div>
+      <div class="st-shell st-partners">
+        <b>DELIVERY PARTNERS</b><span style="margin-left:0">DECODING BITS</span><span style="margin-left:0">SCALLANCE LLC</span>
+        <span>REFERENCES AVAILABLE ON REQUEST</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="st-contact" id="contact">
+      <img src="/media/design/alpine-residences-01.webp" alt="Alpine residences at dusk">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.25))"></div>
+      <div class="st-shell" style="position:relative" data-reveal>
+        <p class="st-eyebrow">CLOSE TO THE WORK, WHEREVER IT LIVES</p>
+        <h2 class="st-h2" style="color:#fff">Bring us the idea.<br><em style="color:#e9bcc4">We will build the world.</em></h2>
+        <a class="st-underline" href="#brief" style="display:inline-block;margin-top:26px;color:#fff">START A PROJECT &#8599;</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="st-footer">
+    <div class="st-shell st-footer-grid">
+      <div><h3>Young minds.<br><em>Better work.</em></h3></div>
+      <ul>
+        <li><a href="#work">Selected work</a></li><li><a href="#team">Team</a></li>
+        <li><a href="#disciplines">Services</a></li><li><a href="/unreal-engine">Unreal Engine</a></li>
+      </ul>
+      <ul>
+        <li><a href="#brief">Start a project</a></li><li><a href="#plans">Monthly plans</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li>Vancouver</li><li>Ohio &middot; Stockholm</li>
+        <li><a href="mailto:Faizan@artimistproductions.com">Email the studio</a></li>
+      </ul>
+    </div>
+    <div class="st-shell st-footer-base">
+      <span>&copy; 2026 ARTIMIST PRODUCTION</span>
+      <span>ARCHITECTURE &middot; BIM &middot; VISUALIZATION</span>
+    </div>
+  </footer>
+</div>
+<script src="/studio.js"></script>
+</body>
+</html>
