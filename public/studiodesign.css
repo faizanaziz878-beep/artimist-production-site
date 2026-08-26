@@ -542,3 +542,28 @@
   .st-ask-btn { right: 12px; bottom: 12px; padding: 11px 15px; font-size: 8px; }
   .st-ask { right: 12px; left: 12px; bottom: 66px; width: auto; }
 }
+
+/* ---- section aside -------------------------------------------------------
+   The left column of a split section used to be a lone eyebrow above a large
+   void. It now carries an image and the three numbers worth knowing, and it
+   sticks while the list on the right scrolls past. */
+.st-aside { position: sticky; top: 104px; align-self: start; display: flex; flex-direction: column; gap: 22px; }
+.st-aside-figure { margin: 0; }
+.st-aside-figure img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.st-aside-figure figcaption { margin-top: 10px; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; opacity: .5; }
+.st-aside-facts { margin: 0; display: grid; gap: 14px; border-top: 1px solid rgba(17,17,15,.16); padding-top: 16px; }
+.st-aside-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.st-aside-facts dt { font-size: 8px; letter-spacing: .16em; text-transform: uppercase; opacity: .55; }
+.st-aside-facts dd { margin: 0; font-family: var(--serif); font-size: clamp(18px, 1.7vw, 26px); line-height: 1; }
+.st[data-mode='night'] .st-aside-facts { border-color: rgba(255,255,255,.16); }
+.st[data-mode='night'] .st-aside-figure img { filter: brightness(.78); }
+
+/* A single reel needs no picker, so the video takes the room back. */
+.st-reel.is-single { grid-template-columns: 1.9fr .6fr; }
+.st-reel.is-single .st-reel-list { display: none; }
+
+@media (max-width: 1080px) {
+  .st-aside { position: static; }
+  .st-aside-figure img { aspect-ratio: 16 / 9; }
+  .st-reel.is-single { grid-template-columns: 1fr; }
+}

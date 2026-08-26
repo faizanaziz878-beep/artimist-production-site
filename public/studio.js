@@ -39,25 +39,17 @@
       img: P + 'music-campus.webp', video: MO + 'music-campus-teaser.mp4',
       copy: 'A nature-integrated campus at Khanpur Dam where sound becomes landscape, sequence and form.',
       services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' },
-    { no: '03', title: 'Parametric Canopy Studies', cat: 'LAB', meta: 'ARTIMIST LAB / 2026',
-      img: P + 'parametric-canopy.webp',
-      copy: 'Computational structures shaped through repeatable geometry, performance studies and human scale.',
-      services: 'Grasshopper \u00b7 Computational Design \u00b7 Research \u00b7 Visualization' },
-    { no: '04', title: 'Connected Learning Auditorium', cat: 'SPACE', meta: 'CONCEPT STUDY / 2026',
-      img: P + 'auditorium.webp',
-      copy: 'A public architecture study connecting civic purpose, learning, circulation and landscape.',
-      services: 'Architecture \u00b7 Urban Strategy \u00b7 Presentation \u00b7 Visualization' },
-    { no: '05', title: 'Residential Atmospheres', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+    { no: '03', title: 'Residential Atmospheres', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
       img: P + 'residential.webp', video: MO + 'residential-build.mp4',
       copy: 'Quiet residential environments built around daylight, warm materiality and believable everyday life.',
       services: 'Interior \u00b7 Lighting \u00b7 3D Visualization' }
   ];
 
   /* The moving-image reel. Each entry is a real file in /media/motion. */
+  /* The homepage carries the Bowl Stroke teaser only; the rest of the reel
+     belongs on the animation page, not here. */
   var REELS = [
-    { title: 'Bowl Stroke', note: 'Hospitality \u2014 exterior to private room', src: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp' },
-    { title: 'Harmonic Horizons', note: 'Cultural campus \u2014 landscape and sequence', src: MO + 'music-campus-teaser.mp4', poster: P + 'music-campus.webp' },
-    { title: 'Residential Atmospheres', note: 'Interior \u2014 daylight and material', src: MO + 'residential-build.mp4', poster: P + 'residential.webp' }
+    { title: 'Bowl Stroke', note: 'Hospitality \u2014 exterior to private room', src: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp' }
   ];
 
   var ROWS = [
@@ -261,13 +253,16 @@
   /* ---- moving image ------------------------------------------------------ */
   var reelVideo = byId('reelVideo'), reelList = byId('reelList');
   var reelAt = -1;
-  REELS.forEach(function (r, i) {
-    var b = el('button', 'st-reel-pick');
-    b.type = 'button';
-    b.innerHTML = '<img src="' + r.poster + '" alt="" loading="lazy"><span><b>' + esc(r.title) + '</b><small>' + esc(r.note) + '</small></span>';
-    b.addEventListener('click', function () { showReel(i, true); });
-    reelList.appendChild(b);
-  });
+  if (REELS.length > 1) {
+    reelList.hidden = false;
+    REELS.forEach(function (r, i) {
+      var b = el('button', 'st-reel-pick');
+      b.type = 'button';
+      b.innerHTML = '<img src="' + r.poster + '" alt="" loading="lazy"><span><b>' + esc(r.title) + '</b><small>' + esc(r.note) + '</small></span>';
+      b.addEventListener('click', function () { showReel(i, true); });
+      reelList.appendChild(b);
+    });
+  }
   function showReel(i, play) {
     var r = REELS[i];
     if (i !== reelAt) {
