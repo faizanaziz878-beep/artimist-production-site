@@ -13,12 +13,22 @@
 
   /* ---- shell: header, index, day/night ---------------------------------- */
   var PAGES = [
-    ['Home', '/'], ['Services', '/services'], ['Architecture', '/architecture'],
-    ['BIM & Drafting', '/bim-drafting'], ['Visualization', '/visualization'],
-    ['Unreal & Real-time', '/unreal-engine'], ['Residential', '/residential'],
-    ['Visual archive', '/visual-archive'], ['Process', '/process'],
-    ['Studio team', '/team'], ['About', '/about'],
-    ["Founder's message", '/founder-message'], ['Partners', '/partners'],
+    ['Work', '/#work'],
+    ['Recent', '/#archive'],
+    ['Architecture', '/architecture'],
+    ['BIM & Drafting', '/bim-drafting'],
+    ['Visualization', '/visualization'],
+    ['Unreal Engine', '/unreal-engine'],
+    ['Residential', '/residential'],
+    ['Render atlas', '/visual-archive'],
+    ['Services', '/services'],
+    ['Skills', '/skills'],
+    ['Process', '/process'],
+    ['Team', '/team'],
+    ['About', '/about'],
+    ['Founder', '/founder-message'],
+    ['Lab', '/services#research'],
+    ['Partners', '/partners'],
     ['Contact', '/contact']
   ];
 
@@ -50,7 +60,8 @@
 
   var list = document.getElementById('apIndexList');
   PAGES.forEach(function (p, i) {
-    var current = p[1] === '/' ? here === '/' : here.indexOf(p[1]) === 0;
+    var base = p[1].split('#')[0];
+    var current = base !== '/' && here.indexOf(base) === 0;
     list.insertAdjacentHTML('beforeend',
       '<a href="' + p[1] + '"' + (current ? ' aria-current="page"' : '') + '>' +
       '<small>' + String(i + 1).padStart(2, '0') + '</small><span>' + esc(p[0]) + '</span>' +

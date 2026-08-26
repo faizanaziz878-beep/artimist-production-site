@@ -39,10 +39,40 @@
       img: P + 'music-campus.webp', video: MO + 'music-campus-teaser.mp4',
       copy: 'A nature-integrated campus at Khanpur Dam where sound becomes landscape, sequence and form.',
       services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' },
-    { no: '03', title: 'Residential Atmospheres', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
-      img: P + 'residential.webp', video: MO + 'residential-build.mp4',
-      copy: 'Quiet residential environments built around daylight, warm materiality and believable everyday life.',
-      services: 'Interior \u00b7 Lighting \u00b7 3D Visualization' }
+    { no: '03', title: 'Residential Exteriors', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+      img: D + 'resext03.webp',
+      copy: 'Houses read from the street and the approach \u2014 timber, glass and standing pine, shot at the hour the light does the most work.',
+      services: 'Architecture \u00b7 Landscape \u00b7 3D Visualization',
+      frames: [D + 'resext03.webp', D + 'resext01.webp', D + 'resext02.webp', D + 'resext04.webp'] },
+    { no: '04', title: 'Residential \u2014 Exterior & Interior', cat: 'IMAGE', meta: 'INTERNATIONAL / 2026',
+      img: D + 'resid01.webp', video: MO + 'residential-build.mp4',
+      copy: 'One house carried from the courtyard and the pool through to the stair, the spa and the room you actually live in.',
+      services: 'Architecture \u00b7 Interior \u00b7 Lighting \u00b7 3D Visualization',
+      frames: [D + 'resid01.webp', D + 'resid02.webp', D + 'resid03.webp', D + 'resid04.webp', D + 'resid05.webp', D + 'resid06.webp'] },
+    { no: '05', title: 'Home Interior', cat: 'IMAGE', meta: 'INTERIOR APPLICATION / 2026',
+      img: D + 'homeint03.webp',
+      copy: 'A full interior application \u2014 bedrooms, dressing, media and play, each room resolved in material and light rather than styled after the fact.',
+      services: 'Interior Design \u00b7 Joinery \u00b7 Lighting \u00b7 Visualization',
+      frames: [D + 'homeint03.webp', D + 'homeint01.webp', D + 'homeint02.webp', D + 'homeint04.webp', D + 'homeint05.webp', D + 'homeint06.webp', D + 'homeint07.webp', D + 'homeint08.webp', D + 'homeint09.webp', D + 'homeint10.webp', D + 'homeint11.webp'] },
+    { no: '06', title: 'Commercial Interior', cat: 'IMAGE', meta: 'REFORMER PILATES STUDIO / 2026',
+      img: D + 'comint01.webp',
+      copy: 'A reformer pilates floor built around arched bays, warm oak and a lighting rhythm that keeps the equipment quiet.',
+      services: 'Interior Design \u00b7 Branding \u00b7 Lighting \u00b7 Visualization' },
+    { no: '07', title: 'EV Charging Station', cat: 'SPACE', meta: 'CONCEPT TO RENDER / 2026',
+      img: D + 'ev01.webp',
+      copy: 'A charging canopy taken from annotated concept sketch to finished frame \u2014 the thinking and the result shown side by side.',
+      services: 'Concept Design \u00b7 Architecture \u00b7 Visualization',
+      frames: [D + 'ev01.webp', D + 'ev02.webp', D + 'ev03.webp'] },
+    { no: '08', title: 'RV Park Design', cat: 'SPACE', meta: 'UNITED STATES / 2026',
+      img: D + 'rvpark.webp',
+      copy: 'A wooded RV resort planned around a looped drive, a central green and a timber pavilion \u2014 every pad angled to keep the trees and the privacy between them.',
+      services: 'Site Planning \u00b7 Landscape \u00b7 Architecture \u00b7 Aerial Visualization',
+      frames: [D + 'rvpark.webp', D + 'airsidepark.webp'] },
+    { no: '09', title: 'Permit Application Packages', cat: 'TECHNICAL', meta: 'UNITED STATES / 2026',
+      img: D + 'permit01.webp',
+      copy: 'Complete, code-compliant submittal sets \u2014 cover sheets, code data, egress, schedules and MEP coordination, organized the way a plan reviewer reads them.',
+      services: 'Permit Drawings \u00b7 Code Review \u00b7 MEP Coordination \u00b7 Submittal Sets',
+      frames: [D + 'permit01.webp', D + 'permit02.webp', D + 'permit03.webp', D + 'permit04.webp', D + 'permit05.webp', D + 'permit06.webp', D + 'permit07.webp', D + 'permit08.webp'] }
   ];
 
   /* The moving-image reel. Each entry is a real file in /media/motion. */
@@ -58,7 +88,10 @@
     { no: '03', img: D + 'water-research-01.webp', tags: 'Research · Parametric · Lab', title: 'Water Research Station', copy: 'A parametric shell study driven by daylight, prevailing wind and the rhythm of the tidal edge.', meta: 'RESEARCH / 2026' },
     { no: '04', img: D + 'tropical-club-03.webp', tags: 'Hospitality · Interior · Landscape', title: 'Tropical Club', copy: 'Pool, pavilion and planting treated as one social landscape rather than three separate packages.', meta: 'ASIA PACIFIC / 2026' },
     { no: '05', img: D + 'waterfront-foundry-02.webp', tags: 'Hospitality · Adaptive Reuse · Visualization', title: 'Waterfront Foundry', copy: 'A brick industrial shell reimagined as a layered waterfront destination for culture, food and gathering.', meta: 'NORTH AMERICA / 2026' },
-    { no: '06', img: D + 'city-apartment-02.webp', tags: 'Residential · Interior', title: 'City Apartment', copy: 'A compact urban interior resolved through material warmth, storage discipline and borrowed light.', meta: 'EUROPE / 2026' }
+    { no: '06', img: D + 'city-apartment-02.webp', tags: 'Residential · Interior', title: 'City Apartment', copy: 'A compact urban interior resolved through material warmth, storage discipline and borrowed light.', meta: 'EUROPE / 2026' },
+    { no: '07', img: D + 'rvpark.webp', tags: 'Site Planning \u00b7 Landscape \u00b7 Visualization', title: 'RV Park Design', copy: 'A looped drive, a central green and a timber pavilion, set into standing pine so the pads keep their privacy.', meta: 'UNITED STATES / 2026' },
+    { no: '08', img: D + 'ev01.webp', tags: 'Concept \u00b7 Architecture \u00b7 Visualization', title: 'EV Charging Station', copy: 'A charging canopy developed from annotated sketch through to a finished dusk frame.', meta: 'CONCEPT STUDY / 2026' },
+    { no: '09', img: D + 'comint01.webp', tags: 'Interior \u00b7 Branding \u00b7 Lighting', title: 'Reformer Pilates Studio', copy: 'Arched bays, warm oak and a lighting rhythm that keeps the equipment quiet.', meta: 'COMMERCIAL / 2026' }
   ];
 
   var DISCIPLINES = [
@@ -84,13 +117,13 @@
     ['Sufyan Ilyas', 'Studio Collaborator', 'sufyan-team-2026.webp'],
     ['Zarmeen Khan', 'People & Operations', 'zarmeen.webp'],
     ['Abdur Rehman', '2D / 3D Animator & Graphics', 'abdur-profile-2026.webp'],
-    ['Farwa Kashif', 'Revit / BIM / CAD Expert', 'farwanew.webp'],
+    ['Farwa Kashif', 'Revit / BIM / CAD Expert', '/farwanew.webp'],
     ['Hanan Shahid', 'Unreal Engine Engineer & Architect', 'hanan-profile-2026.webp'],
     ['Rohma Fatima', 'Multidisciplinary Studio Team', 'rohma-profile-2026.webp'],
     ['Eunica Amir', 'Multidisciplinary Studio Team', 'eunica-profile-2026.webp'],
     ['Ezza Shahid', 'Interior Designer', 'ezza.jpeg'],
     ['Shumail', 'Studio Collaborator', 'shumail-profile-2026.webp'],
-    ['Hamza Rizwan', 'Interior Designer — SketchUp & CAD', 'hamzanew.webp']
+    ['Hamza Rizwan', 'Interior Designer — SketchUp & CAD', '/hamzanew.webp']
   ];
 
   var CLIENTS = [
@@ -109,20 +142,24 @@
     ['Clients', '#clients'], ['Contact', '#contact']
   ];
 
-  /* Every page on the site, so the menu is a real index and not just anchors. */
+  /* The site index, exactly as the studio wants it read: sixteen entries, one
+     column, every one of them a real destination. */
   var PAGES = [
-    ['Architecture & rendering', '/services/architectural-rendering'],
-    ['Interior rendering', '/services/3d-interior-rendering'],
-    ['Real estate rendering', '/services/real-estate-rendering'],
-    ['Architectural animation', '/services/architectural-animation'],
-    ['All services', '/services'],
+    ['Work', '/#work'],
+    ['Recent', '/#archive'],
+    ['Architecture', '/architecture'],
+    ['BIM & Drafting', '/bim-drafting'],
+    ['Visualization', '/visualization'],
     ['Unreal Engine', '/unreal-engine'],
     ['Residential', '/residential'],
     ['Render atlas', '/visual-archive'],
+    ['Services', '/services'],
+    ['Skills', '/skills'],
     ['Process', '/process'],
-    ['Studio team', '/team'],
+    ['Team', '/team'],
     ['About', '/about'],
-    ["Founder's message", '/founder-message'],
+    ['Founder', '/founder-message'],
+    ['Lab', '/services#research'],
     ['Partners', '/partners'],
     ['Contact', '/contact']
   ];
@@ -308,6 +345,12 @@
         '</ul><a href="#brief">Choose ' + esc(p.name) + '</a></article>');
   });
 
+  /* Most portraits sit in /media/team; a couple were uploaded to the top of
+     /public instead, so an absolute name is taken as given. */
+  function portrait(name) {
+    return name.charAt(0) === '/' ? name : '/media/team/' + name;
+  }
+
   /* team ring — evenly spaced around a circle, starting at the top */
   var ring = byId('ring');
   byId('teamCount').textContent = String(TEAM.length);
@@ -317,7 +360,7 @@
     node.style.left = (50 + Math.cos(a) * 41).toFixed(2) + '%';
     node.style.top = (50 + Math.sin(a) * 41).toFixed(2) + '%';
     node.innerHTML =
-      '<div class="st-portrait" data-tilt><span><img src="/media/team/' + m[2] + '" alt="' + esc(m[0]) + '" loading="lazy" onerror="this.onerror=null;this.src=&quot;/img/portrait-placeholder.svg&quot;"></span></div>' +
+      '<div class="st-portrait" data-tilt><span><img src="' + portrait(m[2]) + '" alt="' + esc(m[0]) + '" loading="lazy" onerror="this.onerror=null;this.src=&quot;/img/portrait-placeholder.svg&quot;"></span></div>' +
       '<div class="st-member-card"><small>' + esc(m[1]) + '</small><b>' + esc(m[0]) + '</b></div>';
     ring.appendChild(node);
   });
@@ -342,7 +385,6 @@
     });
   }
   indexRows(byId('indexPages'), PAGES, true);
-  indexRows(byId('indexSections'), SECTIONS, false);
 
   var rail = byId('rail');
   SECTIONS.forEach(function (s) {
@@ -517,22 +559,6 @@
     });
   });
 
-  /* Hand the assembled building over as a .glb the visitor can open in
-     Blender, Rhino, Twinmotion or any glTF viewer. */
-  var exportBtn = byId('exportGlb');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', function () {
-      var model = byId('model');
-      if (!model || typeof model.exportGLB !== 'function') return;
-      var label = exportBtn.textContent;
-      exportBtn.textContent = 'Baking\u2026';
-      exportBtn.disabled = true;
-      Promise.resolve(model.exportGLB('artimist-building')).catch(function () {}).then(function () {
-        exportBtn.textContent = label;
-        exportBtn.disabled = false;
-      });
-    });
-  }
 
   /* ---- scroll progress ------------------------------------------------- */
   var bar = byId('progress');

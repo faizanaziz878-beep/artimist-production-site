@@ -567,3 +567,8 @@
   .st-aside-figure img { aspect-ratio: 16 / 9; }
   .st-reel.is-single { grid-template-columns: 1fr; }
 }
+
+/* The scroll cue sits centre-low in the portal, clear of the headline on the
+   left and the note panel on the right. */
+.st-portal-cue { left: 54%; bottom: 14%; transform: translateX(-50%); z-index: 6; }
+@media (max-width: 820px) { .st-portal .st-portal-cue { display: none; } }
