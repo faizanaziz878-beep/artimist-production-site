@@ -14,13 +14,13 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- data ------------------------------------------------------------ */
-  var D = '/media/design/';
+  var D = '/img/';
 
   var SCENES = [
     { image: D + 'tropical-club-01.webp', label: 'HOSPITALITY / WELLNESS', note: 'Landscape, movement and social life' },
     { image: D + 'cultural-campus-01.webp', label: 'PUBLIC / ARCHITECTURE', note: 'A district made from civic rooms' },
-    { image: D + 'drive-09.png', label: 'RESIDENTIAL / INTERIOR', note: 'Light, material and quiet precision' },
-    { image: D + 'drive-12.png', label: 'HOSPITALITY / ADAPTIVE REUSE', note: 'Old fabric, new atmosphere' }
+    { image: D + 'drive-09.webp', label: 'RESIDENTIAL / INTERIOR', note: 'Light, material and quiet precision' },
+    { image: D + 'drive-12.webp', label: 'HOSPITALITY / ADAPTIVE REUSE', note: 'Old fabric, new atmosphere' }
   ];
 
   var WALL = [
@@ -74,8 +74,8 @@
 
   var CLIENTS = [
     { name: 'Yellow Productions' }, { name: 'Johnny Beig' },
-    { name: 'Dioz Group', img: D + 'dioz-group.png' },
-    { name: 'Label Beauty Group', img: D + 'hummane.png' },
+    { name: 'Dioz Group', img: D + 'dioz-group.webp' },
+    { name: 'Label Beauty Group', img: D + 'hummane.webp' },
     { name: 'Alaskan Made', img: D + 'alaskan-made.webp' },
     { name: 'Commune' }
   ];
@@ -152,7 +152,7 @@
     node.style.left = (50 + Math.cos(a) * 39).toFixed(2) + '%';
     node.style.top = (50 + Math.sin(a) * 39).toFixed(2) + '%';
     node.innerHTML =
-      '<div class="st-portrait" data-tilt><span><img src="/media/team/' + m[2] + '" alt="' + esc(m[0]) + '" loading="lazy"></span></div>' +
+      '<div class="st-portrait" data-tilt><span><img src="/media/team/' + m[2] + '" alt="' + esc(m[0]) + '" loading="lazy" onerror="this.onerror=null;this.src=&quot;/img/portrait-placeholder.svg&quot;"></span></div>' +
       '<div class="st-member-card"><small>' + esc(m[1]) + '</small><b>' + esc(m[0]) + '</b></div>';
     ring.appendChild(node);
   });
