@@ -5,9 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Artimist Productions — Architecture, BIM &amp; Visualization</title>
 <meta name="description" content="Architecture, visualization and creative production for places, products and worlds people can believe in.">
+<link rel="canonical" href="https://www.artimistproductions.com/">
+<link rel="icon" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artimist Production">
+<meta property="og:title" content="Artimist Productions — Architecture, BIM &amp; Visualization">
+<meta property="og:description" content="Architecture, visualization and creative production for places, products and worlds people can believe in.">
+<meta property="og:url" content="https://www.artimistproductions.com/">
+<meta property="og:image" content="https://www.artimistproductions.com/img/cultural-campus-01.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/otf" href="/fonts/NimbusSansNarrow-Regular.otf" crossorigin>
+<link rel="preload" as="font" type="font/otf" href="/fonts/P052-Italic.otf" crossorigin>
 <link rel="stylesheet" href="/studio-design.css">
 <script type="importmap">{"imports":{"three":"https://esm.sh/three@0.169.0","three/addons/":"https://esm.sh/three@0.169.0/examples/jsm/"}}</script>
 <script type="module" src="/spatial-model.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.artimistproductions.com/#organization","name":"Artimist Production","url":"https://www.artimistproductions.com","email":"Faizan@artimistproductions.com","description":"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.","location":[{"@type":"Place","name":"Artimist Production — Vancouver","address":{"@type":"PostalAddress","addressLocality":"Vancouver","addressRegion":"British Columbia","addressCountry":"CA"}},{"@type":"Place","name":"Artimist Production — Ohio","address":{"@type":"PostalAddress","addressRegion":"Ohio","addressCountry":"US"}},{"@type":"Place","name":"Artimist Production — Stockholm","address":{"@type":"PostalAddress","addressLocality":"Stockholm","addressCountry":"SE"}},{"@type":"Place","name":"Artimist Production — Lahore","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressRegion":"Punjab","addressCountry":"PK"}}],"areaServed":["United States","Canada","Sweden","Pakistan","Worldwide"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.artimistproductions.com/#website","url":"https://www.artimistproductions.com","name":"Artimist Production","publisher":{"@id":"https://www.artimistproductions.com/#organization"},"inLanguage":"en"}</script>
 </head>
 <body>
 <div class="st" id="top" data-mode="day">
@@ -35,7 +48,16 @@
       <button class="st-index-close" id="indexClose" type="button">CLOSE <i aria-hidden="true">&times;</i></button>
     </div>
     <div class="st-index-mark" aria-hidden="true"><b>A</b>RTIMIST</div>
-    <nav class="st-index-list" id="indexList" aria-label="All sections"></nav>
+    <div class="st-index-body">
+      <nav class="st-index-col" aria-label="Pages">
+        <p class="st-index-heading">Pages</p>
+        <div class="st-index-list" id="indexPages"></div>
+      </nav>
+      <nav class="st-index-col" aria-label="On this page">
+        <p class="st-index-heading">On this page</p>
+        <div class="st-index-list" id="indexSections"></div>
+      </nav>
+    </div>
     <div class="st-index-foot">
       <span>VANCOUVER &middot; OHIO &middot; STOCKHOLM &middot; LAHORE</span>
       <a href="mailto:Faizan@artimistproductions.com">FAIZAN@ARTIMISTPRODUCTIONS.COM</a>
@@ -74,34 +96,44 @@
 
     <!-- SPATIAL PORTAL -->
     <section class="st-portal" id="portal">
-      <div class="st-shell">
-        <div class="st-portal-head" data-reveal>
-          <p class="st-eyebrow">01 / SPATIAL PORTAL</p>
-          <div>
-            <h2>Do not just see the work.<br><em>Move through it.</em></h2>
-            <p class="st-portal-lead">A live model of the building, opened up. X-ray shows the structure and every service run &mdash; ducts, cable tray, wet mains, waste stacks &mdash; colour-coded through three storeys around a central courtyard void. Drag to orbit.</p>
-          </div>
+      <spatial-model id="model" src="/models/artimist-digital-campus.glb" mode="xray" storeys="3"></spatial-model>
+      <div class="st-portal-scrim" aria-hidden="true"></div>
+
+      <div class="st-portal-controls">
+        <p class="st-portal-label">01 / CHOOSE A VIEW</p>
+        <div class="st-chips">
+          <button class="st-chip" type="button" data-model-view="orbit" aria-pressed="true">Orbit</button>
+          <button class="st-chip" type="button" data-model-view="aerial" aria-pressed="false">Aerial</button>
+          <button class="st-chip" type="button" data-model-view="eye" aria-pressed="false">Eye level</button>
+          <button class="st-chip" type="button" data-model-view="detail" aria-pressed="false">Detail</button>
         </div>
-        <div class="st-stage" data-reveal>
-          <spatial-model id="model" src="/models/artimist-digital-campus.glb" mode="xray" storeys="3"></spatial-model>
-          <div class="st-stage-fallback">LOADING THE MODEL &mdash; DRAG TO ORBIT ONCE IT ARRIVES</div>
-          <div class="st-stage-bar">
-            <button class="st-chip" type="button" data-model-mode="xray" aria-pressed="true">X-ray</button>
-            <button class="st-chip" type="button" data-model-mode="rendered" aria-pressed="false">Rendered</button>
-            <button class="st-chip" type="button" data-model-view="orbit" aria-pressed="true">Orbit</button>
-            <button class="st-chip" type="button" data-model-view="aerial" aria-pressed="false">Aerial</button>
-            <button class="st-chip" type="button" data-model-view="eye" aria-pressed="false">Eye</button>
-            <button class="st-chip" type="button" data-model-view="detail" aria-pressed="false">Detail</button>
-            <span class="st-stage-status" id="stageStatus">X-RAY / STRUCTURE + SERVICES</span>
-          </div>
+        <div class="st-chips">
+          <button class="st-chip" type="button" data-model-mode="rendered" aria-pressed="false">Rendered</button>
+          <button class="st-chip" type="button" data-model-mode="xray" aria-pressed="true">X-ray</button>
+          <button class="st-chip" type="button" id="exportGlb">Export GLB &#8595;</button>
         </div>
-        <div class="st-legend">
-          <span><i style="background:#4fc3f7"></i>HVAC</span>
-          <span><i style="background:#ffcf4a"></i>ELECTRICAL</span>
-          <span><i style="background:#ff4d4d"></i>FIRE</span>
-          <span><i style="background:#5fd39a"></i>PLUMBING</span>
-          <span><i style="background:#e6ded2"></i>STRUCTURE</span>
-        </div>
+      </div>
+
+      <aside class="st-portal-note">
+        <p class="st-portal-note-title" id="viewTitle">01 / ORBIT</p>
+        <p id="viewCopy">Drag to rotate, scroll to change distance. The model keeps turning on its own until you take hold of it.</p>
+        <a class="st-underline" href="/unreal-engine">ENTER REAL-TIME PRODUCTION &#8599;</a>
+      </aside>
+
+      <div class="st-portal-head">
+        <p class="st-portal-label">ARTIMIST / SPATIAL PORTAL / LIVE MODEL</p>
+        <h2>Do not just see the work.<br><em>Move through it.</em></h2>
+      </div>
+
+      <div class="st-legend">
+        <span class="st-live"><i></i>LIVE WEBGL</span>
+        <span><i style="background:#4fc3f7"></i>HVAC</span>
+        <span><i style="background:#ffcf4a"></i>ELECTRICAL</span>
+        <span><i style="background:#ff4d4d"></i>FIRE</span>
+        <span><i style="background:#5fd39a"></i>PLUMBING</span>
+        <span><i style="background:#e6ded2"></i>STRUCTURE</span>
+        <span class="st-legend-meta">03 STOREYS</span>
+        <span class="st-legend-status" id="stageStatus">X-RAY / STRUCTURE</span>
       </div>
     </section>
 

@@ -80,11 +80,30 @@
     { name: 'Commune' }
   ];
 
+  /* The rail and the in-page half of the menu. */
   var SECTIONS = [
     ['Spatial portal', '#portal'], ['Selected work', '#work'], ['Complete index', '#archive'],
     ['Disciplines', '#disciplines'], ['Real-time', '#realtime'], ['Animation', '#animation'],
     ['Studio team', '#team'], ['Plans', '#plans'], ['Project brief', '#brief'],
     ['Clients', '#clients'], ['Contact', '#contact']
+  ];
+
+  /* Every page on the site, so the menu is a real index and not just anchors. */
+  var PAGES = [
+    ['Architecture & rendering', '/services/architectural-rendering'],
+    ['Interior rendering', '/services/3d-interior-rendering'],
+    ['Real estate rendering', '/services/real-estate-rendering'],
+    ['Architectural animation', '/services/architectural-animation'],
+    ['All services', '/services'],
+    ['Unreal Engine', '/unreal-engine'],
+    ['Residential', '/residential'],
+    ['Render atlas', '/visual-archive'],
+    ['Process', '/process'],
+    ['Studio team', '/team'],
+    ['About', '/about'],
+    ["Founder's message", '/founder-message'],
+    ['Partners', '/partners'],
+    ['Contact', '/contact']
   ];
 
   function el(tag, cls, html) {
@@ -149,8 +168,8 @@
   TEAM.forEach(function (m, i) {
     var a = (i / TEAM.length) * Math.PI * 2 - Math.PI / 2;
     var node = el('article', 'st-member');
-    node.style.left = (50 + Math.cos(a) * 39).toFixed(2) + '%';
-    node.style.top = (50 + Math.sin(a) * 39).toFixed(2) + '%';
+    node.style.left = (50 + Math.cos(a) * 41).toFixed(2) + '%';
+    node.style.top = (50 + Math.sin(a) * 41).toFixed(2) + '%';
     node.innerHTML =
       '<div class="st-portrait" data-tilt><span><img src="/media/team/' + m[2] + '" alt="' + esc(m[0]) + '" loading="lazy" onerror="this.onerror=null;this.src=&quot;/img/portrait-placeholder.svg&quot;"></span></div>' +
       '<div class="st-member-card"><small>' + esc(m[1]) + '</small><b>' + esc(m[0]) + '</b></div>';
@@ -160,24 +179,42 @@
   /* clients marquee — the list is duplicated so the loop is seamless */
   var marquee = byId('marquee');
   function clientCell(c) {
-    return '<div class="st-client">' + (c.img
+    var mark = c.img
       ? '<img src="' + c.img + '" alt="' + esc(c.name) + '" loading="lazy">'
-      : esc(c.name)) + '</div>';
+      : '<strong>' + esc(c.name) + '</strong>';
+    return '<div class="st-client">' + mark + '<b>' + esc(c.name) + '</b></div>';
   }
   marquee.innerHTML = CLIENTS.map(clientCell).join('') + CLIENTS.map(clientCell).join('');
 
-  var indexList = byId('indexList');
-  SECTIONS.forEach(function (s, i) {
-    indexList.insertAdjacentHTML('beforeend',
-      '<a href="' + s[1] + '" data-index-link><small>' + String(i + 1).padStart(2, '0') + '</small>' +
-      '<span>' + esc(s[0]) + '</span><i style="font-style:normal;color:rgba(255,255,255,.4);font-size:10px">&#8599;</i></a>');
-  });
+  function indexRows(host, list, isPage) {
+    list.forEach(function (s, i) {
+      host.insertAdjacentHTML('beforeend',
+        '<a href="' + s[1] + '"' + (isPage ? '' : ' data-index-link') + '>' +
+        '<small>' + String(i + 1).padStart(2, '0') + '</small>' +
+        '<span>' + esc(s[0]) + '</span>' +
+        '<i aria-hidden="true">' + (isPage ? '&#8599;' : '&#8595;') + '</i></a>');
+    });
+  }
+  indexRows(byId('indexPages'), PAGES, true);
+  indexRows(byId('indexSections'), SECTIONS, false);
 
   var rail = byId('rail');
   SECTIONS.forEach(function (s) {
     rail.insertAdjacentHTML('beforeend',
       '<a href="' + s[1] + '" title="' + esc(s[0]) + '"><small>' + esc(s[0]) + '</small><i></i></a>');
   });
+
+  /* Re-apply the URL hash after the sections above are injected.
+     On a fresh load the browser jumps to #team (or any anchor) before this
+     script has built the team ring, work rows and plans, so the page height
+     is still wrong and it lands in the wrong place. Nudging it once the DOM
+     is complete puts the visitor where the link promised. */
+  if (location.hash && location.hash.length > 1) {
+    requestAnimationFrame(function () {
+      var target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView();
+    });
+  }
 
   /* ---- hero scene rotator ---------------------------------------------- */
   var sceneNodes = scenesHost.children;
@@ -211,13 +248,35 @@
 
   /* ---- day / night ----------------------------------------------------- */
   var modeBtn = byId('modeBtn');
-  modeBtn.addEventListener('click', function () {
-    var night = root.getAttribute('data-mode') !== 'night';
+
+  function applyMode(night) {
     root.setAttribute('data-mode', night ? 'night' : 'day');
     modeBtn.setAttribute('aria-pressed', night ? 'true' : 'false');
     byId('modeLabel').textContent = night ? 'NIGHT' : 'DAY';
     var model = byId('model');
     if (model && typeof model.toggleNight === 'function') model.toggleNight(night);
+    try { localStorage.setItem('artimist_mode', night ? 'night' : 'day'); } catch (e) {}
+  }
+
+  /* Restore the visitor's last choice; default to day. */
+  try { if (localStorage.getItem('artimist_mode') === 'night') applyMode(true); } catch (e) {}
+
+  /* The model element is defined by a module that may load after this script,
+     so re-apply night once it is ready. */
+  (function syncModelNight() {
+    var tries = 0;
+    var poll = setInterval(function () {
+      var model = byId('model');
+      if (model && typeof model.toggleNight === 'function') {
+        model.toggleNight(root.getAttribute('data-mode') === 'night');
+        clearInterval(poll);
+      } else if (++tries > 40) { clearInterval(poll); }
+    }, 400);
+  })();
+
+  modeBtn.addEventListener('click', function () {
+    var night = root.getAttribute('data-mode') !== 'night';
+    applyMode(night);
   });
 
   /* ---- index overlay --------------------------------------------------- */
@@ -249,6 +308,36 @@
     }, 500);
   })();
 
+  /* The viewer only accepts setView once the GLB has been parsed and the camera
+     presets exist. Until then a chip click would be a silent no-op, so hold the
+     last intent and replay it the moment the model is ready. */
+  var modelPending = null;
+  function modelReady() {
+    var m = byId('model');
+    return !!(m && m._views && m._views.orbit);
+  }
+  function callModel(fn, arg) {
+    var m = byId('model');
+    if (!m) return;
+    if (modelReady()) { if (typeof m[fn] === 'function') m[fn](arg); return; }
+    modelPending = [fn, arg];
+  }
+  (function drainModel() {
+    var tries = 0;
+    var poll = setInterval(function () {
+      if (modelReady()) {
+        document.querySelectorAll('[data-model-view],[data-model-mode]').forEach(function (b) { b.removeAttribute('data-waiting'); });
+        if (modelPending) {
+          var m = byId('model');
+          if (typeof m[modelPending[0]] === 'function') m[modelPending[0]](modelPending[1]);
+          modelPending = null;
+        }
+        clearInterval(poll);
+      } else if (++tries > 120) { clearInterval(poll); }
+    }, 250);
+  })();
+  document.querySelectorAll('[data-model-view],[data-model-mode]').forEach(function (b) { b.setAttribute('data-waiting', '1'); });
+
   /* ---- 3D model chips -------------------------------------------------- */
   var stageStatus = byId('stageStatus');
   document.querySelectorAll('[data-model-mode]').forEach(function (btn) {
@@ -257,20 +346,47 @@
       document.querySelectorAll('[data-model-mode]').forEach(function (b) {
         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
       });
-      var model = byId('model');
-      if (model && typeof model.setMode === 'function') model.setMode(mode);
-      stageStatus.textContent = mode === 'xray' ? 'X-RAY / STRUCTURE + SERVICES' : 'RENDERED / DRAG TO ORBIT';
+      callModel('setMode', mode);
+      stageStatus.textContent = mode === 'xray' ? 'X-RAY / STRUCTURE' : 'RENDERED / DRAG TO ORBIT';
     });
   });
+  /* Each camera preset gets its own note, so the panel explains what you are
+     looking at rather than repeating one generic line. */
+  var VIEW_COPY = {
+    orbit: ['01 / ORBIT', 'Drag to rotate, scroll to change distance. The model keeps turning on its own until you take hold of it.'],
+    aerial: ['02 / AERIAL', 'Straight down over the roof plane — plant, parapet and the courtyard void read as a single plan.'],
+    eye: ['03 / EYE LEVEL', 'Standing at the arrival threshold, at the height a person actually meets the building.'],
+    detail: ['04 / DETAIL', 'Close on the slab edge and the service runs, where structure and coordination become legible.']
+  };
+
   document.querySelectorAll('[data-model-view]').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      var view = btn.getAttribute('data-model-view');
       document.querySelectorAll('[data-model-view]').forEach(function (b) {
         b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
       });
-      var model = byId('model');
-      if (model && typeof model.setView === 'function') model.setView(btn.getAttribute('data-model-view'));
+      callModel('setView', view);
+      var copy = VIEW_COPY[view];
+      if (copy) { byId('viewTitle').textContent = copy[0]; byId('viewCopy').textContent = copy[1]; }
     });
   });
+
+  /* Hand the assembled building over as a .glb the visitor can open in
+     Blender, Rhino, Twinmotion or any glTF viewer. */
+  var exportBtn = byId('exportGlb');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', function () {
+      var model = byId('model');
+      if (!model || typeof model.exportGLB !== 'function') return;
+      var label = exportBtn.textContent;
+      exportBtn.textContent = 'Baking\u2026';
+      exportBtn.disabled = true;
+      Promise.resolve(model.exportGLB('artimist-building')).catch(function () {}).then(function () {
+        exportBtn.textContent = label;
+        exportBtn.disabled = false;
+      });
+    });
+  }
 
   /* ---- scroll progress ------------------------------------------------- */
   var bar = byId('progress');
@@ -316,6 +432,29 @@
     /* Failsafe: nothing may stay invisible because an observer misfired. */
     setTimeout(showAll, 4000);
   }
+
+  /* ---- visitor tracking ------------------------------------------------
+     This page replaces the Next.js homepage, which is where the tracker used
+     to live. Without this, homepage visits would vanish from the Visitors
+     panel in the control room. Same endpoint, same shape, never blocking. */
+  (function trackVisit() {
+    var visitorId = '';
+    try {
+      visitorId = sessionStorage.getItem('artimist_v') || '';
+      if (!visitorId) {
+        visitorId = Math.random().toString(36).slice(2) + Date.now().toString(36);
+        sessionStorage.setItem('artimist_v', visitorId);
+      }
+    } catch (e) {}
+    try {
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ path: location.pathname, referrer: document.referrer || '', visitorId: visitorId }),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  })();
 
   /* ---- brief form ------------------------------------------------------ */
   var form = byId('briefForm'), note = byId('briefNote'), submit = byId('briefSubmit');
