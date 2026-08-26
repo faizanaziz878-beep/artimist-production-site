@@ -1,0 +1,120 @@
+/* =============================================================================
+   Artimist — motion system.
+
+      Three tiers, one easing family. Cinematic motion is spent on the hero, the
+         selected work and the spatial portal; services, team, plans and forms stay
+            deliberately calm so the loud moments read as intentional.
+
+               Reveal order inside a section is fixed: number, then headline, then copy,
+                  then media. Individual paragraphs and list items are NOT animated — on a
+                     page this long that reads as slow, not considered.
+                        ========================================================================== */
+
+:root {
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --micro: 180ms;
+  --reveal: 600ms;
+  --cinematic: 1000ms;
+  --lift: 0 22px 50px -28px rgba(0, 0, 0, .55);
+  --sheen: linear-gradient(115deg, transparent 34%, rgba(255,255,255,.16) 48%, rgba(255,255,255,.30) 50%, rgba(255,255,255,.16) 52%, transparent 66%);
+}
+
+/* ---- tier 2: sections ---- Transform and opacity only. One pass. */
+.st [data-reveal], [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity var(--reveal) var(--ease-out), transform var(--reveal) var(--ease-out); }
+.st [data-reveal].is-in, [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Four groups, not every child: 0 number, 1 headline, 2 copy, 3 media. */
+.st [data-reveal] > [data-stagger], [data-reveal] > [data-stagger] { opacity: 0; transform: translateY(12px); transition: opacity var(--reveal) var(--ease-out) calc(var(--i, 0) * 70ms), transform var(--reveal) var(--ease-out) calc(var(--i, 0) * 70ms); }
+.st [data-reveal].is-in > [data-stagger], [data-reveal].is-in > [data-stagger] { opacity: 1; transform: none; }
+
+/* ---- tier 3: cinematic ---- Headlines arrive through a vertical mask. */
+[data-wipe] { display: inline-block; clip-path: inset(0 0 108% 0); transform: translateY(.14em); transition: clip-path var(--cinematic) var(--ease-out) calc(var(--line, 0) * 90ms), transform var(--cinematic) var(--ease-out) calc(var(--line, 0) * 90ms); }
+[data-reveal].is-in [data-wipe], [data-wipe].is-in { clip-path: inset(-.22em 0 -.28em 0); transform: none; }
+
+/* ---- tier 1: micro ---- Buttons fill from the left, the label steps across.
+   Focus gets the same treatment as hover so the keyboard sees what the mouse sees. */
+.st-pill, .ap-pill, .st-cta, .ap-cta, .st-chip, .st-underline, .practice-next a, .sk-index a { position: relative; overflow: hidden; transition: color var(--micro) var(--ease-out); }
+.st-pill, .ap-pill, .st-cta, .ap-cta, .st-chip { min-height: 38px; }
+.st-cta::before, .ap-cta::before, .st-pill::before, .ap-pill::before { content: ''; position: absolute; inset: 0; z-index: 0; transform: scaleX(0); transform-origin: left; background: rgba(255,255,255,.14); transition: transform 320ms var(--ease-out); }
+.st-cta:hover::before, .st-cta:focus-visible::before, .ap-cta:hover::before, .ap-cta:focus-visible::before, .st-pill:hover::before, .st-pill:focus-visible::before, .ap-pill:hover::before, .ap-pill:focus-visible::before { transform: scaleX(1); }
+.st-cta > *, .ap-cta > *, .st-pill > *, .ap-pill > * { position: relative; z-index: 1; }
+.st-cta span, .ap-cta span, .st-underline span { display: inline-block; transition: transform var(--micro) var(--ease-out); }
+.st-cta:hover span, .st-cta:focus-visible span, .ap-cta:hover span, .ap-cta:focus-visible span, .st-underline:hover span, .st-underline:focus-visible span { transform: translate(4px, -4px); }
+.st-cta, .ap-cta { background-image: linear-gradient(140deg, #a82f42, #7d1f2f 62%, #97283a); }
+
+a:focus-visible, button:focus-visible, [role='button']:focus-visible, summary:focus-visible { outline: 2px solid var(--rose, #d96476); outline-offset: 3px; border-radius: 3px; }
+
+/* The primary action is the filled pill. Everything else looks secondary. */
+.st-secondary, .st-underline.st-secondary { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.62); border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 5px; }
+.st-secondary:hover, .st-secondary:focus-visible { color: #fff; border-color: #fff; }
+.st-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.st-cta-hero { padding: 14px 24px; font-size: 9.5px; }
+
+/* ---- selected work ---- The outgoing frame stays underneath while the new
+   one crossfades over it, so a switch never flashes through the background. */
+.st-feature-stage, #featMedia { overflow: hidden; }
+#featMedia img, #featMedia video { transition: opacity 340ms var(--ease-in-out), transform var(--cinematic) var(--ease-out); }
+.st-feature-stage:hover #featMedia img { transform: scale(1.02); }
+.st-feature-tab { position: relative; min-height: 46px; transition: padding-left 320ms var(--ease-out), background 320ms var(--ease-out); }
+.st-feature-tab::before { content: ''; position: absolute; left: 0; top: 50%; width: 0; height: 1px; background: var(--rose, #d96476); transform: translateY(-50%); transition: width 380ms var(--ease-out); }
+.st-feature-tab:hover, .st-feature-tab:focus-visible, .st-feature-tab[aria-pressed='true'] { padding-left: 22px; }
+.st-feature-tab:hover::before, .st-feature-tab:focus-visible::before, .st-feature-tab[aria-pressed='true']::before { width: 14px; }
+.st-feature-tab:hover { background: rgba(255,255,255,.035); }
+#featTitle, #featCopy, #featServices { transition: opacity 300ms var(--ease-in-out), transform 380ms var(--ease-out); }
+.st-feature-body.is-swapping #featTitle, .st-feature-body.is-swapping #featCopy, .st-feature-body.is-swapping #featServices { opacity: 0; transform: translateY(10px); }
+
+/* ---- discipline rows: a drawn border, not a colour change ---- */
+.st-list a { position: relative; }
+.st-list a::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--crimson, #8f2635); transition: width 420ms var(--ease-out); }
+.st-list a:hover::after, .st-list a:focus-visible::after { width: 100%; }
+
+/* ---- gloss ---- */
+.gloss { position: relative; overflow: hidden; isolation: isolate; }
+.gloss::after { content: ''; position: absolute; z-index: 2; inset: -40% -60%; background: var(--sheen); transform: translateX(-120%) rotate(4deg); transition: transform 1.1s var(--ease-in-out); pointer-events: none; }
+.gloss:hover::after, .gloss:focus-within::after { transform: translateX(120%) rotate(4deg); }
+.glass { position: relative; background: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.03) 46%, rgba(255,255,255,.06)); backdrop-filter: blur(18px) saturate(1.35); -webkit-backdrop-filter: blur(18px) saturate(1.35); border: 1px solid rgba(255,255,255,.14); box-shadow: var(--lift), inset 0 1px 0 rgba(255,255,255,.16); }
+
+/* ---- index panel: clipped reveal, first six links staggered ---- */
+.st-index, .ap-index { clip-path: inset(0 0 100% 0); transition: clip-path 520ms var(--ease-out), opacity 320ms linear, visibility 0s linear 520ms; }
+.st-index.is-open, .ap-index.is-open { clip-path: inset(0 0 0 0); transition: clip-path 620ms var(--ease-out), opacity 260ms linear, visibility 0s; }
+.st-index-list a, .ap-index-list a { transition: padding-left 260ms var(--ease-out), color var(--micro) var(--ease-out), background var(--micro) var(--ease-out); }
+.st-index.is-open .st-index-list a:nth-child(-n+6), .ap-index.is-open .ap-index-list a:nth-child(-n+6) { animation: idxIn 520ms var(--ease-out) both; }
+.st-index.is-open .st-index-list a:nth-child(2), .ap-index.is-open .ap-index-list a:nth-child(2) { animation-delay: 50ms; }
+.st-index.is-open .st-index-list a:nth-child(3), .ap-index.is-open .ap-index-list a:nth-child(3) { animation-delay: 100ms; }
+.st-index.is-open .st-index-list a:nth-child(4), .ap-index.is-open .ap-index-list a:nth-child(4) { animation-delay: 150ms; }
+.st-index.is-open .st-index-list a:nth-child(5), .ap-index.is-open .ap-index-list a:nth-child(5) { animation-delay: 200ms; }
+.st-index.is-open .st-index-list a:nth-child(6), .ap-index.is-open .ap-index-list a:nth-child(6) { animation-delay: 250ms; }
+@keyframes idxIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.st-index-close, .ap-index-close { position: sticky; top: 0; z-index: 4; animation: none !important; }
+
+/* ---- the portal is opt-in ---- A poster and a button until the visitor asks,
+   so the page does not spend a WebGL context and a GLB on someone scrolling past. */
+.st-portal-gate { position: absolute; z-index: 8; inset: 0; display: grid; place-content: center; gap: 16px; text-align: center; background: #060606; }
+.st-portal-gate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .38; }
+.st-portal-gate > * { position: relative; }
+.st-portal-gate p { margin: 0; font-size: 8px; letter-spacing: .2em; color: rgba(255,255,255,.6); }
+.st-portal-gate h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 3vw, 42px); line-height: 1.1; color: #fff; }
+.st-portal-gate button { justify-self: center; padding: 13px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08); color: #fff; font: 600 9px/1 var(--sans); letter-spacing: .2em; cursor: pointer; transition: background var(--micro) var(--ease-out), transform var(--micro) var(--ease-out); }
+.st-portal-gate button:hover, .st-portal-gate button:focus-visible { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+.st-portal-gate small { display: block; font-size: 7.5px; letter-spacing: .14em; color: rgba(255,255,255,.42); }
+.st-portal.is-live .st-portal-gate { opacity: 0; visibility: hidden; transition: opacity 520ms var(--ease-out), visibility 0s linear 520ms; }
+
+.st-stat strong { font-variant-numeric: tabular-nums; }
+
+/* ---- motion off ---- */
+@media (prefers-reduced-motion: reduce) {
+  .st [data-reveal], [data-reveal], [data-reveal] > [data-stagger], [data-wipe] { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+  .st-index, .ap-index { clip-path: none; }
+  .st-index-list a, .ap-index-list a { animation: none !important; }
+  .gloss::after, .st-cta::before, .ap-cta::before, .st-pill::before, .ap-pill::before { display: none; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+@media (pointer: coarse) {
+  .st-underline, .st-list a, .st-index-list a, .ap-index-list a, .practice-local-nav a, .about-v2-index a, .founder-v2-index a, .services-v2-index a, .sk-index a, .st-foot a, .practice-next a, .st-feature-tab, .st-reel-pick { min-height: 44px; display: flex; align-items: center; }
+  .st-list a, .st-index-list a, .ap-index-list a { display: grid; align-content: center; }
+  .st-gal { min-height: 44px; }
+  .st-pill, .ap-pill, .st-cta, .ap-cta, .st-chip { min-height: 44px; }
+  footer a, nav a { padding-block: 4px; }
+}
