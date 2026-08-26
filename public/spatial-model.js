@@ -48,9 +48,10 @@ class SpatialModel extends HTMLElement {
     requestAnimationFrame(() => this._init());
   }
   disconnectedCallback() {
-    cancelAnimationFrame(this._raf);
+    this._pauseLoop();
     this._ro && this._ro.disconnect();
     this._io && this._io.disconnect();
+    this._onVisibility && document.removeEventListener('visibilitychange', this._onVisibility);
   }
 
   _status(t) { const el = this.querySelector('[data-status]'); if (el) el.textContent = t; }
@@ -103,7 +104,9 @@ class SpatialModel extends HTMLElement {
     const w = this.clientWidth || 1200, h = this.clientHeight || 800;
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     /* cap resolution: this canvas is decorative, 1.15x is plenty and halves fill cost */
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.15));
+    /* Keep the live model crisp without allowing extreme retina cost. */
+    const qualityCap = matchMedia('(max-width: 700px)').matches ? 1.35 : 1.6;
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, qualityCap));
     renderer.setSize(w, h);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -174,9 +177,18 @@ class SpatialModel extends HTMLElement {
     });
     this._ro.observe(this);
 
-    /* stop rendering entirely while the section is off screen */
-    this._io = new IntersectionObserver(([e]) => { this._visible = e.isIntersecting; }, { rootMargin: '120px' });
+    /* Suspend the animation frame itself off screen — not just the GPU render. */
+    this._io = new IntersectionObserver(([e]) => {
+      this._visible = e.isIntersecting;
+      if (this._visible && !document.hidden) this._loop();
+      else this._pauseLoop();
+    }, { rootMargin: '120px' });
     this._io.observe(this);
+    this._onVisibility = () => {
+      if (document.hidden) this._pauseLoop();
+      else if (this._visible) this._loop();
+    };
+    document.addEventListener('visibilitychange', this._onVisibility);
 
     new GLTFLoader().load(
       this.getAttribute('src') || '',
@@ -901,16 +913,25 @@ class SpatialModel extends HTMLElement {
     return g;
   }
 
+  _pauseLoop() {
+    if (!this._raf) return;
+    cancelAnimationFrame(this._raf);
+    this._raf = 0;
+  }
+
   _loop() {
+    if (this._raf || !this._visible || document.hidden) return;
     const clock = new THREE.Clock();
     const v3 = new THREE.Vector3();
     const m4 = new THREE.Matrix4();
     const dayFog = new THREE.Color(0x9aa7b0), nightFog = new THREE.Color(0x141a2a);
     let idleFrames = 0, spotTick = 0;
     const tick = () => {
-      this._raf = requestAnimationFrame(tick);
+      if (!this._visible || document.hidden) {
+        this._raf = 0;
+        return;
+      }
       const dt = Math.min(clock.getDelta(), 0.05);
-      if (!this._visible) return;                 /* off screen: no work at all */
       this._t = (this._t || 0) + dt;
       const t = this._t;
 
@@ -980,8 +1001,9 @@ class SpatialModel extends HTMLElement {
       if (this._shadowDirty > 0) { this._renderer.shadowMap.needsUpdate = true; this._shadowDirty--; }
       if (this._mode === 'xray') this._renderer.render(this._scene, this._camera);
       else this._composer.render();
+      this._raf = requestAnimationFrame(tick);
     };
-    tick();
+    this._raf = requestAnimationFrame(tick);
   }
 }
 if (!customElements.get('spatial-model')) customElements.define('spatial-model', SpatialModel);

@@ -14,10 +14,10 @@
 <meta property="og:url" content="https://www.artimistproductions.com/">
 <meta property="og:image" content="https://www.artimistproductions.com/img/cultural-campus-01.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="font" type="font/otf" href="/fonts/NimbusSansNarrow-Regular.otf" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/otf" href="/fonts/P052-Italic.otf" crossorigin>
 <link rel="stylesheet" href="/studiodesign.css">
-<script type="importmap">{"imports":{"three":"https://esm.sh/three@0.169.0","three/addons/":"https://esm.sh/three@0.169.0/examples/jsm/"}}</script>
+<script type="importmap">{"imports":{"three":"/media/vendor/three.module.js","three/addons/":"/media/vendor/jsm/"}}</script>
 <script type="module" src="/spatial-model.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.artimistproductions.com/#organization","name":"Artimist Production","url":"https://www.artimistproductions.com","email":"Faizan@artimistproductions.com","description":"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.","location":[{"@type":"Place","name":"Artimist Production — Vancouver","address":{"@type":"PostalAddress","addressLocality":"Vancouver","addressRegion":"British Columbia","addressCountry":"CA"}},{"@type":"Place","name":"Artimist Production — Ohio","address":{"@type":"PostalAddress","addressRegion":"Ohio","addressCountry":"US"}},{"@type":"Place","name":"Artimist Production — Stockholm","address":{"@type":"PostalAddress","addressLocality":"Stockholm","addressCountry":"SE"}},{"@type":"Place","name":"Artimist Production — Lahore","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressRegion":"Punjab","addressCountry":"PK"}}],"areaServed":["United States","Canada","Sweden","Pakistan","Worldwide"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.artimistproductions.com/#website","url":"https://www.artimistproductions.com","name":"Artimist Production","publisher":{"@id":"https://www.artimistproductions.com/#organization"},"inLanguage":"en"}</script>
@@ -34,9 +34,17 @@
       <a href="#work">Work</a><a href="#disciplines">Services</a><a href="#team">Team</a><a href="#plans">Plans</a><a href="#brief">Brief</a>
     </nav>
     <div class="st-head-right">
-      <button class="st-pill" id="modeBtn" type="button" aria-pressed="false"><i></i><span id="modeLabel">DAY</span>&nbsp;/&nbsp;<span id="clock">00:00</span></button>
-      <button class="st-pill" id="menuBtn" type="button" aria-expanded="false" aria-controls="indexPanel">MENU&nbsp;<span aria-hidden="true">&#10683;</span></button>
-      <a class="st-cta" href="#brief">START A PROJECT <span aria-hidden="true">&#8599;</span></a>
+      <button class="st-pill st-mode-switch" id="modeBtn" type="button" aria-pressed="false">
+        <svg class="st-mode-icon st-sun-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16"/></svg>
+        <svg class="st-mode-icon st-moon-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.8 12.9A6.8 6.8 0 0 1 7.1 4.2a6.8 6.8 0 1 0 8.7 8.7Z"/></svg>
+        <span id="modeLabel">DAY</span><span class="st-control-divider" aria-hidden="true"></span><span id="clock">00:00</span>
+      </button>
+      <button class="st-pill" id="menuBtn" type="button" aria-expanded="false" aria-controls="indexPanel">MENU
+        <svg class="st-menu-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg>
+      </button>
+      <a class="st-cta" href="#brief">START A PROJECT
+        <svg class="st-arrow-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg>
+      </a>
     </div>
   </header>
 
@@ -173,11 +181,9 @@
             <img src="/img/cultural-campus-03.webp" alt="Cultural campus interior, developed across architecture and visualization" loading="lazy">
             <figcaption>Cultural Campus &mdash; one team from massing to final frame</figcaption>
           </figure>
-          <dl class="st-aside-facts">
-            <div><dt>Disciplines</dt><dd>06</dd></div>
-            <div><dt>Studio</dt><dd>14 people</dd></div>
-            <div><dt>Offices</dt><dd>04</dd></div>
-          </dl>
+          <a class="st-aside-link" href="/services">Explore all studio capabilities
+            <svg class="st-arrow-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg>
+          </a>
         </aside>
         <div>
           <h2 class="st-h2">We turn early ideas<br>into <em>built atmosphere.</em></h2>
@@ -364,13 +370,13 @@
     <button class="st-lb-nav is-next" id="lbNext" type="button" aria-label="Next frame">&#8594;</button>
   </div>
 
-  <!-- ASK A QUESTION -->
+  <!-- ASK THE STUDIO -->
   <button class="st-ask-btn" id="askBtn" type="button" aria-expanded="false" aria-controls="askPanel">
-    <i aria-hidden="true">?</i> ASK A QUESTION
+    <i aria-hidden="true">?</i> ASK THE STUDIO
   </button>
-  <div class="st-ask" id="askPanel" role="dialog" aria-modal="false" aria-label="Ask a question" hidden>
+  <div class="st-ask" id="askPanel" role="dialog" aria-modal="false" aria-label="Ask the studio" hidden>
     <div class="st-ask-top">
-      <p>ASK A QUESTION</p>
+      <p>ASK THE STUDIO</p>
       <button type="button" id="askClose" aria-label="Close">&times;</button>
     </div>
     <p class="st-ask-lead">A person reads this, not a bot. Short questions are welcome &mdash; scope, budget, timelines, file formats.</p>

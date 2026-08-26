@@ -214,6 +214,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
   const [projectType, setProjectType] = useState("");
   const services = useMemo(() => parseServices(settings), [settings]);
   const offices = getStudioOffices(settings);
+  const whatsappHref = `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Artimist team — I would like to discuss a project.")}`;
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service") || "";
@@ -295,7 +296,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-contact-direct" data-sp-reveal>
         <div><SectionCode>{String(offices.length).padStart(2, "0")} offices / Worldwide</SectionCode><h2>Close to the work,<br /><em>wherever it lives.</em></h2></div>
         <div className="sp-office-grid">{offices.map((office) => <article key={office.code}><span>{office.code} / {office.region}</span><strong>{office.label}</strong><i /></article>)}</div>
-        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><b>↗︎</b></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><b>↗︎</b></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"><span>WhatsApp</span><strong>{settings.whatsapp}</strong><b>↗︎</b></a></div>
+        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><b>↗︎</b></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><b>↗︎</b></a><a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Talk directly to the Artimist team on WhatsApp"><span>Talk to the team</span><strong>WhatsApp · {settings.whatsapp}</strong><b>↗︎</b></a></div>
       </section>
 
       <footer className="sp-contact-end"><span>{settings.availability}</span><Link href="/services">Services</Link><Link href="/process">Process</Link><Link href="/team">Team</Link><Link href="/">Studio home</Link></footer>
