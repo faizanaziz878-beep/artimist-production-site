@@ -5,7 +5,7 @@ export type UiIconName = "arrow" | "menu" | "sun" | "moon" | "close" | "upload" 
 type Props = SVGProps<SVGSVGElement> & { name: UiIconName; size?: number };
 
 export function UiIcon({ name, size = 18, className = "ui-icon", ...props }: Props) {
-  const common = {
+  const common: SVGProps<SVGSVGElement> = {
     className,
     width: size,
     height: size,
@@ -13,9 +13,9 @@ export function UiIcon({ name, size = 18, className = "ui-icon", ...props }: Pro
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.55,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    focusable: "false",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    focusable: false,
     "aria-hidden": true,
     ...props,
   };
