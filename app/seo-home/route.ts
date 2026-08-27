@@ -40,7 +40,7 @@ function enhance(source: string) {
   html = html.replace('04 OFFICES / WORKING WORLDWIDE', 'INTERNATIONAL STUDIO / WORKING WORLDWIDE');
   html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${seoStyle}${webpageSchema}</head>`);
   html = html.replace('</main>', `${seoSection}</main>`);
-  html = html.replace('</body>', `<script src="/lead-attribution.js"></script>${menuEnhancement}</body>`);
+  html = html.replace('</body>', `<script src="/lead-attribution.js"></script><script src="/mobile-cleanup.js"></script>${menuEnhancement}</body>`);
   return html;
 }
 
