@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
 
 export const metadata: Metadata = {
-  title: "Custom House Design Service & Floor Plans | Artimist",
-  description: "Custom house design and floor plan services for homeowners: new home layouts, custom floor plans, house plan modifications and residential design support with optional 3D visualization.",
+  title: "Custom House Plans, Floor Plans & Home Design | Artimist",
+  description: "Custom house plans, floor plans and home design for homeowners: new house layouts, plan modifications, residential drawings and optional 3D visualization.",
   alternates: { canonical: "/custom-house-design" },
   openGraph: {
-    title: "Custom House Design Service & Floor Plans | Artimist",
-    description: "Custom home design, house plans and floor plan design developed around your site, lifestyle and project goals.",
+    title: "Custom House Plans, Floor Plans & Home Design | Artimist",
+    description: "Custom home design, house layouts and floor plans developed around your site, lifestyle and project goals.",
     url: "https://www.artimistproductions.com/custom-house-design",
     type: "website",
   },
@@ -17,16 +17,16 @@ export default function CustomHouseDesignPage() {
   return <HomeownerServicePage
     slug="custom-house-design"
     serviceName="Custom House Design"
-    eyebrow="House design & floor plans"
-    h1="Custom House Design & Floor Plans"
+    eyebrow="House plans, layouts & floor plans"
+    h1="Custom House Plans & Floor Plans"
     subtitle="A home planned around the way you actually want to live."
-    intro="Artimist provides a custom house design service for homeowners planning a new home, improving an existing house plan or turning early ideas into a clear residential design. We develop custom floor plans, layouts and spatial options around your site, priorities and desired architectural character instead of forcing the project into a generic stock plan."
-    audience="For homeowners who need a new home design, custom house plans, a better floor plan or thoughtful changes to an existing house plan."
+    intro="Artimist designs custom house plans, floor plans and residential layouts for homeowners planning a new home or improving an existing idea. We develop room relationships, circulation, dimensions and architectural direction around your site and priorities instead of forcing the project into a generic stock plan. If you already have a sketch, blueprint-style drawing or house layout, we can refine that rather than making you start again."
+    audience="For homeowners who need custom house plans, a new floor plan, a better house layout, residential drawings or a clear design direction before construction."
     image="/graphics/custom-house-floor-plan-design.svg"
     imageAlt="Custom residential floor plan design diagram showing room planning, circulation, furniture and dimensions"
     included={[
-      "Custom home floor plans",
-      "New home design concepts",
+      "Custom house plans and layouts",
+      "New home floor plan design",
       "House plan modification",
       "Space planning and room relationships",
       "Residential exterior design direction",
@@ -50,13 +50,14 @@ export default function CustomHouseDesignPage() {
     faqs={[
       { q: "Can you design a house from scratch?", a: "Yes. We can start from a site, a room list and reference images, then develop the floor plan and architectural direction from the ground up." },
       { q: "Can you modify a house plan I already have?", a: "Yes. We can rework an existing plan for your site, lifestyle, room requirements and design preferences rather than making you start over." },
+      { q: "Can you turn my sketch into a clean floor plan?", a: "Yes. If you have a hand sketch, screenshot or rough layout, we can redraw and develop it into a clearer digital plan when enough dimensions and reference information are available." },
       { q: "Do you provide 3D views with the floor plans?", a: "Yes. 3D exterior views, interior visualization and photoreal rendering can be added so you can understand the design before construction." },
       { q: "Are these automatically permit-ready drawings?", a: "Not automatically. Permit requirements vary by jurisdiction. We can prepare permit documentation when that is part of the scope and coordinate with a locally licensed professional where local law requires one." },
     ]}
     related={[
+      { href: "/plan-modification-service", label: "Plan Changes & Redraws" },
       { href: "/3d-interior-design-service", label: "3D Interior Design" },
       { href: "/residential-renovation-permit-drawings", label: "Renovation & Permit Drawings" },
-      { href: "/architecture", label: "Architectural Services" },
       { href: "/visualization", label: "3D Visualization" },
     ]}
     permitNotice="Residential design, permitting and professional-stamp requirements vary by state, province, city and project type. Where a locally licensed architect, engineer or other professional must review or stamp a submission, Artimist coordinates with that professional rather than representing that a remote design service replaces local licensure."
