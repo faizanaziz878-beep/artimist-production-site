@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
 
 export const metadata: Metadata = {
-  title: "3D Interior Design & Home Visualization Service | Artimist",
+  title: "3D Interior Design Service & Home Visualization | Artimist",
   description: "3D interior design and home visualization for homeowners: room layouts, materials, lighting, furniture planning and photoreal interior renders before construction or renovation.",
   alternates: { canonical: "/3d-interior-design-service" },
   openGraph: {
-    title: "3D Interior Design & Home Visualization Service | Artimist",
+    title: "3D Interior Design Service & Home Visualization | Artimist",
     description: "See your kitchen, living room, bedroom, bathroom or whole home in 3D before you build, buy or renovate.",
     url: "https://www.artimistproductions.com/3d-interior-design-service",
     type: "website",
@@ -20,8 +20,8 @@ export default function InteriorDesignPage() {
     eyebrow="Interior design & 3D views"
     h1="3D Interior Design & Home Visualization"
     subtitle="Understand the space, materials and furniture before money is committed on site."
-    intro="Artimist provides online interior design and 3D home visualization for homeowners who want to make confident decisions before construction or renovation. We can develop room layouts, material directions, furniture planning and photoreal 3D views for a single room or an entire home, helping you see how light, finishes, proportions and furniture work together before anything is built."
-    audience="Ideal for searches such as home interior design service, online interior design service, 3D interior design service, 3D home visualization, kitchen design service and whole-house interior design."
+    intro="Our 3D interior design service helps homeowners make confident decisions before construction or renovation. We can develop room layouts, material directions, furniture planning and photoreal 3D home visualization for a kitchen, living room, bedroom, bathroom or an entire home, so you can judge light, finishes, proportions and furniture before anything is built."
+    audience="For homeowners who want professional interior design online, realistic 3D views, furniture planning or a complete visual direction for one room or a whole home."
     image="/media/atlas/atlas-05.webp"
     imageAlt="Warm contemporary interior with timber finishes and full-height glazing"
     included={[
