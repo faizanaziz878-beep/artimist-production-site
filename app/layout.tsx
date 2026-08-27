@@ -14,23 +14,23 @@ import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.artimistproductions.com"),
   verification: { google: "lsk4HfeRzYO3lwG_jcZAoexrOwBkDMyneJKREIpOxvM" },
-  title: "Architectural Visualization & Unreal Engine Studio | Artimist",
+  title: "Architecture, BIM & Architectural Visualization Studio | Artimist",
   description:
-    "Artimist Production is a multidisciplinary creative studio connecting architecture, interiors, visualization, Unreal Engine real-time experiences, branding, motion, digital products and strategy.",
+    "Artimist Productions is an international architecture, BIM, interior design and architectural visualization studio serving clients worldwide, with active focus in the USA, UK, Canada and Sweden.",
   openGraph: {
     type: "website",
-    siteName: "Artimist Production",
+    siteName: "Artimist Productions",
     locale: "en_US",
     url: "https://www.artimistproductions.com",
-    title: "Architectural Visualization & Unreal Engine Studio | Artimist",
+    title: "Architecture, BIM & Architectural Visualization Studio | Artimist",
     description:
-      "Architecture, BIM and visualization studio: Revit and CAD drafting, permit and construction documentation, interiors, 3D rendering and Unreal Engine real-time experiences.",
+      "International architecture, BIM and visualization studio delivering Revit and CAD drafting, interiors, 3D rendering, animation and Unreal Engine experiences for clients worldwide.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Architectural Visualization & Unreal Engine Studio | Artimist",
+    title: "Architecture, BIM & Architectural Visualization Studio | Artimist",
     description:
-      "Architecture, BIM and visualization studio serving architects, developers and builders across the United States.",
+      "Artimist Productions serves homeowners, architects, developers and brands worldwide, with focus on the USA, UK, Canada and Sweden.",
   },
   icons: {
     icon: "/favicon.svg",
@@ -57,11 +57,9 @@ export default function RootLayout({
         <IntroCurtain />
         <SiteIndex />
         <VisitorTracker />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.artimistproductions.com/#organization\",\"name\":\"Artimist Production\",\"url\":\"https://www.artimistproductions.com\",\"email\":\"Faizan@artimistproductions.com\",\"description\":\"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.\",\"location\":[{\"@type\":\"Place\",\"name\":\"Artimist Production — Vancouver\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Vancouver\",\"addressRegion\":\"British Columbia\",\"addressCountry\":\"CA\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Ohio\",\"address\":{\"@type\":\"PostalAddress\",\"addressRegion\":\"Ohio\",\"addressCountry\":\"US\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Stockholm\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Stockholm\",\"addressCountry\":\"SE\"}},{\"@type\":\"Place\",\"name\":\"Artimist Production — Lahore\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Lahore\",\"addressRegion\":\"Punjab\",\"addressCountry\":\"PK\"}}],\"areaServed\":[\"United States\",\"Canada\",\"Sweden\",\"Pakistan\",\"Worldwide\"]}" }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.artimistproductions.com/#website\",\"url\":\"https://www.artimistproductions.com\",\"name\":\"Artimist Production\",\"publisher\":{\"@id\":\"https://www.artimistproductions.com/#organization\"},\"inLanguage\":\"en\"}" }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.artimistproductions.com/#organization\",\"name\":\"Artimist Productions\",\"url\":\"https://www.artimistproductions.com\",\"email\":\"Faizan@artimistproductions.com\",\"description\":\"International multidisciplinary creative studio working across architecture, interiors, BIM, architectural visualization, Unreal Engine real-time experiences, identity, motion and digital products.\",\"location\":[{\"@type\":\"Place\",\"name\":\"Artimist Productions — Vancouver\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Vancouver\",\"addressRegion\":\"British Columbia\",\"addressCountry\":\"CA\"}},{\"@type\":\"Place\",\"name\":\"Artimist Productions — Ohio\",\"address\":{\"@type\":\"PostalAddress\",\"addressRegion\":\"Ohio\",\"addressCountry\":\"US\"}},{\"@type\":\"Place\",\"name\":\"Artimist Productions — Stockholm\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Stockholm\",\"addressCountry\":\"SE\"}},{\"@type\":\"Place\",\"name\":\"Artimist Productions — Lahore\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Lahore\",\"addressRegion\":\"Punjab\",\"addressCountry\":\"PK\"}}],\"areaServed\":[\"Worldwide\",\"United States\",\"United Kingdom\",\"Canada\",\"Sweden\",\"Pakistan\"]}" }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.artimistproductions.com/#website\",\"url\":\"https://www.artimistproductions.com\",\"name\":\"Artimist Productions\",\"publisher\":{\"@id\":\"https://www.artimistproductions.com/#organization\"},\"inLanguage\":\"en\"}" }} />
         {children}
-        {/* Vercel Web Analytics. Collects page views with no cookies and no
-            personal data; the numbers appear in the project's Analytics tab. */}
         <AskBot />
         <script defer src="/_vercel/insights/script.js" />
       </body>
