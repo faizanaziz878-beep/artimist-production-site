@@ -1,7 +1,59 @@
 {
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "framework": "nextjs",
-    "buildCommand": "next build",
-    "installCommand": "npm install --no-audit --no-fund",
-    "rewrites": [{ "source": "/", "destination": "/studio.html" }]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "installCommand": "npm install --no-audit --no-fund",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/studio.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/img/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/media/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/models/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/graphics/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
