@@ -18,7 +18,7 @@ export async function GET() {
   try {
     const { testimonials: published } = await getPublicContent();
     return Response.json({
-      testimonials: published.slice(0, 3).map(({ id, clientName, role, company, rating, quote, photoKey }) => ({
+      testimonials: published.slice(0, 6).map(({ id, clientName, role, company, rating, quote, photoKey }) => ({
         id,
         clientName,
         role,
@@ -43,9 +43,13 @@ export async function POST(request: Request) {
     const company = field(form, "company", 100);
     const quote = field(form, "quote", 1200);
     const rating = Math.min(5, Math.max(3, Number(field(form, "rating", 3)) || 5));
+    const permission = field(form, "permission", 8) === "yes";
 
     if (!clientName || quote.length < 20) {
       return Response.json({ error: "Please add your name and a little more detail about the experience." }, { status: 400 });
+    }
+    if (!permission) {
+      return Response.json({ error: "Please confirm that this is your own feedback and that Artimist may publish it." }, { status: 400 });
     }
 
     let photoKey = "";
@@ -71,14 +75,13 @@ export async function POST(request: Request) {
       await db.insert(testimonials).values({ clientName, role, company, quote, rating, photoKey, status: "pending" });
       return Response.json({ ok: true }, { status: 201 });
     } catch {
-      // No database binding on this host — forward the review by email so it
-      // still reaches the studio for manual publishing.
       const emailed = await sendNotification(`New testimonial — ${clientName}`, {
         Name: clientName,
         Role: role,
         Company: company,
         Rating: String(rating),
         Review: quote,
+        "Publication permission": "Confirmed by submitter",
       });
       if (emailed) return Response.json({ ok: true }, { status: 201 });
       throw new Error("no delivery channel");
