@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
 
 export const metadata: Metadata = {
-  title: "Custom House Design & Floor Plan Service | Artimist Productions",
+  title: "Custom House Design Service & Floor Plans | Artimist",
   description: "Custom house design and floor plan services for homeowners: new home layouts, custom floor plans, house plan modifications and residential design support with optional 3D visualization.",
   alternates: { canonical: "/custom-house-design" },
   openGraph: {
-    title: "Custom House Design & Floor Plan Service | Artimist Productions",
+    title: "Custom House Design Service & Floor Plans | Artimist",
     description: "Custom home design, house plans and floor plan design developed around your site, lifestyle and project goals.",
     url: "https://www.artimistproductions.com/custom-house-design",
     type: "website",
@@ -20,8 +20,8 @@ export default function CustomHouseDesignPage() {
     eyebrow="House design & floor plans"
     h1="Custom House Design & Floor Plans"
     subtitle="A home planned around the way you actually want to live."
-    intro="Artimist provides custom house design and floor plan services for homeowners planning a new home, reworking an existing house plan or turning early ideas into a clear residential design. We develop layouts, plans and spatial options around your site, priorities and desired architectural character instead of forcing the project into a generic stock plan."
-    audience="Ideal for homeowners searching for a house design service, custom house plans, a home floor plan designer, custom home design or house plan modification."
+    intro="Artimist provides a custom house design service for homeowners planning a new home, improving an existing house plan or turning early ideas into a clear residential design. We develop custom floor plans, layouts and spatial options around your site, priorities and desired architectural character instead of forcing the project into a generic stock plan."
+    audience="For homeowners who need a new home design, custom house plans, a better floor plan or thoughtful changes to an existing house plan."
     image="/media/atlas/atlas-18.webp"
     imageAlt="Contemporary residential development visualized at dusk"
     included={[
