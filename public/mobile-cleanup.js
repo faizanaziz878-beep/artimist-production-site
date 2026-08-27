@@ -27,7 +27,8 @@
     }
 
     .ap-header,
-    .canonical-header {
+    .canonical-header,
+    .st-header {
       background: rgba(9,9,9,.86) !important;
       border-bottom: 1px solid rgba(255,255,255,.09) !important;
       -webkit-backdrop-filter: blur(18px) saturate(1.1) !important;
@@ -40,6 +41,7 @@
       position: relative !important;
       left: auto !important;
       top: auto !important;
+      right: auto !important;
       margin: 0 !important;
       z-index: 2 !important;
       flex: 0 0 auto !important;
@@ -47,19 +49,19 @@
 
     .ap-primary-nav,
     .canonical-primary,
-    .st-primary,
+    .st-nav,
     .ap-header-right > .ap-pill:first-child,
     .ap-header-right > .ap-cta,
     .canonical-actions > .canonical-pill:first-child,
     .canonical-actions > .canonical-cta,
-    .st-header [data-mode-toggle],
-    .st-header .st-start-project {
+    .st-head-right > #modeBtn,
+    .st-head-right > .st-cta {
       display: none !important;
     }
 
     .ap-header-right,
     .canonical-actions,
-    .st-header-actions {
+    .st-head-right {
       position: relative !important;
       inset: auto !important;
       margin: 0 0 0 auto !important;
@@ -69,12 +71,12 @@
       justify-content: flex-end !important;
       gap: 0 !important;
       z-index: 3 !important;
+      width: auto !important;
     }
 
     #apMenu,
     .canonical-actions button[aria-controls="site-index-panel"],
     #menuBtn,
-    .st-menu-btn,
     button[aria-controls="indexPanel"] {
       position: relative !important;
       inset: auto !important;
@@ -96,8 +98,7 @@
 
     #apMenu svg,
     .canonical-actions button[aria-controls="site-index-panel"] svg,
-    #menuBtn svg,
-    .st-menu-btn svg {
+    #menuBtn svg {
       color: currentColor !important;
       stroke: currentColor !important;
       fill: none !important;
@@ -110,6 +111,11 @@
       display: none !important;
     }
 
+    .st-rail,
+    .practice-scroll {
+      display: none !important;
+    }
+
     /* Never allow iOS link/emoji blue to leak into our navigation icons. */
     .ap-shell a,
     .ap-shell button,
@@ -117,7 +123,8 @@
     .canonical-header button,
     .st a,
     .st button {
-      -webkit-text-fill-color: currentColor;
+      -webkit-text-fill-color: currentColor !important;
+      text-decoration-color: currentColor !important;
     }
 
     .ap-index,
@@ -130,7 +137,7 @@
   document.head.appendChild(style);
 
   function cleanArrowNodes(root) {
-    if (!root) return;
+    if (!root || !root.querySelectorAll) return;
     var candidates = root.querySelectorAll('a,button,i,span');
     candidates.forEach(function (el) {
       var text = (el.textContent || '').replace(/[\s\uFE0E\uFE0F]/g, '');
