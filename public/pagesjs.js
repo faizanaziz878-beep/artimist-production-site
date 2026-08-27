@@ -9,6 +9,17 @@
 (function () {
   'use strict';
 
+  function loadSharedEnhancement(src, key) {
+    if (document.querySelector('script[data-artimist-' + key + ']')) return;
+    var script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.setAttribute('data-artimist-' + key, '1');
+    document.head.appendChild(script);
+  }
+  loadSharedEnhancement('/mobile-cleanup.js', 'mobile-cleanup');
+  loadSharedEnhancement('/whatsapp-conversations.js', 'whatsapp');
+
   var root = document.documentElement;
 
   /* iOS/Safari can render U+2197 as a blue emoji-style badge. Force the text
