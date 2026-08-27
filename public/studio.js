@@ -297,7 +297,7 @@ var ROWS = [
         '<div class="st-row-media"><img src="' + r.img + '" alt="' + esc(r.title) + '" loading="lazy" width="1600" height="1000"><span class="st-row-no">' + r.no + '</span></div>' +
         '<div><p class="st-row-tags">' + esc(r.tags) + '</p><h3>' + esc(r.title) + '</h3>' +
         '<p>' + esc(r.copy) + '</p><p class="st-row-meta">' + esc(r.meta) + '</p>' +
-        '<span class="st-row-action">' + (r.frames ? 'View ' + String(r.frames.length).padStart(2, '0') + ' images' : 'Explore project') + ' <i aria-hidden="true">↗</i></span></div>' +
+        '<span class="st-row-action">' + (r.frames ? 'View ' + String(r.frames.length).padStart(2, '0') + ' images' : 'Explore project') + ' <i aria-hidden="true">↗︎</i></span></div>' +
       '</a>');
   });
   rows.addEventListener('click', function (event) {
@@ -313,7 +313,7 @@ var ROWS = [
   DISCIPLINES.forEach(function (d) {
     dl.insertAdjacentHTML('beforeend',
       '<a href="' + d.href + '"><small>' + d.no + '</small><h3>' + esc(d.title) + '</h3>' +
-      '<i style="font-style:normal">&#8599;</i><p>' + esc(d.copy) + '</p></a>');
+      '<i style="font-style:normal">&#8599;&#65038;</i><p>' + esc(d.copy) + '</p></a>');
   });
 
   var planGrid = byId('planGrid');
@@ -364,7 +364,7 @@ var ROWS = [
         '<a href="' + s[1] + '"' + (isPage ? '' : ' data-index-link') + '>' +
         '<small>' + String(i + 1).padStart(2, '0') + '</small>' +
         '<span>' + esc(s[0]) + '</span>' +
-        '<i aria-hidden="true">' + (isPage ? '&#8599;' : '&#8595;') + '</i></a>');
+        '<i aria-hidden="true">' + (isPage ? '&#8599;&#65038;' : '&#8595;') + '</i></a>');
     });
   }
   indexRows(byId('indexPages'), PAGES, true);
