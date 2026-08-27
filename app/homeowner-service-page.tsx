@@ -39,8 +39,8 @@ export function HomeownerServicePage(props: HomeownerServicePageProps) {
         description: props.intro,
         url: `${BASE}/${props.slug}`,
         provider: { "@type": "Organization", name: "Artimist Productions", url: BASE },
-        areaServed: "United States",
-        audience: { "@type": "Audience", audienceType: "Homeowners" },
+        areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"],
+        audience: { "@type": "Audience", audienceType: "Homeowners, architects, developers and design clients" },
       },
       {
         "@type": "FAQPage",
@@ -83,9 +83,9 @@ export function HomeownerServicePage(props: HomeownerServicePageProps) {
         </section>
 
         <div className="hsp-strip" aria-label="Service advantages">
-          <div><strong>Designed around your home</strong><span>No generic stock-plan workflow.</span></div>
+          <div><strong>Designed around your project</strong><span>No generic stock-plan workflow.</span></div>
           <div><strong>Visual before you build</strong><span>3D support is available where useful.</span></div>
-          <div><strong>Files you can use</strong><span>Clear digital deliverables for the next project stage.</span></div>
+          <div><strong>International collaboration</strong><span>Remote project delivery for clients worldwide.</span></div>
         </div>
 
         <section className="hsp-sec hsp-grid">
