@@ -13,23 +13,17 @@
     .ap-header-right,.canonical-actions,.st-head-right{position:relative!important;inset:auto!important;margin:0 0 0 auto!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:0!important;z-index:3!important;width:auto!important}
     #apMenu,.canonical-actions button[aria-controls="site-index-panel"],#menuBtn,button[aria-controls="indexPanel"]{position:relative!important;inset:auto!important;margin:0!important;min-width:auto!important;min-height:40px!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:999px!important;background:rgba(10,10,10,.22)!important;color:#fff!important;font-size:10px!important;line-height:1!important;letter-spacing:.13em!important;box-shadow:none!important;-webkit-appearance:none!important;appearance:none!important}
     #apMenu svg,.canonical-actions button[aria-controls="site-index-panel"] svg,#menuBtn svg{color:currentColor!important;stroke:currentColor!important;fill:none!important;width:16px!important;height:16px!important}
-
-    /* Keep the secondary practice navigation compact, single-line and scrollable. */
     .practice-local-nav,.about-v2-index,.founder-v2-index,.services-v2-index{position:sticky!important;top:64px!important;z-index:80!important;width:100%!important;max-width:none!important;height:48px!important;min-height:48px!important;margin:0!important;padding:0 14px!important;display:flex!important;align-items:center!important;gap:20px!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;flex-wrap:nowrap!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;border-bottom:1px solid rgba(16,16,16,.14)!important}
     .practice-local-nav::-webkit-scrollbar,.about-v2-index::-webkit-scrollbar,.founder-v2-index::-webkit-scrollbar,.services-v2-index::-webkit-scrollbar{display:none!important}
     .practice-local-nav span,.about-v2-index span,.founder-v2-index span{display:none!important}
     .practice-local-nav a,.about-v2-index a,.founder-v2-index a,.services-v2-index a{flex:0 0 auto!important;min-height:48px!important;height:48px!important;padding:0!important;display:inline-flex!important;align-items:center!important;font-size:10px!important;line-height:1!important;letter-spacing:.09em!important;background:transparent!important;border:0!important}
     .practice-page,.about-v2,.founder-v2,.services-v2{scroll-padding-top:122px!important}
-
-    /* No emoji arrows, ever. Controlled SVG/CSS only. */
     .artimist-mobile-arrow-only,.practice-scope-list article>a,.ap-index-list a>i,.st-index-list a>i,.site-index-sheet li a>i{display:none!important}
     .practice-scope-list article{grid-template-columns:34px 1fr!important;gap:14px!important}
     .practice-opening-copy a::after,.practice-next a::after,.services-v2-story>a::after,.practice-feature a::after{content:''!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:9px!important;border-top:1px solid currentColor!important;border-right:1px solid currentColor!important;transform:rotate(45deg)!important;vertical-align:1px!important}
     .st-rail,.practice-scroll{display:none!important}
     .ap-shell a,.ap-shell button,.canonical-header a,.canonical-header button,.st a,.st button,.practice-page a,.practice-page button{-webkit-text-fill-color:currentColor!important;text-decoration-color:currentColor!important}
     .ap-index,.site-index-panel,.st-index,#indexPanel{z-index:2147483640!important}
-
-    /* Restrained mobile motion: visual movement without making the page noisy. */
     .practice-editorial-art img,.practice-gallery img,.services-v2-media img,.about-v2-film img{animation:artimistMobileDrift 14s ease-in-out infinite alternate!important;will-change:transform}
     .practice-scope{position:relative!important;background-image:radial-gradient(circle at 85% 12%,rgba(156,31,53,.10),transparent 34%)!important;background-size:130% 130%!important;animation:artimistAmbient 14s ease-in-out infinite alternate!important}
     .practice-scope-list article{transition:transform .45s ease,background .45s ease!important}
@@ -46,9 +40,7 @@
     var node;
     while ((node = walker.nextNode())) {
       if (!node.nodeValue) continue;
-      node.nodeValue = node.nodeValue
-        .replace(/[↗↘↖↙➡➚➜➝➞➟⬆⬈]\uFE0F?/g, '')
-        .replace(/\uFE0F/g, '');
+      node.nodeValue = node.nodeValue.replace(/[↗↘↖↙➡➚➜➝➞➟⬆⬈]\uFE0F?/g, '').replace(/\uFE0F/g, '');
     }
   }
 
@@ -71,4 +63,12 @@
     });
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
+
+  if (!document.querySelector('script[data-artimist-mobile-visual-breaks]')) {
+    var visualScript = document.createElement('script');
+    visualScript.src = '/mobile-visual-breaks.js';
+    visualScript.defer = true;
+    visualScript.setAttribute('data-artimist-mobile-visual-breaks', '1');
+    document.head.appendChild(visualScript);
+  }
 })();
