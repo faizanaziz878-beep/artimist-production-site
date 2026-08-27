@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   return [
     { url: `${BASE}/`,                       lastModified, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${BASE}/international`,          lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/architecture`,                        lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/bim-drafting`,                        lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/visualization`,                       lastModified, changeFrequency: 'monthly', priority: 0.9 },
@@ -25,6 +26,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/services/architectural-animation`,lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/residential`,             lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/unreal-engine`,           lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/case-studies`,            lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/case-studies/rv-park-design`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/case-studies/permit-application-packages`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/case-studies/home-interior-design`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/case-studies/residential-exterior-design`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/visual-archive`,          lastModified, changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${BASE}/process`,                 lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/partners`,                lastModified, changeFrequency: 'monthly', priority: 0.6 },
