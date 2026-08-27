@@ -29,7 +29,7 @@
     var target=scope.querySelector('.practice-scope-list')||scope.lastElementChild;
     if(!target)return;
     var wrap=document.createElement('div');wrap.className='artimist-mobile-scope-visuals';
-    sets[path].forEach(function(v){var f=document.createElement('figure');f.innerHTML='<img src="'+v[0]+'" alt="'+v[1]+'" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>'+v[2]+'</figcaption>';wrap.appendChild(f);});
+    sets[path].forEach(function(v){var f=document.createElement('figure');f.innerHTML='<img src="'+v[0]+'" alt="'+v[1]+'" loading="lazy" decoding="async"><figcaption>'+v[2]+'</figcaption>';wrap.appendChild(f);});
     scope.insertBefore(wrap,target);
     var style=document.createElement('style');
     style.textContent='.artimist-mobile-scope-visuals{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -14px 34px;padding:0 14px 4px;scrollbar-width:none}.artimist-mobile-scope-visuals::-webkit-scrollbar{display:none}.artimist-mobile-scope-visuals figure{position:relative;flex:0 0 82vw;height:58vw;margin:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);scroll-snap-align:center;background:#111}.artimist-mobile-scope-visuals img{width:100%;height:100%;object-fit:cover;animation:artimistScopeVisual 13s ease-in-out infinite alternate}.artimist-mobile-scope-visuals figcaption{position:absolute;left:12px;bottom:12px;padding:8px 10px;background:rgba(6,6,6,.72);color:#fff;font:700 9px Arial,sans-serif;letter-spacing:.12em;backdrop-filter:blur(8px)}@keyframes artimistScopeVisual{from{transform:scale(1.01)}to{transform:scale(1.05) translateY(-5px)}}@media(prefers-reduced-motion:reduce){.artimist-mobile-scope-visuals img{animation:none}}';
