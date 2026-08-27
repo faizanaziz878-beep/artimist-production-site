@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import type { SiteSettings } from "../../lib/content";
 import { getStudioOffices } from "../../lib/content";
+import { UiIcon } from "../ui-icon";
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
+  return <UiIcon className={down ? "ed-arrow-down" : "ui-icon"} name={down ? "chevron" : "arrow"} size={16} />;
 }
 
 function FounderTrace() {
@@ -31,15 +32,9 @@ function FounderTrace() {
 }
 
 export function FounderMessageExperience({ settings }: { settings: SiteSettings }) {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-  const offices = getStudioOffices(settings);
+  const locations = getStudioOffices(settings);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("artimist-editorial-theme");
-    const initial = saved === "light" || saved === "dark" ? saved : "dark";
-    document.documentElement.dataset.theme = initial;
-    window.setTimeout(() => setTheme(initial), 0);
-
     const onScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       document.documentElement.style.setProperty("--ed-progress", String(total > 0 ? window.scrollY / total : 0));
@@ -57,24 +52,9 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
     };
   }, []);
 
-  function toggleTheme() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    window.localStorage.setItem("artimist-editorial-theme", next);
-  }
-
   return (
     <main className="editorial-site ed-founder">
       <div className="ed-progress" aria-hidden="true" />
-      <header className="ed-header">
-        <Link href="/" className="ed-logo" aria-label="Artimist Production home"><strong>ARTIMIST</strong><span>Creative Production</span></Link>
-        <div className="ed-header-actions">
-          <button className="ed-theme" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "day" : "night"} mode`}><i />{theme === "dark" ? "Night" : "Day"}</button>
-          <Link className="ed-about-home-link" href="/about">About <span>↖</span></Link>
-          <Link className="ed-about-home-link" href="/">Index <span>↖</span></Link>
-        </div>
-      </header>
 
       <section className="ed-founder-hero" id="top">
         <div className="ed-founder-hero-copy">
@@ -83,18 +63,18 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
           <p>“The strongest work keeps one clear idea alive—from the first sketch to the final experience.”</p>
         </div>
         <figure className="ed-founder-portrait">
-          <img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz, founder and creative director of Artimist Production" />
+          <img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz, founder and creative director of Artimist Productions" fetchPriority="high" />
           <figcaption><span>Faizan Aziz</span><strong>Founder / Architect / Creative Director</strong></figcaption>
         </figure>
         <FounderTrace />
-        <div className="ed-founder-meta"><span>Office network / 04</span><span>Vancouver / Ohio / Stockholm / Lahore</span><span>Message / 01</span></div>
+        <div className="ed-founder-meta"><span>Studio network / 04</span><span>Vancouver / Ohio / Stockholm / Lahore</span><span>Message / 01</span></div>
         <a className="ed-founder-scroll" href="#letter">Read the message <Arrow down /></a>
       </section>
 
       <section className="ed-founder-letter" id="letter">
         <aside data-ed-reveal>
           <span>01 / A connected practice</span>
-          <div><img src="/media/team/faizan-founder-hd.webp" alt="" /><p><strong>Faizan Aziz</strong><small>Founder & Creative Director</small></p></div>
+          <div><img src="/media/team/faizan-founder-hd.webp" alt="" loading="lazy" /><p><strong>Faizan Aziz</strong><small>Founder & Creative Director</small></p></div>
         </aside>
         <article data-ed-reveal>
           <p className="ed-founder-opening">Artimist began with a simple frustration: creative work is too often divided into disconnected pieces.</p>
@@ -104,7 +84,7 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
           <p>Our team is deliberately multidisciplinary. Architects, visualizers, BIM specialists, animators, graphics experts, real-time engineers and creative strategists sit around the same table. The people shown on this website are our main team—not the whole team. Artimist is strengthened by a wider network of trusted specialists, production partners and collaborators who join us according to the needs of each project.</p>
           <p>We are young enough to question established habits and serious enough to deliver professionally. Whether we are shaping a building, an image, a brand, a film or an interactive product, we care about clarity, craft and the way the final work makes people feel.</p>
           <p>To every client and collaborator: bring us honest ambition. We will bring curiosity, rigor and the determination to carry the idea all the way through.</p>
-          <footer><span>With intent,</span><strong>Faizan Aziz</strong><small>Founder & Creative Director<br />Artimist Production</small></footer>
+          <footer><span>With intent,</span><strong>Faizan Aziz</strong><small>Founder & Creative Director<br />Artimist Productions</small></footer>
         </article>
       </section>
 
@@ -126,10 +106,10 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
 
       <section className="ed-founder-contact">
         <div data-ed-reveal><span>Begin a conversation / 04</span><h2>Let&apos;s shape<br /><em>what comes next.</em></h2></div>
-        <div data-ed-reveal><div className="ed-founder-office-list"><span>Our offices</span>{offices.map((office) => <p key={office.code}><small>{office.code} / {office.region}</small><strong>{office.label}</strong></p>)}</div><a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}<Arrow /></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">WhatsApp {settings.whatsapp}<Arrow /></a><Link href="/contact">Start a project <Arrow /></Link></div>
+        <div data-ed-reveal><div className="ed-founder-office-list"><span>Working locations</span>{locations.map((location) => <p key={location.code}><small>{location.code} / {location.region}</small><strong>{location.label}</strong></p>)}</div><a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}<Arrow /></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">WhatsApp {settings.whatsapp}<Arrow /></a><Link href="/contact">Start a project <Arrow /></Link></div>
       </section>
 
-      <footer className="ed-footer"><div>ARTIMIST</div><span>© {new Date().getFullYear()} / {offices.map((office) => office.label).join(" · ")}</span><nav><Link href="/team">Team</Link><Link href="/about">About</Link><Link href="/">Selected work</Link><Link href="/admin">Studio admin</Link><a href="#top">Back to top ↑</a></nav></footer>
+      <footer className="ed-footer"><div>ARTIMIST</div><span>© {new Date().getFullYear()} / {locations.map((location) => location.label).join(" · ")}</span><nav><Link href="/team">Team</Link><Link href="/about">About</Link><Link href="/">Selected work</Link><a href="#top">Back to top <UiIcon className="ed-arrow-up" name="chevron" size={14} /></a></nav></footer>
     </main>
   );
 }

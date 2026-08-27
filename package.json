@@ -1,5 +1,5 @@
 {
-  "name": "artimist-production",
+  "name": "artimist-productions",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -41,5 +41,5 @@
     "wrangler": "4.92.0"
   },
   "type": "module",
-  "displayName": "Artimist Production"
+  "displayName": "Artimist Productions"
 }

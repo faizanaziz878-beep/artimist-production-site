@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     description: "Worldwide architecture, BIM, interior design, architectural visualization, animation and real-time production with focused support for the USA, UK, Canada and Sweden.",
     url: `${BASE}/international`,
     type: "website",
+    images: [{ url: "/graphics/international-architecture-bim-network.svg", alt: "Artimist Productions international architecture, BIM and visualization delivery network" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "International Architecture, BIM & 3D Visualization | Artimist Productions",
+    description: "International architecture, BIM, Revit, interiors, visualization and real-time production for clients worldwide.",
+    images: ["/media/hero-night.webp"],
   },
 };
 
@@ -57,32 +64,16 @@ const faqs = [
 ];
 
 const CSS = `
-.intl{min-height:100vh;background:#0a0909;color:#eee8e3;padding-top:84px;font-family:Arial,Helvetica,sans-serif;line-height:1.65}.intl *{box-sizing:border-box}.intl a{color:inherit}.intl-wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}.intl-crumb{padding:26px 0;color:#9e938d;font-size:12px}.intl-crumb a{text-decoration:none}.intl-hero{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center;padding:50px 0 82px}.intl-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d45e73;font-weight:700}.intl h1,.intl h2,.intl h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}.intl h1{font-size:clamp(50px,7vw,92px);line-height:.98;letter-spacing:-.04em;margin:16px 0 24px}.intl-lead{font-size:20px;color:#c4b8b1;max-width:64ch}.intl-hero-card{min-height:520px;border-radius:20px;border:1px solid rgba(255,255,255,.1);overflow:hidden;background:#0b0a0a;box-shadow:0 32px 100px rgba(0,0,0,.38)}.intl-hero-card img{display:block;width:100%;height:100%;min-height:520px;object-fit:cover}.intl-section{padding:68px 0;border-top:1px solid rgba(255,255,255,.09)}.intl-section h2{font-size:clamp(34px,4.5vw,56px);line-height:1.08;margin:8px 0 28px}.intl-market-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.intl-market{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;background:#100e0f}.intl-market small{color:#d45e73;letter-spacing:.16em}.intl-market h3{font-size:30px;margin:12px 0}.intl-market p{color:#aaa09a}.intl-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.intl-tags span{font-size:11px;border:1px solid rgba(255,255,255,.1);padding:7px 10px;border-radius:999px;color:#b9aea8}.intl-services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.intl-services a{display:block;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;text-decoration:none;background:rgba(255,255,255,.02)}.intl-services strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:400;margin-bottom:8px}.intl-services span{font-size:12px;color:#9f948e}.intl-process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.intl-process article{border-top:1px solid rgba(255,255,255,.14);padding-top:18px}.intl-process b{display:block;color:#d45e73;font-size:11px;letter-spacing:.14em;margin-bottom:12px}.intl-process h3{font-size:24px;margin:0 0 8px}.intl-process p{color:#a99e98;font-size:14px}.intl-faq details{padding:20px 0;border-top:1px solid rgba(255,255,255,.1)}.intl-faq summary{cursor:pointer;font-family:Georgia,'Times New Roman',serif;font-size:21px}.intl-faq p{color:#aaa09a;max-width:74ch}.intl-note{padding:20px;border-left:3px solid #9d3043;background:rgba(157,48,67,.08);color:#aca19b;font-size:13px}.intl-cta{margin:42px 0 90px;padding:48px 24px;text-align:center;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:#100e0f}.intl-cta h2{margin:0 0 12px}.intl-cta p{max-width:58ch;margin:0 auto 24px;color:#a99e98}.intl-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.intl-btn{display:inline-block;text-decoration:none;background:#992636;color:#fff!important;border-radius:999px;padding:14px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.intl-btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.18)}@media(max-width:840px){.intl{padding-top:72px}.intl-hero{grid-template-columns:1fr;gap:32px}.intl-hero-card,.intl-hero-card img{min-height:380px}.intl-market-grid,.intl-services,.intl-process{grid-template-columns:1fr}.intl-section{padding:52px 0}}
+.intl{min-height:100vh;background:#0a0909;color:#eee8e3;padding-top:84px;font-family:Arial,Helvetica,sans-serif;line-height:1.65}.intl *{box-sizing:border-box}.intl a{color:inherit}.intl-wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}.intl-crumb{padding:26px 0;color:#9e938d;font-size:12px}.intl-crumb a{text-decoration:none}.intl-hero{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center;padding:50px 0 82px}.intl-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d45e73;font-weight:700}.intl h1,.intl h2,.intl h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}.intl h1{font-size:clamp(50px,7vw,92px);line-height:.98;letter-spacing:-.04em;margin:16px 0 24px}.intl-lead{font-size:20px;color:#c4b8b1;max-width:64ch}.intl-hero-card{min-height:520px;border-radius:20px;border:1px solid rgba(255,255,255,.1);overflow:hidden;background:#0b0a0a;box-shadow:0 32px 100px rgba(0,0,0,.38)}.intl-hero-card img{display:block;width:100%;height:100%;min-height:520px;object-fit:cover}.intl-section{padding:68px 0;border-top:1px solid rgba(255,255,255,.09)}.intl-section h2{font-size:clamp(34px,4.5vw,56px);line-height:1.08;margin:8px 0 28px}.intl-market-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.intl-market{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;background:#100e0f}.intl-market small{color:#d45e73;letter-spacing:.16em}.intl-market h3{font-size:30px;margin:12px 0}.intl-market p{color:#aaa09a}.intl-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.intl-tags span{font-size:11px;border:1px solid rgba(255,255,255,.1);padding:7px 10px;border-radius:999px;color:#b9aea8}.intl-services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.intl-services a{display:block;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;text-decoration:none;background:rgba(255,255,255,.02)}.intl-services strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:400;margin-bottom:8px}.intl-services span{font-size:12px;color:#9f948e}.intl-process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.intl-process article{border-top:1px solid rgba(255,255,255,.14);padding-top:18px}.intl-process b{display:block;color:#d45e73;font-size:11px;letter-spacing:.14em;margin-bottom:12px}.intl-process h3{font-size:24px;margin:0 0 8px}.intl-process p{color:#a99e98;font-size:14px}.intl-faq details{padding:20px 0;border-top:1px solid rgba(255,255,255,.1)}.intl-faq summary{cursor:pointer;font-family:Georgia,'Times New Roman',serif;font-size:21px}.intl-faq p{color:#aaa09a;max-width:74ch}.intl-note{padding:20px;border-left:3px solid #9d3043;background:rgba(157,48,67,.08);color:#aca19b;font-size:13px}.intl-cta{margin:42px 0 90px;padding:48px 24px;text-align:center;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:#100e0f}.intl-cta h2{margin:0 0 12px}.intl-cta p{max-width:58ch;margin:0 auto 24px;color:#a99e98}.intl-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.intl-btn{display:inline-block;text-decoration:none;background:#992636;color:#fff!important;border-radius:999px;padding:14px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.intl-btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.18)}@media(max-width:840px){.intl{padding-top:72px}.intl-hero{grid-template-columns:1fr;gap:32px}.intl-hero-card,.intl-hero-card img{min-height:380px}.intl-market-grid,.intl-services,.intl-process{grid-template-columns:1fr}.intl-section{padding:52px 0}.intl-cta{margin-bottom:130px}}
 `;
 
 export default function InternationalPage() {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Service",
-        name: "International Architecture, BIM and Visualization Services",
-        url: `${BASE}/international`,
-        provider: { "@type": "Organization", "@id": `${BASE}/#organization`, name: "Artimist Productions", url: BASE },
-        areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"],
-        serviceType: ["Architecture", "Interior Design", "BIM", "Revit Drafting", "CAD Drafting", "Architectural Visualization", "3D Rendering", "Architectural Animation", "Unreal Engine"],
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-          { "@type": "ListItem", position: 2, name: "International", item: `${BASE}/international` },
-        ],
-      },
+      { "@type": "Service", name: "International Architecture, BIM and Visualization Services", url: `${BASE}/international`, provider: { "@type": "Organization", "@id": `${BASE}/#organization`, name: "Artimist Productions", url: BASE }, areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"], serviceType: ["Architecture", "Interior Design", "BIM", "Revit Drafting", "CAD Drafting", "Architectural Visualization", "3D Rendering", "Architectural Animation", "Unreal Engine"] },
+      { "@type": "FAQPage", mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) },
+      { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` }, { "@type": "ListItem", position: 2, name: "International", item: `${BASE}/international` }] },
     ],
   };
 

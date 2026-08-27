@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { UiIcon } from "./ui-icon";
 
 const PAGES: Array<[string, string, string]> = [
   ["01", "Home", "/"],
@@ -29,11 +30,13 @@ const PAGES: Array<[string, string, string]> = [
   ["22", "Contact", "/contact"],
 ];
 
-function Icon({ kind }: { kind: "sun" | "menu" | "arrow" }) {
-  if (kind === "sun") return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25" /><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16" /></svg>;
-  if (kind === "menu") return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" /></svg>;
-  return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>;
-}
+const PRIMARY: Array<[string, string]> = [
+  ["Home Design", "/home-design-services"],
+  ["Services", "/services"],
+  ["Case Studies", "/case-studies"],
+  ["International", "/international"],
+  ["Contact", "/contact"],
+];
 
 export function SiteIndex() {
   const pathname = usePathname() || "/";
@@ -60,7 +63,10 @@ export function SiteIndex() {
     document.addEventListener("keydown", onKey);
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = previous; };
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previous;
+    };
   }, [open]);
 
   if (pathname.startsWith("/admin")) return null;
@@ -71,24 +77,51 @@ export function SiteIndex() {
     document.documentElement.dataset.mode = next;
     document.documentElement.dataset.theme = next === "night" ? "dark" : "light";
     document.body.dataset.mode = next;
-    try { window.localStorage.setItem("artimist_mode", next); window.localStorage.setItem("artimist-editorial-theme", next === "night" ? "dark" : "light"); } catch {}
+    try {
+      window.localStorage.setItem("artimist_mode", next);
+      window.localStorage.setItem("artimist-editorial-theme", next === "night" ? "dark" : "light");
+    } catch {}
   }
 
   return <>
+    <a className="canonical-skip" href="#main-content">Skip to content</a>
     <header className="canonical-header">
-      <Link className="canonical-wordmark" href="/" aria-label="Artimist home"><span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small></Link>
-      <nav className="canonical-primary" aria-label="Primary navigation"><Link href="/home-design-services">Home Design</Link><Link href="/services">Services</Link><Link href="/case-studies">Case Studies</Link><Link href="/international">International</Link><Link href="/contact">Contact</Link></nav>
+      <Link className="canonical-wordmark" href="/" aria-label="Artimist Productions home">
+        <span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small>
+      </Link>
+      <nav className="canonical-primary" aria-label="Primary navigation">
+        {PRIMARY.map(([label, href]) => {
+          const current = href === "/" ? pathname === "/" : pathname.startsWith(href);
+          return <Link key={href} href={href} aria-current={current ? "page" : undefined}>{label}</Link>;
+        })}
+      </nav>
       <div className="canonical-actions">
-        <button className="canonical-pill" type="button" onClick={toggleMode} aria-pressed={mode === "night"} aria-label={`Switch to ${mode === "night" ? "day" : "night"} mode`}><Icon kind="sun" /><span>{mode === "night" ? "NIGHT" : "DAY"}</span></button>
-        <button className="canonical-pill" type="button" aria-expanded={open} aria-controls="site-index-panel" onClick={() => setOpen((value) => !value)}>MENU<Icon kind="menu" /></button>
-        <Link className="canonical-cta" href="/contact">START A PROJECT<Icon kind="arrow" /></Link>
+        <button className="canonical-pill" type="button" onClick={toggleMode} aria-pressed={mode === "night"} aria-label={`Switch to ${mode === "night" ? "day" : "night"} mode`}>
+          <UiIcon name={mode === "night" ? "moon" : "sun"} size={16} />
+          <span>{mode === "night" ? "NIGHT" : "DAY"}</span>
+        </button>
+        <button className="canonical-pill" type="button" aria-expanded={open} aria-controls="site-index-panel" onClick={() => setOpen((value) => !value)}>
+          <span>MENU</span><UiIcon name="menu" size={16} />
+        </button>
+        <Link className="canonical-cta" href="/contact">
+          <span>START A PROJECT</span><UiIcon name="arrow" size={16} />
+        </Link>
       </div>
     </header>
     <div id="site-index-panel" className={`site-index-panel${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Site index" hidden={!open}>
       <button type="button" className="site-index-backdrop" aria-label="Close site index" onClick={() => setOpen(false)} />
       <nav className="site-index-sheet" aria-label="All pages">
-        <div className="site-index-top"><p>INDEX / ALL PAGES</p><button type="button" onClick={() => setOpen(false)}>CLOSE ×</button></div>
-        <ul>{PAGES.map(([no,label,href]) => { const base = href.split("#")[0]; const current = base === "/" ? pathname === "/" : pathname.startsWith(base); return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><Icon kind="arrow" /></i></Link></li>; })}</ul>
+        <div className="site-index-top">
+          <p>INDEX / ALL PAGES</p>
+          <button type="button" className="site-index-close" aria-label="Close site index" onClick={() => setOpen(false)}><span>CLOSE</span><UiIcon name="close" size={15} /></button>
+        </div>
+        <ul>
+          {PAGES.map(([no, label, href]) => {
+            const base = href.split("#")[0];
+            const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
+            return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={16} /></i></Link></li>;
+          })}
+        </ul>
         <p className="site-index-foot">WORLDWIDE · USA · UK · CANADA · SWEDEN</p>
       </nav>
     </div>

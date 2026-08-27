@@ -1,38 +1,48 @@
-/* Ask-a-question widget. Sits above the page on every route. */
+/* Ask the Studio — factual, source-owned project guidance. */
 .askbot-launch {
   position: fixed;
   right: 22px;
   bottom: 22px;
   z-index: 940;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   background: #f4f2ef;
   color: #0b0b0b;
   border: 0;
   border-radius: 999px;
   font-family: inherit;
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  padding: 14px 24px;
+  padding: 0 20px;
   cursor: pointer;
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
   transition: transform 0.22s ease, opacity 0.22s ease;
 }
 .askbot-launch:hover { transform: translateY(-2px); }
+.askbot-launch .ui-icon { transition: transform .2s ease; }
+.askbot-launch:hover .ui-icon { transform: translateX(2px); }
+.askbot-launch[aria-expanded="true"] .ui-icon { transform: none; }
 
 .askbot-panel {
   position: fixed;
   right: 22px;
-  bottom: 78px;
+  bottom: 82px;
   z-index: 941;
-  width: min(370px, calc(100vw - 44px));
-  max-height: min(560px, calc(100vh - 130px));
+  width: min(390px, calc(100vw - 44px));
+  max-height: min(590px, calc(100dvh - 132px));
   display: flex;
   flex-direction: column;
   background: #0d0d0d;
-  border: 1px solid #232323;
+  border: 1px solid #272727;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
   color: #e8e6e3;
   animation: askbot-in 0.22s ease;
+  overflow: hidden;
 }
 @keyframes askbot-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
@@ -40,106 +50,125 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   padding: 16px 18px;
   border-bottom: 1px solid #1e1e1e;
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 9px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8f8d8a;
+  color: #9e9a96;
 }
 .askbot-head button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
   background: none;
-  border: 0;
-  color: #8f8d8a;
-  font-size: 20px;
-  line-height: 1;
+  border: 1px solid #2a2a2a;
+  color: #aaa6a2;
   cursor: pointer;
-  padding: 0 2px;
+  padding: 0;
 }
-.askbot-head button:hover { color: #e8e6e3; }
+.askbot-head button:hover { color: #fff; border-color: #4a4a4a; }
 
 .askbot-search { padding: 14px 18px 0; }
 .askbot-search input {
   width: 100%;
+  min-height: 46px;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid #262626;
+  border: 1px solid #2b2b2b;
   color: #e8e6e3;
   font: inherit;
   font-size: 14px;
   padding: 11px 13px;
 }
-.askbot-search input::placeholder { color: #5f5d5a; }
-.askbot-search input:focus { outline: none; border-color: #454545; }
+.askbot-search input::placeholder { color: #6c6965; }
+.askbot-search input:focus { outline: none; border-color: #744150; }
 
-.askbot-body { padding: 14px 18px 18px; overflow-y: auto; }
-
+.askbot-body { padding: 14px 18px 18px; overflow-y: auto; overscroll-behavior: contain; }
 .askbot-list { list-style: none; margin: 0; padding: 0; }
-.askbot-list li + li { border-top: 1px solid #1a1a1a; }
+.askbot-list li + li { border-top: 1px solid #1e1e1e; }
 .askbot-list button {
   width: 100%;
+  min-height: 48px;
   text-align: left;
   background: none;
   border: 0;
   color: #d4d2cf;
   font: inherit;
   font-size: 14px;
-  line-height: 1.55;
-  padding: 12px 0;
+  line-height: 1.5;
+  padding: 11px 0;
   cursor: pointer;
 }
-.askbot-list button:hover { color: #ffffff; }
+.askbot-list button:hover { color: #fff; }
 
-.askbot-answer h4 {
-  margin: 4px 0 10px;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: #f4f2ef;
-}
-.askbot-answer p {
-  margin: 0 0 16px;
-  font-size: 14px;
-  line-height: 1.75;
-  color: #a9a7a4;
-}
+.askbot-answer h4 { margin: 4px 0 10px; font-size: 17px; font-weight: 500; line-height: 1.4; color: #f4f2ef; }
+.askbot-answer p { margin: 0 0 16px; font-size: 14px; line-height: 1.7; color: #aaa6a2; }
 .askbot-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   background: none;
   border: 0;
-  color: #6f6d6a;
+  color: #7f7b77;
   font: inherit;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0 0 10px;
+  padding: 0 0 12px;
   cursor: pointer;
 }
+.askbot-back .ui-icon { transform: rotate(180deg); }
 .askbot-back:hover { color: #e8e6e3; }
 
 .askbot-wa {
   display: block;
   text-align: center;
-  background: #1f8f4e;
-  color: #ffffff;
+  background: #7f2036;
+  color: #fff;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.06em;
-  padding: 13px 16px;
+  text-transform: uppercase;
+  padding: 14px 16px;
   transition: background 0.2s ease;
 }
-.askbot-wa:hover { background: #24a459; }
-.askbot-wa-quiet {
-  margin-top: 16px;
-  background: none;
-  border: 1px solid #2b2b2b;
-  color: #9a9895;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-.askbot-wa-quiet:hover { background: rgba(255, 255, 255, 0.04); color: #e8e6e3; }
+.askbot-wa:hover { background: #9c2942; }
+.askbot-wa-quiet { margin-top: 10px; background: none; border: 1px solid #303030; color: #aaa6a2; }
+.askbot-wa-quiet:hover { background: rgba(255,255,255,.04); color: #fff; }
 
-@media (max-width: 520px) {
-  .askbot-launch { right: 14px; bottom: 14px; padding: 12px 20px; }
-  .askbot-panel { right: 14px; left: 14px; width: auto; bottom: 66px; }
+@media (max-width: 760px) {
+  .askbot-launch {
+    right: 12px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    width: calc((100vw - 34px) / 2);
+    min-width: 0;
+    min-height: 52px;
+    height: 52px;
+    padding: 0 11px;
+    gap: 7px;
+    font-size: 8.2px;
+    letter-spacing: .065em;
+  }
+  .askbot-panel {
+    right: 12px;
+    left: 12px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: calc(100dvh - 112px);
+  }
+  .askbot-search input { font-size: 16px; }
+}
+
+@media (max-width: 390px) {
+  .askbot-launch { right: 10px; width: calc((100vw - 30px) / 2); font-size: 7.7px; letter-spacing: .05em; }
+  .askbot-launch .ui-icon { width: 13px; height: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .askbot-launch, .askbot-panel { animation: none; transition: none; }
 }

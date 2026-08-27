@@ -5,9 +5,27 @@ function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
+function makeReference() {
+  const stamp = Date.now().toString(36).toUpperCase();
+  const salt = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `AP-${stamp}-${salt}`;
+}
+
 async function confirmReceipt(
   email: string,
-  fields: { name: string; company: string; projectType: string; budget: string; timeline: string; message: string },
+  fields: {
+    reference: string;
+    name: string;
+    company: string;
+    projectType: string;
+    projectLocation: string;
+    projectStage: string;
+    budget: string;
+    timeline: string;
+    preferredContact: string;
+    sourceLinks: string;
+    message: string;
+  },
 ) {
   try {
     await sendReceiptConfirmation(email, fields);
@@ -22,8 +40,12 @@ export async function POST(request: Request) {
     email: string;
     company: string;
     projectType: string;
+    projectLocation: string;
+    projectStage: string;
     budget: string;
     timeline: string;
+    preferredContact: string;
+    sourceLinks: string;
     message: string;
     utmSource: string;
     utmMedium: string;
@@ -46,10 +68,14 @@ export async function POST(request: Request) {
       name: clean(body.name, 80),
       email: clean(body.email, 160),
       company: clean(body.company, 120),
-      projectType: clean(body.projectType, 80),
+      projectType: clean(body.projectType, 120),
+      projectLocation: clean(body.projectLocation, 140),
+      projectStage: clean(body.projectStage, 100),
       budget: clean(body.budget, 80),
       timeline: clean(body.timeline, 100),
-      message: clean(body.message, 2500),
+      preferredContact: clean(body.preferredContact, 40),
+      sourceLinks: clean(body.sourceLinks, 1200),
+      message: clean(body.message, 4000),
       utmSource: clean(body.utm_source, 240),
       utmMedium: clean(body.utm_medium, 240),
       utmCampaign: clean(body.utm_campaign, 240),
@@ -68,7 +94,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "That submission could not be read. Please try again." }, { status: 400 });
   }
 
-  const { name, email, company, projectType, budget, timeline, message } = payload;
+  const { name, email, company, projectType, projectLocation, projectStage, budget, timeline, preferredContact, sourceLinks, message } = payload;
   if (!name || !/^\S+@\S+\.\S+$/.test(email) || !projectType || message.length < 20) {
     return Response.json(
       { error: "Please complete your name, email, project type and a short project brief." },
@@ -76,24 +102,40 @@ export async function POST(request: Request) {
     );
   }
 
+  const reference = makeReference();
+  const storedMessage = [
+    `Reference: ${reference}`,
+    projectLocation ? `Project location: ${projectLocation}` : "",
+    projectStage ? `Project stage: ${projectStage}` : "",
+    preferredContact ? `Preferred contact: ${preferredContact}` : "",
+    sourceLinks ? `Source files / share link: ${sourceLinks}` : "",
+    "",
+    message,
+  ].filter(Boolean).join("\n");
+
   let stored = false;
   try {
     const { getDb } = await import("../../../db");
-    await getDb().insert(inquiries).values({ name, email, company, projectType, budget, timeline, message });
+    await getDb().insert(inquiries).values({ name, email, company, projectType, budget, timeline, message: storedMessage });
     stored = true;
   } catch {
     // No database binding on this host — the email copy below remains the record.
   }
 
   const emailed = await sendNotification(
-    `New studio enquiry — ${name}`,
+    `New studio enquiry ${reference} — ${name}`,
     {
+      Reference: reference,
       Name: name,
       Email: email,
       Company: company,
       "Project type": projectType,
+      "Project location": projectLocation,
+      "Project stage": projectStage,
       Budget: budget,
       Timeline: timeline,
+      "Preferred contact": preferredContact,
+      "Source files / share link": sourceLinks,
       Brief: message,
       "UTM source": payload.utmSource,
       "UTM medium": payload.utmMedium,
@@ -113,13 +155,13 @@ export async function POST(request: Request) {
   );
 
   if (stored || emailed) {
-    await confirmReceipt(email, { name, company, projectType, budget, timeline, message });
-    return Response.json({ ok: true }, { status: 201 });
+    await confirmReceipt(email, { reference, name, company, projectType, projectLocation, projectStage, budget, timeline, preferredContact, sourceLinks, message });
+    return Response.json({ ok: true, reference }, { status: 201 });
   }
 
   return Response.json(
     {
-      error: `The studio inbox is temporarily unavailable. Please email us directly at ${publicContactEmail()} and we will reply the same day.`,
+      error: `The studio inbox is temporarily unavailable. Please email us directly at ${publicContactEmail()} and we will reply as soon as possible.`,
     },
     { status: 503 },
   );

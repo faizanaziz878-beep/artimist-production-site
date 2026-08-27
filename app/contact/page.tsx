@@ -11,9 +11,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact Artimist Productions | Start a Project",
-    description: "Discuss an architecture, interior, BIM, visualization, animation or real-time project with the Artimist team.",
+    description: "Send a project brief for architecture, interiors, BIM, visualization, animation or real-time work and continue directly with the studio.",
     url: "https://www.artimistproductions.com/contact",
     type: "website",
+    images: [{ url: "/media/atlas/atlas-34.webp", alt: "Start a project with Artimist Productions" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Artimist Productions | Start a Project",
+    description: "Send your project brief and source-file link to the Artimist Productions studio.",
+    images: ["/media/atlas/atlas-34.webp"],
   },
 };
 

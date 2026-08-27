@@ -1,19 +1,18 @@
 /**
  * Opening sequence.
  *
- * Rendered server-side so it covers the page on the very first paint — no
- * flash of the site before the mark appears. A blocking script in <head>
- * decides play/skip before anything is drawn, which keeps it out of React's
- * hydration path entirely and costs no client bundle.
+ * The branded curtain is now reserved for the studio/home and visual archive.
+ * Search/service/contact visitors should reach useful content immediately.
  */
 
 import { IntroMark } from "./intro-mark";
 
 const decideScript = `(function(){
   var d = document.documentElement;
-  var play = true;
+  var path = location.pathname || '/';
+  var brandMoment = path === '/' || path === '/visual-archive';
+  var play = brandMoment;
   try {
-    // The control room is a tool, not a brand moment. Never gate it.
     if (location.pathname.indexOf('/admin') === 0) play = false;
     if (sessionStorage.getItem('artimist-intro')) play = false;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) play = false;
@@ -25,7 +24,7 @@ const decideScript = `(function(){
     if (d.getAttribute('data-intro') !== 'play') return;
     d.setAttribute('data-intro', 'done');
   };
-  var timer = setTimeout(end, 2600);
+  var timer = setTimeout(end, 1850);
   var skip = function () { clearTimeout(timer); end(); };
   ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (evt) {
     window.addEventListener(evt, skip, { once: true, passive: true });

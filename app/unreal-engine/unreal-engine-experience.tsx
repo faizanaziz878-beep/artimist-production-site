@@ -97,7 +97,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <span>Next build / 01</span><h2>Give people<br /><em>a world to enter.</em></h2><div><Link href="/contact">Start an Unreal Engine project <Arrow /></Link><a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}<Arrow /></a></div>
       </section>
 
-      <footer className="ue-footer"><strong>ARTIMIST</strong><span>© {new Date().getFullYear()} / WORLDWIDE · USA · UK · CANADA · SWEDEN</span><nav><Link href="/">Home</Link><Link href="/team">Team</Link><Link href="/admin">Admin</Link><a href="#top">Top</a></nav></footer>
+      <footer className="ue-footer"><strong>ARTIMIST</strong><span>© {new Date().getFullYear()} / WORLDWIDE · USA · UK · CANADA · SWEDEN</span><nav><Link href="/">Home</Link><Link href="/team">Team</Link><Link href="/services">Services</Link><Link href="/contact">Contact</Link><a href="#top">Top</a></nav></footer>
     </main>
   );
 }
