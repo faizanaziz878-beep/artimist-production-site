@@ -98,7 +98,7 @@ export function SiteIndex() {
           <ul>{PAGES.map(([no,label,href]) => {
             const base = href.split("#")[0];
             const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
-            return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true">↗</i></Link></li>;
+            return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><Icon kind="arrow" /></i></Link></li>;
           })}</ul>
           <p className="site-index-foot">VANCOUVER · OHIO · STOCKHOLM · LAHORE</p>
         </nav>
