@@ -23,6 +23,18 @@ function cleanPublicPlace(value: string) {
   return value.replace(/,\s*Pakistan\b/gi, "").replace(/^Pakistan$/i, "Lahore");
 }
 
+const PUBLIC_SETTING_OVERRIDES: SiteSettings = {
+  heroEyebrow: "International multidisciplinary creative studio · Worldwide / USA / UK / Canada / Sweden",
+  heroHeadline: "We design how the future will feel.",
+  heroBody: "Artimist Productions connects architecture, interiors, visualization, BIM, motion and digital craft into one multidisciplinary practice.",
+  availability: "Open for selected international collaborations",
+  address: "International project delivery",
+  officeCanada: "Canada · Remote project delivery",
+  officeUsa: "United States · Remote project delivery",
+  officePakistan: "Worldwide production network",
+  officeSweden: "Sweden · Remote project delivery",
+};
+
 const legacyTeamPortraits: Record<string, string[]> = {
   "Faizan Aziz": ["/media/team/faizan.webp"],
   "Aden Mansoor": ["/media/team/aden.webp", "/media/team/aden-portrait.webp"],
@@ -73,8 +85,6 @@ export async function getPublicContent(): Promise<{
       ...defaultTeam.filter((member) => member.published && !existingTeamNames.has(member.name.toLowerCase())),
     ].sort((a, b) => a.sortOrder - b.sortOrder);
 
-    // Public trust must be real: only records explicitly approved in the database
-    // are returned. No anonymous seeded or placeholder testimonials are mixed in.
     const publicTestimonials = testimonialRows
       .filter((review) => review.status === "published")
       .map((review) => ({ ...review, company: cleanPublicPlace(review.company) }));
@@ -93,6 +103,7 @@ export async function getPublicContent(): Promise<{
           ? defaultSettings.contactEmail
           : cleanPublicPlace(row.value),
       ])),
+      ...PUBLIC_SETTING_OVERRIDES,
     };
 
     return {
@@ -106,7 +117,7 @@ export async function getPublicContent(): Promise<{
       projects: defaultProjects,
       team: defaultTeam,
       testimonials: [],
-      settings: defaultSettings,
+      settings: { ...defaultSettings, ...PUBLIC_SETTING_OVERRIDES },
     };
   }
 }
