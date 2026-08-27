@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+import { HomeownerServicePage } from "../homeowner-service-page";
+
+export const metadata: Metadata = {
+  title: "3D Interior Design & Home Visualization Service | Artimist",
+  description: "3D interior design and home visualization for homeowners: room layouts, materials, lighting, furniture planning and photoreal interior renders before construction or renovation.",
+  alternates: { canonical: "/3d-interior-design-service" },
+  openGraph: {
+    title: "3D Interior Design & Home Visualization Service | Artimist",
+    description: "See your kitchen, living room, bedroom, bathroom or whole home in 3D before you build, buy or renovate.",
+    url: "https://www.artimistproductions.com/3d-interior-design-service",
+    type: "website",
+  },
+};
+
+export default function InteriorDesignPage() {
+  return <HomeownerServicePage
+    slug="3d-interior-design-service"
+    serviceName="3D Interior Design"
+    eyebrow="Interior design & 3D views"
+    h1="3D Interior Design & Home Visualization"
+    subtitle="Understand the space, materials and furniture before money is committed on site."
+    intro="Artimist provides online interior design and 3D home visualization for homeowners who want to make confident decisions before construction or renovation. We can develop room layouts, material directions, furniture planning and photoreal 3D views for a single room or an entire home, helping you see how light, finishes, proportions and furniture work together before anything is built."
+    audience="Ideal for searches such as home interior design service, online interior design service, 3D interior design service, 3D home visualization, kitchen design service and whole-house interior design."
+    image="/media/atlas/atlas-05.webp"
+    imageAlt="Warm contemporary interior with timber finishes and full-height glazing"
+    included={[
+      "Living room interior design",
+      "Kitchen design and visualization",
+      "Bedroom interior design",
+      "Bathroom design concepts",
+      "Whole-house interior design",
+      "Furniture layout and space planning",
+      "Material, finish and lighting direction",
+      "Photoreal 3D interior rendering",
+    ]}
+    deliverables={[
+      "Room layout and furniture plans as scoped",
+      "Material and finish direction",
+      "3D interior views",
+      "Photoreal final renders",
+      "Presentation-ready image set",
+      "Design notes for implementation where included",
+    ]}
+    steps={[
+      { title: "Send the room", text: "Share plans, measurements, photographs and inspiration. We identify the key decisions and confirm which spaces and views will give you the most value." },
+      { title: "Design in 3D", text: "We develop layout, materials, furniture and lighting together so the interior is solved as one composition rather than a collection of unrelated selections." },
+      { title: "Review before build", text: "You review the design through 3D views and refined renders, make changes while they are still inexpensive, and receive the agreed final design package." },
+    ]}
+    faqs={[
+      { q: "Can you design only one room?", a: "Yes. Kitchens, living rooms, bedrooms and bathrooms can be handled individually, or we can create a consistent design language across the whole home." },
+      { q: "Can I use this service remotely?", a: "Yes. The process can be handled online using your drawings, measurements, photographs, video and reference images." },
+      { q: "Will I see the design in realistic 3D?", a: "Yes. Photoreal interior visualization is one of Artimist's core capabilities, so you can evaluate material, lighting and spatial decisions before implementation." },
+      { q: "Do you help with furniture layout?", a: "Yes. Furniture placement and circulation are treated as part of the spatial design rather than added at the end." },
+    ]}
+    related={[
+      { href: "/custom-house-design", label: "Custom House Design" },
+      { href: "/residential-renovation-permit-drawings", label: "Renovation & Permit Drawings" },
+      { href: "/visualization", label: "Architectural Visualization" },
+      { href: "/services/3d-interior-rendering", label: "Professional Interior Rendering" },
+    ]}
+  />;
+}
