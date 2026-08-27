@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t d">
+<title id="t">House plan modification and floor plan changes</title><desc id="d">Editorial before-and-after floor plan study showing an existing layout refined into a clearer residential plan.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#090909"/><stop offset="1" stop-color="#171214"/></linearGradient><filter id="g"><feGaussianBlur stdDeviation="38"/></filter></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/><circle cx="1260" cy="250" r="240" fill="#8f2635" opacity=".14" filter="url(#g)"/>
+<g fill="none" stroke="#efe8e2" stroke-width="5" opacity=".8">
+<rect x="105" y="145" width="570" height="690"/><path d="M105 455h570M350 145v310M510 455v380M105 660h405"/><path d="M165 220h125v150H165zM405 215h190v155H405zM170 515h260v110H170z" opacity=".45"/>
+</g>
+<g fill="none" stroke="#b43d52" stroke-width="4" stroke-dasharray="14 12" opacity=".9"><path d="M725 500h145"/><path d="m840 465 35 35-35 35"/></g>
+<g fill="none" stroke="#fff7f1" stroke-width="5">
+<rect x="925" y="115" width="575" height="735" rx="2"/><path d="M925 405h575M1215 115v290M1080 405v445M925 640h575M1335 405v235"/><path d="M985 180h175v160H985zM1270 175h170v165h-170zM985 470h240v110H985z" opacity=".5"/>
+</g>
+<g stroke="#b43d52" stroke-width="3" fill="none"><path d="M960 790h500"/><path d="M960 775v30M1460 775v30"/><path d="M1125 430v180M1110 430h30M1110 610h30"/></g>
+<g fill="#d6cbc4" opacity=".65"><rect x="210" y="700" width="180" height="65" rx="10"/><rect x="1020" y="690" width="215" height="72" rx="10"/><rect x="1305" y="690" width="120" height="72" rx="10"/></g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="24" letter-spacing="6" fill="#a99e98"><text x="105" y="105">EXISTING PLAN</text><text x="925" y="75">REFINED PLAN</text></g>
+<g fill="#b43d52"><circle cx="1180" cy="452" r="8"/><circle cx="1398" cy="674" r="8"/><circle cx="1090" cy="824" r="8"/></g>
+</svg>
