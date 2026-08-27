@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">3D interior design and home visualization diagram</title><desc id="desc">Editorial architectural graphic combining an axonometric interior room, furniture layout, material swatches and lighting zones.</desc>
+<rect width="1600" height="1000" fill="#0b0a0a"/>
+<g stroke="#242020" stroke-width="1"><path d="M0 125H1600M0 250H1600M0 375H1600M0 500H1600M0 625H1600M0 750H1600M0 875H1600"/><path d="M160 0V1000M320 0V1000M480 0V1000M640 0V1000M800 0V1000M960 0V1000M1120 0V1000M1280 0V1000M1440 0V1000"/></g>
+<g fill="none" stroke="#e8ddd5" stroke-linejoin="round">
+<path d="M305 695 760 430 1185 620 735 890Z" stroke-width="5"/>
+<path d="M305 695V410L760 150V430M1185 620V335L760 150" stroke-width="4" opacity=".9"/>
+<path d="M402 638 735 447 1058 590 724 788Z" stroke-width="3" opacity=".56"/>
+<path d="M490 587 616 515 755 576 628 650Z" stroke-width="3"/><path d="M852 518 1014 591 1014 676 851 604Z" stroke-width="3"/>
+<path d="M672 724 770 667 884 718 785 777Z" stroke-width="3"/>
+<path d="M436 424V593M1094 390V580" stroke-width="3" opacity=".65"/>
+</g>
+<g fill="none" stroke="#9c3144" stroke-width="4">
+<path d="M515 298C515 420 575 493 661 542" opacity=".9"/><path d="M915 268C915 409 869 510 798 567" opacity=".9"/>
+<circle cx="515" cy="298" r="10" fill="#9c3144"/><circle cx="915" cy="268" r="10" fill="#9c3144"/>
+<path d="M1238 250h180v92h-180zM1238 370h180v92h-180zM1238 490h180v92h-180z"/>
+</g>
+<g fill="#181414" stroke="#6e6260" stroke-width="2"><circle cx="1281" cy="296" r="24"/><circle cx="1281" cy="416" r="24"/><circle cx="1281" cy="536" r="24"/></g>
+<g fill="#b9aaa2" font-family="Arial, Helvetica, sans-serif" font-size="21" letter-spacing="4">
+<text x="305" y="96">3D INTERIOR DESIGN / SPATIAL STUDY</text><text x="305" y="950">LAYOUT · MATERIAL · LIGHT · FURNITURE · VISUALIZATION</text>
+<text x="1240" y="225" font-size="15">MATERIAL DIRECTION</text><text x="1320" y="301" font-size="14" letter-spacing="2">WARM TIMBER</text><text x="1320" y="421" font-size="14" letter-spacing="2">SOFT STONE</text><text x="1320" y="541" font-size="14" letter-spacing="2">TEXTILE / LIGHT</text>
+</g>
+<g fill="#9c3144"><circle cx="724" cy="788" r="7"/><circle cx="1058" cy="590" r="7"/><circle cx="402" cy="638" r="7"/></g>
+</svg>
