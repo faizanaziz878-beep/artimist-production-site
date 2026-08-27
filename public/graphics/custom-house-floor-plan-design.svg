@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">Custom house floor plan design diagram</title><desc id="desc">Architectural line drawing showing a custom residential floor plan, circulation, furniture and dimension marks.</desc>
+<rect width="1600" height="1000" fill="#0b0a0a"/>
+<g stroke="#2a2525" stroke-width="1">
+<path d="M0 100H1600M0 200H1600M0 300H1600M0 400H1600M0 500H1600M0 600H1600M0 700H1600M0 800H1600M0 900H1600"/>
+<path d="M100 0V1000M200 0V1000M300 0V1000M400 0V1000M500 0V1000M600 0V1000M700 0V1000M800 0V1000M900 0V1000M1000 0V1000M1100 0V1000M1200 0V1000M1300 0V1000M1400 0V1000M1500 0V1000"/>
+</g>
+<g fill="none" stroke="#e8ddd5" stroke-width="5" stroke-linejoin="round">
+<path d="M285 220H1080V330H1280V780H810V850H285Z"/>
+<path d="M610 220V520H285M610 520V850M810 330V780M1080 330V575H1280M810 575H1080"/>
+<path d="M430 520v-90a90 90 0 0 1 90 90M610 690h90a90 90 0 0 1-90 90M810 470h90a90 90 0 0 1-90 90M1080 690h90a90 90 0 0 1-90 90" stroke-width="3" opacity=".65"/>
+</g>
+<g fill="none" stroke="#8d303f" stroke-width="4">
+<rect x="355" y="295" width="180" height="95" rx="3"/><rect x="920" y="400" width="245" height="85" rx="3"/>
+<rect x="895" y="630" width="155" height="90" rx="3"/><circle cx="1140" cy="665" r="52"/>
+<path d="M350 676h165v85H350zM380 676v85M485 676v85"/>
+</g>
+<g fill="none" stroke="#a69890" stroke-width="2" opacity=".8">
+<path d="M285 165H1280M285 145v40M1280 145v40M220 220V850M200 220h40M200 850h40"/>
+<path d="M610 190v-36M810 300v-36M1080 300v-36M1280 300v-36"/>
+<path d="M250 520h-35M250 780h-35"/>
+</g>
+<g fill="#b9aaa2" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="5">
+<text x="285" y="125">CUSTOM RESIDENTIAL PLAN / CONCEPT STUDY</text>
+<text x="305" y="910">SPACE · CIRCULATION · FURNITURE · PROPORTION</text>
+</g>
+<g fill="#8d303f">
+<circle cx="610" cy="520" r="7"/><circle cx="810" cy="575" r="7"/><circle cx="1080" cy="575" r="7"/>
+</g>
+</svg>
