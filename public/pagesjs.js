@@ -111,10 +111,29 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('pointermove', function (e) { root.style.setProperty('--mx', e.clientX + 'px'); root.style.setProperty('--my', e.clientY + 'px'); }, { passive: true });
 
-  var io = new IntersectionObserver(function (entries) {
+  var motionNodes = Array.prototype.slice.call(document.querySelectorAll('main section, main article, main figure'));
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = reduceMotion ? null : new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); } });
   }, { rootMargin: '0px 0px -7% 0px', threshold: 0.06 });
-  document.querySelectorAll('main section, main article, main figure').forEach(function (t) { t.classList.add('motion-section'); io.observe(t); });
+  motionNodes.forEach(function (t) {
+    t.classList.add('motion-section');
+    if (reduceMotion) t.classList.add('in-view');
+    else io.observe(t);
+  });
+  // Motion enhances the page; it must never be a dependency for seeing content.
+  window.setTimeout(function () {
+    motionNodes.forEach(function (t) { t.classList.add('in-view'); });
+  }, 2400);
+
+  // Keep diagonal arrows as text glyphs on iOS instead of blue emoji buttons.
+  var arrowWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  var arrowText;
+  while ((arrowText = arrowWalker.nextNode())) {
+    if (arrowText.nodeValue && arrowText.nodeValue.indexOf('\u2197') !== -1) {
+      arrowText.nodeValue = arrowText.nodeValue.replace(/\u2197(?!\uFE0E)/g, '\u2197\uFE0E');
+    }
+  }
 
   if (!matchMedia('(pointer: coarse)').matches) {
     document.querySelectorAll('.practice-shot>div,.partners-v2-grid article,.about-v2-principles article,.services-v2-engage article,.capability-services article,.service-visual').forEach(function (card) {
