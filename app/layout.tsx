@@ -5,6 +5,7 @@ import "./intro.css";
 import "./team/team.css";
 import "./site-index.css";
 import "./quality-pass.css";
+import "./landing-v2.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 import { SiteIndex } from "./site-index";
 import { VisitorTracker } from "./visitor-tracker";
