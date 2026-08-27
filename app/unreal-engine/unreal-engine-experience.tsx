@@ -15,8 +15,8 @@ const pipeline = ["Architectural data", "Optimized geometry", "Materials + light
 
 function Arrow({ down = false }: { down?: boolean }) {
   return down
-    ? <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M5 12l5 5 5-5" /></svg>
-    : <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>;
+    ? <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M10 3v14M5 12l5 5 5-5" /></svg>
+    : <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 15 15 5M7 5h8v8" /></svg>;
 }
 
 export function UnrealEngineExperience({ settings }: { settings: SiteSettings }) {
