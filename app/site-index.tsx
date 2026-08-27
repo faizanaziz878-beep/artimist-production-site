@@ -13,13 +13,16 @@ const PAGES: Array<[string, string, string]> = [
   ["06", "Visualization", "/visualization"],
   ["07", "Unreal & Real-time", "/unreal-engine"],
   ["08", "Residential", "/residential"],
-  ["09", "Visual archive", "/visual-archive"],
-  ["10", "Process", "/process"],
-  ["11", "Studio team", "/team"],
-  ["12", "About", "/about"],
-  ["13", "Founder's message", "/founder-message"],
-  ["14", "Partners", "/partners"],
-  ["15", "Contact", "/contact"],
+  ["09", "Custom House Design", "/custom-house-design"],
+  ["10", "3D Interior Design", "/3d-interior-design-service"],
+  ["11", "Renovation & Permit Drawings", "/residential-renovation-permit-drawings"],
+  ["12", "Visual archive", "/visual-archive"],
+  ["13", "Process", "/process"],
+  ["14", "Studio team", "/team"],
+  ["15", "About", "/about"],
+  ["16", "Founder's message", "/founder-message"],
+  ["17", "Partners", "/partners"],
+  ["18", "Contact", "/contact"],
 ];
 
 function Icon({ kind }: { kind: "sun" | "menu" | "arrow" }) {
