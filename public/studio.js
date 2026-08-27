@@ -83,14 +83,7 @@
       services: 'Architecture \u00b7 Master Planning \u00b7 Research \u00b7 Visualization' }
   ];
 
-  /* The moving-image reel. Each entry is a real file in /media/motion. */
-  /* The homepage carries the Bowl Stroke teaser only; the rest of the reel
-     belongs on the animation page, not here. */
-  var REELS = [
-    { title: 'Bowl Stroke', note: 'Hospitality \u2014 exterior to private room', src: MO + 'bowl-stroke-teaser.mp4', poster: MO + 'bowlstroke-poster.webp' }
-  ];
-
-  var ROWS = [
+var ROWS = [
     { no: '01', href: '/visual-archive', img: D + 'airside-district-01.webp', frames: [D + 'airside-district-01.webp', D + 'airsidepark.webp'], tags: 'Masterplan · Architecture · Visualization', title: 'Airside District', copy: 'A mixed-use district organised around civic rooms, arrival sequences and a continuous public ground.', meta: 'UNITED STATES / 2026' },
     { no: '02', href: '/unreal-engine', img: D + 'marina-arts-center-01.webp', tags: 'Culture · Real-time · Unreal', title: 'Marina Arts Center', copy: 'A waterfront arts building developed as a real-time environment so the client could walk it before committing.', meta: 'EUROPE / 2026' },
     { no: '03', href: '/visual-archive#technical-plates', img: D + 'water-research-01.webp', tags: 'Research · Parametric · Lab', title: 'Water Research Station', copy: 'A parametric shell study driven by daylight, prevailing wind and the rhythm of the tidal edge.', meta: 'RESEARCH / 2026' },
@@ -145,7 +138,7 @@
   /* The rail and the in-page half of the menu. */
   var SECTIONS = [
     ['Spatial portal', '#portal'], ['Selected work', '#work'], ['Complete index', '#archive'],
-    ['Disciplines', '#disciplines'], ['Real-time', '#realtime'], ['Animation', '#animation'],
+    ['Disciplines', '#disciplines'], ['Real-time', '#realtime'],
     ['Studio team', '#team'], ['Plans', '#plans'], ['Project brief', '#brief'],
     ['Clients', '#clients'], ['Contact', '#contact']
   ];
@@ -297,37 +290,6 @@
     if (e.key === 'ArrowLeft') stepFrame(-1);
   });
 
-  /* ---- moving image ------------------------------------------------------ */
-  var reelVideo = byId('reelVideo'), reelList = byId('reelList');
-  var reelAt = -1;
-  if (REELS.length > 1) {
-    reelList.hidden = false;
-    REELS.forEach(function (r, i) {
-      var b = el('button', 'st-reel-pick');
-      b.type = 'button';
-      b.innerHTML = '<img src="' + r.poster + '" alt="" loading="lazy"><span><b>' + esc(r.title) + '</b><small>' + esc(r.note) + '</small></span>';
-      b.addEventListener('click', function () { showReel(i, true); });
-      reelList.appendChild(b);
-    });
-  }
-  function showReel(i, play) {
-    var r = REELS[i];
-    if (i !== reelAt) {
-      reelAt = i;
-      reelVideo.poster = r.poster;
-      reelVideo.innerHTML = '<source src="' + r.src + '" type="video/mp4">';
-      reelVideo.load();
-      byId('reelTitle').textContent = r.title;
-      byId('reelNote').textContent = r.note;
-      [].forEach.call(reelList.children, function (b, n) {
-        b.setAttribute('aria-current', n === i ? 'true' : 'false');
-      });
-    }
-    if (play) reelVideo.play().catch(function () {});
-  }
-  if (REELS.length > 1) showReel(0, false);
-  else reelAt = 0; /* keep preload="none" intact until the visitor chooses play */
-
   var rows = byId('rows');
   ROWS.forEach(function (r, i) {
     rows.insertAdjacentHTML('beforeend',
@@ -393,7 +355,7 @@
     if (!c.img) return '<div class="st-client is-word"><strong>' + esc(c.name) + '</strong></div>';
     return '<div class="st-client"><img src="' + c.img + '" alt="' + esc(c.name) + '" loading="lazy"><b>' + esc(c.name) + '</b></div>';
   }
-  marquee.innerHTML = CLIENTS.map(clientCell).join('') + CLIENTS.map(clientCell).join('');
+  marquee.innerHTML = CLIENTS.map(clientCell).join('');
 
   function indexRows(host, list, isPage) {
     list.forEach(function (s, i) {

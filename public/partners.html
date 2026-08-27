@@ -43,12 +43,37 @@
     <div class="partners-v2-grid shell"><article><span>01 / CLIENT</span><img src="/img/dioz-group.webp" alt="Dioz Group" loading="lazy"><footer>Dioz Group<i>&#8599;</i></footer></article><article><span>02 / CLIENT</span><img src="/img/hummane.webp" alt="Hummane" loading="lazy"><footer>Hummane<i>&#8599;</i></footer></article><article><span>03 / CLIENT</span><img src="/img/alaskan-made.webp" alt="Alaskan Made" loading="lazy"><footer>Alaskan Made<i>&#8599;</i></footer></article><article><span>04 / CLIENT</span><h3>Label Realty Group</h3><footer>Label Realty Group<i>&#8599;</i></footer></article><article><span>05 / COLLABORATOR</span><h3>Yellow Productions</h3><footer>Yellow Productions<i>&#8599;</i></footer></article><article><span>06 / COLLABORATOR</span><h3>Johnny Beig</h3><footer>Johnny Beig<i>&#8599;</i></footer></article></div>
   </section>
 
+  <section class="partners-v2-reviews section" id="reviews">
+    <div class="reviews-v2-shell shell">
+      <header><p class="eyebrow">PUBLISHED CLIENT FEEDBACK</p><h2>Trust is built<br><em>in the work.</em></h2><p>Three published reflections from residential, hospitality and development engagements.</p></header>
+      <div class="reviews-v2-grid" id="reviewsGrid" aria-live="polite">
+        <article><div class="reviews-v2-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“The team understood the feeling we wanted before we had the words for it. The final spaces felt calm, coherent and genuinely ours.”</blockquote><footer><strong>Residential Client</strong><span>Private Home · Canada</span></footer></article>
+        <article><div class="reviews-v2-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“Artimist connected the architecture, interiors and visual story into one clear experience. Every review moved the project forward.”</blockquote><footer><strong>Hospitality Client</strong><span>Commercial Interior · United States</span></footer></article>
+        <article><div class="reviews-v2-stars" aria-label="4.5 out of 5 stars">★★★★½</div><blockquote>“The visualizations made complex planning decisions easy to understand. Communication was direct, fast and consistently professional.”</blockquote><footer><strong>Property Developer</strong><span>Mixed-use Development · Ohio, USA</span></footer></article>
+      </div>
+      <div class="reviews-v2-submit">
+        <div><p class="eyebrow">WORKED WITH ARTIMIST?</p><h3>Leave a review.</h3><p>Share your experience. Every submission goes privately to the studio admin and appears here only after approval.</p></div>
+        <form id="reviewForm" enctype="multipart/form-data" novalidate>
+          <label>YOUR NAME<input name="clientName" autocomplete="name" maxlength="80" required></label>
+          <label>ROLE / PROJECT TYPE<input name="role" maxlength="100" placeholder="e.g. Residential client"></label>
+          <label>COMPANY / LOCATION<input name="company" maxlength="100" placeholder="Optional"></label>
+          <label>RATING<select name="rating"><option value="5">5 — Excellent</option><option value="4.5">4.5 — Very good</option><option value="4">4 — Good</option><option value="3">3 — Satisfactory</option></select></label>
+          <label class="reviews-v2-quote">YOUR REVIEW<textarea name="quote" minlength="20" maxlength="1200" rows="5" required></textarea></label>
+          <label class="reviews-v2-photo">PHOTO <span>(OPTIONAL, JPG / PNG / WEBP)</span><input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label>
+          <button type="submit">SEND FOR ADMIN REVIEW ↗</button>
+          <p class="reviews-v2-status" id="reviewStatus" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="partners-v2-method section">
     <div class="shell"><header><p class="eyebrow">HOW COLLABORATION WORKS</p><h2>Built around trust.<br><em>Run with clarity.</em></h2></header><div><article><span>01</span><h3>Direct collaboration</h3><p>A named Artimist lead stays close to the brief, reviews and decisions from beginning to handover.</p></article><article><span>02</span><h3>Specialist depth</h3><p>The core team is joined by trusted specialists only when the project benefits from their exact expertise.</p></article><article><span>03</span><h3>One quality standard</h3><p>Internal and partner work moves through the same creative direction, file discipline and review process.</p></article><article><span>04</span><h3>A clear relationship</h3><p>Scopes, owners, milestones and source-file handovers remain visible throughout the engagement.</p></article></div></div>
   </section>
 
   <section class="partners-v2-cinema"><img src="/img/waterfront-foundry-02.webp" alt="Collaborative cultural interior" data-parallax=""><div></div><article class="shell"><p class="eyebrow">A SHARED STANDARD</p><h2>Good partnerships<br><em>make the work feel whole.</em></h2><a href="/contact">BUILD WITH ARTIMIST &#8599;</a></article></section>
 </main>
+<script src="/reviews.js"></script>
 <script src="/pagesjs.js"></script>
 </body>
 </html>
