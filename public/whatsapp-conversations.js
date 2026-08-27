@@ -25,7 +25,7 @@
       '.st-scroll-cue::before{content:"\\2193";display:block;color:#fff;font:400 16px/1 Arial,sans-serif;transform:translateY(-1px)}',
       '.artimist-heading-write{opacity:.01!important;clip-path:inset(0 100% 0 0)!important;transform:translateY(.13em)!important;filter:blur(3px)!important;transition:none!important}',
       '.artimist-heading-write.is-writing{opacity:1!important;clip-path:inset(0)!important;transform:none!important;filter:none!important;transition:clip-path .9s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .6s ease,opacity .18s ease!important}',
-      '.artimist-write-accent{position:relative;display:inline;color:#c73955!important;-webkit-text-fill-color:#c73955!important;white-space:pre-wrap}',
+      '.artimist-write-accent{position:relative;display:inline;white-space:pre-wrap}.artimist-heading-write em.artimist-write-accent,.st-hero h1 em.artimist-write-accent{color:#c73955!important;-webkit-text-fill-color:#c73955!important}',
       '.artimist-write-char{display:inline;opacity:0;transform:translateY(.08em)}',
       '.artimist-heading-write.is-writing .artimist-write-char{animation:artimistTypeChar .035s steps(1,end) forwards;animation-delay:calc(.28s + (var(--char-index) * .045s))}',
       '.artimist-write-accent::after{content:"";display:inline-block;width:1px;height:.8em;margin-left:.07em;background:currentColor;vertical-align:-.04em;opacity:0}',
@@ -41,7 +41,7 @@
     function intersectionArea(a,b){return Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top));}
     function sync(){
       timer=0;
-      if(!window.matchMedia||!window.matchMedia('(max-width:760px)').matches){document.body.classList.remove('artimist-dock-collision');return;}
+      if(!window.matchMedia||!window.matchMedia('(max-width:760px)').matches){document.body.classList.remove('artimist-dock-collision');return;}var askControl=document.querySelector('.st-ask-btn');if(askControl)askControl.style.setProperty('bottom','calc(14px + env(safe-area-inset-bottom))','important');
       var dock=Array.prototype.slice.call(document.querySelectorAll('.artimist-whatsapp,.st-ask-btn')).filter(function(e){var r=e.getBoundingClientRect();return r.width>0&&r.height>0;});
       var controls=Array.prototype.slice.call(document.querySelectorAll('a,button,input,select,textarea,[role="button"]'));
       var blocked=false;
