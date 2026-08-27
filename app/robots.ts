@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 const BASE = 'https://www.artimistproductions.com'
-const OPEN = { allow: '/', disallow: ['/admin', '/api/', '/__home'] }
+const OPEN = { allow: '/', disallow: ['/admin', '/api/', '/__home', '/seo-home', '/seo-architecture', '/seo-bim', '/seo-visualization', '/seo-services'] }
 
 export default function robots(): MetadataRoute.Robots {
   return {
