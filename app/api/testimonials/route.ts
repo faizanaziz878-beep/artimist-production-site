@@ -1,5 +1,6 @@
 import { testimonials } from "../../../db/schema";
 import { sendNotification } from "../../../lib/notify";
+import { getPublicContent } from "../../../lib/data";
 
 const MAX_PHOTO_BYTES = 4 * 1024 * 1024;
 const allowedTypes = new Map([
@@ -11,6 +12,27 @@ const allowedTypes = new Map([
 function field(form: FormData, key: string, max: number) {
   const value = form.get(key);
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+export async function GET() {
+  try {
+    const { testimonials: published } = await getPublicContent();
+    return Response.json({
+      testimonials: published.slice(0, 3).map(({ id, clientName, role, company, rating, quote, photoKey }) => ({
+        id,
+        clientName,
+        role,
+        company,
+        rating,
+        quote,
+        photoKey,
+      })),
+    }, {
+      headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
+    });
+  } catch {
+    return Response.json({ testimonials: [] });
+  }
 }
 
 export async function POST(request: Request) {
