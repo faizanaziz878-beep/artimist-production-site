@@ -5,10 +5,16 @@ import { getPublicContent } from "../lib/data";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Architecture, BIM & Visualization Services | Artimist Productions",
+  title: "Home Design, House Plans, Interiors & 3D Visualization | Artimist",
   description:
-    "Architecture, BIM and visualization for US projects: Revit and CAD drafting, permit and construction documentation, interiors and photoreal 3D rendering.",
+    "Artimist helps homeowners and professional teams with custom house plans, floor plan changes, interior design, renovation drawings, BIM/Revit and photoreal 3D visualization worldwide.",
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Home Design, House Plans, Interiors & 3D Visualization | Artimist",
+    description: "Design a house, improve a floor plan, visualize an interior, prepare renovation drawings or bring in Artimist for BIM and architectural visualization.",
+    url: "https://www.artimistproductions.com/",
+    type: "website",
+  },
 };
 
 export default async function Home() {
