@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import type { SiteSettings } from "../../lib/content";
 import { getStudioOffices, serviceWorlds as defaultServices } from "../../lib/content";
+import { UiIcon } from "../ui-icon";
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
+  return <UiIcon className={down ? "ed-arrow-down" : "ui-icon"} name={down ? "chevron" : "arrow"} size={16} />;
 }
 
 function AboutTrace() {
@@ -48,8 +49,7 @@ const process = [
 ];
 
 export function AboutExperience({ settings }: { settings: SiteSettings }) {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-  const offices = getStudioOffices(settings);
+  const locations = getStudioOffices(settings);
   const services = useMemo(() => {
     try {
       const parsed = JSON.parse(settings.servicesJson || "[]");
@@ -60,11 +60,6 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
   }, [settings.servicesJson]);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("artimist-editorial-theme");
-    const initial = saved === "light" || saved === "dark" ? saved : "dark";
-    document.documentElement.dataset.theme = initial;
-    window.setTimeout(() => setTheme(initial), 0);
-
     const onScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       document.documentElement.style.setProperty("--ed-progress", String(total > 0 ? window.scrollY / total : 0));
@@ -83,23 +78,9 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
     };
   }, []);
 
-  function toggleTheme() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    window.localStorage.setItem("artimist-editorial-theme", next);
-  }
-
   return (
     <main className="editorial-site ed-about">
       <div className="ed-progress" aria-hidden="true" />
-      <header className="ed-header ed-about-header">
-        <Link href="/" className="ed-logo" aria-label="Artimist Production home"><strong>ARTIMIST</strong><span>Creative Production</span></Link>
-        <div className="ed-header-actions">
-          <button className="ed-theme" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "day" : "night"} mode`}><i />{theme === "dark" ? "Night" : "Day"}</button>
-          <Link className="ed-about-home-link" href="/">Index <span>↖</span></Link>
-        </div>
-      </header>
 
       <section className="ed-about-hero" id="top">
         <img src="/media/walkthrough/music/campus-overview.webp" alt="Harmonic Horizons architectural study" />
@@ -109,8 +90,8 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
           <div className="ed-section-code"><span>00</span><p>About the practice</p></div>
           <h1>A practice{" "}<br /><em>between disciplines.</em></h1>
         </div>
-        <p className="ed-about-hero-intro" data-ed-reveal>Artimist connects the intelligence of architecture with the emotional force of image, identity, motion and digital craft.</p>
-        <div className="ed-about-hero-meta"><span>Founded / Lahore</span><span>Offices / Vancouver · Ohio · Stockholm · Lahore</span><span>Frame / 00—05</span></div>
+        <p className="ed-about-hero-intro" data-ed-reveal>Artimist Productions connects the intelligence of architecture with the emotional force of image, identity, motion and digital craft.</p>
+        <div className="ed-about-hero-meta"><span>Founded / Lahore</span><span>Network / Vancouver · Ohio · Stockholm · Lahore</span><span>Frame / 00—05</span></div>
         <a className="ed-about-scroll" href="#vision">Read the practice <Arrow down /></a>
       </section>
 
@@ -120,7 +101,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
           <h2>Vision is not a style.<br /><em>It is a way of seeing.</em></h2>
         </div>
         <div className="ed-about-vision-copy" data-ed-reveal>
-          <p>Artimist Production is a multidisciplinary creative practice founded in Lahore and now working through four offices in Vancouver, Ohio, Stockholm and Raya DHA Lahore. We approach architecture, imagery, identity, motion and digital products as parts of one connected creative system.</p>
+          <p>Artimist Productions is a multidisciplinary creative practice founded in Lahore and working internationally through a distributed studio network. We approach architecture, imagery, identity, motion and digital products as parts of one connected creative system.</p>
           <p>Our vision is to build work that is spatially intelligent, visually memorable and professionally executable—work that can move from a first sketch to a built environment, a film, a brand or an interactive experience without losing its central idea.</p>
         </div>
         <Link className="ed-about-founder-link" href="/founder-message">A note from Faizan Aziz <strong>Read the founder&apos;s message</strong><Arrow /></Link>
@@ -139,9 +120,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
           <h2>One idea.<br /><em>Every medium.</em></h2>
         </div>
         <div className="ed-about-principle-grid">
-          {principles.map(([number, title, copy]) => (
-            <article key={number} data-ed-reveal><span>{number}</span><h3>{title}</h3><p>{copy}</p><i aria-hidden="true" /></article>
-          ))}
+          {principles.map(([number, title, copy]) => <article key={number} data-ed-reveal><span>{number}</span><h3>{title}</h3><p>{copy}</p><i aria-hidden="true" /></article>)}
         </div>
       </section>
 
@@ -152,11 +131,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
           <p>Clients can engage one discipline or assemble a connected team around a larger brief.</p>
         </div>
         <div className="ed-about-service-list">
-          {services.map((service) => (
-            <article key={service.code} data-ed-reveal>
-              <span>{service.code}</span><p>{service.title}</p><h3>{service.subtitle}</h3><div>{service.copy}</div><i>↗︎</i>
-            </article>
-          ))}
+          {services.map((service) => <article key={service.code} data-ed-reveal><span>{service.code}</span><p>{service.title}</p><h3>{service.subtitle}</h3><div>{service.copy}</div><i aria-hidden="true"><UiIcon name="arrow" size={16} /></i></article>)}
         </div>
       </section>
 
@@ -168,10 +143,10 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
         </div>
       </section>
 
-      <section className="ed-about-image-band" aria-label="Selected Artimist work">
-        <figure><img src="/media/walkthrough/canopy/technical-sequence.webp" alt="Parametric architectural drawing sequence" /><figcaption>Logic / Drawing</figcaption></figure>
-        <figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Computational pavilion at sunset" /><figcaption>Form / Atmosphere</figcaption></figure>
-        <figure><img src="/media/editorial/sound-to-form.webp" alt="Sound to form research board" /><figcaption>Research / Future</figcaption></figure>
+      <section className="ed-about-image-band" aria-label="Selected Artimist Productions work">
+        <figure><img src="/media/walkthrough/canopy/technical-sequence.webp" alt="Parametric architectural drawing sequence" loading="lazy" /><figcaption>Logic / Drawing</figcaption></figure>
+        <figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Computational pavilion at sunset" loading="lazy" /><figcaption>Form / Atmosphere</figcaption></figure>
+        <figure><img src="/media/editorial/sound-to-form.webp" alt="Sound to form research board" loading="lazy" /><figcaption>Research / Future</figcaption></figure>
       </section>
 
       <section className="ed-about-contact">
@@ -180,7 +155,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
           <h2>Bring us something<br /><em>worth shaping.</em></h2>
         </div>
         <div className="ed-about-contact-rail" data-ed-reveal>
-          <div className="ed-about-office-list"><span>{String(offices.length).padStart(2, "0")} offices / One studio</span>{offices.map((office) => <article key={office.code}><small>{office.code} / {office.region}</small><strong>{office.label}</strong></article>)}</div>
+          <div className="ed-about-office-list"><span>{String(locations.length).padStart(2, "0")} working locations / One studio</span>{locations.map((location) => <article key={location.code}><small>{location.code} / {location.region}</small><strong>{location.label}</strong></article>)}</div>
           <div className="ed-about-contact-links">
             <a href={`mailto:${settings.contactEmail}`}><span>Faizan / New projects</span><strong>{settings.contactEmail}</strong><Arrow /></a>
             <a href={`mailto:${settings.teamEmail}`}><span>Studio / Team</span><strong>{settings.teamEmail}</strong><Arrow /></a>
@@ -190,7 +165,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
         </div>
       </section>
 
-      <footer className="ed-footer ed-about-footer"><div>ARTIMIST</div><span>© {new Date().getFullYear()} / {offices.map((office) => office.label).join(" · ")}</span><nav><Link href="/team">Team</Link><Link href="/founder-message">Founder&apos;s message</Link><Link href="/">Selected work</Link><Link href="/admin">Studio admin</Link><a href="#top">Back to top ↑</a></nav></footer>
+      <footer className="ed-footer ed-about-footer"><div>ARTIMIST</div><span>© {new Date().getFullYear()} / {locations.map((location) => location.label).join(" · ")}</span><nav><Link href="/team">Team</Link><Link href="/founder-message">Founder&apos;s message</Link><Link href="/">Selected work</Link><a href="#top">Back to top <UiIcon className="ed-arrow-up" name="chevron" size={14} /></a></nav></footer>
     </main>
   );
 }
