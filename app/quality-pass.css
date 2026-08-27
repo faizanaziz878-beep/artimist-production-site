@@ -14,37 +14,20 @@ html {
 
 body { min-width: 320px; }
 .main-content-anchor { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
-
 main, section, article, header, footer, nav, aside, figure, form { min-width: 0; }
 h1, h2, h3, h4, p, li, a, button, label, strong, span { overflow-wrap: break-word; }
 h1, h2, h3 { text-wrap: balance; }
 p, li { text-wrap: pretty; }
 img, video, canvas, svg { max-width: 100%; }
 button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--artimist-focus);
-  outline-offset: 3px;
-}
-
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline:2px solid var(--artimist-focus); outline-offset:3px; }
 .ui-icon { display:inline-block; flex:0 0 auto; vertical-align:middle; }
 
-/* The canonical header owns site navigation. Hidden legacy headers should never
-   reserve space, overlap, or remain focusable visually. */
-.tp-header,
-.ue-header,
-.ap-hub-head,
-.sp-header,
-.st-header,
-.ap-header { pointer-events: none; }
-
+/* The canonical header owns site navigation. */
+.tp-header,.ue-header,.ap-hub-head,.sp-header,.st-header,.ap-header,.vj-header { display:none !important; pointer-events:none; }
 .canonical-header { top: var(--artimist-safe-top); }
 
-/* Project intake — deliberately stable, quiet and easy to complete. */
+/* Project intake */
 .sp-intake-notes { display:grid; gap:10px; margin:28px 0 0; padding:0; list-style:none; color:rgba(0,0,0,.68); font-size:12px; }
 .sp-intake-notes li { display:flex; align-items:center; gap:9px; }
 .sp-intake-notes .ui-icon { color:#8a1e37; }
@@ -53,14 +36,8 @@ select:focus-visible {
 .sp-source-link:focus-within { border-color:#8a1e37; }
 .sp-source-link .ui-icon { color:#8a1e37; }
 .sp-source-link input { border:0 !important; min-width:0; }
-.sp-contact-form > button .ui-icon,
-.sp-direct-links .ui-icon,
-.sp-page-cta .ui-icon,
-.sp-service-chapters .ui-icon { transition:transform .22s ease; }
-.sp-contact-form > button:hover .ui-icon,
-.sp-direct-links a:hover .ui-icon,
-.sp-page-cta a:hover .ui-icon,
-.sp-service-chapters a:hover .ui-icon { transform:translate(2px,-2px); }
+.sp-contact-form > button .ui-icon,.sp-direct-links .ui-icon,.sp-page-cta .ui-icon,.sp-service-chapters .ui-icon { transition:transform .22s ease; }
+.sp-contact-form > button:hover .ui-icon,.sp-direct-links a:hover .ui-icon,.sp-page-cta a:hover .ui-icon,.sp-service-chapters a:hover .ui-icon { transform:translate(2px,-2px); }
 .sp-lead-status { grid-column:1 / -1; margin:3px 0 0; padding:16px 18px; border:1px solid rgba(138,30,55,.24); background:rgba(138,30,55,.06); color:#671225; }
 .sp-lead-status p { margin:0; font-size:12px; line-height:1.6; }
 .sp-lead-status small { display:block; margin-top:8px; font:650 9px/1.5 var(--sp-mono,"SFMono-Regular",monospace); letter-spacing:.1em; text-transform:uppercase; }
@@ -70,71 +47,34 @@ select:focus-visible {
 .sp-direct-links a { align-items:center !important; }
 .sp-direct-links .ui-icon { justify-self:end; }
 
-/* Protect editorial headings from old overflow/crop rules on mobile Safari. */
+/* Long visual journeys */
+.vj-chapter-nav { position:sticky; top:72px; z-index:90; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; border-top:1px solid rgba(255,255,255,.12); border-bottom:1px solid rgba(255,255,255,.12); background:rgba(8,9,11,.9); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); }
+.vj-chapter-nav::-webkit-scrollbar { display:none; }
+.vj-chapter-nav a { flex:1 0 150px; min-height:58px; display:flex; align-items:center; gap:10px; padding:0 16px; border-right:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.68); font-size:10px; text-decoration:none; white-space:nowrap; }
+.vj-chapter-nav a:hover { color:#fff; background:rgba(255,255,255,.04); }
+.vj-chapter-nav small { color:#d05a71; font:600 8px/1 "Artimist Mono",monospace; }
+.vj-down-icon { transform:rotate(90deg); }
+.vj-enter { display:inline-flex !important; align-items:center; gap:9px; }
+.vj-end a { display:flex !important; align-items:center; justify-content:space-between; gap:12px; }
+.vj-end a:hover .ui-icon { transform:translate(2px,-2px); }
+.vj-end .ui-icon { transition:transform .2s ease; }
+
 @supports (-webkit-touch-callout: none) {
-  h1, h2, h3,
-  .practice-page h1,
-  .practice-page h2,
-  .about-v2 h1,
-  .about-v2 h2,
-  .founder-v2 h1,
-  .founder-v2 h2,
-  .services-v2 h1,
-  .services-v2 h2,
-  .studio-path h1,
-  .studio-path h2,
-  .visual-journey h1,
-  .visual-journey h2 {
-    padding-bottom: .08em;
-    overflow: visible;
-  }
+  h1,h2,h3,.practice-page h1,.practice-page h2,.about-v2 h1,.about-v2 h2,.founder-v2 h1,.founder-v2 h2,.services-v2 h1,.services-v2 h2,.studio-path h1,.studio-path h2,.visual-journey h1,.visual-journey h2 { padding-bottom:.08em; overflow:visible; }
 }
 
-/* Make fixed / floating conversion controls respect iPhone safe areas and never
-   occupy the same final row. */
-@media (max-width: 760px) {
-  :root { --artimist-header-h: 66px; }
-  body { padding-bottom: env(safe-area-inset-bottom); }
-  .canonical-header {
-    height: calc(var(--artimist-header-h) + var(--artimist-safe-top));
-    padding-top: var(--artimist-safe-top);
-  }
-  main:not(.artimist-home) { scroll-margin-top: calc(var(--artimist-header-h) + 18px); }
-
-  .ask-studio,
-  .ask-the-studio,
-  [data-ask-studio],
-  .whatsapp-fab,
-  [data-whatsapp-fab] { bottom: calc(var(--artimist-safe-bottom) + 8px) !important; }
-
-  .ask-studio,
-  .ask-the-studio,
-  [data-ask-studio] {
-    left:14px !important;
-    right:auto !important;
-    max-width:min(58vw,240px) !important;
-  }
-
-  .whatsapp-fab,
-  [data-whatsapp-fab] { right:14px !important; left:auto !important; }
+@media (max-width:760px) {
+  :root { --artimist-header-h:66px; }
+  body { padding-bottom:env(safe-area-inset-bottom); }
+  .canonical-header { height:calc(var(--artimist-header-h) + var(--artimist-safe-top)); padding-top:var(--artimist-safe-top); }
+  main:not(.artimist-home) { scroll-margin-top:calc(var(--artimist-header-h) + 18px); }
+  .ask-studio,.ask-the-studio,[data-ask-studio],.whatsapp-fab,[data-whatsapp-fab] { bottom:calc(var(--artimist-safe-bottom) + 8px) !important; }
+  .ask-studio,.ask-the-studio,[data-ask-studio] { left:14px !important; right:auto !important; max-width:min(58vw,240px) !important; }
+  .whatsapp-fab,[data-whatsapp-fab] { right:14px !important; left:auto !important; }
   .site-index-sheet { padding-bottom:calc(48px + env(safe-area-inset-bottom)) !important; }
-  .site-index-sheet span,
-  .canonical-wordmark span,
-  .canonical-wordmark small { white-space:normal; }
-
-  .canonical-header button,
-  .canonical-header a,
-  .site-index-sheet a,
-  .site-index-sheet button,
-  .sp-contact-form button,
-  .sp-contact-form input,
-  .sp-contact-form select,
-  .sp-contact-form textarea { min-height:44px; }
-
-  .sp-contact-form input,
-  .sp-contact-form select,
-  .sp-contact-form textarea { font-size:16px !important; }
-
+  .site-index-sheet span,.canonical-wordmark span,.canonical-wordmark small { white-space:normal; }
+  .canonical-header button,.canonical-header a,.site-index-sheet a,.site-index-sheet button,.sp-contact-form button,.sp-contact-form input,.sp-contact-form select,.sp-contact-form textarea { min-height:44px; }
+  .sp-contact-form input,.sp-contact-form select,.sp-contact-form textarea { font-size:16px !important; }
   .sp-intake-notes { margin-top:24px; }
   .sp-source-link { gap:8px; }
   .sp-lead-status { grid-column:1; }
@@ -142,21 +82,18 @@ select:focus-visible {
   .sp-direct-links a { grid-template-columns:minmax(0,1fr) auto !important; }
   .sp-direct-links a > span { grid-column:1 / -1; }
   .sp-direct-links strong { min-width:0; }
+  .vj-chapter-nav { top:66px; }
+  .vj-chapter-nav a { flex-basis:auto; min-width:max-content; min-height:52px; padding:0 13px; font-size:9px; }
 }
 
-@media (max-width: 420px) {
+@media (max-width:420px) {
   .canonical-header { padding-left:14px !important; padding-right:14px !important; }
   .canonical-wordmark span { font-size:17px !important; }
   .canonical-actions { gap:6px !important; }
   .canonical-actions button[aria-controls="site-index-panel"] { padding-inline:11px !important; }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
-  *, *::before, *::after {
-    scroll-behavior:auto !important;
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-  }
+  *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
