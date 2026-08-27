@@ -4,7 +4,6 @@ import {
   defaultProjects,
   defaultSettings,
   defaultTeam,
-  defaultTestimonials,
   type Project,
   type SiteSettings,
   type TeamMember,
@@ -30,8 +29,6 @@ const legacyTeamPortraits: Record<string, string[]> = {
   "Sufyan Ilyas": ["/media/team/sufyan.webp", "/media/team/sufyan-portrait.webp", "/media/team/sufyan-profile-2026.webp"],
 };
 
-// These portraits were supplied/approved for the current site refresh. Keep every public
-// surface on the same image even when an older database row still points somewhere else.
 const currentPortraitNames = new Set([
   "Sufyan Ilyas",
   "Abdur Rehman",
@@ -76,11 +73,11 @@ export async function getPublicContent(): Promise<{
       ...defaultTeam.filter((member) => member.published && !existingTeamNames.has(member.name.toLowerCase())),
     ].sort((a, b) => a.sortOrder - b.sortOrder);
 
-    const existingReviewNames = new Set(testimonialRows.map((review) => review.clientName.toLowerCase()));
-    const publicTestimonials = [
-      ...testimonialRows.filter((review) => review.status === "published"),
-      ...defaultTestimonials.filter((review) => !existingReviewNames.has(review.clientName.toLowerCase())),
-    ].map((review) => ({ ...review, company: cleanPublicPlace(review.company) }));
+    // Public trust must be real: only records explicitly approved in the database
+    // are returned. No anonymous seeded or placeholder testimonials are mixed in.
+    const publicTestimonials = testimonialRows
+      .filter((review) => review.status === "published")
+      .map((review) => ({ ...review, company: cleanPublicPlace(review.company) }));
 
     const publicProjects = (projectRows.length
       ? projectRows.map((row) => ({ ...row, gallery: parseList(row.gallery), services: parseList(row.services) }))
@@ -108,7 +105,7 @@ export async function getPublicContent(): Promise<{
     return {
       projects: defaultProjects,
       team: defaultTeam,
-      testimonials: defaultTestimonials,
+      testimonials: [],
       settings: defaultSettings,
     };
   }
