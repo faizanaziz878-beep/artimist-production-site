@@ -60,7 +60,7 @@ export async function serveLegacySeo(config: LegacySeoConfig) {
     html = html.replace(/<meta property="og:description" content="[^"]*">/i, `<meta property="og:description" content="${escHtml(config.description)}">`);
     html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${style}<script type="application/ld+json">${JSON.stringify(schema)}</script></head>`);
     html = html.replace('</main>', `${related}</main>`);
-    html = html.replace('</body>', `<script src="/mobile-cleanup.js"></script></body>`);
+    html = html.replace('</body>', `<script src="/mobile-cleanup.js"></script><script src="/whatsapp-conversations.js"></script></body>`);
 
     return new Response(html, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "public, s-maxage=3600, stale-while-revalidate=86400" } });
   } catch {
