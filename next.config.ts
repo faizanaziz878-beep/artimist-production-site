@@ -9,15 +9,9 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // The production homepage intentionally keeps the original spatial
+        // experience because this template owns the live WebGL/GLB model.
         { source: "/", destination: "/seo-home" },
-        { source: "/architecture", destination: "/seo-architecture" },
-        { source: "/bim-drafting", destination: "/seo-bim" },
-        { source: "/visualization", destination: "/seo-visualization" },
-        { source: "/services", destination: "/seo-services" },
-        { source: "/about", destination: "/about.html" },
-        { source: "/partners", destination: "/partners.html" },
-        { source: "/founder-message", destination: "/foundermessage.html" },
-        { source: "/skills", destination: "/skills.html" },
       ],
       afterFiles: [],
       fallback: [],
@@ -57,7 +51,7 @@ const nextConfig: NextConfig = {
       { source: "/about.html", destination: "/about", permanent: true },
       { source: "/partners.html", destination: "/partners", permanent: true },
       { source: "/foundermessage.html", destination: "/founder-message", permanent: true },
-      { source: "/skills.html", destination: "/skills", permanent: true },
+      { source: "/skills.html", destination: "/services", permanent: true },
       { source: "/services/architecture", destination: "/architecture", permanent: true },
       { source: "/services/bim-drafting", destination: "/bim-drafting", permanent: true },
       { source: "/services/visualization", destination: "/visualization", permanent: true },
