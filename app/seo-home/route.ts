@@ -74,7 +74,7 @@ function enhance(source: string) {
   html = html.replace(/ &#8599;/g, '');
   html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${seoStyle}${webpageSchema}<script src="/mobile-cleanup.js"></script></head>`);
   html = html.replace('</main>', `${seoSection}</main>`);
-  html = html.replace('</body>', `<script src="/lead-attribution.js"></script><script src="/whatsapp-conversations.js"></script><script src="/buyer-journey.js"></script><script src="/client-showcase.js"></script></body>`);
+  html = html.replace('</body>', `<script src="/lead-attribution.js"></script><script src="/whatsapp-conversations.js"></script><script src="/buyer-journey.js"></script><script src="/client-showcase.js"></script><script src="/premium-plans.js"></script></body>`);
   return html;
 }
 
