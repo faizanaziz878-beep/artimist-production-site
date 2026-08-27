@@ -329,7 +329,7 @@
   else reelAt = 0; /* keep preload="none" intact until the visitor chooses play */
 
   var rows = byId('rows');
-  ROWS.forEach(function (r) {
+  ROWS.forEach(function (r, i) {
     rows.insertAdjacentHTML('beforeend',
       '<a class="st-row" href="' + r.href + '" aria-label="View ' + esc(r.title) + '"' + (r.frames ? ' data-row-gallery="' + i + '"' : '') + ' data-reveal>' +
         '<div class="st-row-media"><img src="' + r.img + '" alt="' + esc(r.title) + '" loading="lazy" width="1600" height="1000"><span class="st-row-no">' + r.no + '</span></div>' +
