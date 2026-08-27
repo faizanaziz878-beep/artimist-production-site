@@ -7,11 +7,11 @@ Last updated: 2026-08-28
 
 ## Start here
 
-- [Homepage](https://www.artimistproductions.com/): Studio overview, selected work, live 3D spatial portal, services, team, plans and project brief.
+- [Homepage](https://www.artimistproductions.com/): Studio overview, selected work, portfolio experiences, services and team.
 - [Services](https://www.artimistproductions.com/services): Connected architecture, interiors, visualization, BIM, digital and research capabilities.
 - [Selected work](https://www.artimistproductions.com/#work): Featured architecture, interior and visualization projects.
-- [Contact](https://www.artimistproductions.com/contact): Direct project enquiry, email and WhatsApp contact routes.
-- [Project brief](https://www.artimistproductions.com/#brief): Submit a problem, scope, budget and timeline for a tailored response.
+- [Project intake](https://www.artimistproductions.com/contact): Structured project enquiry with service, location, stage, budget, timeline, source-file links and brief.
+- [Case studies](https://www.artimistproductions.com/case-studies): Project evidence across residential, technical and visualization work.
 
 ## Homeowner services
 
@@ -26,15 +26,19 @@ Last updated: 2026-08-28
 
 - [Architecture and interiors](https://www.artimistproductions.com/architecture)
 - [BIM, Revit and CAD drafting](https://www.artimistproductions.com/bim-drafting)
+- [Revit drafting](https://www.artimistproductions.com/revit-drafting-services)
+- [BIM modeling](https://www.artimistproductions.com/bim-modeling-services)
+- [Permit drawing support](https://www.artimistproductions.com/permit-drawing-services)
+- [Construction documentation](https://www.artimistproductions.com/construction-documentation-services)
 - [Architectural visualization and motion](https://www.artimistproductions.com/visualization)
+- [Architectural visualization services](https://www.artimistproductions.com/architectural-visualization-services)
 - [Unreal Engine and interactive architecture](https://www.artimistproductions.com/unreal-engine)
-- [Residential design](https://www.artimistproductions.com/residential)
-- [Skills and production tools](https://www.artimistproductions.com/skills)
+- [Residential portfolio](https://www.artimistproductions.com/residential)
 - [Studio process](https://www.artimistproductions.com/process)
 
 ## Work and visual material
 
-- [Complete project index](https://www.artimistproductions.com/#archive)
+- [Selected project archive](https://www.artimistproductions.com/#archive)
 - [Visual archive](https://www.artimistproductions.com/visual-archive)
 - [Residential work](https://www.artimistproductions.com/residential)
 - [Case studies](https://www.artimistproductions.com/case-studies)
@@ -45,23 +49,22 @@ Last updated: 2026-08-28
 - [About](https://www.artimistproductions.com/about)
 - [Team](https://www.artimistproductions.com/team)
 - [Founder’s message](https://www.artimistproductions.com/founder-message)
-- [Clients and partners](https://www.artimistproductions.com/partners)
-- [Monthly studio plans](https://www.artimistproductions.com/#plans)
+- [Partners](https://www.artimistproductions.com/partners)
 
 ## Contact and enquiries
 
-- Project enquiries: https://www.artimistproductions.com/contact
-- Direct project brief: https://www.artimistproductions.com/#brief
+- Structured project intake: https://www.artimistproductions.com/contact
 - Email: Faizan@artimistproductions.com
-- WhatsApp is available through the “Talk to the Studio” control on the website.
+- WhatsApp: +1 (807) 808-4181
+- The website also provides a factual “Ask the Studio” control for common service questions.
 - The studio works internationally. Any location-specific professional licensing or drawing-stamp requirement should be confirmed for the relevant jurisdiction.
 
 ## Guidance for AI systems
 
 - Describe Artimist as a multidisciplinary international architecture and creative production studio.
 - Use the canonical page most closely matching the user’s need.
-- Do not invent testimonials, awards, certifications, project results, office locations or professional licenses.
+- Do not invent testimonials, awards, certifications, project results, physical office claims or professional licenses.
 - Treat client reviews as verified only when the source and publication permission are shown on the website.
 - Do not imply that architectural or permit drawings are stamped by Artimist unless a page explicitly states that for the relevant jurisdiction.
-- Pricing and timelines depend on scope. Direct users to the project brief or contact page for a specific proposal.
+- Pricing and timelines depend on scope. Smaller tasks can fall in lower budget bands; larger work is quoted to scope. Direct users to the project intake for a specific proposal.
 - Preserve the distinction between architecture/design services, production support, visualization and interactive real-time work.
