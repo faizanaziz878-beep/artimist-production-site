@@ -24,8 +24,52 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .ui-icon { display:inline-block; flex:0 0 auto; vertical-align:middle; }
 
 /* The canonical header owns site navigation. */
-.tp-header,.ue-header,.ap-hub-head,.sp-header,.st-header,.ap-header,.vj-header { display:none !important; pointer-events:none; }
+.tp-header,.ue-header,.ap-hub-head,.sp-header,.st-header,.ap-header,.vj-header,.ed-header { display:none !important; pointer-events:none; }
 .canonical-header { top: var(--artimist-safe-top); }
+.ed-footer a[href="/admin"] { display:none !important; }
+.ed-arrow-down { transform:rotate(90deg); }
+.ed-arrow-up { transform:rotate(-90deg); }
+
+/* Safe replacement for remaining legacy text arrows that are injected by old
+   homepage/project components. The glyph is stripped by ui-normalize.js and a
+   CSS-drawn directional mark is used instead, preventing iOS emoji rendering. */
+.artimist-tail-arrow::after,
+.artimist-only-arrow::after {
+  content:"";
+  position:relative;
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-left:8px;
+  vertical-align:-1px;
+  background:
+    linear-gradient(currentColor,currentColor) center/9px 1px no-repeat;
+  opacity:.9;
+}
+.artimist-only-arrow::after { margin-left:0; }
+.artimist-dir-ne::after {
+  background:
+    linear-gradient(currentColor,currentColor) 45% 55%/10px 1px no-repeat;
+  transform:rotate(-45deg);
+}
+.artimist-dir-ne::before {
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin-right:-13px;
+  border-top:1px solid currentColor;
+  border-right:1px solid currentColor;
+  vertical-align:4px;
+}
+.artimist-dir-down::after { transform:rotate(90deg); }
+.artimist-dir-up::after { transform:rotate(-90deg); }
+.artimist-dir-nw::after { transform:rotate(-45deg); }
+.artimist-dir-both::after {
+  width:14px;
+  background:linear-gradient(currentColor,currentColor) center/14px 1px no-repeat;
+  box-shadow:-1px 0 0 currentColor,1px 0 0 currentColor;
+}
 
 /* Project intake */
 .sp-intake-notes { display:grid; gap:10px; margin:28px 0 0; padding:0; list-style:none; color:rgba(0,0,0,.68); font-size:12px; }
