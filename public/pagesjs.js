@@ -43,10 +43,11 @@
   shell.innerHTML =
     '<header class="ap-header">' +
       '<a class="ap-wordmark" href="/"><span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small></a>' +
+      '<nav class="ap-primary-nav" aria-label="Primary navigation"><a href="/#work">WORK</a><a href="/services">SERVICES</a><a href="/team">TEAM</a><a href="/#plans">PLANS</a><a href="/#brief">BRIEF</a></nav>' +
       '<div class="ap-header-right">' +
-        '<button class="ap-pill" id="apMode" type="button" aria-pressed="false"><i></i><span id="apModeLabel">DAY</span>&nbsp;/&nbsp;<span id="apClock">00:00</span></button>' +
-        '<button class="ap-pill" id="apMenu" type="button" aria-expanded="false" aria-controls="apIndex">MENU&nbsp;<span aria-hidden="true">&#10683;</span></button>' +
-        '<a class="ap-cta" href="/contact">START A PROJECT <span aria-hidden="true">&#8599;</span></a>' +
+        '<button class="ap-pill" id="apMode" type="button" aria-pressed="false"><svg class="ap-icon ap-mode-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25"></circle><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16"></path></svg><span id="apModeLabel">DAY</span></button>' +
+        '<button class="ap-pill" id="apMenu" type="button" aria-expanded="false" aria-controls="apIndex">MENU<svg class="ap-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"></path></svg></button>' +
+        '<a class="ap-cta" href="/contact">START A PROJECT<svg class="ap-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"></path></svg></a>' +
       '</div>' +
     '</header>' +
     '<div class="ap-index" id="apIndex" role="dialog" aria-modal="true" aria-label="Site index">' +
@@ -95,12 +96,6 @@
     applyMode(document.body.getAttribute('data-mode') === 'night' ? 'day' : 'night');
   });
 
-  function tick() {
-    var d = new Date();
-    document.getElementById('apClock').textContent =
-      String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
-  }
-  tick(); setInterval(tick, 20000);
 
   /* ---- motion ------------------------------------------------------------ */
   var progress = document.createElement('div'); progress.className = 'scroll-progress';

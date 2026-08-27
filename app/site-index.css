@@ -1,157 +1,40 @@
-/* Site index — fixed top-left navigation available on every public page. */
-
-.site-index-trigger {
-  position: fixed;
-  z-index: 9000;
-  /* Sits just below the site header so it never covers the wordmark. */
-  top: 84px;
-  left: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 9px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  background: rgba(10, 10, 10, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #fff;
-  font-family: inherit;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
+/* Canonical Artimist navigation for every Next.js page. */
+.canonical-header {
+  position: fixed; z-index: 9000; inset: 0 0 auto; height: 72px;
+  display: flex; align-items: center; gap: 24px;
+  padding: 0 clamp(16px,2.4vw,34px);
+  background: linear-gradient(180deg,rgba(7,9,12,.9),rgba(7,9,12,.72));
+  -webkit-backdrop-filter: blur(20px) saturate(1.22);
+  backdrop-filter: blur(20px) saturate(1.22);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 12px 42px rgba(0,0,0,.16); color: #fff;
 }
+.canonical-wordmark { display:flex;flex-direction:column;line-height:.9;color:#fff;text-decoration:none; }
+.canonical-wordmark span { font-family:var(--font-geist-sans,"Helvetica Neue",Arial,sans-serif);font-size:21px;font-weight:560;font-kerning:none;font-variant-ligatures:none;letter-spacing:.022em; }
+.canonical-wordmark b { color:#d96476;font-weight:500; }
+.canonical-wordmark small { margin-top:4px;font-size:7px;font-weight:650;letter-spacing:.22em;color:rgba(255,255,255,.64); }
+.canonical-primary { display:flex;align-items:center;gap:clamp(18px,2.1vw,34px);margin-left:auto; }
+.canonical-primary a { position:relative;min-height:44px;display:inline-flex;align-items:center;color:rgba(255,255,255,.76);font-size:10px;font-weight:650;letter-spacing:.075em;text-transform:uppercase;text-decoration:none; }
+.canonical-primary a::after { content:"";position:absolute;left:0;right:100%;bottom:7px;height:1px;background:currentColor;transition:right .28s ease; }
+.canonical-primary a:hover { color:#fff; }.canonical-primary a:hover::after { right:0; }
+.canonical-actions { display:flex;align-items:center;gap:10px;margin-left:clamp(8px,1vw,18px); }
+.canonical-pill,.canonical-cta { min-height:42px;display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:999px;color:#fff;font:650 10px/1 var(--font-geist-sans,"Helvetica Neue",Arial,sans-serif);letter-spacing:.075em; }
+.canonical-pill { border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.045);cursor:pointer; }
+.canonical-pill:hover { background:rgba(255,255,255,.11); }
+.canonical-cta { background:#98283a;text-decoration:none; }.canonical-cta:hover { background:#b13348; }
+.canonical-icon { width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round; }
+.tp-header,.ue-header,.ap-hub-head,.sp-header { display:none !important; }
 
-.site-index-trigger:hover,
-.site-index-trigger:focus-visible {
-  background: rgba(156, 31, 53, 0.72);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.site-index-trigger-mark {
-  display: grid;
-  gap: 3px;
-  width: 13px;
-}
-
-.site-index-trigger-mark i {
-  display: block;
-  height: 1px;
-  background: currentColor;
-}
-
-.site-index-trigger-mark i:nth-child(2) { width: 68%; }
-.site-index-trigger-mark i:nth-child(3) { width: 40%; }
-
-.site-index-panel {
-  position: fixed;
-  inset: 0;
-  z-index: 9001;
-}
-
-.site-index-panel[hidden] { display: none; }
-
-.site-index-backdrop {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  padding: 0;
-  background: rgba(6, 6, 6, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  cursor: pointer;
-  animation: siteIndexFade 0.35s ease both;
-}
-
-.site-index-sheet {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: min(480px, 100%);
-  box-sizing: border-box;
-  padding: 74px 34px 30px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background: #0a0a09;
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-  animation: siteIndexSlide 0.42s cubic-bezier(0.2, 0.75, 0.2, 1) both;
-}
-
-.site-index-eyebrow {
-  margin: 0 0 18px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 8px;
-  letter-spacing: 0.22em;
-}
-
-.site-index-sheet ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-index-sheet a {
-  display: grid;
-  grid-template-columns: 34px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  color: #fff;
-  text-decoration: none;
-  transition: padding-left 0.28s ease, color 0.28s ease, background 0.28s ease;
-}
-
-.site-index-sheet a:hover,
-.site-index-sheet a:focus-visible {
-  padding-left: 12px;
-  color: #f2cbd1;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.site-index-sheet a[aria-current="page"] { color: #e9bcc4; }
-.site-index-sheet a[aria-current="page"] small { color: #e9bcc4; }
-
-.site-index-sheet small {
-  color: #b93b50;
-  font-size: 8px;
-  letter-spacing: 0.14em;
-}
-
-.site-index-sheet span {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(19px, 2.5vw, 27px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.site-index-sheet i {
-  color: rgba(255, 255, 255, 0.4);
-  font-style: normal;
-  font-size: 11px;
-}
-
-.site-index-foot {
-  margin: 26px 0 0;
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 8px;
-  letter-spacing: 0.18em;
-}
-
-@keyframes siteIndexFade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes siteIndexSlide { from { transform: translateX(-14px); opacity: 0; } to { transform: none; opacity: 1; } }
-
-@media (max-width: 560px) {
-  .site-index-trigger { top: 72px; left: 12px; padding: 8px 12px; font-size: 8.5px; }
-  .site-index-sheet { width: 100%; padding: 66px 22px 26px; border-right: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-index-backdrop,
-  .site-index-sheet { animation: none; }
-  .site-index-trigger,
-  .site-index-sheet a { transition: none; }
-}
+.site-index-panel { position:fixed;inset:0;z-index:9200; }.site-index-panel[hidden]{display:none}
+.site-index-backdrop { position:absolute;inset:0;border:0;background:rgba(3,5,8,.84);backdrop-filter:blur(8px);cursor:pointer; }
+.site-index-sheet { position:absolute;inset:0 auto 0 0;width:min(520px,100%);padding:28px 34px 30px;overflow-y:auto;background:#080b0f;border-right:1px solid rgba(255,255,255,.13);animation:siteIndexSlide .42s cubic-bezier(.2,.75,.2,1) both; }
+.site-index-top { display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;color:rgba(255,255,255,.5);font-size:9px;letter-spacing:.14em; }
+.site-index-top p{margin:0}.site-index-top button{border:0;background:none;color:#fff;font:inherit;cursor:pointer}
+.site-index-sheet ul{margin:0;padding:0;list-style:none}.site-index-sheet a{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);color:#fff;text-decoration:none}
+.site-index-sheet a:hover{padding-left:10px;color:#f2cbd1}.site-index-sheet small{color:#d45f73;font-size:8px}.site-index-sheet span{font:400 clamp(20px,2.5vw,28px)/1.1 Georgia,serif}.site-index-sheet i{color:rgba(255,255,255,.4);font-style:normal}
+.site-index-foot{margin:26px 0 0;color:rgba(255,255,255,.38);font-size:8px;letter-spacing:.16em}
+@keyframes siteIndexSlide{from{transform:translateX(-16px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:1080px){.canonical-primary{display:none}}
+@media(max-width:680px){.canonical-header{height:66px}.canonical-pill,.canonical-cta{min-height:40px;padding:9px 12px;font-size:9px}.canonical-actions .canonical-pill:first-child{display:none}.canonical-wordmark span{font-size:18px}.canonical-wordmark small{font-size:6px}.site-index-sheet{padding:24px 22px}}
+@media(max-width:480px){.canonical-cta{display:none}}
+@media(prefers-reduced-motion:reduce){.site-index-sheet{animation:none}}

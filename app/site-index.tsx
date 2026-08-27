@@ -4,46 +4,54 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-/**
- * Site index — the client-facing navigation.
- *
- * A single, consistent way to reach every page from anywhere on the site. It
- * sits in the top-left corner of every page, opens into a full index, marks the
- * page you are on, and closes on Escape, on navigation, and on backdrop click.
- * Hidden inside the control room, which has its own navigation.
- */
-
 const PAGES: Array<[string, string, string]> = [
   ["01", "Home", "/"],
-  ["02", "Services", "/services"],
-  ["03", "Architecture", "/services/architecture"],
-  ["04", "BIM & Drafting", "/services/bim-drafting"],
-  ["05", "Visualization", "/services/visualization"],
-  ["06", "Unreal & Real-time", "/unreal-engine"],
-  ["07", "Residential", "/residential"],
-  ["08", "Visual archive", "/visual-archive"],
-  ["09", "Process", "/process"],
-  ["10", "Studio team", "/team"],
-  ["11", "About", "/about"],
-  ["12", "Founder's message", "/founder-message"],
-  ["13", "Partners", "/partners"],
-  ["14", "Contact", "/contact"],
+  ["02", "Selected work", "/#work"],
+  ["03", "Services", "/services"],
+  ["04", "Architecture", "/architecture"],
+  ["05", "BIM & Drafting", "/bim-drafting"],
+  ["06", "Visualization", "/visualization"],
+  ["07", "Unreal & Real-time", "/unreal-engine"],
+  ["08", "Residential", "/residential"],
+  ["09", "Visual archive", "/visual-archive"],
+  ["10", "Process", "/process"],
+  ["11", "Studio team", "/team"],
+  ["12", "About", "/about"],
+  ["13", "Founder's message", "/founder-message"],
+  ["14", "Partners", "/partners"],
+  ["15", "Contact", "/contact"],
 ];
+
+function Icon({ kind }: { kind: "sun" | "menu" | "arrow" }) {
+  if (kind === "sun") return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25" /><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16" /></svg>;
+  if (kind === "menu") return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" /></svg>;
+  return <svg className="canonical-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>;
+}
 
 export function SiteIndex() {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<"day" | "night">("day");
 
-  // Any navigation closes the panel, including back/forward.
   useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
+    let saved = "day";
+    try {
+      saved = window.localStorage.getItem("artimist_mode") === "night" ||
+        window.localStorage.getItem("artimist-editorial-theme") === "dark" ? "night" : "day";
+    } catch {}
+    const next = saved === "night" ? "night" : "day";
+    document.documentElement.dataset.mode = next;
+    document.documentElement.dataset.theme = next === "night" ? "dark" : "light";
+    document.body.dataset.mode = next;
+    setMode(next);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
-    // Keep the page behind the panel still.
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -54,57 +62,42 @@ export function SiteIndex() {
 
   if (pathname.startsWith("/admin")) return null;
 
+  function toggleMode() {
+    const next = mode === "night" ? "day" : "night";
+    setMode(next);
+    document.documentElement.dataset.mode = next;
+    document.documentElement.dataset.theme = next === "night" ? "dark" : "light";
+    document.body.dataset.mode = next;
+    try {
+      window.localStorage.setItem("artimist_mode", next);
+      window.localStorage.setItem("artimist-editorial-theme", next === "night" ? "dark" : "light");
+    } catch {}
+  }
+
   return (
     <>
-      <button
-        type="button"
-        className="site-index-trigger"
-        aria-expanded={open}
-        aria-controls="site-index-panel"
-        aria-label={open ? "Close site index" : "Open site index"}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span className="site-index-trigger-mark" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className="site-index-trigger-label">{open ? "CLOSE" : "INDEX"}</span>
-      </button>
+      <header className="canonical-header">
+        <Link className="canonical-wordmark" href="/" aria-label="Artimist home"><span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small></Link>
+        <nav className="canonical-primary" aria-label="Primary navigation">
+          <Link href="/#work">Work</Link><Link href="/services">Services</Link><Link href="/team">Team</Link><Link href="/#plans">Plans</Link><Link href="/#brief">Brief</Link>
+        </nav>
+        <div className="canonical-actions">
+          <button className="canonical-pill" type="button" onClick={toggleMode} aria-pressed={mode === "night"} aria-label={`Switch to ${mode === "night" ? "day" : "night"} mode`}><Icon kind="sun" /><span>{mode === "night" ? "NIGHT" : "DAY"}</span></button>
+          <button className="canonical-pill" type="button" aria-expanded={open} aria-controls="site-index-panel" onClick={() => setOpen((value) => !value)}>MENU<Icon kind="menu" /></button>
+          <Link className="canonical-cta" href="/contact">START A PROJECT<Icon kind="arrow" /></Link>
+        </div>
+      </header>
 
-      <div
-        id="site-index-panel"
-        className={`site-index-panel${open ? " is-open" : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site index"
-        hidden={!open}
-      >
-        <button
-          type="button"
-          className="site-index-backdrop"
-          aria-label="Close site index"
-          onClick={() => setOpen(false)}
-        />
+      <div id="site-index-panel" className={`site-index-panel${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Site index" hidden={!open}>
+        <button type="button" className="site-index-backdrop" aria-label="Close site index" onClick={() => setOpen(false)} />
         <nav className="site-index-sheet" aria-label="All pages">
-          <p className="site-index-eyebrow">INDEX / ALL PAGES</p>
-          <ul>
-            {PAGES.map(([no, label, href]) => {
-              const current = href === "/" ? pathname === "/" : pathname.startsWith(href);
-              return (
-                <li key={href}>
-                  <Link href={href} aria-current={current ? "page" : undefined}>
-                    <small>{no}</small>
-                    <span>{label}</span>
-                    <i aria-hidden="true">↗</i>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <p className="site-index-foot">
-            VANCOUVER · OHIO · STOCKHOLM · LAHORE
-          </p>
+          <div className="site-index-top"><p>INDEX / ALL PAGES</p><button type="button" onClick={() => setOpen(false)}>CLOSE ×</button></div>
+          <ul>{PAGES.map(([no,label,href]) => {
+            const base = href.split("#")[0];
+            const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
+            return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true">↗</i></Link></li>;
+          })}</ul>
+          <p className="site-index-foot">VANCOUVER · OHIO · STOCKHOLM · LAHORE</p>
         </nav>
       </div>
     </>

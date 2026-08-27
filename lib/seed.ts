@@ -81,6 +81,7 @@ export async function seedStudioContent() {
     "Rohma Fatima",
     "Eunica Amir",
     "Shumail",
+  "Hamza Rizwan",
   ]);
   for (const member of defaultTeam.filter((item) => refreshedPortraitNames.has(item.name))) {
     await db.update(teamMembers).set({ image: member.image }).where(eq(teamMembers.name, member.name));

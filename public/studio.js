@@ -445,15 +445,6 @@
     this.textContent = paused ? 'PLAY' : 'PAUSE';
   });
 
-  /* ---- clock ----------------------------------------------------------- */
-  function stampClock() {
-    var d = new Date();
-    byId('clock').textContent =
-      String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
-  }
-  stampClock();
-  setInterval(stampClock, 20000);
-
   /* ---- day / night ----------------------------------------------------- */
   var modeBtn = byId('modeBtn');
 
