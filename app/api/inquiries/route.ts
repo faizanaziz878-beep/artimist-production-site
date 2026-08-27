@@ -5,8 +5,6 @@ function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
-// Courtesy confirmation to the sender. Never allowed to fail a lead: the
-// enquiry is already safe by the time this runs.
 async function confirmReceipt(
   email: string,
   fields: { name: string; company: string; projectType: string; budget: string; timeline: string; message: string },
@@ -14,7 +12,7 @@ async function confirmReceipt(
   try {
     await sendReceiptConfirmation(email, fields);
   } catch {
-    // Ignored on purpose.
+    // The lead is already stored/notified, so confirmation must never block it.
   }
 }
 
@@ -27,6 +25,19 @@ export async function POST(request: Request) {
     budget: string;
     timeline: string;
     message: string;
+    utmSource: string;
+    utmMedium: string;
+    utmCampaign: string;
+    utmTerm: string;
+    utmContent: string;
+    gclid: string;
+    msclkid: string;
+    fbclid: string;
+    landingPage: string;
+    referrer: string;
+    firstLandingPage: string;
+    firstReferrer: string;
+    firstTouchAt: string;
   };
 
   try {
@@ -39,6 +50,19 @@ export async function POST(request: Request) {
       budget: clean(body.budget, 80),
       timeline: clean(body.timeline, 100),
       message: clean(body.message, 2500),
+      utmSource: clean(body.utm_source, 240),
+      utmMedium: clean(body.utm_medium, 240),
+      utmCampaign: clean(body.utm_campaign, 240),
+      utmTerm: clean(body.utm_term, 240),
+      utmContent: clean(body.utm_content, 240),
+      gclid: clean(body.gclid, 240),
+      msclkid: clean(body.msclkid, 240),
+      fbclid: clean(body.fbclid, 240),
+      landingPage: clean(body.landing_page, 500),
+      referrer: clean(body.referrer, 500),
+      firstLandingPage: clean(body.first_landing_page, 500),
+      firstReferrer: clean(body.first_referrer, 500),
+      firstTouchAt: clean(body.first_touch_at, 80),
     };
   } catch {
     return Response.json({ error: "That submission could not be read. Please try again." }, { status: 400 });
@@ -52,19 +76,15 @@ export async function POST(request: Request) {
     );
   }
 
-  // Preferred path: persist to the studio database so the enquiry appears in
-  // the control room.
   let stored = false;
   try {
     const { getDb } = await import("../../../db");
     await getDb().insert(inquiries).values({ name, email, company, projectType, budget, timeline, message });
     stored = true;
   } catch {
-    // No database binding on this host — the email copy below is then the only record.
+    // No database binding on this host — the email copy below remains the record.
   }
 
-  // A copy always goes to the studio inbox, whether or not the enquiry was
-  // stored, so a lead is visible without opening the control room.
   const emailed = await sendNotification(
     `New studio enquiry — ${name}`,
     {
@@ -75,6 +95,19 @@ export async function POST(request: Request) {
       Budget: budget,
       Timeline: timeline,
       Brief: message,
+      "UTM source": payload.utmSource,
+      "UTM medium": payload.utmMedium,
+      "UTM campaign": payload.utmCampaign,
+      "UTM term": payload.utmTerm,
+      "UTM content": payload.utmContent,
+      "Google click ID": payload.gclid,
+      "Microsoft click ID": payload.msclkid,
+      "Meta click ID": payload.fbclid,
+      "Current landing page": payload.landingPage,
+      "Current referrer": payload.referrer,
+      "First landing page": payload.firstLandingPage,
+      "First referrer": payload.firstReferrer,
+      "First touch": payload.firstTouchAt,
     },
     email,
   );
