@@ -16,13 +16,15 @@ const PAGES: Array<[string, string, string]> = [
   ["09", "Custom House Design", "/custom-house-design"],
   ["10", "3D Interior Design", "/3d-interior-design-service"],
   ["11", "Renovation & Permit Drawings", "/residential-renovation-permit-drawings"],
-  ["12", "Visual archive", "/visual-archive"],
-  ["13", "Process", "/process"],
-  ["14", "Studio team", "/team"],
-  ["15", "About", "/about"],
-  ["16", "Founder's message", "/founder-message"],
-  ["17", "Partners", "/partners"],
-  ["18", "Contact", "/contact"],
+  ["12", "Case Studies", "/case-studies"],
+  ["13", "International", "/international"],
+  ["14", "Visual archive", "/visual-archive"],
+  ["15", "Process", "/process"],
+  ["16", "Studio team", "/team"],
+  ["17", "About", "/about"],
+  ["18", "Founder's message", "/founder-message"],
+  ["19", "Partners", "/partners"],
+  ["20", "Contact", "/contact"],
 ];
 
 function Icon({ kind }: { kind: "sun" | "menu" | "arrow" }) {
@@ -82,7 +84,7 @@ export function SiteIndex() {
       <header className="canonical-header">
         <Link className="canonical-wordmark" href="/" aria-label="Artimist home"><span><b>A</b>RTIMIST</span><small>CREATIVE PRODUCTION</small></Link>
         <nav className="canonical-primary" aria-label="Primary navigation">
-          <Link href="/#work">Work</Link><Link href="/services">Services</Link><Link href="/team">Team</Link><Link href="/#plans">Plans</Link><Link href="/#brief">Brief</Link>
+          <Link href="/#work">Work</Link><Link href="/services">Services</Link><Link href="/case-studies">Case Studies</Link><Link href="/international">International</Link><Link href="/contact">Contact</Link>
         </nav>
         <div className="canonical-actions">
           <button className="canonical-pill" type="button" onClick={toggleMode} aria-pressed={mode === "night"} aria-label={`Switch to ${mode === "night" ? "day" : "night"} mode`}><Icon kind="sun" /><span>{mode === "night" ? "NIGHT" : "DAY"}</span></button>
@@ -100,7 +102,7 @@ export function SiteIndex() {
             const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
             return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><Icon kind="arrow" /></i></Link></li>;
           })}</ul>
-          <p className="site-index-foot">VANCOUVER · OHIO · STOCKHOLM · LAHORE</p>
+          <p className="site-index-foot">WORLDWIDE · USA · UK · CANADA · SWEDEN</p>
         </nav>
       </div>
     </>
