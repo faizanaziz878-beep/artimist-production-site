@@ -22,8 +22,8 @@ export default function CustomHouseDesignPage() {
     subtitle="A home planned around the way you actually want to live."
     intro="Artimist provides a custom house design service for homeowners planning a new home, improving an existing house plan or turning early ideas into a clear residential design. We develop custom floor plans, layouts and spatial options around your site, priorities and desired architectural character instead of forcing the project into a generic stock plan."
     audience="For homeowners who need a new home design, custom house plans, a better floor plan or thoughtful changes to an existing house plan."
-    image="/media/atlas/atlas-18.webp"
-    imageAlt="Contemporary residential development visualized at dusk"
+    image="/graphics/custom-house-floor-plan-design.svg"
+    imageAlt="Custom residential floor plan design diagram showing room planning, circulation, furniture and dimensions"
     included={[
       "Custom home floor plans",
       "New home design concepts",
