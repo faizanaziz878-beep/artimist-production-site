@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import type { SiteSettings } from "../../lib/content";
-import { getStudioOffices } from "../../lib/content";
 
 const capabilities = [
   ["01", "Interactive Architecture", "Real-time architectural environments for design reviews, presentations, investor experiences and client exploration."],
@@ -15,12 +14,12 @@ const capabilities = [
 const pipeline = ["Architectural data", "Optimized geometry", "Materials + lighting", "Real-time interaction", "Cinematic delivery"];
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <span aria-hidden="true">{down ? "↓" : "↗︎"}</span>;
+  return down
+    ? <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M5 12l5 5 5-5" /></svg>
+    : <svg className="ue-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>;
 }
 
 export function UnrealEngineExperience({ settings }: { settings: SiteSettings }) {
-  const offices = getStudioOffices(settings);
-
   useEffect(() => {
     document.documentElement.dataset.theme = "dark";
     const onScroll = () => {
@@ -52,7 +51,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         </div>
         <div className="ue-hud ue-hud-a">LUMEN / NANITE / REALTIME</div>
         <div className="ue-hud ue-hud-b">60 FPS / INTERACTIVE VIEWPORT</div>
-        <div className="ue-coordinate">YVR / OH / STO / LHE<br />WORLDWIDE DELIVERY</div>
+        <div className="ue-coordinate">WORLDWIDE DELIVERY<br />USA / UK / CANADA / SWEDEN</div>
       </section>
 
       <section className="ue-directors">
@@ -67,7 +66,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
       <section className="ue-capabilities" id="capabilities">
         <header><span>Capability matrix / 04</span><h2>Built for<br /><em>presence.</em></h2></header>
         <div className="ue-cap-grid">
-          {capabilities.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p><i>↗︎</i></article>)}
+          {capabilities.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p><Arrow /></article>)}
         </div>
       </section>
 
@@ -98,7 +97,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <span>Next build / 01</span><h2>Give people<br /><em>a world to enter.</em></h2><div><Link href="/contact">Start an Unreal Engine project <Arrow /></Link><a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}<Arrow /></a></div>
       </section>
 
-      <footer className="ue-footer"><strong>ARTIMIST</strong><span>© {new Date().getFullYear()} / {offices.map((office) => office.label).join(" · ")}</span><nav><Link href="/">Home</Link><Link href="/team">Team</Link><Link href="/admin">Admin</Link><a href="#top">Top ↑</a></nav></footer>
+      <footer className="ue-footer"><strong>ARTIMIST</strong><span>© {new Date().getFullYear()} / WORLDWIDE · USA · UK · CANADA · SWEDEN</span><nav><Link href="/">Home</Link><Link href="/team">Team</Link><Link href="/admin">Admin</Link><a href="#top">Top</a></nav></footer>
     </main>
   );
 }
