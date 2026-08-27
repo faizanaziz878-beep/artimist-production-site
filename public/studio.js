@@ -339,6 +339,7 @@ var ROWS = [
   TEAM.forEach(function (m, i) {
     var a = (i / TEAM.length) * Math.PI * 2 - Math.PI / 2;
     var node = el('article', 'st-member');
+    if (i === 0) node.classList.add('is-founder');
     node.style.left = (50 + Math.cos(a) * 41).toFixed(2) + '%';
     node.style.top = (50 + Math.sin(a) * 41).toFixed(2) + '%';
     node.innerHTML =
