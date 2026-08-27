@@ -12,6 +12,8 @@
 
   function reviewCard(review) {
     var article = document.createElement('article');
+    article.className = 'reviews-v2-live-review';
+
     var score = document.createElement('div');
     score.className = 'reviews-v2-stars';
     score.setAttribute('aria-label', String(review.rating || 5) + ' out of 5 stars');
@@ -40,9 +42,10 @@
       .then(function (data) {
         if (!data || !Array.isArray(data.testimonials) || !data.testimonials.length) return;
         grid.textContent = '';
-        data.testimonials.slice(0, 3).forEach(function (review) { grid.appendChild(reviewCard(review)); });
+        data.testimonials.slice(0, 6).forEach(function (review) { grid.appendChild(reviewCard(review)); });
+        grid.setAttribute('data-has-published-reviews', '1');
       })
-      .catch(function () { /* Keep the published fallback feedback in the HTML. */ });
+      .catch(function () { /* Keep the transparent review-policy cards in the HTML. */ });
   }
 
   if (form && status) {
@@ -64,14 +67,14 @@
         })
         .then(function () {
           form.reset();
-          status.textContent = 'Thank you. Your review is now with the studio for approval.';
+          status.textContent = 'Thank you. Your review is now with the studio for verification and approval.';
         })
         .catch(function (error) {
           status.textContent = error.message || 'Could not send the review. Please try again.';
         })
         .finally(function () {
           submit.disabled = false;
-          submit.textContent = 'SEND FOR ADMIN REVIEW ↗';
+          submit.textContent = 'SEND FOR ADMIN REVIEW';
         });
     });
   }
