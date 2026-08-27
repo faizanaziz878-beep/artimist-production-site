@@ -54,7 +54,7 @@
     if (!a || !a.textContent) return false;
     if (a.closest('form')) return false;
     var text = a.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
-    return /(start a conversation|talk to|talk with|chat with|chat to|speak with|speak to|get in touch|contact us|contact the studio|discuss (this|your|a|the|project|service)|ask the studio|have a question|message (us|the studio)|whatsapp)/i.test(text);
+    return /(start a conversation|talk to|talk with|chat with|chat to|speak with|speak to|get in touch|contact us|contact the studio|discuss (this|your|a|the|project|service)|have a question|message (us|the studio)|whatsapp)/i.test(text);
   }
 
   function wireConversationLinks(root) {
@@ -71,19 +71,27 @@
     });
   }
 
+  function syncAskControls() {
+    var studioAsk = document.querySelector('.st-ask-btn');
+    document.body.classList.toggle('artimist-has-studio-ask', !!studioAsk);
+    document.body.classList.toggle('artimist-studio-ask-open', !!(studioAsk && studioAsk.classList.contains('is-open')));
+  }
+
   function addStyle() {
     if (document.getElementById('artimist-whatsapp-style')) return;
     var style = document.createElement('style');
     style.id = 'artimist-whatsapp-style';
     style.textContent = [
-      '.artimist-whatsapp{position:fixed;right:22px;bottom:22px;z-index:2147483200;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(9,9,9,.90);color:#fff!important;text-decoration:none!important;box-shadow:0 16px 45px rgba(0,0,0,.34);-webkit-backdrop-filter:blur(18px) saturate(1.08);backdrop-filter:blur(18px) saturate(1.08);font-family:Arial,sans-serif;transition:transform .2s ease,border-color .2s ease,background .2s ease}',
+      '.artimist-whatsapp{position:fixed;right:22px;bottom:22px;z-index:2147483200;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(9,9,9,.90);color:#fff!important;text-decoration:none!important;box-shadow:0 16px 45px rgba(0,0,0,.34);-webkit-backdrop-filter:blur(18px) saturate(1.08);backdrop-filter:blur(18px) saturate(1.08);font-family:Arial,sans-serif;transition:transform .24s ease,border-color .2s ease,background .2s ease,bottom .28s ease,opacity .2s ease}',
       '.artimist-whatsapp:hover{transform:translateY(-2px);border-color:rgba(217,100,118,.55);background:rgba(12,12,12,.96)}',
       '.artimist-whatsapp__mark{width:10px;height:10px;border-radius:50%;background:#9c1f35;box-shadow:0 0 0 5px rgba(156,31,53,.13);flex:none}',
       '.artimist-whatsapp__copy{display:flex;flex-direction:column;gap:2px;line-height:1}',
       '.artimist-whatsapp__copy small{font-size:7px;letter-spacing:.18em;color:rgba(255,255,255,.52);text-transform:uppercase}',
       '.artimist-whatsapp__copy strong{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}',
       '.askbot-launch{display:none!important}',
-      '@media(max-width:760px){.artimist-whatsapp{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));padding:11px 14px 11px 12px;gap:10px}.artimist-whatsapp__copy strong{font-size:9px}.artimist-whatsapp__copy small{font-size:6px}}',
+      'body.artimist-has-studio-ask .artimist-whatsapp{bottom:86px}',
+      'body.artimist-studio-ask-open .artimist-whatsapp{opacity:0;pointer-events:none;transform:translateY(8px)}',
+      '@media(max-width:760px){.artimist-whatsapp{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));padding:10px 13px 10px 11px;gap:9px;max-width:calc(100vw - 28px)}.artimist-whatsapp__copy strong{font-size:9px}.artimist-whatsapp__copy small{font-size:6px}body.artimist-has-studio-ask .artimist-whatsapp{bottom:calc(78px + env(safe-area-inset-bottom))}.st-ask-btn{right:14px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important}.st-ask{right:14px!important;left:14px!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;width:auto!important}}',
       '@media(prefers-reduced-motion:reduce){.artimist-whatsapp{transition:none}}'
     ].join('');
     document.head.appendChild(style);
@@ -106,6 +114,7 @@
     addStyle();
     wireConversationLinks(document);
     addPersistentCta();
+    syncAskControls();
 
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
@@ -113,8 +122,9 @@
           if (node.nodeType === 1) wireConversationLinks(node);
         });
       });
+      syncAskControls();
     });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
+    observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
