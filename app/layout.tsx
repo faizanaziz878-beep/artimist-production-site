@@ -70,6 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <VisitorTracker />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
+        <span id="main-content" className="main-content-anchor" tabIndex={-1} />
         {children}
         <script defer src="/_vercel/insights/script.js" />
       </body>
