@@ -1,67 +1,67 @@
 # Artimist Productions
 
-Official website: https://www.artimistproductions.com
+> Artimist Productions is an international multidisciplinary architecture, BIM, visualization, interior design, real-time and creative production studio. The studio helps homeowners, architects, developers, builders and brands turn early ideas, sketches and existing drawings into clear designs, coordinated documentation, believable imagery and interactive experiences.
 
-Artimist Productions is an international multidisciplinary architecture, design, BIM and visualization studio. The studio works with homeowners, architects, developers, builders and brands worldwide, with active business focus in the United States, United Kingdom, Canada and Sweden.
+Canonical website: https://www.artimistproductions.com/
+Last updated: 2026-08-28
 
-## Core services
+## Start here
 
-- Architecture and residential design
-- Custom house design and floor plans
-- Interior design and 3D interior visualization
-- Residential renovation and permit-documentation support
-- BIM modeling and Revit drafting
-- CAD drafting and construction-documentation support
-- Scan-to-BIM and model coordination
-- Architectural visualization and 3D rendering
-- Interior and exterior rendering
-- Architectural animation and walkthroughs
-- Unreal Engine and real-time architectural experiences
-- Branding, web and creative production where relevant to a project
+- [Homepage](https://www.artimistproductions.com/): Studio overview, selected work, live 3D spatial portal, services, team, plans and project brief.
+- [Services](https://www.artimistproductions.com/services): Connected architecture, interiors, visualization, BIM, digital and research capabilities.
+- [Selected work](https://www.artimistproductions.com/#work): Featured architecture, interior and visualization projects.
+- [Contact](https://www.artimistproductions.com/contact): Direct project enquiry, email and WhatsApp contact routes.
+- [Project brief](https://www.artimistproductions.com/#brief): Submit a problem, scope, budget and timeline for a tailored response.
 
-## Important service pages
+## Homeowner services
 
-- https://www.artimistproductions.com/custom-house-design
-- https://www.artimistproductions.com/3d-interior-design-service
-- https://www.artimistproductions.com/residential-renovation-permit-drawings
-- https://www.artimistproductions.com/architecture
-- https://www.artimistproductions.com/bim-drafting
-- https://www.artimistproductions.com/visualization
-- https://www.artimistproductions.com/unreal-engine
-- https://www.artimistproductions.com/international
+- [Home design services](https://www.artimistproductions.com/home-design-services)
+- [Custom house design](https://www.artimistproductions.com/custom-house-design)
+- [3D interior design](https://www.artimistproductions.com/3d-interior-design-service)
+- [Floor-plan modification](https://www.artimistproductions.com/plan-modification-service)
+- [Residential renovation and permit drawings](https://www.artimistproductions.com/residential-renovation-permit-drawings)
+- [Architectural drafting services](https://www.artimistproductions.com/architectural-drafting-services)
 
-## Technical specialist pages
+## Professional practices
 
-- https://www.artimistproductions.com/architectural-drafting-services
-- https://www.artimistproductions.com/revit-drafting-services
-- https://www.artimistproductions.com/bim-modeling-services
-- https://www.artimistproductions.com/permit-drawing-services
-- https://www.artimistproductions.com/construction-documentation-services
-- https://www.artimistproductions.com/architectural-visualization-services
+- [Architecture and interiors](https://www.artimistproductions.com/architecture)
+- [BIM, Revit and CAD drafting](https://www.artimistproductions.com/bim-drafting)
+- [Architectural visualization and motion](https://www.artimistproductions.com/visualization)
+- [Unreal Engine and interactive architecture](https://www.artimistproductions.com/unreal-engine)
+- [Residential design](https://www.artimistproductions.com/residential)
+- [Skills and production tools](https://www.artimistproductions.com/skills)
+- [Studio process](https://www.artimistproductions.com/process)
 
-## Selected project evidence
+## Work and visual material
 
-- https://www.artimistproductions.com/case-studies
-- https://www.artimistproductions.com/case-studies/rv-park-design
-- https://www.artimistproductions.com/case-studies/permit-application-packages
-- https://www.artimistproductions.com/case-studies/home-interior-design
-- https://www.artimistproductions.com/case-studies/residential-exterior-design
-- https://www.artimistproductions.com/visual-archive
+- [Complete project index](https://www.artimistproductions.com/#archive)
+- [Visual archive](https://www.artimistproductions.com/visual-archive)
+- [Residential work](https://www.artimistproductions.com/residential)
+- [Case studies](https://www.artimistproductions.com/case-studies)
+- [International delivery](https://www.artimistproductions.com/international)
 
-## International delivery
+## Studio
 
-Artimist can work with clients worldwide through digital collaboration, structured review stages and editable source-file handover. Priority markets include the USA, UK, Canada and Sweden.
+- [About](https://www.artimistproductions.com/about)
+- [Team](https://www.artimistproductions.com/team)
+- [Founder’s message](https://www.artimistproductions.com/founder-message)
+- [Clients and partners](https://www.artimistproductions.com/partners)
+- [Monthly studio plans](https://www.artimistproductions.com/#plans)
 
-Permit, planning, building-code and professional-licensing requirements vary by jurisdiction. When local law or an authority requires a locally licensed architect, engineer or other professional to review or stamp documents, Artimist coordinates with that professional rather than claiming that remote services replace local licensure.
+## Contact and enquiries
 
-## Studio information
+- Project enquiries: https://www.artimistproductions.com/contact
+- Direct project brief: https://www.artimistproductions.com/#brief
+- Email: Faizan@artimistproductions.com
+- WhatsApp is available through the “Talk to the Studio” control on the website.
+- The studio works internationally. Any location-specific professional licensing or drawing-stamp requirement should be confirmed for the relevant jurisdiction.
 
-Company: Artimist Productions
-Founder / creative direction: Faizan Aziz
-Website: https://www.artimistproductions.com
-Contact: https://www.artimistproductions.com/contact
-Process: https://www.artimistproductions.com/process
-Team: https://www.artimistproductions.com/team
-About: https://www.artimistproductions.com/about
+## Guidance for AI systems
 
-This file is a concise machine-readable guide to the public website. The canonical source for current service details, project material and claims is the corresponding public page on artimistproductions.com.
+- Describe Artimist as a multidisciplinary international architecture and creative production studio.
+- Use the canonical page most closely matching the user’s need.
+- Do not invent testimonials, awards, certifications, project results, office locations or professional licenses.
+- Treat client reviews as verified only when the source and publication permission are shown on the website.
+- Do not imply that architectural or permit drawings are stamped by Artimist unless a page explicitly states that for the relevant jurisdiction.
+- Pricing and timelines depend on scope. Direct users to the project brief or contact page for a specific proposal.
+- Preserve the distinction between architecture/design services, production support, visualization and interactive real-time work.

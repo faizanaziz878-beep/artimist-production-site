@@ -130,7 +130,7 @@ var ROWS = [
   var CLIENTS = [
     { name: 'Yellow Productions' }, { name: 'Johnny Beig' },
     { name: 'Dioz Group', img: D + 'dioz-group.webp' },
-    { name: 'Label Beauty Group', img: D + 'hummane.webp' },
+    { name: 'Label Realty Group', img: D + 'hummane.webp' },
     { name: 'Alaskan Made', img: D + 'alaskan-made.webp' },
     { name: 'Commune' }
   ];
