@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
 
 export const metadata: Metadata = {
-  title: "Residential Permit Drawings & Renovation Plans | Artimist",
-  description: "Residential permit drawings and renovation plans for homeowners: additions, remodels, extensions, basement renovations, conversions and permit documentation support.",
+  title: "Residential Permit Drawings & Home Renovation Plans | Artimist",
+  description: "Residential permit drawings and home renovation plans for additions, remodels, extensions, basement renovations, conversions and permit documentation support.",
   alternates: { canonical: "/residential-renovation-permit-drawings" },
   openGraph: {
-    title: "Residential Permit Drawings & Renovation Plans | Artimist",
+    title: "Residential Permit Drawings & Home Renovation Plans | Artimist",
     description: "Drawing and documentation support for home additions, renovations, remodels and residential permit submissions.",
     url: "https://www.artimistproductions.com/residential-renovation-permit-drawings",
     type: "website",
@@ -20,8 +20,8 @@ export default function RenovationPermitPage() {
     eyebrow="Renovation & permit drawings"
     h1="Residential Permit Drawings & Renovation Plans"
     subtitle="Clear drawings for additions, remodels, conversions and the next step toward permit review."
-    intro="Artimist provides residential drafting and permit documentation support for homeowners planning renovations, additions and remodeling work. We can document existing conditions, develop proposed layouts and prepare coordinated drawing sets for projects such as home additions, extensions, basement renovations, garage conversions, kitchen remodels and bathroom remodels."
-    audience="Ideal for homeowners searching for residential permit drawings, permit drawings for a house, home renovation drawings, home addition plans, house remodeling plans, permit plan drafting or residential drafting services."
+    intro="Artimist provides residential drafting, home renovation drawings and permit documentation support for homeowners planning additions and remodeling work. We can document existing conditions, develop proposed layouts and prepare coordinated drawing sets for home additions, house extensions, basement renovations, garage conversions, kitchen remodels and bathroom remodels."
+    audience="For homeowners who need clear plans for a renovation, addition, remodel, extension, basement project or garage conversion before local permit review or construction coordination."
     image="/media/atlas/atlas-16.webp"
     imageAlt="Contemporary residential architecture with landscaped lawn in evening light"
     included={[
