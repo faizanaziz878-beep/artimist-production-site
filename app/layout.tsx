@@ -47,6 +47,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <IntroScript />
+        <Script src="/mobile-cleanup.js" strategy="afterInteractive" />
         <Script id="text-arrow-presentation" strategy="afterInteractive">{`(function(){function fix(root){if(!root)return;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){if(n.nodeValue&&n.nodeValue.indexOf('↗')>-1){n.nodeValue=n.nodeValue.replace(/↗(?!︎)/g,'↗︎');}}}fix(document.body);new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===3){if(n.nodeValue&&n.nodeValue.indexOf('↗')>-1)n.nodeValue=n.nodeValue.replace(/↗(?!︎)/g,'↗︎');}else if(n.nodeType===1){fix(n);}});});}).observe(document.body,{childList:true,subtree:true});})();`}</Script>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-1PWWCTSMW4" strategy="afterInteractive" />
         <Script id="ms-clarity" strategy="afterInteractive">{`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y4w3ocfmtl");`}</Script>
