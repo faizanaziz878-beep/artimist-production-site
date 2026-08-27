@@ -11,6 +11,19 @@
 
   var root = document.documentElement;
 
+  /* iOS/Safari can render U+2197 as a blue emoji-style badge. Force the text
+     presentation selector so directional marks stay monochrome and editorial. */
+  function forceTextArrows(scope) {
+    var walker = document.createTreeWalker(scope || document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue && node.nodeValue.indexOf('\u2197') !== -1) {
+        node.nodeValue = node.nodeValue.replace(/\u2197(?!\uFE0E)/g, '\u2197\uFE0E');
+      }
+    }
+  }
+  forceTextArrows(document.body);
+
   /* ---- shell: header, index, day/night ---------------------------------- */
   var PAGES = [
     ['Work', '/#work'],
@@ -66,7 +79,7 @@
     list.insertAdjacentHTML('beforeend',
       '<a href="' + p[1] + '"' + (current ? ' aria-current="page"' : '') + '>' +
       '<small>' + String(i + 1).padStart(2, '0') + '</small><span>' + esc(p[0]) + '</span>' +
-      '<i aria-hidden="true">&#8599;</i></a>');
+      '<i aria-hidden="true">&#8599;&#65038;</i></a>');
   });
 
   var panel = document.getElementById('apIndex');
