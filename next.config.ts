@@ -10,10 +10,10 @@ const nextConfig: NextConfig = {
     return {
       beforeFiles: [
         { source: "/", destination: "/seo-home" },
-        { source: "/architecture", destination: "/architecture.html" },
-        { source: "/bim-drafting", destination: "/bimdrafting.html" },
-        { source: "/visualization", destination: "/visualization.html" },
-        { source: "/services", destination: "/services.html" },
+        { source: "/architecture", destination: "/seo-architecture" },
+        { source: "/bim-drafting", destination: "/seo-bim" },
+        { source: "/visualization", destination: "/seo-visualization" },
+        { source: "/services", destination: "/seo-services" },
         { source: "/about", destination: "/about.html" },
         { source: "/partners", destination: "/partners.html" },
         { source: "/founder-message", destination: "/foundermessage.html" },
