@@ -1,0 +1,175 @@
+/* Artimist 100% pass — shared visual, mobile and accessibility safeguards. */
+:root {
+  --artimist-header-h: 72px;
+  --artimist-safe-bottom: max(18px, env(safe-area-inset-bottom));
+  --artimist-safe-top: max(0px, env(safe-area-inset-top));
+  --artimist-focus: #d96476;
+}
+
+html {
+  scroll-padding-top: calc(var(--artimist-header-h) + 20px);
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+main, section, article, header, footer, nav, aside, figure, form {
+  min-width: 0;
+}
+
+h1, h2, h3, h4, p, li, a, button, label, strong, span {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+button, a, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--artimist-focus);
+  outline-offset: 3px;
+}
+
+.ui-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+/* The canonical header owns site navigation. Hidden legacy headers should never
+   reserve space, overlap, or remain focusable visually. */
+.tp-header,
+.ue-header,
+.ap-hub-head,
+.sp-header,
+.st-header,
+.ap-header {
+  pointer-events: none;
+}
+
+.canonical-header {
+  top: var(--artimist-safe-top);
+}
+
+/* Protect editorial headings from old overflow/crop rules on mobile Safari. */
+@supports (-webkit-touch-callout: none) {
+  h1, h2, h3,
+  .practice-page h1,
+  .practice-page h2,
+  .about-v2 h1,
+  .about-v2 h2,
+  .founder-v2 h1,
+  .founder-v2 h2,
+  .services-v2 h1,
+  .services-v2 h2,
+  .studio-path h1,
+  .studio-path h2,
+  .visual-journey h1,
+  .visual-journey h2 {
+    padding-bottom: .08em;
+    overflow: visible;
+  }
+}
+
+/* Make fixed / floating conversion controls respect iPhone safe areas and never
+   occupy the same final row. */
+@media (max-width: 760px) {
+  :root { --artimist-header-h: 66px; }
+
+  body { padding-bottom: env(safe-area-inset-bottom); }
+
+  .canonical-header {
+    height: calc(var(--artimist-header-h) + var(--artimist-safe-top));
+    padding-top: var(--artimist-safe-top);
+  }
+
+  main:not(.artimist-home) {
+    scroll-margin-top: calc(var(--artimist-header-h) + 18px);
+  }
+
+  .ask-studio,
+  .ask-the-studio,
+  [data-ask-studio],
+  .whatsapp-fab,
+  [data-whatsapp-fab] {
+    bottom: calc(var(--artimist-safe-bottom) + 8px) !important;
+  }
+
+  .ask-studio,
+  .ask-the-studio,
+  [data-ask-studio] {
+    left: 14px !important;
+    right: auto !important;
+    max-width: min(58vw, 240px) !important;
+  }
+
+  .whatsapp-fab,
+  [data-whatsapp-fab] {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  .site-index-sheet {
+    padding-bottom: calc(48px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .site-index-sheet span,
+  .canonical-wordmark span,
+  .canonical-wordmark small {
+    white-space: normal;
+  }
+
+  /* Stable tap targets; especially important where old components used tiny text links. */
+  .canonical-header button,
+  .canonical-header a,
+  .site-index-sheet a,
+  .site-index-sheet button,
+  .sp-contact-form button,
+  .sp-contact-form input,
+  .sp-contact-form select,
+  .sp-contact-form textarea {
+    min-height: 44px;
+  }
+
+  .sp-contact-form input,
+  .sp-contact-form select,
+  .sp-contact-form textarea {
+    font-size: 16px !important; /* prevents iOS input zoom */
+  }
+}
+
+@media (max-width: 420px) {
+  .canonical-header { padding-left: 14px !important; padding-right: 14px !important; }
+  .canonical-wordmark span { font-size: 17px !important; }
+  .canonical-actions { gap: 6px !important; }
+  .canonical-actions button[aria-controls="site-index-panel"] { padding-inline: 11px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
