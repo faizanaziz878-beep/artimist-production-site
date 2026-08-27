@@ -4,9 +4,12 @@ import type { FormEvent, ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { getStudioOffices, serviceWorlds as defaultServices, type SiteSettings } from "../lib/content";
+import { UiIcon } from "./ui-icon";
 
 type Chapter = "services" | "process" | "contact";
 type ServiceWorld = (typeof defaultServices)[number];
+
+type LeadResult = { error?: string; reference?: string };
 
 const serviceImages = [
   "/media/residential/residential-15.webp",
@@ -102,7 +105,7 @@ function useStudioShell() {
 
 function PathHeader({ current, theme, onTheme }: { current: Chapter; theme: "light" | "dark"; onTheme: () => void }) {
   return (
-    <header className="sp-header">
+    <header className="sp-header" aria-hidden="true">
       <Link className="sp-wordmark" href="/"><strong>ARTIMIST</strong><span>Creative Production</span></Link>
       <nav aria-label="Studio journey">
         <Link className={current === "services" ? "is-active" : ""} href="/services">Services</Link>
@@ -112,7 +115,7 @@ function PathHeader({ current, theme, onTheme }: { current: Chapter; theme: "lig
         <Link href="/unreal-engine">Unreal</Link>
         <Link href="/visual-archive">Work</Link>
       </nav>
-      <button className="sp-theme" onClick={onTheme} aria-label={`Switch to ${theme === "dark" ? "day" : "night"} mode`}><i />{theme === "dark" ? "Night" : "Day"}</button>
+      <button className="sp-theme" onClick={onTheme} tabIndex={-1} aria-label={`Switch to ${theme === "dark" ? "day" : "night"} mode`}><i />{theme === "dark" ? "Night" : "Day"}</button>
     </header>
   );
 }
@@ -139,6 +142,10 @@ function parseServices(settings: SiteSettings): ServiceWorld[] {
   }
 }
 
+function Arrow({ size = 16 }: { size?: number }) {
+  return <UiIcon name="arrow" size={size} />;
+}
+
 export function ServicesExperience({ settings }: { settings: SiteSettings }) {
   const { theme, toggleTheme } = useStudioShell();
   const services = useMemo(() => parseServices(settings), [settings]);
@@ -158,19 +165,19 @@ export function ServicesExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-service-chapters">
         {services.map((service, index) => (
           <article id={`service-${service.code}`} className={index % 2 ? "is-reversed" : ""} key={`${service.code}-${service.subtitle}`} data-sp-reveal>
-            <figure><img src={serviceImages[index % serviceImages.length]} alt={`${service.subtitle} by Artimist Production`} loading={index < 2 ? "eager" : "lazy"} /><span>{service.code} / {service.title}</span></figure>
+            <figure><img src={serviceImages[index % serviceImages.length]} alt={`${service.subtitle} by Artimist Productions`} loading={index === 0 ? "eager" : "lazy"} /><span>{service.code} / {service.title}</span></figure>
             <div>
               <SectionCode>{service.code} / Service world</SectionCode>
               <h2>{service.subtitle}</h2>
               <p>{service.copy}</p>
-              <ul>{serviceOutputs[index % serviceOutputs.length].map((output) => <li key={output}>{output}<span>↗︎</span></li>)}</ul>
-              <Link href={`/contact?service=${encodeURIComponent(service.subtitle)}`}>Discuss this service <span>↗︎</span></Link>
+              <ul>{serviceOutputs[index % serviceOutputs.length].map((output) => <li key={output}>{output}<span aria-hidden="true"><Arrow size={14} /></span></li>)}</ul>
+              <Link href={`/contact?service=${encodeURIComponent(service.subtitle)}`}>Discuss this service <Arrow /></Link>
             </div>
           </article>
         ))}
       </section>
 
-      <section className="sp-page-cta"><div><SectionCode>Next / 02</SectionCode><h2>How does the work<br /><em>move forward?</em></h2></div><Link href="/process"><span>Enter the process</span><b>↗︎</b></Link></section>
+      <section className="sp-page-cta"><div><SectionCode>Next / 02</SectionCode><h2>How does the work<br /><em>move forward?</em></h2></div><Link href="/process"><span>Enter the process</span><Arrow /></Link></section>
     </main>
   );
 }
@@ -194,7 +201,7 @@ export function ProcessExperience() {
         {phases.map((phase, index) => (
           <article id={`phase-${phase.code}`} className={`${index % 2 ? "is-reversed" : ""} ${phase.board ? "is-board" : ""}`} key={phase.code} data-sp-reveal>
             <figure>
-              {phase.video ? <video src={phase.media} autoPlay muted loop playsInline controls preload="metadata" aria-label={`${phase.title} process film`} /> : <img src={phase.media} alt={`${phase.title} — Artimist process`} loading={index < 2 ? "eager" : "lazy"} />}
+              {phase.video ? <video src={phase.media} autoPlay muted loop playsInline controls preload="metadata" aria-label={`${phase.title} process film`} /> : <img src={phase.media} alt={`${phase.title} — Artimist process`} loading={index === 0 ? "eager" : "lazy"} />}
               <span>{phase.code} / 05</span>
             </figure>
             <div><SectionCode>Phase {phase.code}</SectionCode><h2>{phase.title}</h2><h3>{phase.statement}</h3><p>{phase.copy}</p><ol>{phase.outputs.map((output, outputIndex) => <li key={output}><span>{String(outputIndex + 1).padStart(2, "0")}</span>{output}</li>)}</ol></div>
@@ -202,7 +209,7 @@ export function ProcessExperience() {
         ))}
       </section>
 
-      <section className="sp-page-cta"><div><SectionCode>Next / 03</SectionCode><h2>Bring us the brief.<br /><em>Or just the beginning.</em></h2></div><Link href="/contact"><span>Open a conversation</span><b>↗︎</b></Link></section>
+      <section className="sp-page-cta"><div><SectionCode>Next / 03</SectionCode><h2>Bring us the brief.<br /><em>Or just the beginning.</em></h2></div><Link href="/contact"><span>Open a conversation</span><Arrow /></Link></section>
     </main>
   );
 }
@@ -212,62 +219,84 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
   const [status, setStatus] = useState("");
   const [fallbackHref, setFallbackHref] = useState("");
   const [projectType, setProjectType] = useState("");
+  const [reference, setReference] = useState("");
+  const [submittedType, setSubmittedType] = useState("");
+  const [submittedLocation, setSubmittedLocation] = useState("");
+  const [formStarted, setFormStarted] = useState(false);
   const services = useMemo(() => parseServices(settings), [settings]);
   const offices = getStudioOffices(settings);
-  const whatsappHref = `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Artimist team — I would like to discuss a project.")}`;
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service") || "";
-    if (!services.some((service) => service.subtitle === requested)) return;
-    const timer = window.setTimeout(() => setProjectType(requested), 0);
+    if (!requested) return;
+    const matched = services.find((service) => service.subtitle === requested);
+    const timer = window.setTimeout(() => setProjectType(matched?.subtitle || requested), 0);
     return () => window.clearTimeout(timer);
   }, [services]);
 
+  function track(name: string, params: Record<string, string>) {
+    if (typeof window === "undefined") return;
+    const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+    if (typeof w.gtag === "function") w.gtag("event", name, params);
+  }
+
+  function markFormStarted() {
+    if (formStarted) return;
+    setFormStarted(true);
+    track("form_start", { form_name: "project_intake" });
+  }
+
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("Sending your brief…");
+    setStatus("Sending your project brief…");
     setFallbackHref("");
+    setReference("");
     const form = event.currentTarget;
     const entries = Object.fromEntries(new FormData(form)) as Record<string, string>;
-    const track = (name: string, params: Record<string, string>) => {
-      if (typeof window === "undefined") return;
-      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
-      if (typeof w.gtag === "function") w.gtag("event", name, params);
-    };
+    setSubmittedType(entries.projectType || "Project");
+    setSubmittedLocation(entries.projectLocation || "");
+
     try {
       const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(entries),
       });
-      const result = await response.json() as { error?: string };
+      const result = await response.json() as LeadResult;
       if (!response.ok) throw new Error(result.error || "Unable to send your brief.");
-      track("generate_lead", { form_name: "project_brief" });
+      const nextReference = result.reference || `AP-${Date.now().toString(36).toUpperCase()}`;
+      setReference(nextReference);
+      track("generate_lead", { form_name: "project_intake", project_type: entries.projectType || "" });
       form.reset();
       setProjectType("");
-      setStatus("Brief received. The studio will reply by email.");
+      setStatus("Project received. A studio lead will review the brief and reply directly.");
     } catch {
-      // The studio inbox could not be reached from this host. Never drop the
-      // lead: hand the visitor a one-click email with their brief prefilled.
       const subject = `New project brief — ${entries.name || "Website enquiry"}`;
       const body = [
         `Name: ${entries.name || ""}`,
         `Email: ${entries.email || ""}`,
         `Company: ${entries.company || ""}`,
         `Project type: ${entries.projectType || ""}`,
+        `Project location: ${entries.projectLocation || ""}`,
+        `Project stage: ${entries.projectStage || ""}`,
         `Budget: ${entries.budget || ""}`,
         `Timeline: ${entries.timeline || ""}`,
+        `Preferred contact: ${entries.preferredContact || ""}`,
+        `Source files / share link: ${entries.sourceLinks || ""}`,
         "",
         "Brief:",
         entries.message || "",
       ].join("\n");
-      setFallbackHref(
-        `mailto:Faizan@artimistproductions.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-      );
-      track("lead_fallback_email", { form_name: "project_brief" });
+      setFallbackHref(`mailto:Faizan@artimistproductions.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      track("lead_fallback_email", { form_name: "project_intake" });
       setStatus("We could not reach the studio inbox from this page. Your brief is ready below — send it in one click and it reaches us directly.");
     }
   }
+
+  const successWhatsAppText = reference
+    ? `Hi Artimist team — I just submitted ${submittedType}${submittedLocation ? ` for ${submittedLocation}` : ""}. Reference: ${reference}. I would like to continue here.`
+    : "Hi Artimist team — I would like to discuss a project.";
+  const whatsappHref = `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(successWhatsAppText)}`;
 
   return (
     <main className="studio-path sp-contact-page">
@@ -275,28 +304,43 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-hero sp-contact-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-34.webp" alt="" /><img className="sp-day-image" src="/media/atlas/atlas-27.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / Start something</SectionCode><h1>Contact</h1><p>Share the project as it is today: finished brief, rough idea, difficult question or ambitious deadline. We will help locate the next useful move.</p></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / Start something</SectionCode><h1>Start a project</h1><p>Share what exists today—plans, a model, references, a difficult question or simply the goal. We will turn it into a clear next step.</p></div>
         <PathRail current="contact" />
       </section>
 
       <section className="sp-contact-workspace">
-        <div className="sp-contact-intro" data-sp-reveal><SectionCode>Open a brief</SectionCode><h2>Tell us what<br /><em>could exist.</em></h2><p>Your inquiry goes directly to the studio admin portal, where it can be tracked from first contact through delivery.</p></div>
-        <form className="sp-contact-form" onSubmit={submitInquiry} data-sp-reveal>
-          <label><span>Name *</span><input name="name" required maxLength={80} /></label>
-          <label><span>Email *</span><input name="email" type="email" required maxLength={160} /></label>
-          <label><span>Company</span><input name="company" maxLength={120} /></label>
-          <label><span>Project type *</span><select name="projectType" required value={projectType} onChange={(event) => setProjectType(event.target.value)}><option value="" disabled>Select a field</option>{services.map((service) => <option key={service.code}>{service.subtitle}</option>)}<option>Multidisciplinary</option></select></label>
-          <label><span>Budget</span><select name="budget" defaultValue=""><option value="">Let&apos;s discuss</option><option>Under $2,500</option><option>$2,500–$7,500</option><option>$7,500–$20,000</option><option>$20,000+</option></select></label>
+        <div className="sp-contact-intro" data-sp-reveal>
+          <SectionCode>Project intake</SectionCode>
+          <h2>Give us enough<br /><em>to think with.</em></h2>
+          <p>Tell us what you need, where the project is, what stage it is at and what you already have. Source files can be shared with a secure Drive, Dropbox, OneDrive or WeTransfer link.</p>
+          <ul className="sp-intake-notes">
+            <li><UiIcon name="check" size={15} /> Real studio review</li>
+            <li><UiIcon name="check" size={15} /> No invented minimum project size</li>
+            <li><UiIcon name="check" size={15} /> Worldwide collaboration</li>
+          </ul>
+        </div>
+        <form className="sp-contact-form" onSubmit={submitInquiry} onFocusCapture={markFormStarted} data-sp-reveal>
+          <label><span>Name *</span><input name="name" autoComplete="name" required maxLength={80} /></label>
+          <label><span>Email *</span><input name="email" type="email" autoComplete="email" required maxLength={160} /></label>
+          <label><span>Company</span><input name="company" autoComplete="organization" maxLength={120} /></label>
+          <label><span>Project location</span><input name="projectLocation" autoComplete="country-name" placeholder="City / region / country" maxLength={140} /></label>
+          <label><span>Project type *</span><select name="projectType" required value={projectType} onChange={(event) => setProjectType(event.target.value)}><option value="" disabled>Select a field</option>{services.map((service) => <option key={service.code} value={service.subtitle}>{service.subtitle}</option>)}<option value="House / residential design">House / residential design</option><option value="Plan changes / redraw">Plan changes / redraw</option><option value="BIM / Revit / drafting">BIM / Revit / drafting</option><option value="Architectural visualization">Architectural visualization</option><option value="Multidisciplinary">Multidisciplinary</option><option value="Other">Other</option></select></label>
+          <label><span>Project stage</span><select name="projectStage" defaultValue=""><option value="">Select stage</option><option>Idea / early brief</option><option>Existing plans or model</option><option>Design development</option><option>Permit / documentation</option><option>Construction / coordination</option><option>Marketing / presentation</option></select></label>
+          <label><span>Budget</span><select name="budget" defaultValue=""><option value="">Not sure / let&apos;s discuss</option><option>$200–$1,000</option><option>$1,000–$5,000</option><option>$5,000–$20,000</option><option>$20,000–$50,000</option><option>$50,000+</option></select></label>
           <label><span>Timeline</span><input name="timeline" placeholder="e.g. 4–6 weeks" maxLength={80} /></label>
-          <label className="is-wide"><span>Brief *</span><textarea name="message" required minLength={20} maxLength={4000} rows={7} placeholder="What are you making, for whom, and what needs to change?" /></label>
-          <button type="submit"><span>Send project brief</span><b>↗︎</b></button>{status && <p role="status">{status}</p>}{fallbackHref && <p><a className="sp-lead-fallback" href={fallbackHref} style={{ textDecoration: "underline", fontWeight: 600 }}>Send your brief by email <b>↗︎</b></a></p>}
+          <label><span>Preferred contact</span><select name="preferredContact" defaultValue="Email"><option>Email</option><option>WhatsApp</option><option>Either</option></select></label>
+          <label className="is-wide"><span>Plans, model or references</span><div className="sp-source-link"><UiIcon name="upload" size={18} /><input name="sourceLinks" inputMode="url" placeholder="Paste a Google Drive, Dropbox, OneDrive or WeTransfer link" maxLength={1200} /></div><small>Use a view/download link. Do not include passwords or private credentials.</small></label>
+          <label className="is-wide"><span>Project brief *</span><textarea name="message" required minLength={20} maxLength={4000} rows={7} placeholder="What are you making, what already exists, what is not working, and what would a successful result look like?" /></label>
+          <button type="submit"><span>Send project for review</span><Arrow /></button>
+          {status && <div className={`sp-lead-status${reference ? " is-success" : ""}`} role="status"><p>{status}</p>{reference && <><small>Reference / {reference}</small><a href={whatsappHref} target="_blank" rel="noopener noreferrer">Continue on WhatsApp <Arrow size={15} /></a></>}</div>}
+          {fallbackHref && <p><a className="sp-lead-fallback" href={fallbackHref}>Send your brief by email <Arrow size={15} /></a></p>}
         </form>
       </section>
 
       <section className="sp-contact-direct" data-sp-reveal>
-        <div><SectionCode>{String(offices.length).padStart(2, "0")} offices / Worldwide</SectionCode><h2>Close to the work,<br /><em>wherever it lives.</em></h2></div>
+        <div><SectionCode>{String(offices.length).padStart(2, "0")} locations / Worldwide</SectionCode><h2>Close to the work,<br /><em>wherever it lives.</em></h2></div>
         <div className="sp-office-grid">{offices.map((office) => <article key={office.code}><span>{office.code} / {office.region}</span><strong>{office.label}</strong><i /></article>)}</div>
-        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><b>↗︎</b></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><b>↗︎</b></a><a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Talk directly to the Artimist team on WhatsApp"><span>Talk to the team</span><strong>WhatsApp · {settings.whatsapp}</strong><b>↗︎</b></a></div>
+        <div className="sp-direct-links"><a href={`mailto:${settings.contactEmail}`}><span>Faizan / Direct</span><strong>{settings.contactEmail}</strong><Arrow /></a><a href={`mailto:${settings.teamEmail}`}><span>Studio team</span><strong>{settings.teamEmail}</strong><Arrow /></a><a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Talk directly to the Artimist team on WhatsApp"><span>Talk to the team</span><strong>WhatsApp · {settings.whatsapp}</strong><Arrow /></a></div>
       </section>
 
       <footer className="sp-contact-end"><span>{settings.availability}</span><Link href="/services">Services</Link><Link href="/process">Process</Link><Link href="/team">Team</Link><Link href="/">Studio home</Link></footer>
