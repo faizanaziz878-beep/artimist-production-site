@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">Residential renovation and permit drawing package</title><desc id="desc">Technical architectural graphic showing plan, elevation, section, detail bubbles and coordinated drawing-sheet marks.</desc>
+<rect width="1600" height="1000" fill="#0b0a0a"/>
+<g stroke="#242020" stroke-width="1"><path d="M0 100H1600M0 200H1600M0 300H1600M0 400H1600M0 500H1600M0 600H1600M0 700H1600M0 800H1600M0 900H1600"/><path d="M100 0V1000M200 0V1000M300 0V1000M400 0V1000M500 0V1000M600 0V1000M700 0V1000M800 0V1000M900 0V1000M1000 0V1000M1100 0V1000M1200 0V1000M1300 0V1000M1400 0V1000M1500 0V1000"/></g>
+<g fill="none" stroke="#e8ddd5" stroke-linejoin="round">
+<rect x="210" y="175" width="1180" height="690" stroke-width="4"/>
+<path d="M210 700H1390M1020 175V865" stroke-width="3" opacity=".75"/>
+<path d="M315 295H815V610H315Z" stroke-width="5"/><path d="M500 295V470H315M500 470V610M670 295V610" stroke-width="3"/>
+<path d="M1095 320H1315M1120 320V555M1288 320V555M1095 555H1315M1140 430H1268" stroke-width="4"/>
+<path d="M1068 640H1335M1105 735H1305M1142 640V735M1268 640V735" stroke-width="3"/>
+<path d="M337 760H905M337 790H760M337 820H850" stroke-width="2" opacity=".5"/>
+</g>
+<g fill="none" stroke="#9c3144" stroke-width="4">
+<path d="M815 295H930V610H815"/><path d="M855 338v230"/><path d="M315 610H500V682H315Z"/>
+<circle cx="923" cy="350" r="34"/><circle cx="1060" cy="625" r="34"/><circle cx="1295" cy="735" r="34"/>
+</g>
+<g stroke="#a69890" stroke-width="2" fill="none" opacity=".8"><path d="M280 250H930M280 230v40M930 230v40"/><path d="M270 295V682M250 295h40M250 682h40"/><path d="M1035 285H1365M1035 265v40M1365 265v40"/></g>
+<g fill="#b9aaa2" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">
+<text x="210" y="110">RENOVATION + PERMIT DOCUMENTATION / COORDINATED SET</text>
+<text x="225" y="930">EXISTING · PROPOSED · ELEVATION · SECTION · DETAILS · REVIEW</text>
+<text x="330" y="265" font-size="15">PROPOSED PLAN</text><text x="1095" y="290" font-size="15">ELEVATION</text><text x="1068" y="610" font-size="15">SECTION / DETAILS</text>
+</g>
+<g fill="#9c3144" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle"><text x="923" y="356">A1</text><text x="1060" y="631">D1</text><text x="1295" y="741">S1</text></g>
+</svg>
