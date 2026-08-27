@@ -12,33 +12,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
-  min-width: 320px;
-}
+body { min-width: 320px; }
+.main-content-anchor { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
 
-main, section, article, header, footer, nav, aside, figure, form {
-  min-width: 0;
-}
-
-h1, h2, h3, h4, p, li, a, button, label, strong, span {
-  overflow-wrap: break-word;
-}
-
-h1, h2, h3 {
-  text-wrap: balance;
-}
-
-p, li {
-  text-wrap: pretty;
-}
-
-img, video, canvas, svg {
-  max-width: 100%;
-}
-
-button, a, input, textarea, select {
-  -webkit-tap-highlight-color: transparent;
-}
+main, section, article, header, footer, nav, aside, figure, form { min-width: 0; }
+h1, h2, h3, h4, p, li, a, button, label, strong, span { overflow-wrap: break-word; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+img, video, canvas, svg { max-width: 100%; }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 
 button:focus-visible,
 a:focus-visible,
@@ -49,11 +31,7 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-.ui-icon {
-  display: inline-block;
-  flex: 0 0 auto;
-  vertical-align: middle;
-}
+.ui-icon { display:inline-block; flex:0 0 auto; vertical-align:middle; }
 
 /* The canonical header owns site navigation. Hidden legacy headers should never
    reserve space, overlap, or remain focusable visually. */
@@ -62,13 +40,35 @@ select:focus-visible {
 .ap-hub-head,
 .sp-header,
 .st-header,
-.ap-header {
-  pointer-events: none;
-}
+.ap-header { pointer-events: none; }
 
-.canonical-header {
-  top: var(--artimist-safe-top);
-}
+.canonical-header { top: var(--artimist-safe-top); }
+
+/* Project intake — deliberately stable, quiet and easy to complete. */
+.sp-intake-notes { display:grid; gap:10px; margin:28px 0 0; padding:0; list-style:none; color:rgba(0,0,0,.68); font-size:12px; }
+.sp-intake-notes li { display:flex; align-items:center; gap:9px; }
+.sp-intake-notes .ui-icon { color:#8a1e37; }
+.sp-contact-form label > small { color:rgba(0,0,0,.48); font-size:10px; line-height:1.55; }
+.sp-source-link { display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(0,0,0,.35); }
+.sp-source-link:focus-within { border-color:#8a1e37; }
+.sp-source-link .ui-icon { color:#8a1e37; }
+.sp-source-link input { border:0 !important; min-width:0; }
+.sp-contact-form > button .ui-icon,
+.sp-direct-links .ui-icon,
+.sp-page-cta .ui-icon,
+.sp-service-chapters .ui-icon { transition:transform .22s ease; }
+.sp-contact-form > button:hover .ui-icon,
+.sp-direct-links a:hover .ui-icon,
+.sp-page-cta a:hover .ui-icon,
+.sp-service-chapters a:hover .ui-icon { transform:translate(2px,-2px); }
+.sp-lead-status { grid-column:1 / -1; margin:3px 0 0; padding:16px 18px; border:1px solid rgba(138,30,55,.24); background:rgba(138,30,55,.06); color:#671225; }
+.sp-lead-status p { margin:0; font-size:12px; line-height:1.6; }
+.sp-lead-status small { display:block; margin-top:8px; font:650 9px/1.5 var(--sp-mono,"SFMono-Regular",monospace); letter-spacing:.1em; text-transform:uppercase; }
+.sp-lead-status a { display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding-bottom:3px; border-bottom:1px solid currentColor; font-size:11px; font-weight:650; }
+.sp-lead-status.is-success { border-color:rgba(47,104,70,.26); background:rgba(47,104,70,.07); color:#255838; }
+.sp-lead-fallback { display:inline-flex; align-items:center; gap:8px; text-decoration:none !important; border-bottom:1px solid currentColor; padding-bottom:2px; font-weight:650; }
+.sp-direct-links a { align-items:center !important; }
+.sp-direct-links .ui-icon { justify-self:end; }
 
 /* Protect editorial headings from old overflow/crop rules on mobile Safari. */
 @supports (-webkit-touch-callout: none) {
@@ -94,51 +94,34 @@ select:focus-visible {
    occupy the same final row. */
 @media (max-width: 760px) {
   :root { --artimist-header-h: 66px; }
-
   body { padding-bottom: env(safe-area-inset-bottom); }
-
   .canonical-header {
     height: calc(var(--artimist-header-h) + var(--artimist-safe-top));
     padding-top: var(--artimist-safe-top);
   }
-
-  main:not(.artimist-home) {
-    scroll-margin-top: calc(var(--artimist-header-h) + 18px);
-  }
+  main:not(.artimist-home) { scroll-margin-top: calc(var(--artimist-header-h) + 18px); }
 
   .ask-studio,
   .ask-the-studio,
   [data-ask-studio],
   .whatsapp-fab,
-  [data-whatsapp-fab] {
-    bottom: calc(var(--artimist-safe-bottom) + 8px) !important;
-  }
+  [data-whatsapp-fab] { bottom: calc(var(--artimist-safe-bottom) + 8px) !important; }
 
   .ask-studio,
   .ask-the-studio,
   [data-ask-studio] {
-    left: 14px !important;
-    right: auto !important;
-    max-width: min(58vw, 240px) !important;
+    left:14px !important;
+    right:auto !important;
+    max-width:min(58vw,240px) !important;
   }
 
   .whatsapp-fab,
-  [data-whatsapp-fab] {
-    right: 14px !important;
-    left: auto !important;
-  }
-
-  .site-index-sheet {
-    padding-bottom: calc(48px + env(safe-area-inset-bottom)) !important;
-  }
-
+  [data-whatsapp-fab] { right:14px !important; left:auto !important; }
+  .site-index-sheet { padding-bottom:calc(48px + env(safe-area-inset-bottom)) !important; }
   .site-index-sheet span,
   .canonical-wordmark span,
-  .canonical-wordmark small {
-    white-space: normal;
-  }
+  .canonical-wordmark small { white-space:normal; }
 
-  /* Stable tap targets; especially important where old components used tiny text links. */
   .canonical-header button,
   .canonical-header a,
   .site-index-sheet a,
@@ -146,30 +129,34 @@ select:focus-visible {
   .sp-contact-form button,
   .sp-contact-form input,
   .sp-contact-form select,
-  .sp-contact-form textarea {
-    min-height: 44px;
-  }
+  .sp-contact-form textarea { min-height:44px; }
 
   .sp-contact-form input,
   .sp-contact-form select,
-  .sp-contact-form textarea {
-    font-size: 16px !important; /* prevents iOS input zoom */
-  }
+  .sp-contact-form textarea { font-size:16px !important; }
+
+  .sp-intake-notes { margin-top:24px; }
+  .sp-source-link { gap:8px; }
+  .sp-lead-status { grid-column:1; }
+  .sp-contact-form > button { width:100% !important; min-height:52px; align-items:center; }
+  .sp-direct-links a { grid-template-columns:minmax(0,1fr) auto !important; }
+  .sp-direct-links a > span { grid-column:1 / -1; }
+  .sp-direct-links strong { min-width:0; }
 }
 
 @media (max-width: 420px) {
-  .canonical-header { padding-left: 14px !important; padding-right: 14px !important; }
-  .canonical-wordmark span { font-size: 17px !important; }
-  .canonical-actions { gap: 6px !important; }
-  .canonical-actions button[aria-controls="site-index-panel"] { padding-inline: 11px !important; }
+  .canonical-header { padding-left:14px !important; padding-right:14px !important; }
+  .canonical-wordmark span { font-size:17px !important; }
+  .canonical-actions { gap:6px !important; }
+  .canonical-actions button[aria-controls="site-index-panel"] { padding-inline:11px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior:auto; }
   *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
   }
 }
