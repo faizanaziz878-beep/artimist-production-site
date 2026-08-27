@@ -27,26 +27,11 @@
     if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){section.classList.remove('is-pending');section.classList.add('is-in');io.disconnect();}});},{threshold:.08});io.observe(section);}else{section.classList.remove('is-pending');section.classList.add('is-in');}
   }
 
-  function enhanceClients(){
-    var marquee=document.getElementById('marquee');
-    if(!marquee||marquee.dataset.artimistMotion==='1'||!marquee.children.length)return false;
-    marquee.dataset.artimistMotion='1';
-    var original=marquee.innerHTML;
-    marquee.innerHTML=original+original;
-    var style=document.createElement('style');
-    style.textContent='#marquee[data-artimist-motion="1"]{display:flex!important;align-items:stretch!important;gap:0!important;width:max-content!important;min-width:200%!important;animation:artimistClientMarquee 28s linear infinite!important;will-change:transform}#marquee[data-artimist-motion="1"] .st-client{flex:0 0 min(31vw,420px)!important}#marquee[data-artimist-motion="1"]:hover{animation-play-state:paused!important}@keyframes artimistClientMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}@media(max-width:680px){#marquee[data-artimist-motion="1"]{animation-duration:20s!important}#marquee[data-artimist-motion="1"] .st-client{flex-basis:72vw!important}}@media(prefers-reduced-motion:reduce){#marquee[data-artimist-motion="1"]{animation:none!important;transform:none!important}}';
-    document.head.appendChild(style);
-    return true;
-  }
-
   function alignWorldwideCopy(){
     var foot=document.querySelector('.st-index-foot span');if(foot)foot.textContent='WORLDWIDE · USA · UK · CANADA · SWEDEN';
-    var offices=document.querySelector('.st-offices');if(offices){var p=offices.querySelector('p');if(p)p.textContent='INTERNATIONAL STUDIO / WORKING WORLDWIDE';}
+    var offices=document.querySelector('.st-offices');if(offices){var p=offices.querySelector('p');if(p)p.textContent='INTERNATIONAL PROJECT DELIVERY';}
   }
 
-  function init(){
-    buildBuyerJourney();alignWorldwideCopy();
-    var tries=0;var timer=setInterval(function(){tries++;alignWorldwideCopy();if(enhanceClients()||tries>20)clearInterval(timer);},350);
-  }
+  function init(){buildBuyerJourney();alignWorldwideCopy();setTimeout(alignWorldwideCopy,800);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
