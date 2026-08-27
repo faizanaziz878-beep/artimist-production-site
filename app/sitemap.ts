@@ -6,13 +6,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   return [
     { url: `${BASE}/`,                       lastModified, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${BASE}/home-design-services`,   lastModified, changeFrequency: 'monthly', priority: 0.97 },
+    { url: `${BASE}/custom-house-design`,    lastModified, changeFrequency: 'monthly', priority: 0.96 },
+    { url: `${BASE}/plan-modification-service`, lastModified, changeFrequency: 'monthly', priority: 0.96 },
+    { url: `${BASE}/3d-interior-design-service`, lastModified, changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${BASE}/residential-renovation-permit-drawings`, lastModified, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/international`,          lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/architecture`,                        lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/bim-drafting`,                        lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/visualization`,                       lastModified, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/custom-house-design`,                 lastModified, changeFrequency: 'monthly', priority: 0.95 },
-    { url: `${BASE}/3d-interior-design-service`,          lastModified, changeFrequency: 'monthly', priority: 0.95 },
-    { url: `${BASE}/residential-renovation-permit-drawings`, lastModified, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/architectural-drafting-services`,     lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/revit-drafting-services`,             lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/bim-modeling-services`,               lastModified, changeFrequency: 'monthly', priority: 0.9 },
