@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">International architecture BIM and visualization network</title><desc id="desc">Global project-delivery diagram with architectural grid, international market nodes and connected design, BIM and visualization workflows.</desc>
+<rect width="1600" height="1000" fill="#0b0a0a"/>
+<g stroke="#242020" stroke-width="1"><path d="M0 125H1600M0 250H1600M0 375H1600M0 500H1600M0 625H1600M0 750H1600M0 875H1600"/><path d="M160 0V1000M320 0V1000M480 0V1000M640 0V1000M800 0V1000M960 0V1000M1120 0V1000M1280 0V1000M1440 0V1000"/></g>
+<g fill="none" stroke="#e8ddd5" opacity=".78"><ellipse cx="800" cy="510" rx="465" ry="250" stroke-width="3"/><ellipse cx="800" cy="510" rx="275" ry="250" stroke-width="2"/><path d="M335 510H1265M407 395H1193M407 625H1193M800 260V760" stroke-width="2"/></g>
+<g fill="none" stroke="#9c3144" stroke-width="4" stroke-linecap="round">
+<path d="M520 448C650 350 770 365 900 430"/><path d="M900 430C1010 480 1080 535 1170 585"/><path d="M520 448C625 560 720 625 825 655"/><path d="M825 655C930 610 1010 505 1065 385"/>
+</g>
+<g fill="#0b0a0a" stroke="#e8ddd5" stroke-width="3"><circle cx="520" cy="448" r="20"/><circle cx="900" cy="430" r="20"/><circle cx="1170" cy="585" r="20"/><circle cx="825" cy="655" r="20"/><circle cx="1065" cy="385" r="20"/></g>
+<g fill="#9c3144"><circle cx="520" cy="448" r="8"/><circle cx="900" cy="430" r="8"/><circle cx="1170" cy="585" r="8"/><circle cx="825" cy="655" r="8"/><circle cx="1065" cy="385" r="8"/></g>
+<g fill="#b9aaa2" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">
+<text x="235" y="120">INTERNATIONAL PROJECT DELIVERY / ARTIMIST PRODUCTIONS</text>
+<text x="235" y="930">ARCHITECTURE · BIM · REVIT · VISUALIZATION · REAL-TIME · WORLDWIDE</text>
+<text x="455" y="410" font-size="15">CANADA</text><text x="865" y="392" font-size="15">UNITED KINGDOM</text><text x="1140" y="630" font-size="15">SWEDEN</text><text x="785" y="705" font-size="15">USA</text><text x="1027" y="345" font-size="15">WORLDWIDE</text>
+</g>
+<g fill="none" stroke="#6c6260" stroke-width="2"><path d="M245 790h310v58H245zM645 790h310v58H645zM1045 790h310v58h-310z"/></g>
+<g fill="#b9aaa2" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="3"><text x="275" y="826">DESIGN / REVIEW</text><text x="675" y="826">BIM / PRODUCTION</text><text x="1075" y="826">VISUAL / HANDOVER</text></g>
+</svg>
