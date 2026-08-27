@@ -74,9 +74,10 @@
       '.artimist-whatsapp__copy small{font-size:7px;letter-spacing:.18em;color:rgba(255,255,255,.52);text-transform:uppercase}',
       '.artimist-whatsapp__copy strong{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}',
       '.askbot-launch{display:none!important}',
-      'body.artimist-has-studio-ask .artimist-whatsapp{bottom:86px}',
+      'body.artimist-has-studio-ask .artimist-whatsapp{bottom:94px}',
       'body.artimist-studio-ask-open .artimist-whatsapp{opacity:0;pointer-events:none;transform:translateY(8px)}',
-      '@media(max-width:760px){.artimist-whatsapp{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));padding:10px 13px 10px 11px;gap:9px;max-width:calc(100vw - 28px)}.artimist-whatsapp__copy strong{font-size:9px}.artimist-whatsapp__copy small{font-size:6px}body.artimist-has-studio-ask .artimist-whatsapp{bottom:calc(82px + env(safe-area-inset-bottom))}.st-ask-btn{right:14px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important}.st-ask{right:14px!important;left:14px!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;width:auto!important}}',
+      '@media(max-width:760px){body{padding-bottom:0}.artimist-whatsapp{right:14px;bottom:calc(24px + env(safe-area-inset-bottom));padding:10px 13px 10px 11px;gap:9px;max-width:calc(100vw - 28px)}.artimist-whatsapp__copy strong{font-size:9px}.artimist-whatsapp__copy small{font-size:6px}body.artimist-has-studio-ask .artimist-whatsapp{bottom:calc(108px + env(safe-area-inset-bottom))}.st-ask-btn{right:14px!important;bottom:calc(24px + env(safe-area-inset-bottom))!important}.st-ask{right:14px!important;left:14px!important;bottom:calc(92px + env(safe-area-inset-bottom))!important;width:auto!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close{padding-bottom:max(126px,calc(104px + env(safe-area-inset-bottom)))!important}}',
+      '@media(max-width:430px){.artimist-whatsapp{transform:scale(.92);transform-origin:right bottom}body.artimist-has-studio-ask .artimist-whatsapp{bottom:calc(112px + env(safe-area-inset-bottom))}.st-ask-btn{max-width:calc(100vw - 28px)!important}}',
       '@media(prefers-reduced-motion:reduce){.artimist-whatsapp{transition:none}}'
     ].join(''); document.head.appendChild(style);
   }
