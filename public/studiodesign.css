@@ -1080,3 +1080,37 @@
   .st-marquee-track { width: max-content; display: flex; }
   .st-client { width: 72vw; height: 150px; scroll-snap-align: center; }
 }
+
+
+/* 2026-08 hotfix: keep Ask the Studio outside document flow.
+   A shared glossy-button rule set position:relative after the component's
+   original fixed rule, which placed it as a footer child on the left. */
+.st > .st-ask-btn {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  right: max(18px, env(safe-area-inset-right, 0px)) !important;
+  bottom: max(18px, env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 920 !important;
+  margin: 0 !important;
+}
+.st > .st-ask {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  right: max(18px, env(safe-area-inset-right, 0px)) !important;
+  bottom: calc(max(18px, env(safe-area-inset-bottom, 0px)) + 62px) !important;
+  z-index: 921 !important;
+}
+@media (max-width: 480px) {
+  .st > .st-ask-btn {
+    right: max(12px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .st > .st-ask {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(max(12px, env(safe-area-inset-bottom, 0px)) + 58px) !important;
+    width: auto !important;
+  }
+}
