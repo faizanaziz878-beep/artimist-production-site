@@ -22,8 +22,8 @@ export default function InteriorDesignPage() {
     subtitle="Understand the space, materials and furniture before money is committed on site."
     intro="Our 3D interior design service helps homeowners make confident decisions before construction or renovation. We can develop room layouts, material directions, furniture planning and photoreal 3D home visualization for a kitchen, living room, bedroom, bathroom or an entire home, so you can judge light, finishes, proportions and furniture before anything is built."
     audience="For homeowners who want professional interior design online, realistic 3D views, furniture planning or a complete visual direction for one room or a whole home."
-    image="/media/atlas/atlas-05.webp"
-    imageAlt="Warm contemporary interior with timber finishes and full-height glazing"
+    image="/graphics/3d-interior-design-visualization.svg"
+    imageAlt="3D interior design diagram showing room layout, furniture, lighting zones and material direction"
     included={[
       "Living room interior design",
       "Kitchen design and visualization",
