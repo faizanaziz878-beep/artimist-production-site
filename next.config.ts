@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: "/", destination: "/studio.html" },
+        { source: "/", destination: "/__home" },
         { source: "/architecture", destination: "/architecture.html" },
         { source: "/bim-drafting", destination: "/bimdrafting.html" },
         { source: "/visualization", destination: "/visualization.html" },
