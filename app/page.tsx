@@ -1,6 +1,7 @@
 import { ArtimistExperience } from "./artimist-experience";
 import type { Metadata } from "next";
 import { getPublicContent } from "../lib/data";
+import { UiIcon } from "./ui-icon";
 
 export const dynamic = "force-dynamic";
 
@@ -25,5 +26,29 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const content = await getPublicContent();
-  return <ArtimistExperience {...content} />;
+  const whatsapp = content.settings.whatsapp.replace(/\D/g, "");
+
+  return (
+    <>
+      <ArtimistExperience {...content} />
+      <section className="home-project-bridge" aria-labelledby="home-project-bridge-title">
+        <div className="home-project-bridge-copy">
+          <span>Ready when the brief is.</span>
+          <h2 id="home-project-bridge-title">One clear place to start the project.</h2>
+          <p>Architecture, interiors, BIM/Revit, drafting, visualization, animation or an unusual multidisciplinary brief. Send the real project information once and the studio can respond properly.</p>
+        </div>
+        <div className="home-project-bridge-actions">
+          <a className="home-project-primary" href="/contact">
+            <span>Start project intake</span>
+            <UiIcon name="arrow" size={17} />
+          </a>
+          <a className="home-project-secondary" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer">
+            <span>Continue on WhatsApp</span>
+            <UiIcon name="external" size={16} />
+          </a>
+          <small>Briefs can include Google Drive, Dropbox, OneDrive or WeTransfer links. Smaller scopes are welcome too.</small>
+        </div>
+      </section>
+    </>
+  );
 }
