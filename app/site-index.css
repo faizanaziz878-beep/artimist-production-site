@@ -35,6 +35,12 @@
 .site-index-foot{margin:26px 0 0;color:rgba(255,255,255,.38);font-size:8px;letter-spacing:.16em}
 @keyframes siteIndexSlide{from{transform:translateX(-16px);opacity:0}to{transform:none;opacity:1}}
 @media(max-width:1080px){.canonical-primary{display:none}}
-@media(max-width:680px){.canonical-header{height:66px}.canonical-pill,.canonical-cta{min-height:40px;padding:9px 12px;font-size:9px}.canonical-actions .canonical-pill:first-child{display:none}.canonical-wordmark span{font-size:18px}.canonical-wordmark small{font-size:6px}.site-index-sheet{padding:24px 22px}}
+@media(max-width:680px){
+  .canonical-header{height:66px;padding:0 18px}.canonical-pill,.canonical-cta{min-height:40px;padding:9px 12px;font-size:9px}.canonical-actions .canonical-pill:first-child{display:none}.canonical-wordmark span{font-size:18px}.canonical-wordmark small{font-size:6px}
+  .site-index-sheet{width:100%;padding:24px 22px calc(34px + env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+  .site-index-top{position:sticky;top:-24px;z-index:3;margin:0 -22px 12px;padding:24px 22px 16px;background:linear-gradient(#080b0f 78%,rgba(8,11,15,.92));backdrop-filter:blur(12px)}
+  .site-index-sheet a{grid-template-columns:30px 1fr;padding:13px 0;min-height:54px}.site-index-sheet a i{display:none}.site-index-sheet span{font-size:25px;line-height:1.02}.site-index-sheet small{font-size:7px}
+  .site-index-foot{position:static;margin:26px 0 0;padding:18px 0 4px;border-top:1px solid rgba(255,255,255,.1);line-height:1.8;white-space:normal}
+}
 @media(max-width:480px){.canonical-cta{display:none}}
 @media(prefers-reduced-motion:reduce){.site-index-sheet{animation:none}}
