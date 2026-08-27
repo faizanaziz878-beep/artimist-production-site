@@ -18,17 +18,23 @@ const nextConfig: NextConfig = {
         { source: "/partners", destination: "/partners.html" },
         { source: "/founder-message", destination: "/foundermessage.html" },
         { source: "/skills", destination: "/skills.html" },
-        ],
+      ],
       afterFiles: [],
       fallback: [],
     };
   },
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "artimistproductions.com" }],
+        destination: "https://www.artimistproductions.com/:path*",
+        permanent: true,
+      },
       { source: "/services/architecture", destination: "/architecture", permanent: true },
       { source: "/services/bim-drafting", destination: "/bim-drafting", permanent: true },
       { source: "/services/visualization", destination: "/visualization", permanent: true },
-      ];
+    ];
   },
 };
 
