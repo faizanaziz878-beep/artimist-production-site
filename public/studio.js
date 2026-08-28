@@ -107,7 +107,9 @@ var ROWS = [
   var PLANS = [
     { name: 'Core', price: '$2,000', tag: 'For a focused workstream', desc: 'Consistent senior production support for a defined queue of architecture, BIM, visualization or design tasks.', features: ['One active priority at a time', 'Up to 80 production hours', 'Weekly progress review', 'Unlimited request queue', 'Standard turnaround', 'NDA available'] },
     { name: 'Studio', price: '$3,500', tag: 'Most chosen', featured: true, desc: 'A flexible multidisciplinary team for projects that move between design, technical production and presentation.', features: ['Two active priorities', 'Up to 140 production hours', 'Dedicated project lead', 'Twice-weekly updates', 'Priority turnaround', 'NDA + source-file handover'] },
-    { name: 'Embedded', price: '$6,000', tag: 'For continuous delivery', desc: 'A senior team working inside your rhythm, standards and tooling as an extension of your own studio.', features: ['Parallel workstreams', 'Up to 260 production hours', 'Named lead + second reviewer', 'Daily contact window', 'Fastest turnaround', 'Full source-file handover'] }
+    { name: 'Embedded', price: '$6,000', tag: 'For continuous delivery', desc: 'A senior team working inside your rhythm, standards and tooling as an extension of your own studio.', features: ['Parallel workstreams', 'Up to 260 production hours', 'Named lead + second reviewer', 'Daily contact window', 'Fastest turnaround', 'Full source-file handover'] },
+    { name: 'Scale', price: '$10,000', tag: 'High-capacity studio', desc: 'A high-capacity senior studio for concurrent architecture, BIM, visualization and delivery work across a demanding programme.', features: ['Multiple parallel workstreams', 'Named discipline leads', 'Principal oversight', 'Daily production cadence', 'Priority scheduling', 'Full source-file handover'] },
+    { name: 'Signature', price: '$25,000', tag: 'Signature / Highest Capacity', signature: true, desc: 'The studio’s highest-capacity multidisciplinary engagement, built around one programme, one direction and a dedicated senior team.', features: ['Highest available studio capacity', 'Full multidisciplinary team', 'Principal-led direction', 'Dedicated production coordination', 'Priority review and delivery', 'Full source-file handover'] }
   ];
 
   var TEAM = [
@@ -143,26 +145,30 @@ var ROWS = [
     ['Clients', '#clients'], ['Contact', '#contact']
   ];
 
-  /* The site index, exactly as the studio wants it read: sixteen entries, one
-     column, every one of them a real destination. */
+  /* Shared page order and subdivisions mirror the canonical index on every page. */
   var PAGES = [
-    ['Work', '/#work'],
-    ['Recent', '/#archive'],
-    ['Architecture', '/architecture'],
-    ['BIM & Drafting', '/bim-drafting'],
-    ['Visualization', '/visualization'],
-    ['Unreal Engine', '/unreal-engine'],
-    ['Residential', '/residential'],
-    ['Render atlas', '/visual-archive'],
-    ['Services', '/services'],
-    ['Skills', '/skills'],
-    ['Process', '/process'],
-    ['Team', '/team'],
-    ['About', '/about'],
-    ['Founder', '/founder-message'],
-    ['Lab', '/services#research'],
-    ['Partners', '/partners'],
-    ['Contact', '/contact']
+    ['Home', '/', 'Start'],
+    ['Selected work', '/#work', 'Start'],
+    ['Home Design Help', '/home-design-services', 'Home design'],
+    ['Custom House Design', '/custom-house-design', 'Home design'],
+    ['Plan Changes & Redraws', '/plan-modification-service', 'Home design'],
+    ['3D Interior Design', '/3d-interior-design-service', 'Home design'],
+    ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings', 'Home design'],
+    ['Services', '/services', 'Professional studio'],
+    ['Architecture', '/architecture', 'Professional studio'],
+    ['BIM & Drafting', '/bim-drafting', 'Professional studio'],
+    ['Visualization', '/visualization', 'Professional studio'],
+    ['Unreal & Real-time', '/unreal-engine', 'Professional studio'],
+    ['Residential', '/residential', 'Professional studio'],
+    ['Case Studies', '/case-studies', 'Work & delivery'],
+    ['International', '/international', 'Work & delivery'],
+    ['Visual archive', '/visual-archive', 'Work & delivery'],
+    ['Process', '/process', 'Work & delivery'],
+    ['Studio team', '/team', 'Studio'],
+    ['About', '/about', 'Studio'],
+    ['Founder’s message', '/founder-message', 'Studio'],
+    ['Partners', '/partners', 'Studio'],
+    ['Contact', '/contact', 'Studio']
   ];
 
   function el(tag, cls, html) {
@@ -319,7 +325,7 @@ var ROWS = [
   var planGrid = byId('planGrid');
   PLANS.forEach(function (p) {
     planGrid.insertAdjacentHTML('beforeend',
-      '<article class="st-plan' + (p.featured ? ' is-featured' : '') + '">' +
+      '<article class="st-plan' + (p.featured ? ' is-featured' : '') + (p.signature ? ' is-signature' : '') + '">' +
         '<span class="st-plan-tag">' + esc(p.tag) + '</span>' +
         '<h3>' + esc(p.name) + '</h3><div class="st-plan-price">' + esc(p.price) + '</div>' +
         '<p>' + esc(p.desc) + '</p><ul>' +
@@ -359,7 +365,12 @@ var ROWS = [
   marquee.innerHTML = CLIENTS.map(clientCell).join('');
 
   function indexRows(host, list, isPage) {
+    var group = '';
     list.forEach(function (s, i) {
+      if (isPage && s[2] && s[2] !== group) {
+        group = s[2];
+        host.insertAdjacentHTML('beforeend', '<p class="st-index-group">' + esc(group) + '</p>');
+      }
       host.insertAdjacentHTML('beforeend',
         '<a href="' + s[1] + '"' + (isPage ? '' : ' data-index-link') + '>' +
         '<small>' + String(i + 1).padStart(2, '0') + '</small>' +
