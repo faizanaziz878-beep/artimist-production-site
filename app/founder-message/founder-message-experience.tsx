@@ -57,6 +57,7 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
       <div className="ed-progress" aria-hidden="true" />
 
       <section className="ed-founder-hero" id="top">
+        <img className="ed-founder-collage" src="/media/generated/founder-architectural-collage-v1.svg" alt="" aria-hidden="true" fetchPriority="high" />
         <div className="ed-founder-hero-copy">
           <div className="ed-section-code"><span>00</span><p>Founder&apos;s message</p></div>
           <h1>A note<br />from the <em>founder.</em></h1>
