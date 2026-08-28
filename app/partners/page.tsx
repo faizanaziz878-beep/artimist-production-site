@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: "The specialist engineering and commerce partners Artimist works with when a project needs additional depth.",
     url: "https://www.artimistproductions.com/partners",
     type: "website",
-    images: [{ url: "/media/partners/furqan-a.jpg", alt: "Artimist Productions partner network" }],
+    images: [{ url: "/media/editorial/architectural-translation.webp", alt: "Artimist Productions creative and technology partner network" }],
   },
 };
 
