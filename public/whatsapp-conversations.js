@@ -56,13 +56,10 @@
       '.st-scroll-cue{position:relative}.st-scroll-cue:empty::before,.st-scroll-cue:not(:has(svg))::before{content:"↓";display:grid;place-items:center;font:300 28px/1 Arial,sans-serif;color:currentColor}',
       '.artimist-reveal-heading{opacity:0;transform:translateY(28px);clip-path:inset(0 0 100% 0);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),clip-path 1.05s cubic-bezier(.2,.8,.2,1)}',
       '.artimist-reveal-heading.is-artimist-visible{opacity:1;transform:none;clip-path:inset(0)}',
-      '.artimist-type{display:inline-block;color:#c73f58!important;white-space:normal}',
-      '.artimist-char{display:inline-block;opacity:0;transform:translateY(.12em);filter:blur(3px)}',
-      '.is-artimist-visible .artimist-char{animation:artimistCharIn .38s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--char-index) * 34ms + 220ms)}',
-      '@keyframes artimistCharIn{to{opacity:1;transform:none;filter:none}}',
+      '.artimist-reveal-heading em,.artimist-type{display:inline;color:#c73f58!important;white-space:normal}',
       '@media(max-width:760px){body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}.artimist-whatsapp{left:12px;bottom:calc(14px + env(safe-area-inset-bottom));width:calc((100vw - 34px)/2);min-height:52px;height:52px;padding:0 9px;font-size:8px;letter-spacing:.055em}.askbot-launch,.st-ask-btn{right:12px!important;left:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;width:calc((100vw - 34px)/2)!important;min-width:0!important;min-height:52px!important;height:52px!important;padding:0 10px!important;justify-content:center!important;gap:7px!important;white-space:nowrap!important;font-size:8px!important;letter-spacing:.055em!important}.askbot-panel{right:12px!important;left:12px!important;bottom:calc(82px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:calc(100dvh - 112px)!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close,.st-seo-authority,.ed-footer{padding-bottom:max(118px,calc(106px + env(safe-area-inset-bottom)))!important}}',
       '@media(max-width:390px){.artimist-whatsapp{left:10px;width:calc((100vw - 30px)/2);font-size:7.5px}.askbot-launch,.st-ask-btn{right:10px!important;width:calc((100vw - 30px)/2)!important;font-size:7.5px!important}}',
-      '@media(prefers-reduced-motion:reduce){.artimist-whatsapp,.artimist-reveal-heading{transition:none}.artimist-reveal-heading{opacity:1;transform:none;clip-path:none}.artimist-char{opacity:1;transform:none;filter:none;animation:none!important}}'
+      '@media(prefers-reduced-motion:reduce){.artimist-whatsapp,.artimist-reveal-heading{transition:none}.artimist-reveal-heading{opacity:1;transform:none;clip-path:none}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -80,47 +77,48 @@
     document.body.appendChild(link);
   }
 
-  function splitAccent(node) {
-    if (!node || node.dataset.artimistTyped === '1' || node.children.length || !node.textContent.trim()) return;
-    var text = node.textContent;
-    node.dataset.artimistTyped = '1';
-    node.classList.add('artimist-type');
-    node.setAttribute('aria-label', text);
-    node.textContent = '';
-    Array.prototype.forEach.call(text.split(''), function (char, index) {
-      var span = document.createElement('span');
-      span.className = 'artimist-char';
-      span.setAttribute('aria-hidden', 'true');
-      span.style.setProperty('--char-index', index);
-      span.textContent = char === ' ' ? '\u00a0' : char;
-      node.appendChild(span);
+  var HEADING_SELECTOR = 'main h1,main h2,.st-hero h1,.st-wording h2,.ed-hero h1,.ed-hero h2';
+  var typographyObserver = null;
+
+  function revealHeading(heading) {
+    if (!heading || heading.dataset.artimistReveal === '1') return;
+    heading.dataset.artimistReveal = '1';
+    heading.classList.add('artimist-reveal-heading');
+    Array.prototype.forEach.call(heading.querySelectorAll('em'), function (accent) {
+      accent.classList.add('artimist-type');
     });
+    if (typographyObserver) typographyObserver.observe(heading);
+    else heading.classList.add('is-artimist-visible');
   }
 
-  function enhanceTypography() {
-    var headings = document.querySelectorAll('main h1,main h2,.st-hero h1,.st-wording h2,.ed-hero h1,.ed-hero h2');
-    Array.prototype.forEach.call(headings, function (heading) {
-      if (heading.dataset.artimistReveal === '1') return;
-      heading.dataset.artimistReveal = '1';
-      heading.classList.add('artimist-reveal-heading');
-      Array.prototype.forEach.call(heading.querySelectorAll('em'), splitAccent);
-    });
-    if (!('IntersectionObserver' in window)) {
-      Array.prototype.forEach.call(headings, function (heading) { heading.classList.add('is-artimist-visible'); });
-      return;
+  function enhanceTypography(scope) {
+    var headings = [];
+    if (scope && scope.nodeType === 1) {
+      if (scope.matches && scope.matches(HEADING_SELECTOR)) headings.push(scope);
+      if (scope.querySelectorAll) headings = headings.concat(Array.prototype.slice.call(scope.querySelectorAll(HEADING_SELECTOR)));
+    } else {
+      headings = Array.prototype.slice.call(document.querySelectorAll(HEADING_SELECTOR));
     }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+    headings.forEach(revealHeading);
+  }
+
+  function initTypography() {
+    if ('IntersectionObserver' in window) {
+      typographyObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
           entry.target.classList.add('is-artimist-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
-    Array.prototype.forEach.call(headings, function (heading) { observer.observe(heading); });
+          typographyObserver.unobserve(entry.target);
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+    }
+    enhanceTypography(document);
     window.setTimeout(function () {
-      Array.prototype.forEach.call(document.querySelectorAll('.artimist-reveal-heading'), function (heading) { heading.classList.add('is-artimist-visible'); });
-    }, 2800);
+      Array.prototype.forEach.call(document.querySelectorAll('.artimist-reveal-heading'), function (heading) {
+        heading.classList.add('is-artimist-visible');
+        if (typographyObserver) typographyObserver.unobserve(heading);
+      });
+    }, 1800);
   }
 
   function rectsOverlap(a, b) { return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top; }
@@ -147,7 +145,7 @@
   function init() {
     addStyle();
     addPersistentCta();
-    enhanceTypography();
+    initTypography();
     updateDockSafety();
     var queued = false;
     function schedule() {
@@ -157,7 +155,16 @@
     }
     addEventListener('scroll', schedule, { passive: true });
     addEventListener('resize', schedule, { passive: true });
-    new MutationObserver(function () { enhanceTypography(); schedule(); }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'hidden', 'open'] });
+    new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        Array.prototype.forEach.call(mutation.addedNodes, function (node) {
+          if (node.nodeType === 1) enhanceTypography(node);
+        });
+      });
+      schedule();
+    }).observe(document.body, { childList: true, subtree: true });
+    addEventListener('click', schedule, true);
+    addEventListener('keydown', schedule, true);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
