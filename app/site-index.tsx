@@ -27,7 +27,8 @@ const PAGES: Array<[string, string, string]> = [
   ["19", "About", "/about"],
   ["20", "Founder's message", "/founder-message"],
   ["21", "Partners", "/partners"],
-  ["22", "Contact", "/contact"],
+  ["22", "Proof & Trust", "/proof"],
+  ["23", "Contact", "/contact"],
 ];
 
 const PRIMARY: Array<[string, string]> = [
