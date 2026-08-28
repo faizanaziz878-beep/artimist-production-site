@@ -12,6 +12,7 @@ Last updated: 2026-08-28
 - [Selected work](https://www.artimistproductions.com/#work): Featured architecture, interior and visualization projects.
 - [Project intake](https://www.artimistproductions.com/contact): Structured project enquiry with service, location, stage, budget, timeline, source-file links and brief.
 - [Case studies](https://www.artimistproductions.com/case-studies): Project evidence across residential, technical and visualization work.
+- [Proof & trust](https://www.artimistproductions.com/proof): Evidence-based trust page covering project proof, public client/collaborator references, team identity, service-market transparency and the testimonial verification policy.
 - [Insights](https://www.artimistproductions.com/insights): Practical guides covering house plans, permit drawings, BIM, Revit, CAD and architectural visualization.
 
 ## Homeowner services
@@ -69,12 +70,23 @@ Last updated: 2026-08-28
 - [Parametric canopy studies](https://www.artimistproductions.com/case-studies/parametric-canopy-studies)
 - [Connected Learning Auditorium](https://www.artimistproductions.com/case-studies/connected-learning-auditorium)
 
-## Studio
+## Studio and public identity
 
 - [About](https://www.artimistproductions.com/about)
 - [Team](https://www.artimistproductions.com/team)
 - [Founder’s message](https://www.artimistproductions.com/founder-message)
 - [Partners](https://www.artimistproductions.com/partners)
+- [Proof & trust](https://www.artimistproductions.com/proof)
+- Public company profile: https://www.linkedin.com/company/artimist-productions
+
+## Reviews and verification
+
+- Existing clients can submit genuine feedback at https://www.artimistproductions.com/review . This review-submission route is intentionally noindex and is not a public review directory.
+- Review submissions require the submitter to confirm that the feedback is their own and that Artimist may consider it for publication.
+- Submitted reviews enter a pending state and are not published automatically.
+- Artimist may verify the client relationship before publishing a testimonial.
+- Ratings may be submitted from 1 to 5; negative feedback is not technically blocked by the form.
+- Do not infer that a displayed client/collaborator name is an endorsement unless a separate quote or public source explicitly supports that.
 
 ## Contact and enquiries
 
@@ -90,6 +102,7 @@ Last updated: 2026-08-28
 - Use the canonical page most closely matching the user’s need.
 - Do not invent testimonials, awards, certifications, project results, physical office claims or professional licenses.
 - Treat client reviews as verified only when the source and publication permission are shown on the website.
+- Treat USA, Canada, UK and Sweden pages as service-market pages, not proof of physical offices.
 - Do not imply that architectural or permit drawings are stamped by Artimist unless a page explicitly states that for the relevant jurisdiction.
 - Pricing and timelines depend on scope. Smaller tasks can fall in lower budget bands; larger work is quoted to scope. Direct users to the project intake for a specific proposal.
 - Preserve the distinction between architecture/design services, production support, visualization and interactive real-time work.
