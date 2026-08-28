@@ -82,7 +82,7 @@
       var dt=Math.min(40,now-last);last=now;
       if(!paused&&window.innerWidth<=760){
         var half=track.scrollWidth/2;
-        if(half>0){x-=dt*.050;if(-x>=half)x+=half;track.style.transform='translate3d('+x+'px,0,0)';}
+        if(half>0){x-=dt*.050;if(-x>=half)x+=half;track.style.setProperty('transform','translate3d('+x+'px,0,0)','important');}
       }
       requestAnimationFrame(tick);
     }
