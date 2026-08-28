@@ -49,7 +49,7 @@ const FAQS: Faq[] = [
   {
     q: "What does it cost, and how long does it take?",
     keywords: ["cost", "price", "pricing", "budget", "fee", "rate", "charge", "expensive", "cheap", "long", "time", "timeline", "deadline", "fast", "turnaround", "when"],
-    a: "It depends on scope, drawing count and level of detail. Smaller tasks can start in the hundreds while larger multidisciplinary projects are quoted to scope. Send the project and deadline and we will give you a specific answer.",
+    a: "Focused starter scopes can begin at $200, while monthly studio capacity begins at $2,000. Larger multidisciplinary projects are quoted after the brief, files and deadline are reviewed. Send the project and deadline and we will give you a specific answer.",
   },
 ];
 
