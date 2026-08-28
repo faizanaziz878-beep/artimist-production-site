@@ -121,7 +121,42 @@ const articles: Record<string, Article> = {
   },
 };
 
-const CSS = `.article{min-height:100vh;background:#090809;color:#eee8e3;padding:100px 0 120px;font-family:Arial,Helvetica,sans-serif;line-height:1.75}.article *{box-sizing:border-box}.article a{color:inherit}.article-wrap{width:min(900px,calc(100% - 40px));margin:auto}.article-crumb{font-size:12px;color:#998f89;margin-bottom:44px}.article-crumb a{text-decoration:none}.article-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d45e73;font-weight:700}.article h1,.article h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}.article h1{font-size:clamp(46px,7vw,78px);line-height:1;letter-spacing:-.045em;margin:16px 0 24px}.article-lead{font-size:20px;color:#c3b7b0;max-width:72ch;margin:0 0 54px}.article-sec{padding:38px 0;border-top:1px solid rgba(255,255,255,.09)}.article-sec h2{font-size:34px;line-height:1.12;margin:0 0 18px}.article-sec p{font-size:17px;color:#b5aaa4;margin:0 0 16px}.article-take{margin:38px 0;padding:28px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#100e0f}.article-take h2{margin:0 0 16px;font-size:30px}.article-take ul{margin:0;padding-left:20px;color:#c1b5af}.article-take li{margin:8px 0}.article-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}.article-actions a{border:1px solid rgba(255,255,255,.12);padding:10px 15px;border-radius:999px;text-decoration:none;color:#c9beb8}.article-actions a:first-child{background:#992636;border-color:#992636;color:#fff}@media(max-width:760px){.article{padding-top:88px}.article-wrap{width:min(100% - 30px,900px)}.article-sec h2{font-size:29px}}`;
+const articleVisuals: Record<string, { src: string; alt: string; caption: string }[]> = {
+  "how-much-do-custom-house-plans-cost": [
+    { src: "/media/generated-architecture/artimist-architecture-029.webp", alt: "Compact courtyard house floor plans", caption: "A clear brief connects area, layout and deliverables." },
+    { src: "/media/generated-architecture/artimist-architecture-030.webp", alt: "Longitudinal section through a compact courtyard house", caption: "Sections reveal volume, structure and spatial complexity." },
+  ],
+  "permit-drawings-vs-construction-drawings": [
+    { src: "/media/generated-architecture/artimist-architecture-012.webp", alt: "Backyard studio permit drawing set", caption: "Approval information is organized around the authority's review." },
+    { src: "/media/generated-architecture/artimist-architecture-081.webp", alt: "Timber and brick pavilion construction junction", caption: "Construction information resolves how materials meet and are assembled." },
+  ],
+  "how-to-modify-an-existing-floor-plan": [
+    { src: "/media/generated-architecture/artimist-architecture-053.webp", alt: "Existing and proposed apartment floor plans", caption: "Existing and proposed plans make every spatial change inspectable." },
+    { src: "/media/generated-architecture/artimist-architecture-046.webp", alt: "Courtyard house design evolution diagram", caption: "Option studies test circulation before the scheme is fixed." },
+  ],
+  "revit-drafting-vs-cad-drafting": [
+    { src: "/media/generated-architecture/artimist-architecture-043.webp", alt: "Coordinated two-storey townhouse floor plans", caption: "A coordinated drawing set keeps related information aligned." },
+    { src: "/media/generated-architecture/artimist-architecture-031.webp", alt: "Office plan and section technical drawing", caption: "The required output should determine the production method." },
+  ],
+  "what-is-scan-to-bim": [
+    { src: "/media/generated-architecture/artimist-architecture-088.webp", alt: "Measured section through an existing townhouse", caption: "Survey information becomes a usable architectural model." },
+    { src: "/media/generated-architecture/artimist-architecture-062.webp", alt: "Detailed masonry retrofit window junction", caption: "Model accuracy should match the decisions it must support." },
+  ],
+  "lod-200-vs-lod-300-vs-lod-400": [
+    { src: "/media/generated-architecture/artimist-architecture-054.webp", alt: "Exploded low-carbon studio assembly", caption: "Development levels describe information, not simply visual detail." },
+    { src: "/media/generated-architecture/artimist-architecture-058.webp", alt: "Architectural material junction studies", caption: "Higher-detail coordination should answer a defined project need." },
+  ],
+  "how-much-does-architectural-rendering-cost": [
+    { src: "/media/generated-architecture/artimist-architecture-035.webp", alt: "Photoreal compact courtyard house exterior", caption: "Geometry, landscape, materials and lighting all affect production scope." },
+    { src: "/media/generated-architecture/artimist-architecture-019.webp", alt: "Brick townhouse and contemporary courtyard visualization", caption: "A defined view list keeps image production controlled." },
+  ],
+  "3d-rendering-vs-unreal-engine-walkthrough": [
+    { src: "/media/editorial/visual-light-study.jpg", alt: "Architectural visualization lighting study", caption: "Still imagery concentrates composition, material and atmosphere into a selected view." },
+    { src: "/media/editorial/kinetic-roof-technical.webp", alt: "Real-time architectural environment study", caption: "Real-time environments trade a fixed camera for interactive spatial exploration." },
+  ],
+};
+
+const CSS = `.article{min-height:100vh;background:#090809;color:#eee8e3;padding:100px 0 130px;font-family:Arial,Helvetica,sans-serif;line-height:1.75}.article *{box-sizing:border-box}.article a{color:inherit}.article-wrap{width:min(1040px,calc(100% - 40px));margin:auto}.article-crumb{font-size:12px;color:#998f89;margin-bottom:44px}.article-crumb a{text-decoration:none}.article-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d45e73;font-weight:700}.article h1,.article h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}.article h1{font-size:clamp(46px,7vw,82px);line-height:.98;letter-spacing:-.045em;margin:16px 0 24px;max-width:980px}.article-lead{font-size:20px;color:#c3b7b0;max-width:76ch;margin:0 0 46px}.article-visual{margin:0 0 58px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#e9e2d8}.article-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}.article-visual figcaption{display:flex;justify-content:space-between;gap:20px;padding:14px 18px;background:#100e0f;color:#a99e98;font-size:12px}.article-visual figcaption span:first-child{color:#d45e73;letter-spacing:.12em;text-transform:uppercase;font-size:9px}.article-sec{padding:42px 0;border-top:1px solid rgba(255,255,255,.09);display:grid;grid-template-columns:80px 1fr;gap:20px;content-visibility:auto;contain-intrinsic-size:360px}.article-sec-index{color:#d45e73;font-size:11px;letter-spacing:.16em;padding-top:8px}.article-sec-copy{max-width:800px}.article-sec h2{font-size:36px;line-height:1.12;margin:0 0 18px}.article-sec p{font-size:17px;color:#b5aaa4;margin:0 0 16px}.article-mid-visual{margin-top:18px;margin-bottom:66px}.article-take{margin:38px 0;padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:linear-gradient(145deg,rgba(153,38,54,.16),#100e0f)}.article-take h2{margin:0 0 16px;font-size:31px}.article-take ul{margin:0;padding-left:20px;color:#c1b5af;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}.article-take li{margin:4px 0}.article-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}.article-actions a{border:1px solid rgba(255,255,255,.12);padding:10px 15px;border-radius:999px;text-decoration:none;color:#c9beb8}.article-actions a:first-child{background:#992636;border-color:#992636;color:#fff}@media(max-width:760px){.article{padding-top:88px}.article-wrap{width:min(100% - 28px,1040px)}.article h1{font-size:clamp(46px,14vw,66px)}.article-sec{grid-template-columns:1fr;gap:8px}.article-sec-index{padding-top:0}.article-sec h2{font-size:30px}.article-visual{margin-bottom:44px}.article-visual figcaption{display:block}.article-visual figcaption span{display:block;margin-bottom:6px}.article-take ul{grid-template-columns:1fr}}`;
 
 export function generateStaticParams() { return Object.keys(articles).map((slug) => ({ slug })); }
 
@@ -133,8 +168,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${article.title} | Artimist`,
     description: article.description,
     alternates: { canonical: `/insights/${slug}` },
-    openGraph: { title: article.title, description: article.description, url: `${BASE}/insights/${slug}`, type: "article", images: [{ url: "/media/hero-night.webp", alt: "Artimist Productions architecture and visualization" }] },
-    twitter: { card: "summary_large_image", title: article.title, description: article.description, images: ["/media/hero-night.webp"] },
+    openGraph: { title: article.title, description: article.description, url: `${BASE}/insights/${slug}`, type: "article", images: [{ url: articleVisuals[slug][0].src, alt: articleVisuals[slug][0].alt }] },
+    twitter: { card: "summary_large_image", title: article.title, description: article.description, images: [articleVisuals[slug][0].src] },
   };
 }
 
@@ -142,6 +177,7 @@ export default async function InsightArticlePage({ params }: { params: Promise<{
   const { slug } = await params;
   const article = articles[slug];
   if (!article) notFound();
+  const visuals = articleVisuals[slug];
   const url = `${BASE}/insights/${slug}`;
   const schema = {
     "@context": "https://schema.org",
@@ -151,5 +187,5 @@ export default async function InsightArticlePage({ params }: { params: Promise<{
     ],
   };
 
-  return <main className="article"><style dangerouslySetInnerHTML={{ __html: CSS }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /><article className="article-wrap"><nav className="article-crumb" aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href="/insights">Insights</Link> / {article.title}</nav><div className="article-kicker">Practical guide / Artimist Productions</div><h1>{article.title}</h1><p className="article-lead">{article.intro}</p>{article.sections.map((section)=><section className="article-sec" key={section.heading}><h2>{section.heading}</h2>{section.body.map((paragraph)=><p key={paragraph}>{paragraph}</p>)}</section>)}<section className="article-take"><h2>Key takeaways</h2><ul>{article.takeaways.map((item)=><li key={item}>{item}</li>)}</ul></section><div className="article-actions"><Link href={article.serviceHref}>{article.serviceLabel}</Link><Link href="/case-studies">Case studies</Link><Link href="/international">International delivery</Link><Link href="/contact">Discuss a project</Link></div></article></main>;
+  return <main className="article"><style dangerouslySetInnerHTML={{ __html: CSS }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /><article className="article-wrap"><nav className="article-crumb" aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href="/insights">Insights</Link> / {article.title}</nav><div className="article-kicker">Practical guide / Artimist Productions</div><h1>{article.title}</h1><p className="article-lead">{article.intro}</p><figure className="article-visual"><img src={visuals[0].src} alt={visuals[0].alt} width="1600" height="900" fetchPriority="high" /><figcaption><span>Visual reference 01</span>{visuals[0].caption}</figcaption></figure>{article.sections.map((section,index)=><section className="article-sec" key={section.heading}><div className="article-sec-index">0{index + 1}</div><div className="article-sec-copy"><h2>{section.heading}</h2>{section.body.map((paragraph)=><p key={paragraph}>{paragraph}</p>)}</div></section>)}<figure className="article-visual article-mid-visual"><img src={visuals[1].src} alt={visuals[1].alt} width="1600" height="900" loading="lazy" decoding="async" /><figcaption><span>Visual reference 02</span>{visuals[1].caption}</figcaption></figure><section className="article-take"><h2>Key takeaways</h2><ul>{article.takeaways.map((item)=><li key={item}>{item}</li>)}</ul></section><div className="article-actions"><Link href={article.serviceHref}>{article.serviceLabel}</Link><Link href="/case-studies">Case studies</Link><Link href="/international">International delivery</Link><Link href="/contact">Discuss a project</Link></div></article></main>;
 }
