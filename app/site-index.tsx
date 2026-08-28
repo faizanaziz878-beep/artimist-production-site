@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UiIcon } from "./ui-icon";
 
+// Keep the site index as the canonical crawlable map of the public site.
+// These are real user-facing routes (not SEO-only aliases), so every important
+// page has a durable internal discovery path even if the XML sitemap is stale.
 const PAGES: Array<[string, string, string]> = [
   ["01", "Home", "/"],
   ["02", "Selected work", "/#work"],
@@ -17,18 +20,52 @@ const PAGES: Array<[string, string, string]> = [
   ["09", "Architecture", "/architecture"],
   ["10", "BIM & Drafting", "/bim-drafting"],
   ["11", "Visualization", "/visualization"],
-  ["12", "Unreal & Real-time", "/unreal-engine"],
-  ["13", "Residential", "/residential"],
-  ["14", "Case Studies", "/case-studies"],
-  ["15", "International", "/international"],
-  ["16", "Visual archive", "/visual-archive"],
-  ["17", "Process", "/process"],
-  ["18", "Studio team", "/team"],
-  ["19", "About", "/about"],
-  ["20", "Founder's message", "/founder-message"],
-  ["21", "Partners", "/partners"],
-  ["22", "Proof & Trust", "/proof"],
-  ["23", "Contact", "/contact"],
+  ["12", "Architectural Drafting", "/architectural-drafting-services"],
+  ["13", "Revit Drafting", "/revit-drafting-services"],
+  ["14", "BIM Modeling", "/bim-modeling-services"],
+  ["15", "Permit Drawing Services", "/permit-drawing-services"],
+  ["16", "Construction Documentation", "/construction-documentation-services"],
+  ["17", "Architectural Rendering", "/services/architectural-rendering"],
+  ["18", "3D Interior Rendering", "/services/3d-interior-rendering"],
+  ["19", "Real Estate Rendering", "/services/real-estate-rendering"],
+  ["20", "Architectural Animation", "/services/architectural-animation"],
+  ["21", "Unreal & Real-time", "/unreal-engine"],
+  ["22", "Residential", "/residential"],
+  ["23", "Case Studies", "/case-studies"],
+  ["24", "RV Park Design & Site Planning", "/case-studies/rv-park-design"],
+  ["25", "Permit Application Packages", "/case-studies/permit-application-packages"],
+  ["26", "Home Interior Design", "/case-studies/home-interior-design"],
+  ["27", "Residential Exterior Design", "/case-studies/residential-exterior-design"],
+  ["28", "Bowl Stroke", "/case-studies/bowl-stroke"],
+  ["29", "Harmonic Horizons", "/case-studies/harmonic-horizons"],
+  ["30", "U.S. Permit Documentation", "/case-studies/us-permit-documentation"],
+  ["31", "Residential Visualization", "/case-studies/residential-visualization"],
+  ["32", "Parametric Canopy Studies", "/case-studies/parametric-canopy-studies"],
+  ["33", "Connected Learning Auditorium", "/case-studies/connected-learning-auditorium"],
+  ["34", "Insights", "/insights"],
+  ["35", "Custom House Plan Costs", "/insights/how-much-do-custom-house-plans-cost"],
+  ["36", "Permit vs Construction Drawings", "/insights/permit-drawings-vs-construction-drawings"],
+  ["37", "How to Modify a Floor Plan", "/insights/how-to-modify-an-existing-floor-plan"],
+  ["38", "Revit Drafting vs CAD", "/insights/revit-drafting-vs-cad-drafting"],
+  ["39", "What Is Scan to BIM?", "/insights/what-is-scan-to-bim"],
+  ["40", "LOD 200 vs 300 vs 400", "/insights/lod-200-vs-lod-300-vs-lod-400"],
+  ["41", "Architectural Rendering Costs", "/insights/how-much-does-architectural-rendering-cost"],
+  ["42", "3D Rendering vs Unreal Engine", "/insights/3d-rendering-vs-unreal-engine-walkthrough"],
+  ["43", "International", "/international"],
+  ["44", "United States", "/usa"],
+  ["45", "Canada", "/canada"],
+  ["46", "United Kingdom", "/uk"],
+  ["47", "Sweden", "/sweden"],
+  ["48", "Visual Archive", "/visual-archive"],
+  ["49", "Process", "/process"],
+  ["50", "Studio Team", "/team"],
+  ["51", "About", "/about"],
+  ["52", "Founder's Message", "/founder-message"],
+  ["53", "Partners", "/partners"],
+  ["54", "Decoding Bits", "/partners/decoding-bits"],
+  ["55", "Scallance", "/partners/scallance"],
+  ["56", "Proof & Trust", "/proof"],
+  ["57", "Contact", "/contact"],
 ];
 
 const PRIMARY: Array<[string, string]> = [
@@ -111,7 +148,7 @@ export function SiteIndex() {
     </header>
     <div id="site-index-panel" className={`site-index-panel${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Site index" hidden={!open}>
       <button type="button" className="site-index-backdrop" aria-label="Close site index" onClick={() => setOpen(false)} />
-      <nav className="site-index-sheet" aria-label="All pages">
+      <nav className="site-index-sheet" aria-label="All public pages">
         <div className="site-index-top">
           <p>INDEX / ALL PAGES</p>
           <button type="button" className="site-index-close" aria-label="Close site index" onClick={() => setOpen(false)}><span>CLOSE</span><UiIcon name="close" size={15} /></button>
