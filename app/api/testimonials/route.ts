@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     const role = field(form, "role", 100);
     const company = field(form, "company", 100);
     const quote = field(form, "quote", 1200);
-    const rating = Math.min(5, Math.max(3, Number(field(form, "rating", 3)) || 5));
+    const rating = Math.min(5, Math.max(1, Number(field(form, "rating", 3)) || 5));
     const permission = field(form, "permission", 8) === "yes";
 
     if (!clientName || quote.length < 20) {

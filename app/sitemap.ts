@@ -62,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/insights/how-much-does-architectural-rendering-cost', 'monthly', 0.84),
     entry('/insights/3d-rendering-vs-unreal-engine-walkthrough', 'monthly', 0.84),
 
+    entry('/proof', 'monthly', 0.78),
     entry('/visual-archive', 'weekly', 0.8),
     entry('/process', 'monthly', 0.7),
     entry('/partners', 'monthly', 0.6),
