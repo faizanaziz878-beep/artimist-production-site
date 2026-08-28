@@ -24,6 +24,13 @@ export const metadata: Metadata = {
   },
 };
 
+const inlineServiceLink = {
+  color: "inherit",
+  textDecorationColor: "rgba(238,234,227,.34)",
+  textDecorationLine: "underline",
+  textUnderlineOffset: "0.2em",
+} as const;
+
 export default async function Home() {
   const content = await getPublicContent();
   const whatsapp = content.settings.whatsapp.replace(/\D/g, "");
@@ -35,7 +42,13 @@ export default async function Home() {
         <div className="home-project-bridge-copy">
           <span>Ready when the brief is.</span>
           <h2 id="home-project-bridge-title">One clear place to start the project.</h2>
-          <p>Architecture, interiors, BIM/Revit, drafting, visualization, animation or an unusual multidisciplinary brief. Send the real project information once and the studio can respond properly.</p>
+          <p>
+            Architecture, interiors, BIM/Revit, drafting, visualization, animation or an unusual multidisciplinary brief. Send the real project information once and the studio can respond properly. Explore our {" "}
+            <a href="/custom-house-design" style={inlineServiceLink}>custom house design</a>, {" "}
+            <a href="/plan-modification-service" style={inlineServiceLink}>plan modification</a>, {" "}
+            <a href="/bim-drafting" style={inlineServiceLink}>BIM &amp; Revit drafting</a> and {" "}
+            <a href="/visualization" style={inlineServiceLink}>architectural visualization</a> capabilities when you need a more focused starting point.
+          </p>
         </div>
         <div className="home-project-bridge-actions">
           <a className="home-project-primary" href="/contact">
