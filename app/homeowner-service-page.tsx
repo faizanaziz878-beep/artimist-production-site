@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { GeneratedStudyStrip } from "./generated-architecture-gallery";
+import type { GeneratedArchitectureCategory } from "../lib/generated-architecture";
 
 const BASE = "https://www.artimistproductions.com";
 const WHATSAPP = "https://wa.me/18078084181";
@@ -77,6 +79,13 @@ const NEEDS: Related[] = [
   { href: "/architectural-drafting-services", label: "Prepare drawings" },
 ];
 
+const STUDY_CATEGORY: Record<string, GeneratedArchitectureCategory> = {
+  "custom-house-design": "architecture",
+  "3d-interior-design-service": "interiors",
+  "plan-modification-service": "drawings",
+  "residential-renovation-permit-drawings": "technical",
+};
+
 export function HomeownerServicePage(props: HomeownerServicePageProps) {
   const evidence = evidenceFor(props.slug);
   const visuals = visualsFor(props.slug);
@@ -100,6 +109,7 @@ export function HomeownerServicePage(props: HomeownerServicePageProps) {
         <div className="hsp-needs" aria-label="Common project needs">{NEEDS.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</div>
         <section className="hsp-sec hsp-grid"><div><div className="hsp-eyebrow">Scope</div><h2>What the service can include</h2></div><ul className="hsp-list">{props.included.map((x) => <li key={x}>{x}</li>)}</ul></section>
         <section className="hsp-visuals" aria-label="Visual examples"><div className="hsp-visual-grid">{visuals.map((v) => <figure className="hsp-visual" key={v.image}><img src={v.image} alt={v.alt} loading="lazy" /><figcaption>{v.caption}</figcaption></figure>)}</div></section>
+        <GeneratedStudyStrip slug={props.slug} category={STUDY_CATEGORY[props.slug] || "architecture"} title="Drawn at a buildable scale." />
         <section className="hsp-sec hsp-grid"><div><div className="hsp-eyebrow">Deliverables</div><h2>What you can receive</h2></div><ul className="hsp-list">{props.deliverables.map((x) => <li key={x}>{x}</li>)}</ul></section>
         <section className="hsp-sec"><div className="hsp-eyebrow">Process</div><h2>A clear path from idea to drawings</h2><div className="hsp-steps">{props.steps.map((s, i) => <article className="hsp-step" key={s.title}><b>Step {i + 1}</b><h3>{s.title}</h3><p>{s.text}</p></article>)}</div>{props.permitNotice ? <div className="hsp-note">{props.permitNotice}</div> : null}</section>
         <section className="hsp-sec"><div className="hsp-eyebrow">Project evidence</div><h2>See related Artimist work</h2><div className="hsp-evidence">{evidence.map((item) => <Link key={item.href} href={item.href}><h3>{item.label}</h3><span>Open case study</span></Link>)}</div></section>

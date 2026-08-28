@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getLandingPage, resolveLink, type LandingPage } from "../lib/landing-content";
 import { UiIcon } from "./ui-icon";
+import { GeneratedStudyStrip } from "./generated-architecture-gallery";
+import type { GeneratedArchitectureCategory } from "../lib/generated-architecture";
 
 const BASE = "https://www.artimistproductions.com";
 const WHATSAPP_NUMBER = "18078084181";
@@ -9,6 +11,18 @@ const EMAIL = "Faizan@artimistproductions.com";
 
 type Family = "architecture" | "bim" | "visualization";
 type Shot = { src: string; alt: string };
+
+const STUDY_CATEGORY: Record<string, GeneratedArchitectureCategory> = {
+  architecture: "architecture",
+  "bim-drafting": "drawings",
+  visualization: "interiors",
+  "architectural-drafting-services": "drawings",
+  "revit-drafting-services": "technical",
+  "bim-modeling-services": "technical",
+  "permit-drawing-services": "drawings",
+  "construction-documentation-services": "technical",
+  "architectural-visualization-services": "interiors",
+};
 
 const FAMILY: Record<string, Family> = {
   architecture: "architecture",
@@ -206,6 +220,8 @@ export function LandingPageV2({ slug }: { slug: string }) {
       <div><span className="lp2-kicker">What this solves</span><h2>Clear scope.<br/><em>Useful output.</em></h2></div>
       <div><p className="lp2-lead">{page.intro}</p><p>{page.forWho}</p></div>
     </section>
+
+    <GeneratedStudyStrip slug={page.slug} category={STUDY_CATEGORY[page.slug] || "architecture"} title="A visual language for the work." />
 
     <section className="lp2-trust" aria-label="Working commitments">
       {TRUST.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}

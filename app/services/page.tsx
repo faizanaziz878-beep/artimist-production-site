@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPublicContent } from "../../lib/data";
 import { ServicesExperience } from "../studio-path";
+import { GeneratedStudyStrip } from "../generated-architecture-gallery";
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +87,7 @@ export default async function ServicesPage() {
   const { settings } = await getPublicContent();
   return <>
     <ServicesExperience settings={settings} />
+    <GeneratedStudyStrip slug="services" category="architecture" count={1} title="One studio, resolved through space." />
     <section className="service-directory" aria-labelledby="service-directory-title">
       <style dangerouslySetInnerHTML={{ __html: directoryCss }} />
       <div className="service-directory__head">
