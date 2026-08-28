@@ -67,6 +67,17 @@ const CASE_STUDIES: Record<Family, Array<[string, string]>> = {
   ],
 };
 
+const GENERATED_VISUAL: Partial<Record<Family, Shot>> = {
+  bim: {
+    src: "/media/generated/bim-coordination-collage-v1.svg",
+    alt: "Architectural BIM coordination collage combining model views, technical linework and material studies",
+  },
+  visualization: {
+    src: "/media/generated/visual-direction-collage-v1.svg",
+    alt: "Architectural visualization direction board combining atmosphere, light, material and camera studies",
+  },
+};
+
 const TRUST = [
   ["Work to your standard", "Templates, title blocks, naming and output are aligned before production starts."],
   ["Native files stay yours", "Editable source files are handed back when they form part of the agreed scope."],
@@ -202,7 +213,12 @@ export function LandingPageV2({ slug }: { slug: string }) {
 
     <section className="lp2-split">
       <div className="lp2-split-copy"><span className="lp2-kicker">Problems we solve</span><h2>Where we become useful.</h2><ul>{page.problems.map((item) => <li key={item}><UiIcon name="check" size={15}/><span>{item}</span></li>)}</ul></div>
-      <div className="lp2-split-visual"><LandingDiagram family={family} /></div>
+      <div className="lp2-split-visual">
+        {GENERATED_VISUAL[family]
+          ? <img className="lp2-generated-visual" src={GENERATED_VISUAL[family]!.src} alt={GENERATED_VISUAL[family]!.alt} loading="lazy" />
+          : <LandingDiagram family={family} />}
+        <span className="lp2-visual-caption">{family === "bim" ? "Model / coordinate / document" : family === "visualization" ? "Compose / light / resolve" : "Plan / test / coordinate"}</span>
+      </div>
     </section>
 
     <section className="lp2-deliverables">
@@ -216,7 +232,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
 
     <section className="lp2-process">
       <header><span className="lp2-kicker">Working route</span><h2>How the project moves.</h2></header>
-      <div>{page.workflow.map((step,index)=><article key={step.h}><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>)}</div>
+      <div>{page.workflow.map((step,index)=><article key={step.h}><img className="lp2-step-art" src={PROOF[family][index % PROOF[family].length].src} alt="" loading="lazy" /><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>)}</div>
       {page.quality && <aside><span className="lp2-kicker">Quality control</span><p>{page.quality}</p></aside>}
     </section>
 
