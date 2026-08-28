@@ -101,7 +101,7 @@ function enhance(source: string) {
 
   // Keep only source-stable enhancements. Buyer-journey and premium-plan scripts
   // previously injected large new sections after load and made mobile output vary.
-  html = html.replace('</body>', `<script src="/lead-attribution.js"></script><script src="/whatsapp-conversations.js"></script><script src="/client-showcase.js"></script></body>`);
+  html = html.replace('</body>', `<script src="/lead-attribution.js"></script><script src="/whatsapp-conversations.js"></script><script src="/client-showcase.js"></script><script src="/home-consistency-final.js"></script></body>`);
   return html;
 }
 
