@@ -18,25 +18,28 @@
   var root = document.documentElement;
 
   var PAGES = [
-    ['Work', '/#work'],
-    ['Home Design Help', '/home-design-services'],
-    ['Custom House Design', '/custom-house-design'],
-    ['Plan Changes & Redraws', '/plan-modification-service'],
-    ['3D Interior Design', '/3d-interior-design-service'],
-    ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings'],
-    ['Architecture', '/architecture'],
-    ['BIM & Drafting', '/bim-drafting'],
-    ['Visualization', '/visualization'],
-    ['Unreal Engine', '/unreal-engine'],
-    ['Residential', '/residential'],
-    ['Render atlas', '/visual-archive'],
-    ['Services', '/services'],
-    ['Process', '/process'],
-    ['Team', '/team'],
-    ['About', '/about'],
-    ['Founder', '/founder-message'],
-    ['Partners', '/partners'],
-    ['Contact', '/contact']
+    ['Home', '/', 'Start'],
+    ['Selected work', '/#work', 'Start'],
+    ['Home Design Help', '/home-design-services', 'Home design'],
+    ['Custom House Design', '/custom-house-design', 'Home design'],
+    ['Plan Changes & Redraws', '/plan-modification-service', 'Home design'],
+    ['3D Interior Design', '/3d-interior-design-service', 'Home design'],
+    ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings', 'Home design'],
+    ['Services', '/services', 'Professional studio'],
+    ['Architecture', '/architecture', 'Professional studio'],
+    ['BIM & Drafting', '/bim-drafting', 'Professional studio'],
+    ['Visualization', '/visualization', 'Professional studio'],
+    ['Unreal & Real-time', '/unreal-engine', 'Professional studio'],
+    ['Residential', '/residential', 'Professional studio'],
+    ['Case Studies', '/case-studies', 'Work & delivery'],
+    ['International', '/international', 'Work & delivery'],
+    ['Visual archive', '/visual-archive', 'Work & delivery'],
+    ['Process', '/process', 'Work & delivery'],
+    ['Studio team', '/team', 'Studio'],
+    ['About', '/about', 'Studio'],
+    ['Founder’s message', '/founder-message', 'Studio'],
+    ['Partners', '/partners', 'Studio'],
+    ['Contact', '/contact', 'Studio']
   ];
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -62,11 +65,19 @@
   document.body.insertBefore(shell, document.body.firstChild);
 
   var list = document.getElementById('apIndexList');
+  var lastGroup = '';
   PAGES.forEach(function (p, i) {
     var base = p[1].split('#')[0];
-    var current = base !== '/' && here.indexOf(base) === 0;
+    var current = (base === '/' && here === '/') || (base !== '/' && here.indexOf(base) === 0);
+    if (p[2] !== lastGroup) {
+      lastGroup = p[2];
+      list.insertAdjacentHTML('beforeend','<span class="ap-index-group">' + esc(lastGroup) + '</span>');
+    }
     list.insertAdjacentHTML('beforeend','<a href="' + p[1] + '"' + (current ? ' aria-current="page"' : '') + '><small>' + String(i + 1).padStart(2, '0') + '</small><span>' + esc(p[0]) + '</span></a>');
   });
+  var indexGroupStyle = document.createElement('style');
+  indexGroupStyle.textContent = '.ap-index-group{display:block;padding:22px 0 9px;color:#b94860;font:700 8px/1 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.13)}.ap-index-group:first-child{padding-top:0}';
+  document.head.appendChild(indexGroupStyle);
 
   var panel = document.getElementById('apIndex');
   function setIndex(open) {
