@@ -5,29 +5,29 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UiIcon } from "./ui-icon";
 
-const PAGES: Array<[string, string, string]> = [
-  ["01", "Home", "/"],
-  ["02", "Selected work", "/#work"],
-  ["03", "Home Design Help", "/home-design-services"],
-  ["04", "Custom House Design", "/custom-house-design"],
-  ["05", "Plan Changes & Redraws", "/plan-modification-service"],
-  ["06", "3D Interior Design", "/3d-interior-design-service"],
-  ["07", "Renovation & Permit Drawings", "/residential-renovation-permit-drawings"],
-  ["08", "Services", "/services"],
-  ["09", "Architecture", "/architecture"],
-  ["10", "BIM & Drafting", "/bim-drafting"],
-  ["11", "Visualization", "/visualization"],
-  ["12", "Unreal & Real-time", "/unreal-engine"],
-  ["13", "Residential", "/residential"],
-  ["14", "Case Studies", "/case-studies"],
-  ["15", "International", "/international"],
-  ["16", "Visual archive", "/visual-archive"],
-  ["17", "Process", "/process"],
-  ["18", "Studio team", "/team"],
-  ["19", "About", "/about"],
-  ["20", "Founder's message", "/founder-message"],
-  ["21", "Partners", "/partners"],
-  ["22", "Contact", "/contact"],
+const PAGES: Array<[string, string, string, string]> = [
+  ["01", "Home", "/", "Start"],
+  ["02", "Selected work", "/#work", "Start"],
+  ["03", "Home Design Help", "/home-design-services", "Home design"],
+  ["04", "Custom House Design", "/custom-house-design", "Home design"],
+  ["05", "Plan Changes & Redraws", "/plan-modification-service", "Home design"],
+  ["06", "3D Interior Design", "/3d-interior-design-service", "Home design"],
+  ["07", "Renovation & Permit Drawings", "/residential-renovation-permit-drawings", "Home design"],
+  ["08", "Services", "/services", "Professional studio"],
+  ["09", "Architecture", "/architecture", "Professional studio"],
+  ["10", "BIM & Drafting", "/bim-drafting", "Professional studio"],
+  ["11", "Visualization", "/visualization", "Professional studio"],
+  ["12", "Unreal & Real-time", "/unreal-engine", "Professional studio"],
+  ["13", "Residential", "/residential", "Professional studio"],
+  ["14", "Case Studies", "/case-studies", "Work & delivery"],
+  ["15", "International", "/international", "Work & delivery"],
+  ["16", "Visual archive", "/visual-archive", "Work & delivery"],
+  ["17", "Process", "/process", "Work & delivery"],
+  ["18", "Studio team", "/team", "Studio"],
+  ["19", "About", "/about", "Studio"],
+  ["20", "Founder's message", "/founder-message", "Studio"],
+  ["21", "Partners", "/partners", "Studio"],
+  ["22", "Contact", "/contact", "Studio"],
 ];
 
 const PRIMARY: Array<[string, string]> = [
@@ -116,10 +116,11 @@ export function SiteIndex() {
           <button type="button" className="site-index-close" aria-label="Close site index" onClick={() => setOpen(false)}><span>CLOSE</span><UiIcon name="close" size={15} /></button>
         </div>
         <ul>
-          {PAGES.map(([no, label, href]) => {
+          {PAGES.map(([no, label, href, group], index) => {
             const base = href.split("#")[0];
             const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
-            return <li key={href}><Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={16} /></i></Link></li>;
+            const startsGroup = index === 0 || PAGES[index - 1][3] !== group;
+            return <li key={href}>{startsGroup && <p className="site-index-group">{group}</p>}<Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={16} /></i></Link></li>;
           })}
         </ul>
         <p className="site-index-foot">WORLDWIDE · USA · UK · CANADA · SWEDEN</p>
