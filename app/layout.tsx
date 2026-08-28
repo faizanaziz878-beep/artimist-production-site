@@ -40,6 +40,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const founder = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/founder-message#faizan-aziz`,
+    name: "Faizan Aziz",
+    jobTitle: "Founder",
+    url: `${SITE_URL}/founder-message`,
+    worksFor: { "@id": `${SITE_URL}/#organization` },
+    knowsAbout: ["Architecture", "BIM", "Architectural Visualization", "Interior Design", "Creative Production"],
+  };
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -48,6 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: SITE_URL,
     logo: `${SITE_URL}/brand/mark-red.svg`,
     email: "Faizan@artimistproductions.com",
+    founder: { "@id": `${SITE_URL}/founder-message#faizan-aziz` },
     sameAs: ["https://www.linkedin.com/company/artimist-productions"],
     description: "International multidisciplinary design and creative production studio helping homeowners, architects, developers and brands with custom house design, interiors, plan modifications, residential drafting, BIM, architectural visualization, animation and real-time experiences.",
     areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"],
@@ -78,6 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteIndex />
         <AskBot />
         <VisitorTracker />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founder) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
         <span id="main-content" className="main-content-anchor" tabIndex={-1} />

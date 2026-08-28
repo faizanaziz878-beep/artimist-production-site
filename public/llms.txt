@@ -12,6 +12,7 @@ Last updated: 2026-08-28
 - [Selected work](https://www.artimistproductions.com/#work): Featured architecture, interior and visualization projects.
 - [Project intake](https://www.artimistproductions.com/contact): Structured project enquiry with service, location, stage, budget, timeline, source-file links and brief.
 - [Case studies](https://www.artimistproductions.com/case-studies): Project evidence across residential, technical and visualization work.
+- [Insights](https://www.artimistproductions.com/insights): Practical guides covering house plans, permit drawings, BIM, Revit, CAD and architectural visualization.
 
 ## Homeowner services
 
@@ -36,13 +37,37 @@ Last updated: 2026-08-28
 - [Residential portfolio](https://www.artimistproductions.com/residential)
 - [Studio process](https://www.artimistproductions.com/process)
 
+## Country-specific service pages
+
+- [United States](https://www.artimistproductions.com/usa): Custom house design, permit drawing support, Revit/BIM and architectural visualization for U.S. projects.
+- [Canada](https://www.artimistproductions.com/canada): Custom home design, renovation planning, BIM/Revit and 3D visualization for Canadian projects.
+- [United Kingdom](https://www.artimistproductions.com/uk): Architecture support, planning and Building Regulations drawing support, BIM/Revit and architectural CGI for UK projects.
+- [Sweden](https://www.artimistproductions.com/sweden): Architecture, interiors, BIM/Revit and visualization support for Swedish projects.
+- [International delivery](https://www.artimistproductions.com/international): Worldwide project workflow and market overview.
+
+## Practical guides
+
+- [How much do custom house plans cost?](https://www.artimistproductions.com/insights/how-much-do-custom-house-plans-cost)
+- [Permit drawings vs construction drawings](https://www.artimistproductions.com/insights/permit-drawings-vs-construction-drawings)
+- [How to modify an existing floor plan](https://www.artimistproductions.com/insights/how-to-modify-an-existing-floor-plan)
+- [Revit drafting vs CAD drafting](https://www.artimistproductions.com/insights/revit-drafting-vs-cad-drafting)
+- [What is Scan-to-BIM?](https://www.artimistproductions.com/insights/what-is-scan-to-bim)
+- [LOD 200 vs LOD 300 vs LOD 400](https://www.artimistproductions.com/insights/lod-200-vs-lod-300-vs-lod-400)
+- [How much does architectural rendering cost?](https://www.artimistproductions.com/insights/how-much-does-architectural-rendering-cost)
+- [3D rendering vs Unreal Engine walkthrough](https://www.artimistproductions.com/insights/3d-rendering-vs-unreal-engine-walkthrough)
+
 ## Work and visual material
 
 - [Selected project archive](https://www.artimistproductions.com/#archive)
 - [Visual archive](https://www.artimistproductions.com/visual-archive)
 - [Residential work](https://www.artimistproductions.com/residential)
 - [Case studies](https://www.artimistproductions.com/case-studies)
-- [International delivery](https://www.artimistproductions.com/international)
+- [Bowl Stroke hospitality case study](https://www.artimistproductions.com/case-studies/bowl-stroke)
+- [Harmonic Horizons cultural campus](https://www.artimistproductions.com/case-studies/harmonic-horizons)
+- [U.S. permit documentation and Revit production](https://www.artimistproductions.com/case-studies/us-permit-documentation)
+- [Residential architecture and visualization](https://www.artimistproductions.com/case-studies/residential-visualization)
+- [Parametric canopy studies](https://www.artimistproductions.com/case-studies/parametric-canopy-studies)
+- [Connected Learning Auditorium](https://www.artimistproductions.com/case-studies/connected-learning-auditorium)
 
 ## Studio
 
