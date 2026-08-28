@@ -18,25 +18,63 @@
   var root = document.documentElement;
 
   var PAGES = [
-    ['Work', '/#work'],
-    ['Home Design Help', '/home-design-services'],
-    ['Custom House Design', '/custom-house-design'],
-    ['Plan Changes & Redraws', '/plan-modification-service'],
-    ['3D Interior Design', '/3d-interior-design-service'],
-    ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings'],
-    ['Architecture', '/architecture'],
-    ['BIM & Drafting', '/bim-drafting'],
-    ['Visualization', '/visualization'],
-    ['Unreal Engine', '/unreal-engine'],
-    ['Residential', '/residential'],
-    ['Render atlas', '/visual-archive'],
-    ['Services', '/services'],
-    ['Process', '/process'],
-    ['Team', '/team'],
-    ['About', '/about'],
-    ['Founder', '/founder-message'],
-    ['Partners', '/partners'],
-    ['Contact', '/contact']
+    ['Home', '/', 'Start'],
+    ['Selected work', '/#work', 'Start'],
+    ['Home Design Help', '/home-design-services', 'Home design'],
+    ['Custom House Design', '/custom-house-design', 'Home design'],
+    ['Plan Changes & Redraws', '/plan-modification-service', 'Home design'],
+    ['3D Interior Design', '/3d-interior-design-service', 'Home design'],
+    ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings', 'Home design'],
+    ['Services', '/services', 'Professional studio'],
+    ['Architecture', '/architecture', 'Professional studio'],
+    ['BIM & Drafting', '/bim-drafting', 'Professional studio'],
+    ['Visualization', '/visualization', 'Professional studio'],
+    ['Architectural Drafting', '/architectural-drafting-services', 'Professional studio'],
+    ['Revit Drafting', '/revit-drafting-services', 'Professional studio'],
+    ['BIM Modeling', '/bim-modeling-services', 'Professional studio'],
+    ['Permit Drawing Services', '/permit-drawing-services', 'Professional studio'],
+    ['Construction Documentation', '/construction-documentation-services', 'Professional studio'],
+    ['Architectural Rendering', '/services/architectural-rendering', 'Professional studio'],
+    ['3D Interior Rendering', '/services/3d-interior-rendering', 'Professional studio'],
+    ['Real Estate Rendering', '/services/real-estate-rendering', 'Professional studio'],
+    ['Architectural Animation', '/services/architectural-animation', 'Professional studio'],
+    ['Unreal & Real-time', '/unreal-engine', 'Professional studio'],
+    ['Residential', '/residential', 'Professional studio'],
+    ['Case Studies', '/case-studies', 'Case studies'],
+    ['RV Park Design & Site Planning', '/case-studies/rv-park-design', 'Case studies'],
+    ['Permit Application Packages', '/case-studies/permit-application-packages', 'Case studies'],
+    ['Home Interior Design', '/case-studies/home-interior-design', 'Case studies'],
+    ['Residential Exterior Design', '/case-studies/residential-exterior-design', 'Case studies'],
+    ['Bowl Stroke', '/case-studies/bowl-stroke', 'Case studies'],
+    ['Harmonic Horizons', '/case-studies/harmonic-horizons', 'Case studies'],
+    ['U.S. Permit Documentation', '/case-studies/us-permit-documentation', 'Case studies'],
+    ['Residential Visualization', '/case-studies/residential-visualization', 'Case studies'],
+    ['Parametric Canopy Studies', '/case-studies/parametric-canopy-studies', 'Case studies'],
+    ['Connected Learning Auditorium', '/case-studies/connected-learning-auditorium', 'Case studies'],
+    ['Insights', '/insights', 'Insights'],
+    ['Custom House Plan Costs', '/insights/how-much-do-custom-house-plans-cost', 'Insights'],
+    ['Permit vs Construction Drawings', '/insights/permit-drawings-vs-construction-drawings', 'Insights'],
+    ['How to Modify a Floor Plan', '/insights/how-to-modify-an-existing-floor-plan', 'Insights'],
+    ['Revit Drafting vs CAD', '/insights/revit-drafting-vs-cad-drafting', 'Insights'],
+    ['What Is Scan to BIM?', '/insights/what-is-scan-to-bim', 'Insights'],
+    ['LOD 200 vs 300 vs 400', '/insights/lod-200-vs-lod-300-vs-lod-400', 'Insights'],
+    ['Architectural Rendering Costs', '/insights/how-much-does-architectural-rendering-cost', 'Insights'],
+    ['3D Rendering vs Unreal Engine', '/insights/3d-rendering-vs-unreal-engine-walkthrough', 'Insights'],
+    ['International', '/international', 'International'],
+    ['United States', '/usa', 'International'],
+    ['Canada', '/canada', 'International'],
+    ['United Kingdom', '/uk', 'International'],
+    ['Sweden', '/sweden', 'International'],
+    ['Visual Archive', '/visual-archive', 'Work & delivery'],
+    ['Process', '/process', 'Work & delivery'],
+    ['Studio Team', '/team', 'Studio'],
+    ['About', '/about', 'Studio'],
+    ['Founder\'s Message', '/founder-message', 'Studio'],
+    ['Partners', '/partners', 'Studio'],
+    ['Decoding Bits', '/partners/decoding-bits', 'Studio'],
+    ['Scallance', '/partners/scallance', 'Studio'],
+    ['Proof & Trust', '/proof', 'Studio'],
+    ['Contact', '/contact', 'Studio']
   ];
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -62,11 +100,19 @@
   document.body.insertBefore(shell, document.body.firstChild);
 
   var list = document.getElementById('apIndexList');
+  var lastGroup = '';
   PAGES.forEach(function (p, i) {
     var base = p[1].split('#')[0];
-    var current = base !== '/' && here.indexOf(base) === 0;
+    var current = (base === '/' && here === '/') || (base !== '/' && here.indexOf(base) === 0);
+    if (p[2] !== lastGroup) {
+      lastGroup = p[2];
+      list.insertAdjacentHTML('beforeend','<span class="ap-index-group">' + esc(lastGroup) + '</span>');
+    }
     list.insertAdjacentHTML('beforeend','<a href="' + p[1] + '"' + (current ? ' aria-current="page"' : '') + '><small>' + String(i + 1).padStart(2, '0') + '</small><span>' + esc(p[0]) + '</span></a>');
   });
+  var indexGroupStyle = document.createElement('style');
+  indexGroupStyle.textContent = '.ap-index-group{display:block;padding:22px 0 9px;color:#b94860;font:700 8px/1 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.13)}.ap-index-group:first-child{padding-top:0}';
+  document.head.appendChild(indexGroupStyle);
 
   var panel = document.getElementById('apIndex');
   function setIndex(open) {

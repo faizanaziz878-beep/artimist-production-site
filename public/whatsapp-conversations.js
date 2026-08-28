@@ -38,11 +38,7 @@
   function track() {
     try {
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'whatsapp_click', {
-          source: 'persistent_whatsapp',
-          page_path: location.pathname,
-          page_title: document.title
-        });
+        window.gtag('event', 'whatsapp_click', { source: 'persistent_whatsapp', page_path: location.pathname, page_title: document.title });
       }
     } catch (error) {}
   }
@@ -52,13 +48,22 @@
     var style = document.createElement('style');
     style.id = 'artimist-whatsapp-style';
     style.textContent = [
-      '.artimist-whatsapp{position:fixed;left:22px;right:auto;bottom:22px;z-index:930;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 17px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(9,9,9,.92);color:#fff!important;text-decoration:none!important;box-shadow:0 16px 45px rgba(0,0,0,.34);-webkit-backdrop-filter:blur(18px) saturate(1.08);backdrop-filter:blur(18px) saturate(1.08);font:700 9px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;transition:transform .22s ease,border-color .2s ease,opacity .2s ease}',
+      '.artimist-whatsapp{position:fixed;left:22px;bottom:22px;z-index:930;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:10px;width:190px;min-height:50px;padding:0 17px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(9,9,9,.92);color:#fff!important;text-decoration:none!important;box-shadow:0 16px 45px rgba(0,0,0,.34);-webkit-backdrop-filter:blur(18px) saturate(1.08);backdrop-filter:blur(18px) saturate(1.08);font:700 9px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:transform .22s ease,border-color .2s ease,opacity .2s ease}',
       '.artimist-whatsapp:hover{transform:translateY(-2px);border-color:rgba(217,100,118,.58)}',
       '.artimist-whatsapp__mark{width:9px;height:9px;border-radius:50%;background:#b71f3d;box-shadow:0 0 0 5px rgba(156,31,53,.14);flex:none}',
-      'body.artimist-ask-open .artimist-whatsapp{opacity:0;pointer-events:none;transform:translateY(8px)}',
-      '@media(max-width:760px){body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}.artimist-whatsapp{left:12px;bottom:calc(14px + env(safe-area-inset-bottom));box-sizing:border-box;width:calc((100vw - 34px)/2);min-height:52px;height:52px;padding:0 10px;font-size:8.2px;letter-spacing:.065em}.askbot-launch{right:12px!important;left:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;box-sizing:border-box!important;width:calc((100vw - 34px)/2)!important;min-width:0!important;min-height:52px!important;height:52px!important;padding:0 12px!important;justify-content:center!important;gap:8px!important;white-space:nowrap!important}.askbot-panel{right:12px!important;left:12px!important;bottom:calc(82px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:calc(100dvh - 112px)!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close,.st-seo-authority,.ed-footer{padding-bottom:max(118px,calc(106px + env(safe-area-inset-bottom)))!important}}',
-      '@media(max-width:390px){.artimist-whatsapp{left:10px;width:calc((100vw - 30px)/2);font-size:7.7px}.askbot-launch{right:10px!important;width:calc((100vw - 30px)/2)!important;font-size:7.7px!important;letter-spacing:.055em!important}}',
-      '@media(prefers-reduced-motion:reduce){.artimist-whatsapp{transition:none}}'
+      '.askbot-launch,.st-ask-btn{box-sizing:border-box!important;width:190px!important;min-width:190px!important;justify-content:center!important}',
+      'body.artimist-ask-open .artimist-whatsapp,body.artimist-dock-suppressed .artimist-whatsapp,body.artimist-dock-suppressed .askbot-launch,body.artimist-dock-suppressed .st-ask-btn{opacity:0!important;pointer-events:none!important;transform:translateY(8px)!important}',
+      '.st-scroll-cue{position:relative}.st-scroll-cue:empty::before,.st-scroll-cue:not(:has(svg))::before{content:"↓";display:grid;place-items:center;font:300 28px/1 Arial,sans-serif;color:currentColor}',
+      '.artimist-reveal-heading{opacity:0;transform:translateY(28px);clip-path:inset(0 0 100% 0);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),clip-path 1.05s cubic-bezier(.2,.8,.2,1)}',
+      '.artimist-reveal-heading.is-artimist-visible{opacity:1;transform:none;clip-path:inset(0)}',
+      '.artimist-type{display:inline-block;color:#c73f58!important;white-space:normal}',
+      '.artimist-char{display:inline-block;opacity:0;transform:translateY(.12em);filter:blur(3px)}',
+      '.is-artimist-visible .artimist-char{animation:artimistCharIn .38s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--char-index) * 34ms + 220ms)}',
+      '.is-artimist-visible .artimist-type::after{content:"";display:inline-block;width:1px;height:.82em;margin-left:.08em;background:currentColor;vertical-align:-.04em;animation:artimistCaret .75s steps(1,end) 4;animation-delay:.25s}',
+      '@keyframes artimistCharIn{to{opacity:1;transform:none;filter:none}}@keyframes artimistCaret{50%{opacity:0}}',
+      '@media(max-width:760px){body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}.artimist-whatsapp{left:12px;bottom:calc(14px + env(safe-area-inset-bottom));width:calc((100vw - 34px)/2);min-height:52px;height:52px;padding:0 9px;font-size:8px;letter-spacing:.055em}.askbot-launch,.st-ask-btn{right:12px!important;left:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;width:calc((100vw - 34px)/2)!important;min-width:0!important;min-height:52px!important;height:52px!important;padding:0 10px!important;justify-content:center!important;gap:7px!important;white-space:nowrap!important;font-size:8px!important;letter-spacing:.055em!important}.askbot-panel{right:12px!important;left:12px!important;bottom:calc(82px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:calc(100dvh - 112px)!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close,.st-seo-authority,.ed-footer{padding-bottom:max(118px,calc(106px + env(safe-area-inset-bottom)))!important}}',
+      '@media(max-width:390px){.artimist-whatsapp{left:10px;width:calc((100vw - 30px)/2);font-size:7.5px}.askbot-launch,.st-ask-btn{right:10px!important;width:calc((100vw - 30px)/2)!important;font-size:7.5px!important}}',
+      '@media(prefers-reduced-motion:reduce){.artimist-whatsapp,.artimist-reveal-heading{transition:none}.artimist-reveal-heading{opacity:1;transform:none;clip-path:none}.artimist-char{opacity:1;transform:none;filter:none;animation:none!important}.artimist-type::after{display:none!important}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -71,14 +76,89 @@
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.setAttribute('aria-label', 'Talk to Artimist Productions on WhatsApp');
-    link.innerHTML = '<span class="artimist-whatsapp__mark" aria-hidden="true"></span><span>WhatsApp</span>';
+    link.innerHTML = '<span class="artimist-whatsapp__mark" aria-hidden="true"></span><span>Talk to the studio</span>';
     link.addEventListener('click', track);
     document.body.appendChild(link);
+  }
+
+  function splitAccent(node) {
+    if (!node || node.dataset.artimistTyped === '1' || node.children.length || !node.textContent.trim()) return;
+    var text = node.textContent;
+    node.dataset.artimistTyped = '1';
+    node.classList.add('artimist-type');
+    node.setAttribute('aria-label', text);
+    node.textContent = '';
+    Array.prototype.forEach.call(text.split(''), function (char, index) {
+      var span = document.createElement('span');
+      span.className = 'artimist-char';
+      span.setAttribute('aria-hidden', 'true');
+      span.style.setProperty('--char-index', index);
+      span.textContent = char === ' ' ? '\u00a0' : char;
+      node.appendChild(span);
+    });
+  }
+
+  function enhanceTypography() {
+    var headings = document.querySelectorAll('main h1,main h2,.st-hero h1,.st-wording h2,.ed-hero h1,.ed-hero h2');
+    Array.prototype.forEach.call(headings, function (heading) {
+      if (heading.dataset.artimistReveal === '1') return;
+      heading.dataset.artimistReveal = '1';
+      heading.classList.add('artimist-reveal-heading');
+      Array.prototype.forEach.call(heading.querySelectorAll('em'), splitAccent);
+    });
+    if (!('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(headings, function (heading) { heading.classList.add('is-artimist-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-artimist-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+    Array.prototype.forEach.call(headings, function (heading) { observer.observe(heading); });
+    window.setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.artimist-reveal-heading'), function (heading) { heading.classList.add('is-artimist-visible'); });
+    }, 2800);
+  }
+
+  function rectsOverlap(a, b) { return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top; }
+
+  function updateDockSafety() {
+    var forced = !!document.querySelector('.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden]),[role="dialog"][open]');
+    var widgets = Array.prototype.slice.call(document.querySelectorAll('.artimist-whatsapp,.askbot-launch,.st-ask-btn'));
+    var blockers = Array.prototype.slice.call(document.querySelectorAll('form,footer,.st-contact,.sp-contact-workspace,.ed-contact,.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden])'));
+    var collision = forced;
+    if (!collision) {
+      widgets.forEach(function (widget) {
+        if (collision || !widget.offsetParent) return;
+        var wr = widget.getBoundingClientRect();
+        blockers.forEach(function (blocker) {
+          if (collision || blocker.contains(widget) || widget.contains(blocker) || !blocker.offsetParent) return;
+          var br = blocker.getBoundingClientRect();
+          if (br.bottom > 0 && br.top < innerHeight && rectsOverlap(wr, br)) collision = true;
+        });
+      });
+    }
+    document.body.classList.toggle('artimist-dock-suppressed', collision);
   }
 
   function init() {
     addStyle();
     addPersistentCta();
+    enhanceTypography();
+    updateDockSafety();
+    var queued = false;
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; updateDockSafety(); });
+    }
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule, { passive: true });
+    new MutationObserver(function () { enhanceTypography(); schedule(); }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'hidden', 'open'] });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
