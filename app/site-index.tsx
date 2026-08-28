@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { UiIcon } from "./ui-icon";
 
 // Keep the site index as the canonical crawlable map of the public site.
-// These are real user-facing routes (not SEO-only aliases), so every important
-// page has a durable internal discovery path even if the XML sitemap is stale.
+// The menu itself presents the map as grouped headings first so people are not
+// confronted with all 57 destinations at once.
 const PAGES: Array<[string, string, string, string]> = [
   ["01", "Home", "/", "Start"],
   ["02", "Selected work", "/#work", "Start"],
@@ -68,20 +68,28 @@ const PAGES: Array<[string, string, string, string]> = [
   ["57", "Contact", "/contact", "Studio"],
 ];
 
+// Mirror the homepage navigation exactly. Internal pages should never introduce
+// a second information architecture when the visitor leaves the homepage.
 const PRIMARY: Array<[string, string]> = [
-  ["Home Design", "/home-design-services"],
-  ["Services", "/services"],
-  ["Case Studies", "/case-studies"],
-  ["International", "/international"],
-  ["Contact", "/contact"],
+  ["Work", "/#work"],
+  ["Services", "/#disciplines"],
+  ["Team", "/#team"],
+  ["Plans", "/#plans"],
+  ["Brief", "/contact"],
 ];
+
+const GROUPS = Array.from(new Set(PAGES.map((page) => page[3])));
 
 export function SiteIndex() {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mode, setMode] = useState<"day" | "night">("day");
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setOpenGroup(null);
+  }, [pathname]);
 
   useEffect(() => {
     let saved = "day";
@@ -129,7 +137,7 @@ export function SiteIndex() {
       </Link>
       <nav className="canonical-primary" aria-label="Primary navigation">
         {PRIMARY.map(([label, href]) => {
-          const current = href === "/" ? pathname === "/" : pathname.startsWith(href);
+          const current = href === "/contact" ? pathname.startsWith("/contact") : false;
           return <Link key={href} href={href} aria-current={current ? "page" : undefined}>{label}</Link>;
         })}
       </nav>
@@ -138,7 +146,10 @@ export function SiteIndex() {
           <UiIcon name={mode === "night" ? "moon" : "sun"} size={16} />
           <span>{mode === "night" ? "NIGHT" : "DAY"}</span>
         </button>
-        <button className="canonical-pill" type="button" aria-expanded={open} aria-controls="site-index-panel" onClick={() => setOpen((value) => !value)}>
+        <button className="canonical-pill" type="button" aria-expanded={open} aria-controls="site-index-panel" onClick={() => {
+          setOpen((value) => !value);
+          if (open) setOpenGroup(null);
+        }}>
           <span>MENU</span><UiIcon name="menu" size={16} />
         </button>
         <Link className="canonical-cta" href="/contact">
@@ -146,21 +157,48 @@ export function SiteIndex() {
         </Link>
       </div>
     </header>
+
     <div id="site-index-panel" className={`site-index-panel${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Site index" hidden={!open}>
       <button type="button" className="site-index-backdrop" aria-label="Close site index" onClick={() => setOpen(false)} />
       <nav className="site-index-sheet" aria-label="All public pages">
         <div className="site-index-top">
-          <p>INDEX / ALL PAGES</p>
+          <p>INDEX / {PAGES.length} PAGES</p>
           <button type="button" className="site-index-close" aria-label="Close site index" onClick={() => setOpen(false)}><span>CLOSE</span><UiIcon name="close" size={15} /></button>
         </div>
-        <ul>
-          {PAGES.map(([no, label, href, group], index) => {
-            const base = href.split("#")[0];
-            const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
-            const startsGroup = index === 0 || PAGES[index - 1][3] !== group;
-            return <li key={href}>{startsGroup && <p className="site-index-group">{group}</p>}<Link href={href} aria-current={current ? "page" : undefined}><small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={16} /></i></Link></li>;
+
+        <div className="site-index-groups">
+          {GROUPS.map((group, groupIndex) => {
+            const pages = PAGES.filter((page) => page[3] === group);
+            const expanded = openGroup === group;
+            const panelId = `site-index-group-${groupIndex}`;
+            return <section className={`site-index-category${expanded ? " is-open" : ""}`} key={group}>
+              <button
+                className="site-index-group-toggle"
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={panelId}
+                onClick={() => setOpenGroup(expanded ? null : group)}
+              >
+                <small>{String(groupIndex + 1).padStart(2, "0")}</small>
+                <span>{group}</span>
+                <b>{String(pages.length).padStart(2, "0")}</b>
+                <i aria-hidden="true">{expanded ? "−" : "+"}</i>
+              </button>
+              <ul id={panelId} hidden={!expanded}>
+                {pages.map(([no, label, href]) => {
+                  const base = href.split("#")[0];
+                  const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
+                  return <li key={href}>
+                    <Link href={href} aria-current={current ? "page" : undefined}>
+                      <small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={15} /></i>
+                    </Link>
+                  </li>;
+                })}
+              </ul>
+            </section>;
           })}
-        </ul>
+        </div>
+
         <p className="site-index-foot">WORLDWIDE · USA · UK · CANADA · SWEDEN</p>
       </nav>
     </div>
