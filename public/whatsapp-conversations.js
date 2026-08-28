@@ -155,7 +155,16 @@
     }
     addEventListener('scroll', schedule, { passive: true });
     addEventListener('resize', schedule, { passive: true });
-    new MutationObserver(function (mutations) {\n      mutations.forEach(function (mutation) {\n        Array.prototype.forEach.call(mutation.addedNodes, function (node) {\n          if (node.nodeType === 1) enhanceTypography(node);\n        });\n      });\n      schedule();\n    }).observe(document.body, { childList: true, subtree: true });\n    addEventListener('click', schedule, true);\n    addEventListener('keydown', schedule, true);
+    new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        Array.prototype.forEach.call(mutation.addedNodes, function (node) {
+          if (node.nodeType === 1) enhanceTypography(node);
+        });
+      });
+      schedule();
+    }).observe(document.body, { childList: true, subtree: true });
+    addEventListener('click', schedule, true);
+    addEventListener('keydown', schedule, true);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
