@@ -1,30 +1,26 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { atlasChapters, technicalBoards } from "../../lib/visual-content";
-import { VisualJourney } from "../visual-journey";
 import { GeneratedArchitectureArchive } from "../generated-architecture-gallery";
 
 export const metadata: Metadata = {
   title: "Architectural Rendering Portfolio | 3D Visualization Gallery",
-  description: "Browse the Artimist Productions visual archive: 37 portfolio visualizations, full technical plates and 91 architecture-only spatial studies across compact buildings, interiors and details.",
+  description: "Browse a filtered Artimist Productions archive of architecture, interiors, visualization, drawings and technical studies without loading the entire collection at once.",
   alternates: { canonical: "/visual-archive" },
-  openGraph: {
-    title: "Architectural Rendering Portfolio | Artimist Productions",
-    description: "An image-first archive of architecture, interiors, hospitality, landscape, technical presentation work and small-scale spatial studies.",
-    url: "https://www.artimistproductions.com/visual-archive",
-    type: "website",
-    images: [{ url: "/media/atlas/atlas-06.webp", alt: "Artimist Productions architectural visualization archive" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Architectural Rendering Portfolio | Artimist Productions",
-    description: "Explore architectural visualizations, complete technical plates and 91 architecture-only spatial studies.",
-    images: ["/media/atlas/atlas-06.webp"],
-  },
+  openGraph: { title: "Architectural Rendering Portfolio | Artimist Productions", description: "A filtered, image-first archive of architecture, interiors, technical work and small-scale spatial studies.", url: "https://www.artimistproductions.com/visual-archive", type: "website", images: [{ url: "/media/generated-architecture/artimist-architecture-035.webp", alt: "Artimist Productions compact architecture visualization archive" }] },
 };
 
+const selectedScenes = atlasChapters.flatMap((chapter) => chapter.scenes.slice(0, 2).map((scene) => ({ ...scene, chapter: chapter.title })));
+const selectedBoards = technicalBoards.slice(0, 6);
+
+const CSS = `.vai{min-height:100vh;padding-top:84px;background:#080809;color:#eee9e2;font-family:Arial,Helvetica,sans-serif}.vai *{box-sizing:border-box}.vai a{color:inherit}.vai-wrap{width:min(1280px,calc(100% - 40px));margin:auto}.vai-hero{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:end;padding:72px 0 84px}.vai-kicker{color:#c9536a;font-size:10px;letter-spacing:.2em;text-transform:uppercase}.vai h1,.vai h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}.vai h1{font-size:clamp(58px,8vw,118px);line-height:.84;letter-spacing:-.055em;margin:20px 0 28px}.vai-lead{max-width:63ch;color:#ada39d;font-size:18px;line-height:1.65}.vai-hero figure{position:relative;margin:0;overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,.12);aspect-ratio:4/3}.vai-hero img,.vai-grid img,.vai-boards img{display:block;width:100%;height:100%;object-fit:cover}.vai-hero figcaption,.vai-grid figcaption{position:absolute;left:14px;bottom:14px;padding:8px 11px;border-radius:999px;background:rgba(7,7,7,.8);font-size:9px;letter-spacing:.1em;text-transform:uppercase}.vai-nav{display:flex;gap:10px;flex-wrap:wrap;padding:22px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}.vai-nav a{padding:8px 12px;border:1px solid rgba(255,255,255,.12);border-radius:999px;text-decoration:none;color:#a99f99;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.vai-section{padding:78px 0}.vai-section-head{display:grid;grid-template-columns:.3fr .7fr;gap:30px;margin-bottom:38px}.vai-section h2{font-size:clamp(42px,5vw,72px);line-height:.94;margin:0}.vai-section-head p{max-width:60ch;margin:0;color:#9f958f;line-height:1.7}.vai-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.vai-grid figure{position:relative;grid-column:span 4;margin:0;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:15px;aspect-ratio:4/3}.vai-grid figure:nth-child(1),.vai-grid figure:nth-child(6){grid-column:span 8;aspect-ratio:16/9}.vai-grid img{transition:transform .6s ease}.vai-grid figure:hover img{transform:scale(1.018)}.vai-boards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.vai-boards figure{margin:0;border:1px solid rgba(255,255,255,.1);background:#f0ece4}.vai-boards img{height:auto;aspect-ratio:4/3;object-fit:contain}.vai-boards figcaption{padding:12px 14px;background:#100e0f;color:#a99e98;font-size:10px;letter-spacing:.06em}.vai-cta{display:flex;justify-content:space-between;align-items:end;gap:30px;padding:64px 0 100px;border-top:1px solid rgba(255,255,255,.1)}.vai-cta h2{font-size:clamp(36px,5vw,66px);margin:0}.vai-cta a{padding:14px 20px;border-radius:999px;background:#992636;text-decoration:none;font-size:11px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}@media(max-width:820px){.vai{padding-top:72px}.vai-hero,.vai-section-head{grid-template-columns:1fr}.vai-grid figure,.vai-grid figure:nth-child(n){grid-column:span 6;aspect-ratio:4/3}.vai-boards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.vai-grid{grid-template-columns:1fr}.vai-grid figure,.vai-grid figure:nth-child(n){grid-column:auto}.vai-boards{grid-template-columns:1fr}.vai-cta{display:block}.vai-cta a{display:inline-block;margin-top:22px}}`;
+
 export default function VisualArchivePage() {
-  return <>
-    <VisualJourney kind="atlas" eyebrow="Render atlas / Complete visual field" title="Thirty-seven worlds. No thumbnails." intro="An image-first archive of spatial work, followed by twenty-one technical plates shown in full. Scroll downward to move through every project atmosphere." chapters={atlasChapters} technicalBoards={technicalBoards} />
-    <GeneratedArchitectureArchive />
-  </>;
+  return <><main className="vai"><style dangerouslySetInnerHTML={{ __html: CSS }} /><div className="vai-wrap">
+    <section className="vai-hero"><div><div className="vai-kicker">Visual archive / filtered collection</div><h1>Work first.<br/>No waiting room.</h1><p className="vai-lead">A curated entry into Artimist&apos;s architectural work. Start with ten selected environments and six complete technical plates, then filter the wider study archive by discipline instead of scrolling through everything at once.</p></div><figure><img src="/media/generated-architecture/artimist-architecture-035.webp" alt="Compact courtyard house architectural visualization" width="1448" height="1086" fetchPriority="high" /><figcaption>Small-scale architecture / selected work</figcaption></figure></section>
+    <nav className="vai-nav" aria-label="Visual archive sections"><a href="#selected-work">Selected work</a><a href="#technical-work">Technical plates</a><a href="#ga-archive-title">Study archive</a><Link href="/case-studies">Case studies</Link></nav>
+    <section className="vai-section" id="selected-work"><header className="vai-section-head"><h2>Ten selected environments.</h2><p>Representative work across residential, civic, hospitality, landscape and interior settings. The complete archive remains below, but the first decision is now clear and fast.</p></header><div className="vai-grid">{selectedScenes.map((scene) => <figure key={`${scene.chapter}-${scene.src}`}><img src={scene.src} alt={`${scene.chapter} — ${scene.label}`} width="1448" height="1086" loading="lazy" decoding="async" /><figcaption>{scene.chapter} / {scene.label}</figcaption></figure>)}</div></section>
+    <section className="vai-section" id="technical-work"><header className="vai-section-head"><h2>Drawings shown whole.</h2><p>Six complete plates retain their plans, sections, diagrams and annotations inside the frame. The remaining technical studies are available through the filtered archive.</p></header><div className="vai-boards">{selectedBoards.map((board, index) => <figure key={board.src}><img src={board.src} alt={`${board.label} — ${board.detail}`} width="1600" height="900" loading="lazy" decoding="async" /><figcaption>{String(index + 1).padStart(2,"0")} / {board.label}</figcaption></figure>)}</div></section>
+    <section className="vai-cta"><h2>Need the reasoning behind the images?</h2><Link href="/case-studies">Read the case studies</Link></section>
+  </div></main><GeneratedArchitectureArchive /></>;
 }

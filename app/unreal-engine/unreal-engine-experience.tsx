@@ -54,6 +54,11 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <div className="ue-coordinate">WORLDWIDE DELIVERY<br />USA / UK / CANADA / SWEDEN</div>
       </section>
 
+      <section className="ue-motion" aria-labelledby="ue-motion-title">
+        <div className="ue-motion-copy"><span>Live spatial sequence / 01</span><h2 id="ue-motion-title">Real-time work should move.</h2><p>A lightweight architectural loop demonstrates camera movement, material response and spatial continuity directly on the page—without asking visitors to imagine an interactive service from still images alone.</p></div>
+        <figure><video autoPlay muted loop playsInline preload="metadata" poster="/media/residential/residential-13.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><figcaption><span>Architecture-only walkthrough study</span><strong>Model → atmosphere → movement</strong></figcaption></figure>
+      </section>
+
       <section className="ue-directors">
         <div className="ue-directors-title"><span>Core direction / 02</span><h2>Creative control.<br /><em>Technical depth.</em></h2><p>High-end real-time work sits between architecture, storytelling and engineering. We keep those decisions connected from the first model to the final interactive build.</p></div>
         <div className="ue-director-stage">
