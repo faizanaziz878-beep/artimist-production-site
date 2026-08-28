@@ -5,6 +5,59 @@ const BASE = "https://www.artimistproductions.com";
 type RelatedLink = { href: string; label: string };
 type GalleryItem = { src: string; alt: string; caption: string };
 
+const SUPPLEMENTAL_VISUALS: Record<string, GalleryItem[]> = {
+  "bowl-stroke": [
+    { src: "/media/generated-architecture/artimist-architecture-014.webp", alt: "Blue-hour brick hospitality venue exterior", caption: "Arrival and exterior identity study" },
+    { src: "/media/generated-architecture/artimist-architecture-016.webp", alt: "Longitudinal section through a brick hospitality venue", caption: "Hospitality program and sectional relationship" },
+    { src: "/media/generated-architecture/artimist-architecture-074.webp", alt: "Warm repaired-brick hospitality bar interior", caption: "Material, lighting and bar atmosphere study" },
+  ],
+  "harmonic-horizons": [
+    { src: "/media/generated-architecture/artimist-architecture-055.webp", alt: "Fan-shaped learning auditorium architectural plan", caption: "Auditorium program and circulation plan" },
+    { src: "/media/generated-architecture/artimist-architecture-010.webp", alt: "Auditorium sightline and acoustic section", caption: "Sightline, section and acoustic study" },
+    { src: "/media/editorial/sound-to-form.webp", alt: "Sound-to-form architectural research board", caption: "Research translated into architectural form" },
+  ],
+  "us-permit-documentation": [
+    { src: "/media/generated-architecture/artimist-architecture-012.webp", alt: "Backyard studio permit drawing set", caption: "Permit package hierarchy and sheet organization" },
+    { src: "/media/generated-architecture/artimist-architecture-003.webp", alt: "Accessible neighborhood clinic floor plan", caption: "Coordinated plan information" },
+    { src: "/media/generated-architecture/artimist-architecture-022.webp", alt: "Accessibility construction detail sheet", caption: "Technical details and review information" },
+  ],
+  "residential-visualization": [
+    { src: "/media/generated-architecture/artimist-architecture-015.webp", alt: "Blue-hour residential living and dining interior", caption: "Evening atmosphere and material study" },
+    { src: "/media/generated-architecture/artimist-architecture-050.webp", alt: "Warm residential dining view toward an oak media wall", caption: "Spatial continuity and furniture scale" },
+    { src: "/media/generated-architecture/artimist-architecture-089.webp", alt: "Warm oak kitchen beyond a contemporary living room", caption: "Kitchen, living and daylight relationship" },
+  ],
+  "parametric-canopy-studies": [
+    { src: "/media/generated-architecture/artimist-architecture-083.webp", alt: "Timber grid-shell canopy structure and details", caption: "Repeatable structural geometry" },
+    { src: "/media/editorial/kinetic-roof-technical.webp", alt: "Kinetic origami roof computational design plate", caption: "Parametric rules and form development" },
+    { src: "/media/generated-architecture/artimist-architecture-054.webp", alt: "Exploded low-carbon pavilion assembly", caption: "Material logic and buildable assembly" },
+  ],
+  "connected-learning-auditorium": [
+    { src: "/media/generated-architecture/artimist-architecture-055.webp", alt: "Fan-shaped learning auditorium plan", caption: "Learning, gathering and circulation plan" },
+    { src: "/media/generated-architecture/artimist-architecture-010.webp", alt: "Learning auditorium sightline and acoustic section", caption: "Public space, sightline and acoustic section" },
+    { src: "/media/editorial/sound-to-form.webp", alt: "Architectural research and auditorium form-development board", caption: "Urban idea translated into spatial experience" },
+  ],
+  "home-interior-design": [
+    { src: "/media/generated-architecture/artimist-architecture-015.webp", alt: "Blue-hour living and dining room visualization", caption: "Evening lighting and whole-home material language" },
+    { src: "/media/generated-architecture/artimist-architecture-050.webp", alt: "Dining and living space with warm oak joinery", caption: "Furniture, joinery and circulation study" },
+    { src: "/media/generated-architecture/artimist-architecture-089.webp", alt: "Warm oak kitchen connected to the living room", caption: "Kitchen and social-space continuity" },
+  ],
+  "permit-application-packages": [
+    { src: "/media/generated-architecture/artimist-architecture-012.webp", alt: "Residential studio permit plans and elevations", caption: "Plans, elevations and submission hierarchy" },
+    { src: "/media/generated-architecture/artimist-architecture-003.webp", alt: "Accessible building floor plan drawing", caption: "Legible plan-review information" },
+    { src: "/media/generated-architecture/artimist-architecture-022.webp", alt: "Accessible construction detail sheet", caption: "Code-related details and coordination" },
+  ],
+  "residential-exterior-design": [
+    { src: "/media/generated-architecture/artimist-architecture-035.webp", alt: "Compact lime-rendered courtyard house exterior", caption: "Massing, courtyard and material study" },
+    { src: "/media/generated-architecture/artimist-architecture-019.webp", alt: "Brick townhouse with a contemporary courtyard extension", caption: "Existing character and contemporary intervention" },
+    { src: "/media/generated-architecture/artimist-architecture-063.webp", alt: "Modest brick garden pavilion in a landscaped setting", caption: "Architecture and landscape relationship" },
+  ],
+  "rv-park-design": [
+    { src: "/media/generated-architecture/artimist-architecture-056.webp", alt: "Forest RV park circulation plan", caption: "Loop circulation and shared landscape" },
+    { src: "/media/generated-architecture/artimist-architecture-057.webp", alt: "Forest RV park masterplan", caption: "Pad orientation, privacy and central green" },
+    { src: "/media/generated-architecture/artimist-architecture-091.webp", alt: "Woodland RV park architectural presentation board", caption: "Landscape, pavilion and planning studies" },
+  ],
+};
+
 export type ProjectCaseStudyProps = {
   slug: string;
   eyebrow: string;
@@ -26,8 +79,13 @@ const CSS = `
 .cs{min-height:100vh;background:#0a0909;color:#eee8e3;padding-top:84px;font-family:Arial,Helvetica,sans-serif;line-height:1.65}.cs *{box-sizing:border-box}.cs a{color:inherit}.cs-wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}.cs-crumb{padding:26px 0 14px;color:#9e938d;font-size:12px}.cs-crumb a{text-decoration:none}.cs-hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:end;padding:40px 0 72px}.cs-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d45e73;font-weight:700}.cs h1,.cs h2,.cs h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}.cs h1{font-size:clamp(46px,6.8vw,88px);line-height:.98;letter-spacing:-.035em;margin:16px 0 24px}.cs-summary{font-size:19px;color:#c6bab3;max-width:62ch}.cs-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.cs-meta span{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 12px;color:#a99e98;font-size:11px;letter-spacing:.05em}.cs-hero figure,.cs-gallery figure{margin:0}.cs-hero img{width:100%;height:640px;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.1);box-shadow:0 32px 100px rgba(0,0,0,.48)}.cs-caption{margin-top:10px;color:#817771;font-size:11px;letter-spacing:.05em}.cs-section{padding:64px 0;border-top:1px solid rgba(255,255,255,.09)}.cs-two{display:grid;grid-template-columns:.44fr 1fr;gap:58px}.cs h2{font-size:clamp(34px,4vw,50px);line-height:1.08;margin:0}.cs-copy{font-size:18px;color:#bbb0aa;max-width:70ch;margin:0}.cs-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}.cs-list li{padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.025);color:#c9beb8}.cs-approach{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.cs-step{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:24px;background:#100e0f}.cs-step b{display:block;color:#d45e73;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}.cs-step p{margin:0;color:#aaa09a}.cs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.cs-gallery img{width:100%;height:460px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.1)}.cs-proof{padding:44px;border-radius:18px;background:linear-gradient(135deg,rgba(153,38,54,.18),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1)}.cs-proof p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(26px,3vw,38px);line-height:1.3;margin:0;color:#e2d8d2}.cs-note{margin-top:20px;padding:16px 18px;border-left:3px solid #9d3043;background:rgba(157,48,67,.08);color:#a99e98;font-size:13px}.cs-related{display:flex;gap:10px;flex-wrap:wrap}.cs-related a{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:10px 15px;text-decoration:none;color:#c9beb8}.cs-cta{margin:42px 0 90px;text-align:center;padding:48px 24px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:#100e0f}.cs-cta h2{margin-bottom:12px}.cs-cta p{max-width:60ch;margin:0 auto 24px;color:#a99e98}.cs-btn{display:inline-block;text-decoration:none;background:#992636;color:#fff!important;border-radius:999px;padding:14px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}@media(max-width:820px){.cs{padding-top:72px}.cs-hero,.cs-two{grid-template-columns:1fr}.cs-hero{gap:30px;padding-bottom:52px}.cs-hero img{height:440px}.cs-list,.cs-approach,.cs-gallery{grid-template-columns:1fr}.cs-gallery img{height:360px}.cs-proof{padding:28px}}
 `;
 
+const VISUAL_CSS = `
+.cs-wrap{width:min(1240px,calc(100% - 40px))}.cs-hero{grid-template-columns:.88fr 1.12fr;align-items:center;padding-bottom:78px}.cs-hero img{height:auto;aspect-ratio:4/3;display:block}.cs-section{content-visibility:auto;contain-intrinsic-size:560px}.cs-gallery-heading{display:grid;grid-template-columns:.48fr 1fr;gap:58px;align-items:end;margin-bottom:30px}.cs-gallery-heading p{margin:0;color:#9f948e;max-width:60ch}.cs-gallery{grid-template-columns:repeat(12,1fr);gap:16px}.cs-gallery figure{grid-column:span 6;min-width:0}.cs-gallery figure:nth-child(odd){grid-column:span 7}.cs-gallery figure:nth-child(even){grid-column:span 5}.cs-gallery figure:last-child:nth-child(odd){grid-column:3/span 8}.cs-gallery img{height:auto;aspect-ratio:4/3;display:block}.cs-caption{padding:0 4px}.cs-approach{gap:14px}.cs-step{min-height:220px;display:flex;flex-direction:column}.cs-step p{margin-top:auto}.cs-proof{padding:52px}.cs-related a{transition:border-color .2s ease,background .2s ease}.cs-related a:hover{border-color:rgba(212,94,115,.6);background:rgba(153,38,54,.12)}@media(max-width:820px){.cs-wrap{width:min(100% - 28px,1240px)}.cs-gallery-heading{grid-template-columns:1fr;gap:14px}.cs-gallery{grid-template-columns:1fr}.cs-gallery figure,.cs-gallery figure:nth-child(odd),.cs-gallery figure:nth-child(even),.cs-gallery figure:last-child:nth-child(odd){grid-column:auto}.cs-gallery img{height:auto;aspect-ratio:4/3}.cs-step{min-height:0}.cs-proof{padding:30px}}
+`;
+
 export function ProjectCaseStudy(props: ProjectCaseStudyProps) {
   const url = `${BASE}/case-studies/${props.slug}`;
+  const fullGallery = [...props.gallery, ...(SUPPLEMENTAL_VISUALS[props.slug] ?? [])];
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -40,7 +98,7 @@ export function ProjectCaseStudy(props: ProjectCaseStudyProps) {
         creator: { "@type": "Organization", "@id": `${BASE}/#organization`, name: "Artimist Productions", url: BASE },
         about: props.services,
         spatialCoverage: props.region,
-        image: [props.hero.src, ...props.gallery.map((item) => item.src)].map((src) => `${BASE}${src}`),
+        image: [props.hero.src, ...fullGallery.map((item) => item.src)].map((src) => `${BASE}${src}`),
       },
       {
         "@type": "BreadcrumbList",
@@ -56,6 +114,7 @@ export function ProjectCaseStudy(props: ProjectCaseStudyProps) {
   return (
     <main className="cs">
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <style dangerouslySetInnerHTML={{ __html: VISUAL_CSS }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="cs-wrap">
         <nav className="cs-crumb" aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href="/case-studies">Case Studies</Link> / {props.title}</nav>
@@ -66,7 +125,7 @@ export function ProjectCaseStudy(props: ProjectCaseStudyProps) {
             <p className="cs-summary">{props.summary}</p>
             <div className="cs-meta"><span>{props.region}</span>{props.services.map((service) => <span key={service}>{service}</span>)}</div>
           </div>
-          <figure><img src={props.hero.src} alt={props.hero.alt} /><figcaption className="cs-caption">{props.hero.caption}</figcaption></figure>
+          <figure><img src={props.hero.src} alt={props.hero.alt} width="1600" height="1200" fetchPriority="high" /><figcaption className="cs-caption">{props.hero.caption}</figcaption></figure>
         </section>
 
         <section className="cs-section cs-two"><div><div className="cs-kicker">Project brief</div><h2>What the work needed to resolve</h2></div><p className="cs-copy">{props.brief}</p></section>
@@ -75,7 +134,7 @@ export function ProjectCaseStudy(props: ProjectCaseStudyProps) {
 
         <section className="cs-section cs-two"><div><div className="cs-kicker">Scope</div><h2>Project deliverables</h2></div><ul className="cs-list">{props.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></section>
 
-        <section className="cs-section"><div className="cs-gallery">{props.gallery.map((item) => <figure key={item.src}><img src={item.src} alt={item.alt} loading="lazy" /><figcaption className="cs-caption">{item.caption}</figcaption></figure>)}</div></section>
+        <section className="cs-section"><div className="cs-gallery-heading"><div><div className="cs-kicker">Project visual record</div><h2>Design, detail and atmosphere</h2></div><p>{fullGallery.length} selected views connect the finished presentation with the plans, sections, material studies and technical decisions behind the project.</p></div><div className="cs-gallery">{fullGallery.map((item) => <figure key={item.src}><img src={item.src} alt={item.alt} width="1448" height="1086" loading="lazy" decoding="async" /><figcaption className="cs-caption">{item.caption}</figcaption></figure>)}</div></section>
 
         <section className="cs-section"><div className="cs-proof"><div className="cs-kicker">What this demonstrates</div><p>{props.demonstrates}</p></div>{props.note ? <div className="cs-note">{props.note}</div> : null}</section>
 
