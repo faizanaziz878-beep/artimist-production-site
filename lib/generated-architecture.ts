@@ -737,6 +737,358 @@ export const GENERATED_ARCHITECTURE_IMAGES: GeneratedArchitectureImage[] = [
     "category": "drawings",
     "width": 1129,
     "height": 1600
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-092.webp",
+    "title": "Compact courtyard house",
+    "alt": "Compact courtyard house — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-093.webp",
+    "title": "Brick garden reading pavilion",
+    "alt": "Brick garden reading pavilion — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-094.webp",
+    "title": "Bungalow with timber extension",
+    "alt": "Bungalow with timber extension — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-095.webp",
+    "title": "Compact apartment living room",
+    "alt": "Compact apartment living room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-096.webp",
+    "title": "Narrow townhouse kitchen",
+    "alt": "Narrow townhouse kitchen — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-097.webp",
+    "title": "Lakeside sauna cabin",
+    "alt": "Lakeside sauna cabin — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-098.webp",
+    "title": "Oak stair and entry hall",
+    "alt": "Oak stair and entry hall — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-099.webp",
+    "title": "Rural masonry artist studio",
+    "alt": "Rural masonry artist studio — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-100.webp",
+    "title": "Courtyard coffee kiosk",
+    "alt": "Courtyard coffee kiosk — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-101.webp",
+    "title": "Compact brick mews house",
+    "alt": "Compact brick mews house — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-102.webp",
+    "title": "Attic bedroom conversion",
+    "alt": "Attic bedroom conversion — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-103.webp",
+    "title": "Neighborhood library reading room",
+    "alt": "Neighborhood library reading room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-104.webp",
+    "title": "Covered stone courtyard",
+    "alt": "Covered stone courtyard — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1534,
+    "height": 1025
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-105.webp",
+    "title": "Compact townhouse bathroom",
+    "alt": "Compact townhouse bathroom — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-106.webp",
+    "title": "Rural stone bus shelter",
+    "alt": "Rural stone bus shelter — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-107.webp",
+    "title": "Mineral render energy retrofit",
+    "alt": "Mineral render energy retrofit — architectural study by Artimist Productions",
+    "category": "technical",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-108.webp",
+    "title": "Landing workspace",
+    "alt": "Landing workspace — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-109.webp",
+    "title": "Pale brick terrace extension",
+    "alt": "Pale brick terrace extension — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-110.webp",
+    "title": "Compact laundry room",
+    "alt": "Compact laundry room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-111.webp",
+    "title": "Neighborhood clinic waiting room",
+    "alt": "Neighborhood clinic waiting room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-112.webp",
+    "title": "Restored farmhouse porch",
+    "alt": "Restored farmhouse porch — architectural study by Artimist Productions",
+    "category": "technical",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-113.webp",
+    "title": "Tiny rowhouse courtyard",
+    "alt": "Tiny rowhouse courtyard — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-114.webp",
+    "title": "Apartment dining nook",
+    "alt": "Apartment dining nook — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-115.webp",
+    "title": "Stair landing material junction",
+    "alt": "Stair landing material junction — architectural study by Artimist Productions",
+    "category": "technical",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-116.webp",
+    "title": "Converted warehouse design studio",
+    "alt": "Converted warehouse design studio — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-117.webp",
+    "title": "Rural stone meditation chapel",
+    "alt": "Rural stone meditation chapel — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-118.webp",
+    "title": "Small school classroom renovation",
+    "alt": "Small school classroom renovation — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-119.webp",
+    "title": "Compact cottage guest bedroom",
+    "alt": "Compact cottage guest bedroom — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-120.webp",
+    "title": "Neighborhood bakery interior",
+    "alt": "Neighborhood bakery interior — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-121.webp",
+    "title": "Reclaimed brick garden gate",
+    "alt": "Reclaimed brick garden gate — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-122.webp",
+    "title": "Local museum gallery",
+    "alt": "Local museum gallery — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-123.webp",
+    "title": "Country house mudroom",
+    "alt": "Country house mudroom — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-124.webp",
+    "title": "Converted garage workshop",
+    "alt": "Converted garage workshop — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-125.webp",
+    "title": "Compact urban duplex",
+    "alt": "Compact urban duplex — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1484,
+    "height": 1060
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-126.webp",
+    "title": "Townhouse roof terrace",
+    "alt": "Townhouse roof terrace — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-127.webp",
+    "title": "Architecture studio meeting room",
+    "alt": "Architecture studio meeting room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1402,
+    "height": 1122
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-128.webp",
+    "title": "Under-stair powder room",
+    "alt": "Under-stair powder room — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-129.webp",
+    "title": "Cedar garden storage shed",
+    "alt": "Cedar garden storage shed — architectural study by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-130.webp",
+    "title": "Scandinavian courtyard house",
+    "alt": "Scandinavian courtyard house — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1535,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-131.webp",
+    "title": "Small neighborhood restaurant",
+    "alt": "Small neighborhood restaurant — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-132.webp",
+    "title": "Window reading corner",
+    "alt": "Window reading corner — architectural study by Artimist Productions",
+    "category": "interiors",
+    "width": 1402,
+    "height": 1122
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-133.webp",
+    "title": "Canadian laneway house in winter",
+    "alt": "Canadian laneway house in winter — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-134.webp",
+    "title": "Corner shop design studio conversion",
+    "alt": "Corner shop design studio conversion — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-135.webp",
+    "title": "Off-grid timber cabin at dusk",
+    "alt": "Off-grid timber cabin at dusk — architectural study by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
   }
 ];
 
