@@ -47,6 +47,7 @@ const nextConfig: NextConfig = {
       { source: "/architecture.html", destination: "/architecture", permanent: true },
       { source: "/bimdrafting.html", destination: "/bim-drafting", permanent: true },
       { source: "/visualization.html", destination: "/visualization", permanent: true },
+      { source: "/architectural-visualization-services", destination: "/visualization", permanent: true },
       { source: "/services.html", destination: "/services", permanent: true },
       { source: "/about.html", destination: "/about", permanent: true },
       { source: "/partners.html", destination: "/partners", permanent: true },
