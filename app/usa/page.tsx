@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketServicePage } from "../market-service-page";
+import "../market-premium.css";
 
 export const metadata: Metadata = {
   title: "Architecture, BIM, Revit & 3D Rendering Services USA | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function USAPage() {
-  return <MarketServicePage
+  return <div className="market-premium usa-art"><MarketServicePage
     slug="usa"
     country="United States"
     kicker="United States / remote project delivery"
@@ -30,5 +31,5 @@ export default function USAPage() {
       { q: "Can a homeowner send an existing floor plan for modification?", a: "Yes. Existing plans, sketches or PDFs can be used as the starting point for layout changes, room planning, renovation design or 3D visualization when enough dimensional information is available." },
     ]}
     localNote="U.S. permitting and professional-licensure requirements vary by state, county, city and project type. Artimist does not represent remote design or drafting support as a substitute for any locally required licensed professional review, signature or seal."
-  />;
+  /></div>;
 }
