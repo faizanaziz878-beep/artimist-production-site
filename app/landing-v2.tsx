@@ -2,8 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getLandingPage, resolveLink, type LandingPage } from "../lib/landing-content";
 import { UiIcon } from "./ui-icon";
-import { GeneratedStudyStrip } from "./generated-architecture-gallery";
-import type { GeneratedArchitectureCategory } from "../lib/generated-architecture";
 
 const BASE = "https://www.artimistproductions.com";
 const WHATSAPP_NUMBER = "18078084181";
@@ -11,18 +9,6 @@ const EMAIL = "Faizan@artimistproductions.com";
 
 type Family = "architecture" | "bim" | "visualization";
 type Shot = { src: string; alt: string };
-
-const STUDY_CATEGORY: Record<string, GeneratedArchitectureCategory> = {
-  architecture: "architecture",
-  "bim-drafting": "drawings",
-  visualization: "interiors",
-  "architectural-drafting-services": "drawings",
-  "revit-drafting-services": "technical",
-  "bim-modeling-services": "technical",
-  "permit-drawing-services": "drawings",
-  "construction-documentation-services": "technical",
-  "architectural-visualization-services": "interiors",
-};
 
 const FAMILY: Record<string, Family> = {
   architecture: "architecture",
@@ -79,17 +65,6 @@ const CASE_STUDIES: Record<Family, Array<[string, string]>> = {
     ["Whole-home interior design and visualization", "/case-studies/home-interior-design"],
     ["Residential exterior design and visualization", "/case-studies/residential-exterior-design"],
   ],
-};
-
-const GENERATED_VISUAL: Partial<Record<Family, Shot>> = {
-  bim: {
-    src: "/media/generated/bim-coordination-collage-v1.svg",
-    alt: "Architectural BIM coordination collage combining model views, technical linework and material studies",
-  },
-  visualization: {
-    src: "/media/generated/visual-direction-collage-v1.svg",
-    alt: "Architectural visualization direction board combining atmosphere, light, material and camera studies",
-  },
 };
 
 const TRUST = [
@@ -193,6 +168,8 @@ export function LandingPageV2({ slug }: { slug: string }) {
   const hub = page.parentHub ? getLandingPage(page.parentHub) : undefined;
   const contactHref = `/contact?service=${encodeURIComponent(page.name)}`;
   const whatsapp = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi Artimist team — I am interested in ${page.name}. I would like to discuss my project.`)}`;
+  const shortIntro = page.intro.split(".")[0] + ".";
+  const shortAudience = page.forWho.split(".")[0] + ".";
 
   return <main className="lp2">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(page)) }} />
@@ -213,15 +190,15 @@ export function LandingPageV2({ slug }: { slug: string }) {
           <Link className="lp2-secondary" href="#scope">See scope <UiIcon name="chevron" size={15} /></Link>
         </div>
       </div>
-      <div className="lp2-hero-diagram" aria-hidden="true"><LandingDiagram family={family} /></div>
+      <figure className="lp2-hero-proof"><img src={PROOF[family][1].src} alt={PROOF[family][1].alt} width="760" height="570" loading="eager" decoding="async" /><figcaption>Project evidence / Artimist Productions</figcaption></figure>
     </section>
 
     <section className="lp2-intro" id="scope">
       <div><span className="lp2-kicker">What this solves</span><h2>Clear scope.<br/><em>Useful output.</em></h2></div>
-      <div><p className="lp2-lead">{page.intro}</p><p>{page.forWho}</p></div>
+      <div><p className="lp2-lead">{shortIntro}</p><p>{shortAudience}</p></div>
     </section>
 
-    <GeneratedStudyStrip slug={page.slug} category={STUDY_CATEGORY[page.slug] || "architecture"} title="A visual language for the work." />
+    <section className="lp2-opening-proof" aria-label={`${page.name} project imagery`}>{PROOF[family].map((shot,index)=><figure key={shot.src}><img src={shot.src} alt={shot.alt} width="1200" height="900" loading={index === 0 ? "eager" : "lazy"} decoding="async" /><figcaption>0{index + 1} / Published work</figcaption></figure>)}</section>
 
     <section className="lp2-trust" aria-label="Working commitments">
       {TRUST.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
@@ -230,9 +207,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
     <section className="lp2-split">
       <div className="lp2-split-copy"><span className="lp2-kicker">Problems we solve</span><h2>Where we become useful.</h2><ul>{page.problems.map((item) => <li key={item}><UiIcon name="check" size={15}/><span>{item}</span></li>)}</ul></div>
       <div className="lp2-split-visual">
-        {GENERATED_VISUAL[family]
-          ? <img className="lp2-generated-visual" src={GENERATED_VISUAL[family]!.src} alt={GENERATED_VISUAL[family]!.alt} loading="lazy" />
-          : <LandingDiagram family={family} />}
+        <img className="lp2-generated-visual" src={PROOF[family][2].src} alt={PROOF[family][2].alt} loading="lazy" decoding="async" />
         <span className="lp2-visual-caption">{family === "bim" ? "Model / coordinate / document" : family === "visualization" ? "Compose / light / resolve" : "Plan / test / coordinate"}</span>
       </div>
     </section>
@@ -266,7 +241,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
     </section>
 
     <section className="lp2-cta">
-      <div><span className="lp2-kicker">Your project / next step</span><h2>Send what you have.<br/><em>We will locate the next move.</em></h2><p>Plans, a model, a survey, references or a rough brief are enough to start. The intake keeps your service context and lets you share secure cloud-file links.</p></div>
+      <div><span className="lp2-kicker">Your project / next step</span><h2>Send what you have.<br/><em>We’ll find the next move.</em></h2><p>A plan, model, survey or rough brief is enough to begin.</p></div>
       <div className="lp2-cta-actions">
         <Link className="lp2-primary" href={contactHref}>Send project for review <UiIcon name="arrow" size={16}/></Link>
         <a className="lp2-secondary" href={whatsapp} target="_blank" rel="noopener noreferrer">Talk on WhatsApp <UiIcon name="external" size={15}/></a>
