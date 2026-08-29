@@ -66,6 +66,7 @@ const PAGES: Array<[string, string, string, string]> = [
   ["55", "Scallance", "/partners/scallance", "Studio"],
   ["56", "Proof & Trust", "/proof", "Studio"],
   ["57", "Contact", "/contact", "Studio"],
+  ["58", "Legal / Client Terms", "/legal", "Studio"],
 ];
 
 const PUBLIC_PAGE_COUNT = PAGES.filter(([, , href]) => !href.includes("#")).length;
