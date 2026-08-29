@@ -88,9 +88,9 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
         <AboutTrace />
         <div className="ed-about-hero-title" data-ed-reveal>
           <div className="ed-section-code"><span>00</span><p>About the practice</p></div>
-          <h1>A practice{" "}<br /><em>between disciplines.</em></h1>
+          <h1>One studio.<br /><em>Many disciplines.</em></h1>
         </div>
-        <p className="ed-about-hero-intro" data-ed-reveal>Artimist Productions connects the intelligence of architecture with the emotional force of image, identity, motion and digital craft.</p>
+        <p className="ed-about-hero-intro" data-ed-reveal>Architecture provides the logic. Image, motion and digital craft extend how the idea is understood, experienced and remembered.</p>
         <div className="ed-about-hero-meta"><span>Founded / Lahore</span><span>Network / Vancouver · Ohio · Stockholm · Lahore</span><span>Frame / 00—05</span></div>
         <a className="ed-about-scroll" href="#vision">Read the practice <Arrow down /></a>
       </section>
