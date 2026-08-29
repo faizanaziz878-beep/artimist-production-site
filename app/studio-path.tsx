@@ -191,7 +191,7 @@ export function ProcessExperience() {
       <section className="sp-hero sp-process-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-14.webp" alt="" /><img className="sp-day-image" src="/media/residential/residential-12.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>02 / How it moves</SectionCode><h1>One idea.<br /><em>Five moves.</em></h1><p>A visible route from first conversation to final delivery. Flexible enough for discovery; structured enough to protect time, quality and intent.</p></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>02 / A visible project route</SectionCode><h1>Listen. Frame.<br /><em>Build. Deliver.</em></h1><p>Five visible stages from the first conversation to coordinated delivery—with decisions, responsibilities and review points made clear.</p><a className="sp-hero-jump" href="#phase-01">Enter the process <Arrow /></a></div>
         <PathRail current="process" />
       </section>
 
@@ -304,11 +304,11 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-hero sp-contact-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-34.webp" alt="" /><img className="sp-day-image" src="/media/atlas/atlas-27.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / Start something</SectionCode><h1>Start a project</h1><p>Share what exists today—plans, a model, references, a difficult question or simply the goal. We will turn it into a clear next step.</p></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / New project brief</SectionCode><h1>Bring the brief.<br /><em>We’ll find the route.</em></h1><p>Share the drawings, model, references, location and goal. The studio will review what exists and define the next useful step.</p><a className="sp-hero-jump" href="#project-intake">Open the project form <Arrow /></a></div>
         <PathRail current="contact" />
       </section>
 
-      <section className="sp-contact-workspace">
+      <section className="sp-contact-workspace" id="project-intake">
         <div className="sp-contact-intro" data-sp-reveal>
           <SectionCode>Project intake</SectionCode>
           <h2>Give us enough<br /><em>to think with.</em></h2>
