@@ -3,6 +3,7 @@ import { LandingPageV2, landingMetadataV2 } from "../landing-v2";
 import { LANDING_PAGES, getLandingPage } from "../../lib/landing-content";
 import "./premium-pages.css";
 import "./visualization-premium.css";
+import "./specialist-premium.css";
 
 export const dynamicParams = false;
 
