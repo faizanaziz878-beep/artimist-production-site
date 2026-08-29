@@ -1066,19 +1066,22 @@
 .st[data-mode='day'] .st-plan.is-featured .st-plan-tag { color: rgba(255,255,255,.76); opacity: 1; }
 .st-marquee { display: block; overflow: hidden; }
 .st-marquee-track {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(6,minmax(0,1fr));
-  animation: none !important;
-  transform: none !important;
+  width: max-content;
+  display: flex;
+  will-change: transform;
+  animation: stFlow 34s linear infinite !important;
 }
-.st-client { width: auto; min-width: 0; height: 174px; }
+.st-client { width: 260px; min-width: 260px; height: 174px; }
 .st-client strong { font-size: clamp(16px,1.5vw,24px); overflow-wrap: anywhere; }
+@keyframes stFlow {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(-50%,0,0); }
+}
 .st-ask-btn { right: max(16px,env(safe-area-inset-right)); bottom: max(16px,env(safe-area-inset-bottom)); min-height: 46px; padding: 11px 16px; letter-spacing: .055em; }
 @media (max-width: 760px) {
   .st-marquee { overflow-x: auto; scroll-snap-type: x mandatory; }
-  .st-marquee-track { width: max-content; display: flex; }
-  .st-client { width: 72vw; height: 150px; scroll-snap-align: center; }
+  .st-marquee-track { width: max-content; display: flex; animation: none !important; transform: none; }
+  .st-client { width: 72vw; min-width: 72vw; height: 150px; scroll-snap-align: center; }
 }
 
 
