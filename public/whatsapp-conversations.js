@@ -57,7 +57,7 @@
       '.artimist-reveal-heading{opacity:0;transform:translateY(28px);clip-path:inset(0 0 100% 0);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),clip-path 1.05s cubic-bezier(.2,.8,.2,1)}',
       '.artimist-reveal-heading.is-artimist-visible{opacity:1;transform:none;clip-path:inset(0)}',
       '.artimist-reveal-heading em,.artimist-type{display:inline;color:#c73f58!important;white-space:normal}',
-      '@media(max-width:760px){body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}.artimist-whatsapp{left:12px;bottom:calc(14px + env(safe-area-inset-bottom));width:calc((100vw - 34px)/2);min-height:52px;height:52px;padding:0 9px;font-size:8px;letter-spacing:.055em}.askbot-launch,.st-ask-btn{right:12px!important;left:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;width:calc((100vw - 34px)/2)!important;min-width:0!important;min-height:52px!important;height:52px!important;padding:0 10px!important;justify-content:center!important;gap:7px!important;white-space:nowrap!important;font-size:8px!important;letter-spacing:.055em!important}.askbot-panel{right:12px!important;left:12px!important;bottom:calc(82px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:calc(100dvh - 112px)!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close,.st-seo-authority,.ed-footer{padding-bottom:max(118px,calc(106px + env(safe-area-inset-bottom)))!important}}',
+      '@media(max-width:760px){body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}.artimist-whatsapp{left:12px;bottom:calc(24px + env(safe-area-inset-bottom));width:calc((100vw - 34px)/2);min-height:52px;height:52px;padding:0 9px;font-size:8px;letter-spacing:.055em}.askbot-launch,.st-ask-btn{right:12px!important;left:auto!important;bottom:calc(24px + env(safe-area-inset-bottom))!important;width:calc((100vw - 34px)/2)!important;min-width:0!important;min-height:52px!important;height:52px!important;padding:0 10px!important;justify-content:center!important;gap:7px!important;white-space:nowrap!important;font-size:8px!important;letter-spacing:.055em!important}.askbot-panel{right:12px!important;left:12px!important;bottom:calc(92px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:calc(100dvh - 122px)!important}.st-contact,.st-footer,.st-clients,.hdh-bottom,.practice-next,.partners-v2-close,.st-seo-authority,.ed-footer{padding-bottom:max(128px,calc(116px + env(safe-area-inset-bottom)))!important}}',
       '@media(max-width:390px){.artimist-whatsapp{left:10px;width:calc((100vw - 30px)/2);font-size:7.5px}.askbot-launch,.st-ask-btn{right:10px!important;width:calc((100vw - 30px)/2)!important;font-size:7.5px!important}}',
       '@media(prefers-reduced-motion:reduce){.artimist-whatsapp,.artimist-reveal-heading{transition:none}.artimist-reveal-heading{opacity:1;transform:none;clip-path:none}}'
     ].join('');
@@ -121,25 +121,14 @@
     }, 1800);
   }
 
-  function rectsOverlap(a, b) { return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top; }
-
   function updateDockSafety() {
-    var forced = !!document.querySelector('.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden]),[role="dialog"][open]');
-    var widgets = Array.prototype.slice.call(document.querySelectorAll('.artimist-whatsapp,.askbot-launch,.st-ask-btn'));
-    var blockers = Array.prototype.slice.call(document.querySelectorAll('form,footer,.st-contact,.sp-contact-workspace,.ed-contact,.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden])'));
-    var collision = forced;
-    if (!collision) {
-      widgets.forEach(function (widget) {
-        if (collision || !widget.offsetParent) return;
-        var wr = widget.getBoundingClientRect();
-        blockers.forEach(function (blocker) {
-          if (collision || blocker.contains(widget) || widget.contains(blocker) || !blocker.offsetParent) return;
-          var br = blocker.getBoundingClientRect();
-          if (br.bottom > 0 && br.top < innerHeight && rectsOverlap(wr, br)) collision = true;
-        });
-      });
-    }
-    document.body.classList.toggle('artimist-dock-suppressed', collision);
+    // Persistent conversion controls should remain visible over normal page
+    // content, including forms, contact sections and footers. Suppress them
+    // only when a real overlay/index/dialog is open.
+    var overlayOpen = !!document.querySelector(
+      '.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden]),[role="dialog"][open],dialog[open]'
+    );
+    document.body.classList.toggle('artimist-dock-suppressed', overlayOpen);
   }
 
   function init() {
