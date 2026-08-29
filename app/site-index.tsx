@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { UiIcon } from "./ui-icon";
 
 // Keep the site index as the canonical crawlable map of the public site.
-// The menu itself presents the map as grouped headings first so people are not
-// confronted with all 57 destinations at once.
+// The menu groups destinations first so visitors are not confronted with the
+// full navigation tree at once. Anchors are destinations, not separate pages.
 const PAGES: Array<[string, string, string, string]> = [
   ["01", "Home", "/", "Start"],
   ["02", "Selected work", "/#work", "Start"],
@@ -67,6 +67,8 @@ const PAGES: Array<[string, string, string, string]> = [
   ["56", "Proof & Trust", "/proof", "Studio"],
   ["57", "Contact", "/contact", "Studio"],
 ];
+
+const PUBLIC_PAGE_COUNT = PAGES.filter(([, , href]) => !href.includes("#")).length;
 
 // Mirror the homepage navigation exactly. Internal pages should never introduce
 // a second information architecture when the visitor leaves the homepage.
@@ -137,7 +139,7 @@ export function SiteIndex() {
       </Link>
       <nav className="canonical-primary" aria-label="Primary navigation">
         {PRIMARY.map(([label, href]) => {
-          const current = href === "/contact" ? pathname.startsWith("/contact") : false;
+          const current = href === "/contact" ? pathname === "/contact" : false;
           return <Link key={href} href={href} aria-current={current ? "page" : undefined}>{label}</Link>;
         })}
       </nav>
@@ -162,7 +164,7 @@ export function SiteIndex() {
       <button type="button" className="site-index-backdrop" aria-label="Close site index" onClick={() => setOpen(false)} />
       <nav className="site-index-sheet" aria-label="All public pages">
         <div className="site-index-top">
-          <p>INDEX / {PAGES.length} PAGES</p>
+          <p>INDEX / {PUBLIC_PAGE_COUNT} PAGES</p>
           <button type="button" className="site-index-close" aria-label="Close site index" onClick={() => setOpen(false)}><span>CLOSE</span><UiIcon name="close" size={15} /></button>
         </div>
 
@@ -187,7 +189,7 @@ export function SiteIndex() {
               <ul id={panelId} hidden={!expanded}>
                 {pages.map(([no, label, href]) => {
                   const base = href.split("#")[0];
-                  const current = base === "/" ? pathname === "/" : pathname.startsWith(base);
+                  const current = href === "/" ? pathname === "/" : !href.includes("#") && pathname === base;
                   return <li key={href}>
                     <Link href={href} aria-current={current ? "page" : undefined}>
                       <small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={15} /></i>
