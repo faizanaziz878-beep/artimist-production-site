@@ -135,7 +135,7 @@ const articleVisuals: Record<string, { src: string; alt: string; caption: string
   "how-to-modify-an-existing-floor-plan": [
     { src: "/media/generated-architecture/artimist-architecture-053.webp", alt: "Existing and proposed apartment floor plans", caption: "Existing and proposed plans make every spatial change inspectable." },
     { src: "/media/generated-architecture/artimist-architecture-046.webp", alt: "Courtyard house design evolution diagram", caption: "Option studies test circulation before the scheme is fixed." },
-    { src: "/graphics/house-plan-modification-before-after.svg", alt: "Before and after house plan modification comparison", caption: "A direct overlay makes retained, removed and proposed elements easy to review." },
+    { src: "/img/permit04.webp", alt: "Residential drawing and coordination sheet", caption: "A real drawing sheet shows how design decisions are coordinated and communicated." },
   ],
   "revit-drafting-vs-cad-drafting": [
     { src: "/media/generated-architecture/artimist-architecture-043.webp", alt: "Coordinated two-storey townhouse floor plans", caption: "A coordinated drawing set keeps related information aligned." },
