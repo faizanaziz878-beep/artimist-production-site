@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
+import "./plan-modification-premium.css";
 
 export const metadata: Metadata = {
   title: "House Plan Modification & Floor Plan Changes | Artimist",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function PlanModificationServicePage() {
-  return <HomeownerServicePage
+  return <div className="plan-mod-art"><HomeownerServicePage
     slug="plan-modification-service"
     serviceName="House Plan Modification"
     eyebrow="Plan changes, redraws & layout edits"
@@ -60,5 +61,5 @@ export default function PlanModificationServicePage() {
       { href: "/architectural-drafting-services", label: "Drafting Services" },
     ]}
     permitNotice="A plan modification is a design service, not an automatic permit approval or professional stamp. Local authorities determine submission requirements. Where a locally licensed architect, engineer or other professional is required, Artimist coordinates with that professional rather than representing remote design work as a substitute for local licensure."
-  />;
+  /></div>;
 }
