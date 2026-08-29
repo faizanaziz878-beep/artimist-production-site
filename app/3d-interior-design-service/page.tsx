@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
+import "./interior-premium.css";
 
 export const metadata: Metadata = {
   title: "3D Interior Design Service & Home Visualization | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function InteriorDesignPage() {
-  return <HomeownerServicePage
+  return <div className="interior-art"><HomeownerServicePage
     slug="3d-interior-design-service"
     serviceName="3D Interior Design"
     eyebrow="Interior design & 3D views"
@@ -39,5 +40,5 @@ export default function InteriorDesignPage() {
       { href: "/residential-renovation-permit-drawings", label: "Renovation & Permit Drawings" },
       { href: "/visualization", label: "Architectural Visualization" },
     ]}
-  />;
+  /></div>;
 }
