@@ -23,26 +23,48 @@ export function GET() {
     "/media/hero-night.webp",
   ];
 
-  // Associate representative imagery with the existing pages where users actually search for it.
-  // This gives image search engines page-level context instead of treating the archive as the only source.
   const pageImages: Array<[string, string[]]> = [
     ["/", ["/media/hero-day.webp", "/media/hero-night.webp", "/media/projects/bowl-stroke.webp", "/media/projects/music-campus.webp"]],
-    ["/custom-house-design", ["/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-019.webp", "/media/generated-architecture/artimist-architecture-063.webp"]],
-    ["/3d-interior-design-service", ["/media/generated-architecture/artimist-architecture-015.webp", "/media/generated-architecture/artimist-architecture-050.webp", "/media/generated-architecture/artimist-architecture-089.webp"]],
-    ["/plan-modification-service", ["/media/generated-architecture/artimist-architecture-053.webp", "/media/generated-architecture/artimist-architecture-029.webp", "/media/generated-architecture/artimist-architecture-043.webp"]],
-    ["/architecture", ["/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-155.webp", "/media/generated-architecture/artimist-architecture-165.webp"]],
-    ["/bim-drafting", ["/media/generated-architecture/artimist-architecture-043.webp", "/media/generated-architecture/artimist-architecture-054.webp", "/media/generated-architecture/artimist-architecture-088.webp"]],
-    ["/visualization", ["/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-149.webp", "/media/generated-architecture/artimist-architecture-159.webp"]],
+
+    ["/home-design-services", ["/img/resext01.webp", "/img/homeint01.webp", "/img/permit01.webp", "/img/resid01.webp"]],
+    ["/custom-house-design", ["/img/resext01.webp", "/img/resext03.webp", "/img/resid01.webp", "/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-019.webp", "/media/generated-architecture/artimist-architecture-063.webp"]],
+    ["/3d-interior-design-service", ["/img/homeint01.webp", "/img/homeint03.webp", "/img/drive-09.webp", "/media/generated-architecture/artimist-architecture-015.webp", "/media/generated-architecture/artimist-architecture-050.webp", "/media/generated-architecture/artimist-architecture-089.webp"]],
+    ["/plan-modification-service", ["/img/permit04.webp", "/img/resid02.webp", "/img/homeint01.webp", "/media/generated-architecture/artimist-architecture-053.webp", "/media/generated-architecture/artimist-architecture-029.webp", "/media/generated-architecture/artimist-architecture-043.webp"]],
+    ["/residential-renovation-permit-drawings", ["/media/projects/permit-sets.webp", "/img/permit01.webp", "/img/permit04.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
+
+    ["/architecture", ["/media/atlas/atlas-11.webp", "/img/rvpark.webp", "/img/permit01.webp", "/media/atlas/atlas-16.webp", "/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-155.webp", "/media/generated-architecture/artimist-architecture-165.webp"]],
+    ["/bim-drafting", ["/media/atlas/atlas-08.webp", "/media/technical/board-16.webp", "/media/technical/board-19.webp", "/img/permit01.webp", "/media/generated-architecture/artimist-architecture-043.webp", "/media/generated-architecture/artimist-architecture-054.webp", "/media/generated-architecture/artimist-architecture-088.webp"]],
+    ["/architectural-drafting-services", ["/media/technical/board-16.webp", "/media/technical/board-19.webp", "/img/permit01.webp", "/media/generated-architecture/artimist-architecture-012.webp"]],
+    ["/revit-drafting-services", ["/media/atlas/atlas-13.webp", "/media/technical/board-16.webp", "/media/technical/board-19.webp", "/media/generated-architecture/artimist-architecture-043.webp"]],
+    ["/bim-modeling-services", ["/media/atlas/atlas-14.webp", "/media/generated-architecture/artimist-architecture-054.webp", "/media/generated-architecture/artimist-architecture-088.webp", "/media/technical/board-16.webp"]],
+    ["/permit-drawing-services", ["/img/permit01.webp", "/img/permit04.webp", "/media/projects/permit-sets.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
+    ["/construction-documentation-services", ["/media/technical/board-19.webp", "/media/technical/board-16.webp", "/img/permit04.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
+
+    ["/visualization", ["/media/atlas/atlas-07.webp", "/img/resext03.webp", "/img/homeint03.webp", "/media/atlas/atlas-06.webp", "/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-149.webp", "/media/generated-architecture/artimist-architecture-159.webp"]],
     ["/services/architectural-rendering", ["/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-136.webp", "/media/generated-architecture/artimist-architecture-137.webp", "/media/generated-architecture/artimist-architecture-155.webp"]],
     ["/services/3d-interior-rendering", ["/media/generated-architecture/artimist-architecture-149.webp", "/media/generated-architecture/artimist-architecture-156.webp", "/media/generated-architecture/artimist-architecture-153.webp", "/media/generated-architecture/artimist-architecture-159.webp"]],
     ["/services/real-estate-rendering", ["/media/generated-architecture/artimist-architecture-136.webp", "/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-152.webp", "/media/generated-architecture/artimist-architecture-159.webp"]],
+    ["/services/architectural-animation", ["/media/atlas/atlas-06.webp", "/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-159.webp"]],
     ["/residential", residentialChapters.flatMap((chapter) => chapter.scenes.map((scene) => scene.src))],
     ["/unreal-engine", ["/media/atlas/atlas-34.webp", "/media/generated-architecture/artimist-architecture-151.webp", "/media/generated-architecture/artimist-architecture-159.webp", "/media/generated-architecture/artimist-architecture-165.webp"]],
+
+    ["/usa", ["/img/rvpark.webp", "/media/projects/permit-sets.webp", "/img/resext01.webp"]],
+    ["/canada", ["/img/resid01.webp", "/img/permit01.webp", "/img/homeint03.webp"]],
+    ["/uk", ["/media/projects/bowl-stroke.webp", "/img/permit04.webp", "/img/resext03.webp"]],
+    ["/sweden", ["/media/projects/music-campus.webp", "/img/drive-09.webp", "/media/projects/unesco.webp"]],
+
     ["/case-studies/bowl-stroke", ["/media/projects/bowl-stroke.webp", "/media/generated-architecture/artimist-architecture-014.webp", "/media/generated-architecture/artimist-architecture-016.webp", "/media/generated-architecture/artimist-architecture-074.webp"]],
     ["/case-studies/us-permit-documentation", ["/media/projects/permit-sets.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-003.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
+    ["/case-studies/permit-application-packages", ["/media/projects/permit-sets.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-003.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
     ["/case-studies/home-interior-design", ["/img/homeint01.webp", "/media/generated-architecture/artimist-architecture-015.webp", "/media/generated-architecture/artimist-architecture-050.webp", "/media/generated-architecture/artimist-architecture-089.webp"]],
+    ["/case-studies/residential-visualization", ["/media/generated-architecture/artimist-architecture-015.webp", "/media/generated-architecture/artimist-architecture-050.webp", "/media/generated-architecture/artimist-architecture-089.webp"]],
     ["/case-studies/residential-exterior-design", ["/img/resext01.webp", "/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-019.webp", "/media/generated-architecture/artimist-architecture-063.webp"]],
     ["/case-studies/harmonic-horizons", ["/media/projects/music-campus.webp", "/media/generated-architecture/artimist-architecture-055.webp", "/media/generated-architecture/artimist-architecture-010.webp", "/media/editorial/sound-to-form.webp"]],
+    ["/case-studies/connected-learning-auditorium", ["/media/generated-architecture/artimist-architecture-055.webp", "/media/generated-architecture/artimist-architecture-010.webp", "/media/editorial/sound-to-form.webp"]],
+    ["/case-studies/parametric-canopy-studies", ["/media/generated-architecture/artimist-architecture-083.webp", "/media/editorial/kinetic-roof-technical.webp", "/media/generated-architecture/artimist-architecture-054.webp"]],
+    ["/case-studies/rv-park-design", ["/img/rvpark.webp", "/media/generated-architecture/artimist-architecture-056.webp", "/media/generated-architecture/artimist-architecture-057.webp", "/media/generated-architecture/artimist-architecture-091.webp"]],
+
+    ["/proof", ["/media/projects/permit-sets.webp", "/media/projects/bowl-stroke.webp", "/img/homeint03.webp", "/img/resext03.webp"]],
     ["/visual-archive", archiveImages],
   ];
 
