@@ -41,12 +41,12 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
       </header>
 
       <section className="ue-hero">
-        <div className="ue-hero-scene" aria-hidden="true"><img src="/media/atlas/atlas-34.webp" alt="" /><i /><i /><i /></div>
+        <div className="ue-hero-scene" aria-hidden="true"><video autoPlay muted loop playsInline preload="metadata" poster="/media/residential/residential-13.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><i /><i /><i /></div>
         <div className="ue-hero-grid" aria-hidden="true" />
         <div className="ue-hero-copy">
-          <span>Artimist / Real-time production / 2026</span>
-          <h1>UNREAL{" "}<br /><em>ENGINE.</em></h1>
-          <p>Architecture you do not just look at. You enter it, move through it, change it and feel it in real time.</p>
+          <span>Live architectural sequence / Real-time production</span>
+          <h1>ENTER THE<br /><em>MODEL.</em></h1>
+          <p>The first screen now proves the service in motion: architecture, material response and spatial continuity—not a static promise about real-time work.</p>
           <Link href="#capabilities">Explore the system <Arrow down /></Link>
         </div>
         <div className="ue-hud ue-hud-a">LUMEN / NANITE / REALTIME</div>
@@ -54,10 +54,6 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <div className="ue-coordinate">WORLDWIDE DELIVERY<br />USA / UK / CANADA / SWEDEN</div>
       </section>
 
-      <section className="ue-motion" aria-labelledby="ue-motion-title">
-        <div className="ue-motion-copy"><span>Live spatial sequence / 01</span><h2 id="ue-motion-title">Real-time work should move.</h2><p>A lightweight architectural loop demonstrates camera movement, material response and spatial continuity directly on the page—without asking visitors to imagine an interactive service from still images alone.</p></div>
-        <figure><video autoPlay muted loop playsInline preload="metadata" poster="/media/residential/residential-13.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><figcaption><span>Architecture-only walkthrough study</span><strong>Model → atmosphere → movement</strong></figcaption></figure>
-      </section>
 
       <section className="ue-directors">
         <div className="ue-directors-title"><span>Core direction / 02</span><h2>Creative control.<br /><em>Technical depth.</em></h2><p>High-end real-time work sits between architecture, storytelling and engineering. We keep those decisions connected from the first model to the final interactive build.</p></div>
