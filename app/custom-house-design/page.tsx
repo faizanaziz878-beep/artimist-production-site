@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
+import "./custom-house-premium.css";
 
 export const metadata: Metadata = {
   title: "Custom House Plans, Floor Plans & Home Design | Artimist",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function CustomHouseDesignPage() {
-  return <HomeownerServicePage
+  return <div className="custom-house-art"><HomeownerServicePage
     slug="custom-house-design"
     serviceName="Custom House Design"
     eyebrow="House plans, layouts & floor plans"
@@ -61,5 +62,5 @@ export default function CustomHouseDesignPage() {
       { href: "/visualization", label: "3D Visualization" },
     ]}
     permitNotice="Residential design, permitting and professional-stamp requirements vary by state, province, city and project type. Where a locally licensed architect, engineer or other professional must review or stamp a submission, Artimist coordinates with that professional rather than representing that a remote design service replaces local licensure."
-  />;
+  /></div>;
 }
