@@ -71,6 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/about', 'monthly'),
     entry('/team', 'monthly'),
     entry('/founder-message', 'yearly'),
+    entry('/legal', 'yearly'),
     entry('/contact', 'monthly'),
   ]
 }
