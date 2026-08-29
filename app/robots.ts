@@ -3,8 +3,8 @@ import type { MetadataRoute } from 'next'
 const BASE = 'https://www.artimistproductions.com'
 
 // Public discovery is intentionally broad. Private/admin and internal API routes stay blocked.
-// Search/answer-engine bots are named explicitly so vendor-specific robots matching cannot
-// accidentally reduce discoverability even though the wildcard rule is already permissive.
+// The wildcard rule already permits standards-compliant crawlers; major engines are also named
+// explicitly so vendor-specific robots matching cannot accidentally reduce discoverability.
 const OPEN = { allow: '/', disallow: ['/admin', '/api/', '/__home'] }
 
 export default function robots(): MetadataRoute.Robots {
@@ -17,8 +17,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Googlebot-Image', ...OPEN },
       { userAgent: 'Google-Extended', ...OPEN },
 
-      // Microsoft Search / Bing surfaces, including Copilot web grounding.
+      // Microsoft / Yahoo search surfaces.
       { userAgent: 'Bingbot', ...OPEN },
+      { userAgent: 'Slurp', ...OPEN },
 
       // OpenAI search and user-triggered retrieval.
       { userAgent: 'OAI-SearchBot', ...OPEN },
@@ -34,8 +35,11 @@ export default function robots(): MetadataRoute.Robots {
       // Apple Search / Siri / Spotlight / Safari AI context.
       { userAgent: 'Applebot', ...OPEN },
 
-      // Independent search indexes and broad web discovery.
+      // Independent and international search indexes.
       { userAgent: 'DuckDuckBot', ...OPEN },
+      { userAgent: 'YandexBot', ...OPEN },
+      { userAgent: 'Baiduspider', ...OPEN },
+      { userAgent: 'PetalBot', ...OPEN },
       { userAgent: 'CCBot', ...OPEN },
     ],
     sitemap: [`${BASE}/sitemap.xml`, `${BASE}/image-sitemap.xml`],
