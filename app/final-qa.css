@@ -17,6 +17,12 @@
   scroll-margin-top: calc(var(--artimist-header-h, 72px) + 58px);
 }
 
+/* The homepage already has a primary hero scroll cue. Hide the second cue in
+   the spatial portal so the transition never shows two stacked down arrows. */
+.st-portal-cue {
+  display: none !important;
+}
+
 /* The old visualization alias is canonicalized at routing level. Do not show a
    same-page legacy capability link on the canonical visualization page. */
 .lp2.lp2-final-visualization .lp2-related a[href="/architectural-visualization-services"] {
