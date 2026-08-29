@@ -1089,6 +1089,286 @@ export const GENERATED_ARCHITECTURE_IMAGES: GeneratedArchitectureImage[] = [
     "category": "architecture",
     "width": 1536,
     "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-136.webp",
+    "title": "Rain-washed compact courtyard house",
+    "alt": "Rain-washed compact courtyard house — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-137.webp",
+    "title": "Reclaimed-brick townhouse extension",
+    "alt": "Reclaimed-brick townhouse extension — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-138.webp",
+    "title": "Rural stone guest cottage",
+    "alt": "Rural stone guest cottage — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-139.webp",
+    "title": "Neighborhood bakery interior",
+    "alt": "Neighborhood bakery interior — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1535,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-140.webp",
+    "title": "Attic apartment living room",
+    "alt": "Attic apartment living room — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-141.webp",
+    "title": "Brick mews office conversion",
+    "alt": "Brick mews office conversion — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-142.webp",
+    "title": "Compact dental treatment room",
+    "alt": "Compact dental treatment room — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-143.webp",
+    "title": "Lakeside cedar sauna",
+    "alt": "Lakeside cedar sauna — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-144.webp",
+    "title": "Coastal cottage kitchen",
+    "alt": "Coastal cottage kitchen — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-145.webp",
+    "title": "Charred-timber writer studio",
+    "alt": "Charred-timber writer studio — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-146.webp",
+    "title": "Ray-traced dental treatment room",
+    "alt": "Ray-traced dental treatment room — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-147.webp",
+    "title": "Mews office at blue hour",
+    "alt": "Mews office at blue hour — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-148.webp",
+    "title": "Winter lakeside sauna interior",
+    "alt": "Winter lakeside sauna interior — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-149.webp",
+    "title": "Coastal cottage kitchen and dining room",
+    "alt": "Coastal cottage kitchen and dining room — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-150.webp",
+    "title": "Garden writer studio at dusk",
+    "alt": "Garden writer studio at dusk — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-151.webp",
+    "title": "Urban infill duplex at blue hour",
+    "alt": "Urban infill duplex at blue hour — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-152.webp",
+    "title": "Converted shop neighborhood library",
+    "alt": "Converted shop neighborhood library — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-153.webp",
+    "title": "Rooflit townhouse bathroom",
+    "alt": "Rooflit townhouse bathroom — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-154.webp",
+    "title": "Rain-darkened coffee courtyard",
+    "alt": "Rain-darkened coffee courtyard — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-155.webp",
+    "title": "Rural stone meditation chapel",
+    "alt": "Rural stone meditation chapel — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-156.webp",
+    "title": "North-lit stone artist studio",
+    "alt": "North-lit stone artist studio — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-157.webp",
+    "title": "Renovated primary classroom",
+    "alt": "Renovated primary classroom — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-158.webp",
+    "title": "Warehouse conversion stair",
+    "alt": "Warehouse conversion stair — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-159.webp",
+    "title": "Twelve-seat neighborhood restaurant",
+    "alt": "Twelve-seat neighborhood restaurant — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-160.webp",
+    "title": "Northern lakeside boathouse",
+    "alt": "Northern lakeside boathouse — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "architecture",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-161.webp",
+    "title": "Attic apartment bedroom",
+    "alt": "Attic apartment bedroom — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-162.webp",
+    "title": "Reused brick movement studio",
+    "alt": "Reused brick movement studio — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-163.webp",
+    "title": "Rainy cottage greenhouse",
+    "alt": "Rainy cottage greenhouse — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-164.webp",
+    "title": "Converted garage bicycle workshop",
+    "alt": "Converted garage bicycle workshop — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-165.webp",
+    "title": "Community garden pavilion",
+    "alt": "Community garden pavilion — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-166.webp",
+    "title": "Townhouse landing home office",
+    "alt": "Townhouse landing home office — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-167.webp",
+    "title": "Neighborhood clinic waiting room",
+    "alt": "Neighborhood clinic waiting room — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-168.webp",
+    "title": "Brick outbuilding pottery workshop",
+    "alt": "Brick outbuilding pottery workshop — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-169.webp",
+    "title": "Country cottage mudroom",
+    "alt": "Country cottage mudroom — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "interiors",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "src": "/media/generated-architecture/artimist-architecture-170.webp",
+    "title": "Rowhouse roof terrace",
+    "alt": "Rowhouse roof terrace — ultra-realistic architectural visualization by Artimist Productions",
+    "category": "landscape",
+    "width": 1536,
+    "height": 1024
   }
 ];
 
