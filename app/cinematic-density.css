@@ -1,0 +1,598 @@
+/*
+ * Cinematic density pass
+ * Purpose: remove accidental dead space from internal pages without flattening
+ * the premium editorial/architectural character. The homepage is intentionally
+ * untouched. This file is imported last so it can override legacy viewport
+ * reservations and runtime-injected template assumptions with source-stable rules.
+ */
+
+/* ---------- Desktop: stronger visual density, still cinematic ---------- */
+@media (min-width: 901px) {
+  /* Internal heroes should establish the page, not consume an entire monitor. */
+  .aboutx.aboutx .aboutx-hero,
+  .teamx.teamx .teamx-hero,
+  .founderx.founderx .founderx-hero,
+  .studio-path.studio-path .sp-hero,
+  .ue-page.ue-page .ue-hero,
+  .visual-journey.visual-journey .vj-hero,
+  .hd.hd .hd-hero,
+  .hsp.hsp .hsp-hero,
+  .intl.intl .intl-hero,
+  .market.market .market-hero,
+  .lp2.lp2 .lp2-hero,
+  .sv-root.sv-root .sv-hero,
+  .csi.csi .csi-hero,
+  .cs.cs .cs-hero,
+  .ins.ins .ins-hero,
+  .proof.proof .proof-hero,
+  .vai.vai .vai-hero,
+  .ap-root.ap-root .ap-detail-hero {
+    height: auto !important;
+    min-height: clamp(560px, 66svh, 660px) !important;
+    max-height: none !important;
+  }
+
+  /* The visualization runtime formerly re-expanded these to ~100svh. */
+  .lp2.lp2-final-visualization .lp2-hero {
+    min-height: clamp(570px, 67svh, 670px) !important;
+    height: auto !important;
+    padding-bottom: clamp(38px, 4vw, 58px) !important;
+  }
+
+  .sv-final .sv-hero:not(.sv-hero--motion) {
+    min-height: clamp(560px, 65svh, 650px) !important;
+    padding-bottom: 44px !important;
+  }
+
+  .sv-final .sv-hero:not(.sv-hero--motion) .sv-proof {
+    height: clamp(500px, 61svh, 620px) !important;
+    min-height: 500px !important;
+  }
+
+  /* Core internal sections: enough breathing room for luxury, never blank bands. */
+  .aboutx.aboutx .aboutx-intro,
+  .aboutx.aboutx .aboutx-principles,
+  .aboutx.aboutx .aboutx-services,
+  .aboutx.aboutx .aboutx-process,
+  .aboutx.aboutx .aboutx-contact,
+  .teamx.teamx .teamx-manifesto,
+  .teamx.teamx .teamx-roster,
+  .teamx.teamx .teamx-contact,
+  .founderx.founderx .founderx-letter,
+  .founderx.founderx .founderx-values,
+  .founderx.founderx .founderx-contact,
+  .studio-path.studio-path .sp-services-intro,
+  .studio-path.studio-path .sp-process-map,
+  .studio-path.studio-path .sp-page-cta,
+  .studio-path.studio-path .sp-contact-workspace,
+  .studio-path.studio-path .sp-contact-direct,
+  .ue-page.ue-page .ue-motion,
+  .ue-page.ue-page .ue-capabilities,
+  .ue-page.ue-page .ue-pipeline,
+  .ue-page.ue-page .ue-market,
+  .ue-page.ue-page .ue-cta,
+  .hd.hd .hd-intro,
+  .hd.hd .hd-transform,
+  .hd.hd .hd-services,
+  .hd.hd .hd-proof-wrap,
+  .hd.hd .hd-end,
+  .hsp.hsp .hsp-sec,
+  .hsp.hsp .hsp-visuals,
+  .hsp.hsp .hsp-cta,
+  .intl.intl .intl-section,
+  .intl.intl .intl-cta,
+  .market.market .market-sec,
+  .market.market .market-cta,
+  .lp2.lp2 .lp2-intro,
+  .lp2.lp2 .lp2-opening-proof,
+  .lp2.lp2 .lp2-deliverables,
+  .lp2.lp2 .lp2-process,
+  .lp2.lp2 .lp2-proof,
+  .lp2.lp2 .lp2-related,
+  .lp2.lp2 .lp2-faq,
+  .lp2.lp2 .lp2-cta,
+  .sv-root.sv-root .sv-intro,
+  .sv-root.sv-root .sv-story,
+  .sv-root.sv-root .sv-proof-rail,
+  .sv-root.sv-root .sv-body,
+  .sv-root.sv-root .sv-included,
+  .sv-root.sv-root .sv-related,
+  .csi.csi .csi-grid,
+  .csi.csi .csi-cta,
+  .cs.cs .cs-section,
+  .cs.cs .cs-cta,
+  .proof.proof .proof-section,
+  .vai.vai .vai-section,
+  .article.article .article-sec,
+  .ap-root.ap-root .section,
+  .ap-root.ap-root .ap-capability,
+  .ap-root.ap-root .ap-cta-row {
+    min-height: auto !important;
+    padding-top: clamp(38px, 3.4vw, 54px) !important;
+    padding-bottom: clamp(38px, 3.4vw, 54px) !important;
+  }
+
+  /* Rows that previously behaved like mini full-screen slides. */
+  .studio-path .sp-service-chapters article,
+  .studio-path .sp-phase-list article {
+    min-height: clamp(430px, 52svh, 520px) !important;
+  }
+
+  .studio-path .sp-service-chapters figure,
+  .studio-path .sp-phase-list figure {
+    min-height: 390px !important;
+  }
+
+  .studio-path .sp-service-chapters article > div,
+  .studio-path .sp-phase-list article > div {
+    padding: clamp(28px, 3vw, 46px) !important;
+  }
+
+  /* Editorial/person pages: compact the vertical reserve, retain portrait scale. */
+  .aboutx.aboutx .aboutx-founder,
+  .teamx.teamx .teamx-member,
+  .teamx.teamx .teamx-network,
+  .founderx.founderx .founderx-band,
+  .founderx.founderx .founderx-reveal {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .aboutx.aboutx .aboutx-founder,
+  .teamx.teamx .teamx-member,
+  .founderx.founderx .founderx-band {
+    padding-top: clamp(34px, 3vw, 48px) !important;
+    padding-bottom: clamp(34px, 3vw, 48px) !important;
+  }
+
+  .aboutx.aboutx .aboutx-reveal:not(:has(img)),
+  .founderx.founderx .founderx-reveal:not(:has(img)) {
+    padding-top: 34px !important;
+    padding-bottom: 34px !important;
+  }
+
+  /* Compact cards so the eye reaches the next visual sooner. */
+  .lp2.lp2 .lp2-deliverables article,
+  .lp2.lp2 .lp2-process article,
+  .lp2.lp2 .lp2-trust article,
+  .sv-root.sv-root .sv-included article,
+  .founderx.founderx .founderx-values article,
+  .ue-page.ue-page .ue-cap-grid article,
+  .cs.cs .cs-step,
+  .ap-root.ap-root .ap-capability article,
+  .studio-path.sp-contact-page .sp-contact-direct article {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .lp2.lp2 .lp2-deliverables article,
+  .sv-root.sv-root .sv-included article,
+  .founderx.founderx .founderx-values article {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  /* Visual journeys remain immersive, but there is always useful content nearby. */
+  .visual-journey.visual-journey .vj-chapter {
+    padding-top: 32px !important;
+  }
+
+  .visual-journey.visual-journey .vj-chapter-head {
+    min-height: auto !important;
+    padding-top: 38px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .visual-journey.visual-journey .vj-scene {
+    min-height: clamp(430px, 54svh, 570px) !important;
+  }
+
+  .visual-journey.visual-journey .vj-end {
+    min-height: auto !important;
+    padding: clamp(42px, 4vw, 58px) !important;
+  }
+
+  /* Full-width visual bands stay substantial but stop creating empty scroll. */
+  .hsp.hsp .ga-strip,
+  .ap-root.ap-root .ap-visual-strip {
+    height: clamp(420px, 49svh, 540px) !important;
+    min-height: 420px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ue-page.ue-page .ue-direction,
+  .ue-page.ue-page .ue-direction-grid {
+    min-height: 540px !important;
+  }
+
+  .ue-page.ue-page .ue-showcase {
+    height: clamp(520px, 62svh, 650px) !important;
+    min-height: 520px !important;
+  }
+
+  /* Rendering service family: collapse the archival gaps from the runtime pass. */
+  .sv-final .sv-story-nav {
+    margin-bottom: 34px !important;
+  }
+
+  .sv-final .sv-gallery {
+    padding-bottom: 48px !important;
+  }
+
+  .sv-final .sv-gallery figure:nth-child(2) {
+    margin-top: 54px !important;
+  }
+
+  .sv-final .sv-gallery figure:nth-child(3) {
+    margin-top: -8px !important;
+  }
+
+  .sv-final .sv-editorial-statement {
+    margin-bottom: 46px !important;
+    padding-top: 46px !important;
+    padding-bottom: 46px !important;
+  }
+
+  .sv-final .sv-body {
+    padding-bottom: 48px !important;
+  }
+
+  .sv-final .sv-sec {
+    padding-top: 26px !important;
+    padding-bottom: 26px !important;
+  }
+
+  .sv-final .sv-items-wrap {
+    padding-top: 46px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .sv-final .sv-item {
+    min-height: 104px !important;
+  }
+
+  .sv-final .sv-cta-row {
+    padding-bottom: 58px !important;
+  }
+
+  .sv-final .sv-more {
+    padding-top: 38px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-opening-proof figure {
+    min-height: 420px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-opening-proof figure:nth-child(2),
+  .lp2.lp2-final-visualization .lp2-opening-proof figure:nth-child(3) {
+    min-height: 360px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-split-visual .lp2-generated-visual {
+    min-height: 560px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-process article {
+    min-height: 350px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-process article small {
+    margin-top: 178px !important;
+  }
+
+  /* Large grids use the canvas better instead of floating as narrow islands. */
+  .ins.ins .ins-wrap,
+  .proof.proof .proof-wrap,
+  .vai.vai .vai-wrap,
+  .cs.cs .cs-wrap {
+    width: min(1540px, calc(100% - 48px)) !important;
+  }
+
+  .ins.ins .ins-card {
+    min-height: 300px !important;
+  }
+
+  .proof.proof .proof-client,
+  .proof.proof .proof-policy article {
+    min-height: 0 !important;
+  }
+
+  .proof.proof .proof-client {
+    padding-top: 26px !important;
+    padding-bottom: 26px !important;
+  }
+
+  .proof.proof .proof-policy article {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .proof.proof .proof-cta {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .vai.vai .vai-section {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .cs.cs .cs-section {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+}
+
+/* ---------- Tablet / mobile: remove blank reserves without crowding ---------- */
+@media (max-width: 900px) {
+  .aboutx.aboutx .aboutx-hero,
+  .teamx.teamx .teamx-hero,
+  .founderx.founderx .founderx-hero,
+  .studio-path.studio-path .sp-hero,
+  .ue-page.ue-page .ue-hero,
+  .visual-journey.visual-journey .vj-hero,
+  .hd.hd .hd-hero,
+  .hsp.hsp .hsp-hero,
+  .intl.intl .intl-hero,
+  .market.market .market-hero,
+  .lp2.lp2 .lp2-hero,
+  .sv-root.sv-root .sv-hero,
+  .csi.csi .csi-hero,
+  .cs.cs .cs-hero,
+  .ins.ins .ins-hero,
+  .proof.proof .proof-hero,
+  .vai.vai .vai-hero,
+  .ap-root.ap-root .ap-detail-hero {
+    height: auto !important;
+    min-height: clamp(470px, 64svh, 580px) !important;
+    max-height: none !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-hero {
+    min-height: clamp(490px, 66svh, 590px) !important;
+  }
+
+  .aboutx.aboutx .aboutx-intro,
+  .aboutx.aboutx .aboutx-principles,
+  .aboutx.aboutx .aboutx-services,
+  .aboutx.aboutx .aboutx-process,
+  .aboutx.aboutx .aboutx-contact,
+  .teamx.teamx .teamx-manifesto,
+  .teamx.teamx .teamx-roster,
+  .teamx.teamx .teamx-contact,
+  .founderx.founderx .founderx-letter,
+  .founderx.founderx .founderx-values,
+  .founderx.founderx .founderx-contact,
+  .studio-path.studio-path .sp-services-intro,
+  .studio-path.studio-path .sp-process-map,
+  .studio-path.studio-path .sp-page-cta,
+  .studio-path.studio-path .sp-contact-workspace,
+  .studio-path.studio-path .sp-contact-direct,
+  .ue-page.ue-page .ue-motion,
+  .ue-page.ue-page .ue-capabilities,
+  .ue-page.ue-page .ue-pipeline,
+  .ue-page.ue-page .ue-market,
+  .ue-page.ue-page .ue-cta,
+  .hd.hd .hd-intro,
+  .hd.hd .hd-transform,
+  .hd.hd .hd-services,
+  .hd.hd .hd-proof-wrap,
+  .hd.hd .hd-end,
+  .hsp.hsp .hsp-sec,
+  .hsp.hsp .hsp-visuals,
+  .hsp.hsp .hsp-cta,
+  .intl.intl .intl-section,
+  .intl.intl .intl-cta,
+  .market.market .market-sec,
+  .market.market .market-cta,
+  .lp2.lp2 .lp2-intro,
+  .lp2.lp2 .lp2-opening-proof,
+  .lp2.lp2 .lp2-deliverables,
+  .lp2.lp2 .lp2-process,
+  .lp2.lp2 .lp2-proof,
+  .lp2.lp2 .lp2-related,
+  .lp2.lp2 .lp2-faq,
+  .lp2.lp2 .lp2-cta,
+  .sv-root.sv-root .sv-intro,
+  .sv-root.sv-root .sv-story,
+  .sv-root.sv-root .sv-proof-rail,
+  .sv-root.sv-root .sv-body,
+  .sv-root.sv-root .sv-included,
+  .sv-root.sv-root .sv-related,
+  .csi.csi .csi-grid,
+  .csi.csi .csi-cta,
+  .cs.cs .cs-section,
+  .cs.cs .cs-cta,
+  .proof.proof .proof-section,
+  .vai.vai .vai-section,
+  .article.article .article-sec,
+  .ap-root.ap-root .section,
+  .ap-root.ap-root .ap-capability,
+  .ap-root.ap-root .ap-cta-row {
+    min-height: auto !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .studio-path .sp-service-chapters article,
+  .studio-path .sp-phase-list article,
+  .aboutx .aboutx-founder,
+  .teamx .teamx-member,
+  .teamx .teamx-network,
+  .founderx .founderx-band,
+  .founderx .founderx-reveal,
+  .ue-page .ue-direction,
+  .ue-page .ue-direction-grid,
+  .ue-page .ue-market,
+  .ue-page .ue-cta,
+  .lp2 .lp2-deliverables article,
+  .lp2 .lp2-process article,
+  .lp2 .lp2-trust article,
+  .sv-root .sv-included article,
+  .founderx .founderx-values article,
+  .cs .cs-step,
+  .ap-root .ap-capability article {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .studio-path .sp-service-chapters figure,
+  .studio-path .sp-phase-list figure {
+    min-height: 42svh !important;
+  }
+
+  .visual-journey.visual-journey .vj-chapter {
+    padding-top: 28px !important;
+  }
+
+  .visual-journey.visual-journey .vj-chapter-head {
+    min-height: auto !important;
+    padding: 32px 20px 24px !important;
+  }
+
+  .visual-journey.visual-journey .vj-scene {
+    min-height: 48svh !important;
+  }
+
+  .visual-journey.visual-journey .vj-end {
+    min-height: auto !important;
+    padding: 36px 20px !important;
+  }
+
+  .hsp.hsp .ga-strip,
+  .ap-root.ap-root .ap-visual-strip {
+    height: clamp(330px, 42svh, 420px) !important;
+    min-height: 330px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ue-page.ue-page .ue-showcase {
+    height: clamp(430px, 56svh, 540px) !important;
+    min-height: 430px !important;
+  }
+
+  .sv-final .sv-gallery,
+  .sv-final .sv-body,
+  .sv-final .sv-items-wrap,
+  .sv-final .sv-cta-row {
+    padding-bottom: 36px !important;
+  }
+
+  .sv-final .sv-editorial-statement {
+    margin-bottom: 34px !important;
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .sv-final .sv-sec {
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
+  }
+
+  .lp2.lp2-final-visualization .lp2-split-visual .lp2-generated-visual {
+    min-height: 460px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutx.aboutx .aboutx-hero,
+  .teamx.teamx .teamx-hero,
+  .founderx.founderx .founderx-hero,
+  .studio-path.studio-path .sp-hero,
+  .ue-page.ue-page .ue-hero,
+  .visual-journey.visual-journey .vj-hero,
+  .hd.hd .hd-hero,
+  .hsp.hsp .hsp-hero,
+  .intl.intl .intl-hero,
+  .market.market .market-hero,
+  .lp2.lp2 .lp2-hero,
+  .sv-root.sv-root .sv-hero,
+  .csi.csi .csi-hero,
+  .cs.cs .cs-hero,
+  .ins.ins .ins-hero,
+  .proof.proof .proof-hero,
+  .vai.vai .vai-hero,
+  .ap-root.ap-root .ap-detail-hero {
+    min-height: clamp(440px, 61svh, 540px) !important;
+  }
+
+  .aboutx.aboutx .aboutx-intro,
+  .aboutx.aboutx .aboutx-principles,
+  .aboutx.aboutx .aboutx-services,
+  .aboutx.aboutx .aboutx-process,
+  .aboutx.aboutx .aboutx-contact,
+  .teamx.teamx .teamx-manifesto,
+  .teamx.teamx .teamx-roster,
+  .teamx.teamx .teamx-contact,
+  .founderx.founderx .founderx-letter,
+  .founderx.founderx .founderx-values,
+  .founderx.founderx .founderx-contact,
+  .studio-path.studio-path .sp-services-intro,
+  .studio-path.studio-path .sp-process-map,
+  .studio-path.studio-path .sp-page-cta,
+  .studio-path.studio-path .sp-contact-workspace,
+  .studio-path.studio-path .sp-contact-direct,
+  .ue-page.ue-page .ue-motion,
+  .ue-page.ue-page .ue-capabilities,
+  .ue-page.ue-page .ue-pipeline,
+  .ue-page.ue-page .ue-market,
+  .ue-page.ue-page .ue-cta,
+  .hd.hd .hd-intro,
+  .hd.hd .hd-transform,
+  .hd.hd .hd-services,
+  .hd.hd .hd-proof-wrap,
+  .hd.hd .hd-end,
+  .hsp.hsp .hsp-sec,
+  .hsp.hsp .hsp-visuals,
+  .hsp.hsp .hsp-cta,
+  .intl.intl .intl-section,
+  .intl.intl .intl-cta,
+  .market.market .market-sec,
+  .market.market .market-cta,
+  .lp2.lp2 .lp2-intro,
+  .lp2.lp2 .lp2-opening-proof,
+  .lp2.lp2 .lp2-deliverables,
+  .lp2.lp2 .lp2-process,
+  .lp2.lp2 .lp2-proof,
+  .lp2.lp2 .lp2-related,
+  .lp2.lp2 .lp2-faq,
+  .lp2.lp2 .lp2-cta,
+  .sv-root.sv-root .sv-intro,
+  .sv-root.sv-root .sv-story,
+  .sv-root.sv-root .sv-proof-rail,
+  .sv-root.sv-root .sv-body,
+  .sv-root.sv-root .sv-included,
+  .sv-root.sv-root .sv-related,
+  .csi.csi .csi-grid,
+  .csi.csi .csi-cta,
+  .cs.cs .cs-section,
+  .cs.cs .cs-cta,
+  .proof.proof .proof-section,
+  .vai.vai .vai-section,
+  .article.article .article-sec,
+  .ap-root.ap-root .section,
+  .ap-root.ap-root .ap-capability,
+  .ap-root.ap-root .ap-cta-row {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .ins.ins .ins-wrap,
+  .proof.proof .proof-wrap,
+  .vai.vai .vai-wrap,
+  .cs.cs .cs-wrap {
+    width: min(100% - 24px, 1540px) !important;
+  }
+
+  .hsp.hsp .ga-strip,
+  .ap-root.ap-root .ap-visual-strip {
+    height: 38svh !important;
+    min-height: 300px !important;
+  }
+
+  .visual-journey.visual-journey .vj-scene {
+    min-height: 44svh !important;
+  }
+}
