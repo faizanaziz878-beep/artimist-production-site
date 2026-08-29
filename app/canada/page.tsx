@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketServicePage } from "../market-service-page";
+import "../market-premium.css";
 
 export const metadata: Metadata = {
   title: "Architecture, BIM, Revit & 3D Rendering Services Canada | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function CanadaPage() {
-  return <MarketServicePage
+  return <div className="market-premium canada-art"><MarketServicePage
     slug="canada"
     country="Canada"
     kicker="Canada / remote project delivery"
@@ -30,5 +31,5 @@ export default function CanadaPage() {
       { q: "Do you provide 3D interior design and rendering?", a: "Yes. Interior layouts, material direction, furniture planning, lighting studies and photoreal visualization can be scoped together or added to an existing architectural project." },
     ]}
     localNote="Canadian permitting, building-code review and professional-licensure requirements vary by province, municipality and project type. Where a locally licensed architect, engineer or other professional is required, Artimist works alongside that professional rather than replacing the regulated role."
-  />;
+  /></div>;
 }
