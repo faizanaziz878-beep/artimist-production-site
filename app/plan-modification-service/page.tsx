@@ -22,8 +22,8 @@ export default function PlanModificationServicePage() {
     subtitle="Send the plan you already have. We help you make it work better."
     intro="If you already have a house plan, floor plan, sketch, PDF or marked-up drawing, Artimist can help you change it. We redesign room layouts, improve circulation, add or remove spaces, redraw unclear plans and prepare cleaner drawings so you can move forward with a renovation, new build, permit discussion or 3D visualization."
     audience="For homeowners who search for things like change my floor plan, modify house plans, redraw a floor plan, convert a sketch to a plan, make my layout better or visualize a renovation before building."
-    image="/graphics/house-plan-modification-before-after.svg"
-    imageAlt="Before and after house plan modification diagram showing an existing floor plan refined into a clearer layout"
+    image="/img/permit04.webp"
+    imageAlt="Coordinated residential drawing sheet prepared by Artimist Productions"
     included={[
       "House plan modifications",
       "Floor plan layout changes",
