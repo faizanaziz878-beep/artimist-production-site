@@ -10,6 +10,7 @@ import "./homeowner-premium.css";
 import "./ask-bot.css";
 import "./final-qa.css";
 import "./completion-pass.css";
+import "./cinematic-density.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 import { SiteIndex } from "./site-index";
 import { AskBot } from "./ask-bot";
