@@ -699,3 +699,35 @@ html[data-mode="night"] .services-v2-hero>img { filter: saturate(.72) contrast(1
   .founder-v2-index a,
   .services-v2-index a { flex: 0 0 auto; padding-inline: 14px; }
 }
+
+
+/* 2026 editorial practice refinement */
+.practice-page .practice-hero{height:92svh;min-height:720px;align-items:center}
+.practice-page .practice-hero>img{transform:none;animation:none;filter:saturate(.82) contrast(1.04)}
+.practice-page .practice-hero-shade{background:linear-gradient(90deg,rgba(5,5,6,.96) 0,rgba(5,5,6,.78) 42%,rgba(5,5,6,.08) 76%),linear-gradient(0deg,rgba(5,5,6,.52),transparent 55%)}
+.practice-page .practice-hero-grid{inset:0;background:linear-gradient(90deg,transparent calc(33.333% - .5px),rgba(255,255,255,.14) 33.333%,transparent calc(33.333% + .5px),transparent calc(66.666% - .5px),rgba(255,255,255,.14) 66.666%,transparent calc(66.666% + .5px)),linear-gradient(0deg,transparent calc(72% - .5px),rgba(255,255,255,.14) 72%,transparent calc(72% + .5px))}
+.practice-page .practice-hero-copy{padding-top:92px;padding-bottom:0}
+.practice-page .practice-hero h1{max-width:1080px;margin:30px 0 42px;font-size:clamp(66px,7.5vw,128px);line-height:.78}
+.practice-page .practice-hero footer{width:min(860px,66%);display:grid;grid-template-columns:1fr 270px;gap:45px;padding:22px 0;border-top:1px solid rgba(255,255,255,.32);border-bottom:1px solid rgba(255,255,255,.22)}
+.practice-page .practice-scroll{right:26px;top:auto;bottom:36px;writing-mode:horizontal-tb;flex-direction:row}
+.practice-page .practice-local-nav{min-height:70px;padding-inline:0;border-top:1px solid var(--line)}
+.practice-page .practice-opening{padding-top:clamp(90px,10vw,165px);padding-bottom:clamp(90px,10vw,165px)}
+.practice-page .practice-opening h2{font-size:clamp(54px,6.2vw,102px);letter-spacing:-.05em}
+.practice-page .practice-gallery{gap:14px;padding-inline:14px}
+.practice-page .practice-shot>div{border:1px solid rgba(0,0,0,.16)}
+.practice-visualization .practice-shot>div{border-color:rgba(255,255,255,.14)}
+.practice-page .practice-scope-list article{padding:32px 0}
+.practice-page .practice-scope-list h3{font-size:34px}
+.practice-page .practice-process-grid article{min-height:360px}
+.practice-bim .practice-hero>img{filter:grayscale(.35) saturate(.7) contrast(1.1)}
+.practice-bim .practice-hero-grid{background-image:linear-gradient(rgba(116,215,223,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(116,215,223,.12) 1px,transparent 1px);background-size:64px 64px}
+.practice-visualization .practice-hero>img{filter:saturate(.9) contrast(1.08)}
+@media(max-width:760px){
+ .practice-page .practice-hero{height:auto;min-height:780px;align-items:flex-end}
+ .practice-page .practice-hero-copy{padding:120px 20px 42px}
+ .practice-page .practice-hero h1{font-size:clamp(52px,15vw,72px);line-height:.78;margin-bottom:32px}
+ .practice-page .practice-hero footer{width:100%;display:block;padding-bottom:18px}
+ .practice-page .practice-hero footer>div{margin-top:18px}
+ .practice-page .practice-opening h2{font-size:46px}
+ .practice-page .practice-local-nav{padding-inline:20px}
+}
