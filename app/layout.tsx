@@ -11,10 +11,12 @@ import "./ask-bot.css";
 import "./final-qa.css";
 import "./completion-pass.css";
 import "./cinematic-density.css";
+import "./search-discovery-footer.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 import { SiteIndex } from "./site-index";
 import { AskBot } from "./ask-bot";
 import { VisitorTracker } from "./visitor-tracker";
+import { SearchDiscoveryFooter } from "./search-discovery-footer";
 import Script from "next/script";
 
 const SITE_URL = "https://www.artimistproductions.com";
@@ -48,5 +50,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return <html lang="en" suppressHydrationWarning><head>
     <link rel="alternate" type="text/plain" href="/llms.txt" title="Artimist Productions AI site guide" /><link rel="alternate" type="text/plain" href="/llms-full.txt" title="Artimist Productions detailed AI reference" /><link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Artimist Productions Insights" />
     <IntroScript /><Script src="/whatsapp-conversations.js" strategy="afterInteractive" /><Script src="/desktop-showcase-motion.js" strategy="afterInteractive" /><Script src="/insight-visual-flow.js" strategy="afterInteractive" /><Script src="/final-rendering-pass.js" strategy="afterInteractive" /><Script src="/final-qa.js" strategy="afterInteractive" /><Script src="https://www.googletagmanager.com/gtag/js?id=G-1PWWCTSMW4" strategy="afterInteractive" /><Script id="ms-clarity" strategy="afterInteractive">{`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","y4w3ocfmtl");`}</Script><Script id="lead-events" strategy="afterInteractive">{`document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a"):null;if(!a||!a.href)return;var h=a.href;if(typeof window.gtag!=="function")return;if(h.indexOf("wa.me")>-1||h.indexOf("api.whatsapp.com")>-1){window.gtag("event","whatsapp_click",{link_url:h});}else if(h.indexOf("mailto:")===0){window.gtag("event","email_click",{link_url:h});}else if(h.indexOf("tel:")===0){window.gtag("event","phone_click",{link_url:h});}else if(a.pathname==="/contact"){window.gtag("event","cta_click",{cta_location:location.pathname,cta_text:(a.innerText||"").trim().slice(0,60)});}},true);`}</Script><Script id="ga4-init" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1PWWCTSMW4');`}</Script>
-  </head><body className="antialiased"><IntroCurtain /><SiteIndex /><AskBot /><VisitorTracker /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(founder)}} /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organization)}} /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(website)}} /><span id="main-content" className="main-content-anchor" tabIndex={-1} />{children}<script defer src="/_vercel/insights/script.js" /></body></html>;
+  </head><body className="antialiased"><IntroCurtain /><SiteIndex /><AskBot /><VisitorTracker /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(founder)}} /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organization)}} /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(website)}} /><span id="main-content" className="main-content-anchor" tabIndex={-1} />{children}<SearchDiscoveryFooter /><script defer src="/_vercel/insights/script.js" /></body></html>;
 }
