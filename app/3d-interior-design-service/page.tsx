@@ -17,8 +17,8 @@ export default function InteriorDesignPage() {
     subtitle="Understand the space, materials and furniture before money is committed on site."
     intro="Our 3D interior design service helps homeowners make confident decisions before construction or renovation. We can develop room layouts, material directions, furniture planning and photoreal 3D home visualization for a kitchen, living room, bedroom, bathroom or an entire home, so you can judge light, finishes, proportions and furniture before anything is built."
     audience="For homeowners who want professional interior design online, realistic 3D views, furniture planning or a complete visual direction for one room or a whole home."
-    image="/graphics/3d-interior-design-visualization.svg"
-    imageAlt="3D interior design diagram showing room layout, furniture, lighting zones and material direction"
+    image="/img/homeint01.webp"
+    imageAlt="Photoreal whole-home interior design project by Artimist Productions"
     included={["Living room interior design","Kitchen design and visualization","Bedroom interior design","Bathroom design concepts","Whole-house interior design","Furniture layout and space planning","Material, finish and lighting direction","Photoreal 3D interior rendering"]}
     deliverables={["Room layout and furniture plans as scoped","Material and finish direction","3D interior views","Photoreal final renders","Presentation-ready image set","Design notes for implementation where included"]}
     steps={[
