@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomeownerServicePage } from "../homeowner-service-page";
+import "./renovation-premium.css";
 
 export const metadata: Metadata = {
   title: "Residential Permit Drawings & Home Renovation Plans | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function RenovationPermitPage() {
-  return <HomeownerServicePage
+  return <div className="renovation-art"><HomeownerServicePage
     slug="residential-renovation-permit-drawings"
     serviceName="Residential Renovation & Permit Drawings"
     eyebrow="Renovation & permit drawings"
@@ -41,5 +42,5 @@ export default function RenovationPermitPage() {
       { href: "/architectural-drafting-services", label: "Architectural Drafting" },
     ]}
     permitNotice="Permit requirements are local. Some jurisdictions allow residential drawings to be prepared without an architect or engineer for certain project types, while others require a locally licensed professional and/or structural, energy, zoning or other specialist documentation. The local authority having jurisdiction determines what must be submitted and who may sign or stamp it."
-  />;
+  /></div>;
 }
