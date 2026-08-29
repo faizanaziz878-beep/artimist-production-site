@@ -67,3 +67,135 @@
   [data-ask-studio],
   .st-ask-btn { right: 10px !important; }
 }
+
+/* Visual rhythm audit — compact desktop pacing and image-led transitions */
+@media (min-width: 901px) {
+  .aboutx-intro,
+  .aboutx-principles,
+  .aboutx-services,
+  .aboutx-process,
+  .aboutx-contact,
+  .teamx-manifesto,
+  .teamx-roster,
+  .teamx-contact {
+    padding-top: clamp(76px, 7vw, 112px) !important;
+    padding-bottom: clamp(76px, 7vw, 112px) !important;
+  }
+
+  .sp-services-intro,
+  .sp-page-cta,
+  .sp-contact-workspace,
+  .sp-contact-direct {
+    padding-top: clamp(74px, 7vw, 112px) !important;
+    padding-bottom: clamp(74px, 7vw, 112px) !important;
+  }
+
+  .sp-service-chapters article,
+  .sp-phase-list article {
+    min-height: 82svh !important;
+  }
+
+  .sp-service-chapters figure,
+  .sp-phase-list figure {
+    min-height: 520px !important;
+  }
+
+  .sp-service-chapters article > div,
+  .sp-phase-list article > div {
+    padding: clamp(42px, 5vw, 82px) !important;
+  }
+
+  .ue-page .ue-motion,
+  .ue-page .ue-capabilities,
+  .ue-page .ue-pipeline,
+  .ue-page .ue-cta {
+    padding-top: clamp(78px, 7vw, 116px) !important;
+    padding-bottom: clamp(78px, 7vw, 116px) !important;
+  }
+
+  .ue-page .ue-cap-grid article {
+    min-height: 330px !important;
+  }
+
+  .ue-page .ue-market,
+  .ue-page .ue-cta {
+    min-height: 66vh !important;
+  }
+
+  .ue-page .ue-direction,
+  .ue-page .ue-direction-grid {
+    min-height: 760px !important;
+  }
+
+  .vj-chapter-head {
+    min-height: 52svh !important;
+    padding-top: clamp(72px, 7vw, 112px) !important;
+    padding-bottom: clamp(44px, 5vw, 76px) !important;
+  }
+
+  .vj-scene {
+    min-height: 82svh !important;
+  }
+
+  .vj-end {
+    min-height: 72svh !important;
+    padding: clamp(72px, 7vw, 112px) !important;
+  }
+}
+
+.sp-page-cta {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(7,7,8,.94), rgba(7,7,8,.68)),
+    url('/media/generated-architecture/artimist-architecture-165.webp') center / cover no-repeat !important;
+}
+
+.sp-contact-direct {
+  background:
+    linear-gradient(90deg, rgba(7,7,8,.95), rgba(7,7,8,.62)),
+    url('/media/generated-architecture/artimist-architecture-170.webp') center / cover no-repeat !important;
+}
+
+.aboutx-contact {
+  background:
+    linear-gradient(90deg, rgba(8,7,9,.96), rgba(8,7,9,.64)),
+    url('/media/generated-architecture/artimist-architecture-155.webp') center / cover no-repeat !important;
+}
+
+.teamx-contact {
+  background:
+    linear-gradient(90deg, rgba(8,7,9,.96), rgba(8,7,9,.62)),
+    url('/media/generated-architecture/artimist-architecture-156.webp') center / cover no-repeat !important;
+}
+
+.ue-page .ue-pipeline {
+  background:
+    linear-gradient(90deg, rgba(4,5,7,.96), rgba(4,5,7,.62)),
+    url('/media/generated-architecture/artimist-architecture-158.webp') center / cover no-repeat !important;
+  color: #f2eee8 !important;
+}
+
+.ue-page .ue-cta {
+  background:
+    linear-gradient(90deg, rgba(4,5,7,.95), rgba(4,5,7,.58)),
+    url('/media/generated-architecture/artimist-architecture-151.webp') center / cover no-repeat !important;
+}
+
+.vj-end {
+  background:
+    linear-gradient(90deg, rgba(6,6,7,.95), rgba(6,6,7,.62)),
+    url('/media/generated-architecture/artimist-architecture-136.webp') center / cover no-repeat !important;
+}
+
+@media (max-width: 900px) {
+  .sp-page-cta,
+  .sp-contact-direct,
+  .aboutx-contact,
+  .teamx-contact,
+  .ue-page .ue-pipeline,
+  .ue-page .ue-cta,
+  .vj-end {
+    background-position: 58% center !important;
+  }
+}
