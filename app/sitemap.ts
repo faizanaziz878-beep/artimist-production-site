@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 const BASE = 'https://www.artimistproductions.com'
-const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-29T00:00:00.000Z')
+const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-29T11:40:00.000Z')
 
 type Frequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
