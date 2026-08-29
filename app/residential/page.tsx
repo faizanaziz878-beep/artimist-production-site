@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { residentialChapters } from "../../lib/visual-content";
 import { VisualJourney } from "../visual-journey";
+import "./residential-premium.css";
 
 export const metadata: Metadata = {
   title: "Residential 3D Rendering & Interior Visualization | Artimist",
