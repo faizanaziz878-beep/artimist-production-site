@@ -9,47 +9,57 @@ const FAQS: Faq[] = [
   {
     q: "What does Artimist actually do?",
     keywords: ["service", "services", "do", "offer", "what", "help", "work"],
-    a: "Architecture, BIM and visualization. That includes architectural design support, Revit and BIM production, CAD drafting, permit and construction documentation, interiors, 3D rendering and animation, and real-time Unreal Engine experiences.",
+    a: "Architecture, interiors, BIM, drafting and visualization. That includes custom house design, plan development, Revit and BIM production, CAD drafting, permit and construction documentation support, 3D rendering, animation and real-time Unreal Engine experiences.",
   },
   {
-    q: "Do you work with clients in the United States?",
-    keywords: ["us", "usa", "united", "states", "america", "american", "ohio", "country", "where", "international", "remote"],
-    a: "Yes. We work with US architects, developers, builders and property owners as part of an international project-delivery network. Where a project needs a locally licensed professional to stamp drawings, we work alongside yours.",
+    q: "Do you work internationally?",
+    keywords: ["us", "usa", "united", "states", "america", "american", "canada", "uk", "sweden", "country", "where", "international", "remote"],
+    a: "Yes. Artimist Productions works remotely with homeowners, architects, developers, builders and brands across multiple markets. The project scope, deliverables, communication rhythm and file handover are agreed before production starts.",
   },
   {
-    q: "Can you produce permit drawings?",
-    keywords: ["permit", "permits", "planning", "approval", "submission", "council", "city", "code"],
-    a: "Yes — permit and construction documentation is core work for us. Send what you have, whether that is a sketch, a CAD file, a PDF set or a survey, and we will tell you what is missing to reach a submittable set.",
+    q: "Can you produce permit or construction drawings?",
+    keywords: ["permit", "permits", "planning", "approval", "submission", "council", "city", "code", "construction", "drawing", "drawings"],
+    a: "Yes. Permit-support and construction-documentation production are part of the studio's work. Send the material you have—sketches, CAD, PDF, survey or model—and the studio will review what is usable and what still needs to be developed.",
   },
   {
     q: "Do you do Revit, BIM or CAD drafting?",
     keywords: ["revit", "bim", "cad", "autocad", "draft", "drafting", "model", "modeling", "modelling", "lod"],
-    a: "Yes. Revit drafting, BIM modeling, CAD drafting, CAD to Revit and PDF to CAD conversions, and as-built drawings. We work to your template and standards rather than imposing ours.",
+    a: "Yes. Revit drafting, BIM modeling, CAD drafting, CAD-to-Revit and PDF-to-CAD production, as-built documentation and coordinated drawing support are core technical services. Deliverables are defined in the quotation before work begins.",
   },
   {
     q: "Can you work from my existing drawings or a point cloud?",
     keywords: ["existing", "convert", "conversion", "pdf", "dwg", "scan", "point", "cloud", "survey", "as-built", "asbuilt", "sketch", "file", "files", "format", "formats"],
-    a: "Usually yes. We accept Revit, CAD/DWG, SketchUp, PDF sets, hand sketches and point-cloud data for Scan to BIM. If a file is not usable we will say so before you commit to anything.",
+    a: "Usually yes. The studio can review Revit, CAD/DWG, SketchUp, PDF sets, hand sketches, surveys and point-cloud data. If a source file is incomplete or unsuitable, that is identified during review instead of being hidden inside production.",
   },
   {
     q: "Do you do 3D rendering and animation?",
     keywords: ["render", "rendering", "3d", "visual", "visualization", "visualisation", "animation", "walkthrough", "image", "cgi", "interior", "exterior"],
-    a: "Yes. Exterior and interior stills, dusk and daylight variants, aerial and context views, architectural animation and 3D walkthroughs — for planning submissions, investor decks and pre-construction sales.",
+    a: "Yes. Exterior and interior stills, daylight and dusk variants, aerial/context views, architectural animation, walkthroughs and real-time experiences are all part of the visualization offer.",
   },
   {
-    q: "What do you use Unreal Engine for?",
-    keywords: ["unreal", "engine", "real-time", "realtime", "interactive", "vr", "virtual", "immersive", "game"],
-    a: "Real-time and interactive work: walkthroughs a client can control, sales-suite experiences, cinematic environments and virtual tours. It suits developments where people need to explore a space rather than look at a fixed image.",
+    q: "How are revisions handled?",
+    keywords: ["revision", "revisions", "change", "changes", "feedback", "round", "rounds", "edit", "edits"],
+    a: "The included revision allowance is written into the project quotation. Additional rounds, new directions or requests outside the agreed brief are treated as additional scope so the project remains clear for both sides.",
+  },
+  {
+    q: "Can you work under an NDA?",
+    keywords: ["nda", "confidential", "confidentiality", "private", "privacy", "secure", "secret", "sensitive"],
+    a: "Yes. NDA-based and confidential workflows are available. If the project is sensitive, request the NDA before sharing confidential drawings, links or source material.",
+  },
+  {
+    q: "What files do I receive at the end?",
+    keywords: ["handover", "deliver", "delivery", "source", "sources", "file", "files", "dwg", "rvt", "pdf", "image", "animation"],
+    a: "The handover is defined in the agreed scope. Depending on the project this may include PDFs, DWGs, RVTs, image files, animation outputs or agreed source files. Source-file delivery is included only where the quotation says so.",
+  },
+  {
+    q: "How do payment and project start work?",
+    keywords: ["cost", "price", "pricing", "budget", "fee", "rate", "charge", "payment", "deposit", "start", "quote", "quotation"],
+    a: "The studio reviews the brief, source files, deliverables and deadline before issuing a project-specific quotation. Scope, payment milestones and the production start point are agreed before work begins, rather than relying on a generic price that may not fit the project.",
   },
   {
     q: "How do I start a project?",
     keywords: ["start", "begin", "brief", "quote", "quotation", "enquiry", "inquiry", "contact", "process", "next", "step"],
-    a: "Use the project intake page and send the project as it stands today — a finished brief, rough idea or difficult question all work. You can also include a Google Drive, Dropbox, OneDrive or WeTransfer link.",
-  },
-  {
-    q: "What does it cost, and how long does it take?",
-    keywords: ["cost", "price", "pricing", "budget", "fee", "rate", "charge", "expensive", "cheap", "long", "time", "timeline", "deadline", "fast", "turnaround", "when"],
-    a: "Focused starter scopes can begin at $200, while monthly studio capacity begins at $2,000. Larger multidisciplinary projects are quoted after the brief, files and deadline are reviewed. Send the project and deadline and we will give you a specific answer.",
+    a: "Use the project intake page and send the project as it stands today—a finished brief, rough idea, drawings or a difficult technical question. A real studio team member reviews project-specific enquiries and takes over when a quote, file review or decision is needed.",
   },
 ];
 
@@ -144,7 +154,7 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
             ) : unanswered ? (
               <div className="askbot-answer">
                 <h4>That needs a project-specific answer.</h4>
-                <p>We would rather answer it properly than guess. Use the project intake or message the studio directly.</p>
+                <p>A real studio team member should review that rather than giving you a generic answer. Send the project details or continue directly on WhatsApp.</p>
                 <a className="askbot-wa" href="/contact">Start project intake</a>
                 <a className="askbot-wa askbot-wa-quiet" href={waHref} target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
               </div>
