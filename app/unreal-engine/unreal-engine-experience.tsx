@@ -44,24 +44,21 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
         <div className="ue-hero-scene" aria-hidden="true"><video autoPlay muted loop playsInline preload="metadata" poster="/media/residential/residential-13.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><i /><i /><i /></div>
         <div className="ue-hero-grid" aria-hidden="true" />
         <div className="ue-hero-copy">
-          <span>Live architectural sequence / Real-time production</span>
-          <h1>ENTER THE<br /><em>MODEL.</em></h1>
-          <p>The first screen now proves the service in motion: architecture, material response and spatial continuity—not a static promise about real-time work.</p>
+          <span>Real-time architecture / Interactive spatial media</span>
+          <h1>REAL-TIME<br /><em>ARCHITECTURE.</em></h1>
+          <p>Interactive environments, cinematic walkthroughs and spatial experiences built from architectural information—not game-world decoration.</p>
           <Link href="#capabilities">Explore the system <Arrow down /></Link>
         </div>
         <div className="ue-hud ue-hud-a">LUMEN / NANITE / REALTIME</div>
         <div className="ue-hud ue-hud-b">60 FPS / INTERACTIVE VIEWPORT</div>
         <div className="ue-coordinate">WORLDWIDE DELIVERY<br />USA / UK / CANADA / SWEDEN</div>
+        <div className="ue-proof-strip"><span>Live architectural loop</span><span>Realtime material + light</span><span>Optimized spatial model</span></div>
       </section>
 
 
-      <section className="ue-directors">
-        <div className="ue-directors-title"><span>Core direction / 02</span><h2>Creative control.<br /><em>Technical depth.</em></h2><p>High-end real-time work sits between architecture, storytelling and engineering. We keep those decisions connected from the first model to the final interactive build.</p></div>
-        <div className="ue-director-stage">
-          <figure className="ue-director ue-faizan"><div><img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz" /></div><figcaption><small>Founder / Creative Director</small><strong>Faizan Aziz</strong><p>Creative direction, architectural language, experience design and final visual standard.</p></figcaption></figure>
-          <figure className="ue-director ue-hanan"><div><img src="/media/team/hanan-profile-2026.webp" alt="Hanan Shahid" /></div><figcaption><small>Unreal Engine Engineer / Architect</small><strong>Hanan Shahid</strong><p>Real-time engineering, environment production, optimization and computational workflows.</p></figcaption></figure>
-          <span className="ue-link-line" aria-hidden="true">CREATIVE DIRECTION × REAL-TIME ENGINEERING</span>
-        </div>
+      <section className="ue-direction" aria-labelledby="ue-direction-title">
+        <div className="ue-direction-copy"><span>Creative direction / technical resolution</span><h2 id="ue-direction-title">Architecture remains the subject.</h2><p>Every environment begins with spatial intent, coordinated geometry and a defined presentation goal. Real-time technology supports the architecture; it does not replace it.</p><Link href="/case-studies">View architectural case studies <Arrow /></Link></div>
+        <div className="ue-direction-grid"><figure><img src="/media/atlas/atlas-34.webp" alt="Real-time architectural environment study" /><figcaption>01 / Spatial atmosphere</figcaption></figure><figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Computational pavilion real-time visualization" /><figcaption>02 / Geometry and light</figcaption></figure></div>
       </section>
 
       <section className="ue-capabilities" id="capabilities">
