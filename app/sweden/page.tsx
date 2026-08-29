@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketServicePage } from "../market-service-page";
+import "../market-premium.css";
 
 export const metadata: Metadata = {
   title: "Architecture, BIM, Revit & 3D Visualization Sweden | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function SwedenPage() {
-  return <MarketServicePage
+  return <div className="market-premium sweden-art"><MarketServicePage
     slug="sweden"
     country="Sweden"
     kicker="Sweden / remote project delivery"
@@ -30,5 +31,5 @@ export default function SwedenPage() {
       { q: "Does Artimist replace the local Swedish architect or engineer?", a: "No. Where Swedish law, approvals or project contracts require locally responsible professionals, Artimist works as a design or production partner within the agreed scope rather than replacing those roles." },
     ]}
     localNote="Swedish planning, building-permit, technical-compliance and professional responsibilities are controlled locally. The project team should confirm the applicable municipal and statutory requirements; Artimist provides remote design and production support within that framework."
-  />;
+  /></div>;
 }
