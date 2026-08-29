@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'OAI-SearchBot', ...OPEN },
       { userAgent: 'ChatGPT-User', ...OPEN },
       { userAgent: 'PerplexityBot', ...OPEN },
+      { userAgent: 'Applebot', ...OPEN },
     ],
     sitemap: `${BASE}/sitemap.xml`,
     host: BASE,
