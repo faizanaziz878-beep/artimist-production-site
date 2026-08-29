@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PartnersHub } from "./shared";
+import "./partners-premium.css";
 
 export const metadata: Metadata = {
   title: "Creative & Technology Partners | Artimist Productions",
