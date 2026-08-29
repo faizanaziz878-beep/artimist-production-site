@@ -121,13 +121,21 @@
     }, 1800);
   }
 
+  function isActuallyOpen(node) {
+    if (!node || node.hidden || node.getAttribute('aria-hidden') === 'true') return false;
+    var style = window.getComputedStyle(node);
+    if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') === 0) return false;
+    var rect = node.getBoundingClientRect();
+    return rect.width > 1 && rect.height > 1 && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth;
+  }
+
   function updateDockSafety() {
-    // Persistent conversion controls should remain visible over normal page
-    // content, including forms, contact sections and footers. Suppress them
-    // only when a real overlay/index/dialog is open.
-    var overlayOpen = !!document.querySelector(
-      '.site-index-panel.is-open,.ap-index.is-open,#indexPanel:not([hidden]),[role="dialog"][open],dialog[open]'
-    );
+    // Keep the two conversion controls visible on normal page content.
+    // Suppress only for an overlay that is explicitly open and actually visible.
+    var overlays = Array.prototype.slice.call(document.querySelectorAll(
+      '.site-index-panel.is-open,.ap-index.is-open,#indexPanel.is-open,[role="dialog"][open],dialog[open]'
+    ));
+    var overlayOpen = overlays.some(isActuallyOpen);
     document.body.classList.toggle('artimist-dock-suppressed', overlayOpen);
   }
 
@@ -151,7 +159,7 @@
         });
       });
       schedule();
-    }).observe(document.body, { childList: true, subtree: true });
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class','hidden','aria-hidden','open'] });
     addEventListener('click', schedule, true);
     addEventListener('keydown', schedule, true);
   }
