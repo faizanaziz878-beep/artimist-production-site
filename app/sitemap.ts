@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next'
 
 const BASE = 'https://www.artimistproductions.com'
+const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-29T00:00:00.000Z')
 
 type Frequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
 function entry(path: string, changeFrequency: Frequency): MetadataRoute.Sitemap[number] {
-  return { url: `${BASE}${path}`, changeFrequency }
+  return { url: `${BASE}${path}`, lastModified: LAST_MAJOR_SITE_UPDATE, changeFrequency }
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
