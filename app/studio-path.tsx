@@ -191,7 +191,7 @@ export function ProcessExperience() {
       <section className="sp-hero sp-process-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-14.webp" alt="" /><img className="sp-day-image" src="/media/residential/residential-12.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>02 / A visible project route</SectionCode><h1>Listen. Frame.<br /><em>Build. Deliver.</em></h1><p>Five visible stages from the first conversation to coordinated delivery—with decisions, responsibilities and review points made clear.</p><a className="sp-hero-jump" href="#phase-01">Enter the process <Arrow /></a></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>02 / A visible project route</SectionCode><h1>Listen. Frame.<br /><em>Build. Deliver.</em></h1><p>Five visible stages from first conversation to coordinated delivery.</p><a className="sp-hero-jump" href="#phase-01">Enter the process <Arrow /></a></div>
         <PathRail current="process" />
       </section>
 
@@ -204,7 +204,7 @@ export function ProcessExperience() {
               {phase.video ? <video src={phase.media} autoPlay muted loop playsInline controls preload="metadata" aria-label={`${phase.title} process film`} /> : <img src={phase.media} alt={`${phase.title} — Artimist process`} loading={index === 0 ? "eager" : "lazy"} />}
               <span>{phase.code} / 05</span>
             </figure>
-            <div><SectionCode>Phase {phase.code}</SectionCode><h2>{phase.title}</h2><h3>{phase.statement}</h3><p>{phase.copy}</p><ol>{phase.outputs.map((output, outputIndex) => <li key={output}><span>{String(outputIndex + 1).padStart(2, "0")}</span>{output}</li>)}</ol></div>
+            <div><SectionCode>Phase {phase.code}</SectionCode><h2>{phase.title}</h2><h3>{phase.statement}</h3><ol>{phase.outputs.map((output, outputIndex) => <li key={output}><span>{String(outputIndex + 1).padStart(2, "0")}</span>{output}</li>)}</ol></div>
           </article>
         ))}
       </section>
@@ -304,7 +304,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-hero sp-contact-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-34.webp" alt="" /><img className="sp-day-image" src="/media/atlas/atlas-27.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / New project brief</SectionCode><h1>Bring the brief.<br /><em>We’ll find the route.</em></h1><p>Share the drawings, model, references, location and goal. The studio will review what exists and define the next useful step.</p><a className="sp-hero-jump" href="#project-intake">Open the project form <Arrow /></a></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / New project brief</SectionCode><h1>Bring the brief.<br /><em>We’ll find the route.</em></h1><p>Share what you have. We’ll define the next useful step.</p><a className="sp-hero-jump" href="#project-intake">Open the project form <Arrow /></a></div>
         <PathRail current="contact" />
       </section>
 
@@ -312,7 +312,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
         <div className="sp-contact-intro" data-sp-reveal>
           <SectionCode>Project intake</SectionCode>
           <h2>Give us enough<br /><em>to think with.</em></h2>
-          <p>Tell us what you need, where the project is, what stage it is at and what you already have. Source files can be shared with a secure Drive, Dropbox, OneDrive or WeTransfer link.</p>
+          <p>Tell us what you need and share the plans, model or references you already have.</p>
           <ul className="sp-intake-notes">
             <li><UiIcon name="check" size={15} /> Real studio review</li>
             <li><UiIcon name="check" size={15} /> No invented minimum project size</li>
