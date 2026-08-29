@@ -1,0 +1,63 @@
+/* Final cross-site QA safeguards. Keep these narrow and source-stable. */
+
+/* Sticky chapter controls must clear the canonical fixed header. */
+.sv-final .sv-story-nav,
+.lp2.lp2-final-visualization .final-viz-nav {
+  top: calc(var(--artimist-header-h, 72px) + 8px) !important;
+}
+
+.sv-final .sv-gallery,
+.sv-final .sv-body,
+.sv-final .sv-items-wrap,
+.lp2.lp2-final-visualization .lp2-intro,
+.lp2.lp2-final-visualization .lp2-deliverables,
+.lp2.lp2-final-visualization .lp2-process,
+.lp2.lp2-final-visualization .lp2-proof,
+.lp2.lp2-final-visualization .lp2-cta {
+  scroll-margin-top: calc(var(--artimist-header-h, 72px) + 58px);
+}
+
+/* The old visualization alias is canonicalized at routing level. Do not show a
+   same-page legacy capability link on the canonical visualization page. */
+.lp2.lp2-final-visualization .lp2-related a[href="/architectural-visualization-services"] {
+  display: none !important;
+}
+
+/* One predictable mobile dock: WhatsApp left, Ask the Studio right. These rules
+   also cover legacy selector names retained by older page templates. */
+@media (max-width: 760px) {
+  .artimist-whatsapp,
+  .whatsapp-fab,
+  [data-whatsapp-fab] {
+    left: 12px !important;
+    right: auto !important;
+    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 2px) !important;
+  }
+
+  .askbot-launch,
+  .ask-studio,
+  .ask-the-studio,
+  [data-ask-studio],
+  .st-ask-btn {
+    right: 12px !important;
+    left: auto !important;
+    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 2px) !important;
+  }
+
+  .sv-final .sv-story-nav,
+  .lp2.lp2-final-visualization .final-viz-nav {
+    top: calc(var(--artimist-header-h, 66px) + 6px) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .artimist-whatsapp,
+  .whatsapp-fab,
+  [data-whatsapp-fab] { left: 10px !important; }
+
+  .askbot-launch,
+  .ask-studio,
+  .ask-the-studio,
+  [data-ask-studio],
+  .st-ask-btn { right: 10px !important; }
+}
