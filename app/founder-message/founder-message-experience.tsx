@@ -60,8 +60,8 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
         <img className="ed-founder-collage" src="/media/generated/founder-architectural-collage-v1.svg" alt="" aria-hidden="true" fetchPriority="high" />
         <div className="ed-founder-hero-copy">
           <div className="ed-section-code"><span>00</span><p>Founder&apos;s message</p></div>
-          <h1>A note<br />from the <em>founder.</em></h1>
-          <p>“The strongest work keeps one clear idea alive—from the first sketch to the final experience.”</p>
+          <h1>A clear idea.<br /><em>Carried through.</em></h1>
+          <p>A founder’s note on why architecture, visualization, technology and delivery should protect the same central idea.</p>
         </div>
         <figure className="ed-founder-portrait">
           <img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz, founder and creative director of Artimist Productions" fetchPriority="high" />
