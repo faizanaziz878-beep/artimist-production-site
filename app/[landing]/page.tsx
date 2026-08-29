@@ -1,6 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { LandingPageV2, landingMetadataV2 } from "../landing-v2";
 import { LANDING_PAGES, getLandingPage } from "../../lib/landing-content";
+import "./premium-pages.css";
 
 export const dynamicParams = false;
 
@@ -15,13 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ landing: 
 
 export default async function Page({ params }: { params: Promise<{ landing: string }> }) {
   const { landing } = await params;
-
-  // /visualization is the established hub and already owns this exact search
-  // intent. Keep old links working while consolidating authority on one URL.
-  if (landing === "architectural-visualization-services") {
-    permanentRedirect("/visualization");
-  }
-
+  if (landing === "architectural-visualization-services") permanentRedirect("/visualization");
   if (!getLandingPage(landing)) notFound();
-  return <LandingPageV2 slug={landing} />;
+  return <div className={`landing-art landing-${landing}`}><LandingPageV2 slug={landing} /></div>;
 }
