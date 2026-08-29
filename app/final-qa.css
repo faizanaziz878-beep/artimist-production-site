@@ -199,3 +199,20 @@
     background-position: 58% center !important;
   }
 }
+
+
+/* Founder page — remove editorial dead zones while preserving the letter */
+@media (min-width: 901px) {
+  .founderx-letter,
+  .founderx-values,
+  .founderx-contact {
+    padding-top: clamp(76px, 7vw, 112px) !important;
+    padding-bottom: clamp(76px, 7vw, 112px) !important;
+  }
+}
+
+.founderx-contact {
+  background:
+    linear-gradient(90deg, rgba(8,7,9,.96), rgba(8,7,9,.62)),
+    url('/media/generated-architecture/artimist-architecture-145.webp') center / cover no-repeat !important;
+}
