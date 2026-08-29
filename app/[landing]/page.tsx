@@ -2,6 +2,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { LandingPageV2, landingMetadataV2 } from "../landing-v2";
 import { LANDING_PAGES, getLandingPage } from "../../lib/landing-content";
 import "./premium-pages.css";
+import "./visualization-premium.css";
 
 export const dynamicParams = false;
 
