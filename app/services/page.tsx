@@ -69,10 +69,10 @@ const directoryCss = `
 .service-directory__head h2{margin:12px 0 0;font-family:"Bodoni 72",Didot,"Iowan Old Style",Baskerville,"Times New Roman",serif;font-size:clamp(42px,5vw,76px);line-height:.94;font-weight:400;letter-spacing:-.035em}
 .service-directory__head p{max-width:660px;margin:0;color:rgba(238,234,227,.62);font-size:15px;line-height:1.75}
 .service-directory__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;max-width:1280px;margin:0 auto;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
-.service-directory__group{padding:clamp(24px,3vw,38px);background:#0c0c0d;min-width:0}
-.service-directory__group>span{display:block;margin-bottom:22px;color:rgba(238,234,227,.43);font:650 8px/1.4 "Artimist Mono",monospace;letter-spacing:.13em;text-transform:uppercase}
-.service-directory__group nav{display:grid}
-.service-directory__group a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#eeeae3;text-decoration:none;font-size:14px;line-height:1.35}
+.service-directory__group{padding:0;background:#0c0c0d;min-width:0}.service-directory__group-header{display:flex;justify-content:space-between;gap:20px;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
+.service-directory__group-header span{display:block;margin:0;color:rgba(238,234,227,.43);font:650 8px/1.4 "Artimist Mono",monospace;letter-spacing:.13em;text-transform:uppercase}
+.service-directory__group nav{display:grid;padding:12px 24px 28px}
+.service-directory__group-header small{color:#b94860;font:650 8px/1.4 "Artimist Mono",monospace;letter-spacing:.12em}.service-directory__group a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#eeeae3;text-decoration:none;font-size:14px;line-height:1.35}
 .service-directory__group a::after{content:"";flex:0 0 auto;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);opacity:.45;transition:transform .2s ease,opacity .2s ease}
 .service-directory__group a:hover::after{transform:translateX(2px) rotate(45deg);opacity:1}
 .service-directory__evidence{display:flex;flex-wrap:wrap;gap:10px 24px;max-width:1280px;margin:28px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
@@ -95,8 +95,8 @@ export default async function ServicesPage() {
         <p>Start with the outcome you actually need. Each focused page explains scope, inputs, deliverables and the way that service connects back into the wider studio.</p>
       </div>
       <div className="service-directory__grid">
-        {SERVICE_GROUPS.map((group) => <article className="service-directory__group" key={group.label}>
-          <span>{group.label}</span>
+        {SERVICE_GROUPS.map((group, index) => <article className="service-directory__group" key={group.label}>
+          <div className="service-directory__group-header"><span>{group.label}</span><small>0{index + 1}</small></div>
           <nav aria-label={group.label}>
             {group.links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
           </nav>
