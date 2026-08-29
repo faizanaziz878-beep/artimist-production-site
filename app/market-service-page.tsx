@@ -22,7 +22,7 @@ const services = [
   { href: "/bim-drafting", title: "BIM, Revit & drafting", image: "/media/projects/permit-sets.webp", alt: "BIM and architectural drawing production by Artimist Productions" },
   { href: "/architectural-visualization-services", title: "Architectural visualization", image: "/media/projects/bowl-stroke.webp", alt: "Architectural visualization by Artimist Productions" },
   { href: "/permit-drawing-services", title: "Permit drawing support", image: "/img/permit04.webp", alt: "Permit documentation drawing sheet by Artimist Productions" },
-  { href: "/unreal-engine", title: "Unreal Engine", image: "/media/editorial/unreal-architectural-film.webp", alt: "Real-time architectural visualization by Artimist Productions" },
+  { href: "/unreal-engine", title: "Unreal Engine", image: "/media/residential/residential-13.webp", alt: "Real-time architectural visualization by Artimist Productions" },
 ];
 
 const guides = [
