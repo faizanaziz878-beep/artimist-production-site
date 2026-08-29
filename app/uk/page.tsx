@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketServicePage } from "../market-service-page";
+import "../market-premium.css";
 
 export const metadata: Metadata = {
   title: "Architecture, BIM, Revit & CGI Services UK | Artimist",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function UKPage() {
-  return <MarketServicePage
+  return <div className="market-premium uk-art"><MarketServicePage
     slug="uk"
     country="United Kingdom"
     kicker="United Kingdom / remote project delivery"
@@ -30,5 +31,5 @@ export default function UKPage() {
       { q: "Do you create architectural CGI and animation for UK projects?", a: "Yes. Photoreal exterior and interior CGI, animation, walkthroughs and real-time visualization can be developed from CAD, Revit, SketchUp or other suitable project information." },
     ]}
     localNote="UK planning, Building Regulations, statutory approvals and professional responsibilities depend on project type and location. Artimist provides design and production support within an agreed scope and does not replace any locally appointed professional role required by law or contract."
-  />;
+  /></div>;
 }
