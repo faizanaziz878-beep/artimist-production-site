@@ -6,6 +6,7 @@ import "./team/team.css";
 import "./site-index.css";
 import "./quality-pass.css";
 import "./landing-v2.css";
+import "./homeowner-premium.css";
 import "./ask-bot.css";
 import "./final-qa.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
