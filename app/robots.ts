@@ -38,7 +38,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'DuckDuckBot', ...OPEN },
       { userAgent: 'CCBot', ...OPEN },
     ],
-    sitemap: `${BASE}/sitemap.xml`,
+    sitemap: [`${BASE}/sitemap.xml`, `${BASE}/image-sitemap.xml`],
     host: BASE,
   }
 }
