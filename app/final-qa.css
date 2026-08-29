@@ -491,3 +491,78 @@
     height: 54svh !important;
   }
 }
+
+
+/* Stubborn-template correction — defeat fixed viewport hero rules */
+@media (min-width: 901px) {
+  .visual-journey.visual-journey-residential .vj-hero,
+  .founderx.founderx .founderx-hero {
+    height: clamp(620px, 74svh, 720px) !important;
+    min-height: clamp(620px, 74svh, 720px) !important;
+    max-height: 720px !important;
+  }
+
+  .hsp.hsp .hsp-hero {
+    min-height: 700px !important;
+    padding-top: 24px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .hsp.hsp .hsp-hero h1 {
+    font-size: clamp(58px, 7vw, 92px) !important;
+    line-height: .92 !important;
+  }
+
+  .hsp.hsp .hsp-hero .hsp-intro {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-height: 5.1em !important;
+  }
+
+  .hsp.hsp .hsp-hero .hsp-audience {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .visual-journey.visual-journey-residential .vj-scene {
+    min-height: 58svh !important;
+  }
+
+  .visual-journey.visual-journey-residential .vj-chapter {
+    padding-top: 40px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-journey.visual-journey-residential .vj-hero,
+  .founderx.founderx .founderx-hero {
+    height: clamp(520px, 72svh, 660px) !important;
+    min-height: clamp(520px, 72svh, 660px) !important;
+  }
+
+  .hsp.hsp .hsp-hero {
+    min-height: 600px !important;
+    padding-top: 18px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .hsp.hsp .hsp-hero h1 {
+    font-size: clamp(46px, 13vw, 68px) !important;
+    line-height: .94 !important;
+  }
+
+  .hsp.hsp .hsp-hero .hsp-intro {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .visual-journey.visual-journey-residential .vj-scene {
+    min-height: 54svh !important;
+  }
+}
