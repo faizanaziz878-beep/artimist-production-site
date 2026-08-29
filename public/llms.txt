@@ -3,7 +3,7 @@
 > Artimist Productions is an international multidisciplinary architecture, BIM, visualization, interior design, real-time and creative production studio. The studio helps homeowners, architects, developers, builders and brands turn early ideas, sketches and existing drawings into clear designs, coordinated documentation, believable imagery and interactive experiences.
 
 Canonical website: https://www.artimistproductions.com/
-Last updated: 2026-08-28
+Last updated: 2026-08-29
 
 ## Start here
 
@@ -33,7 +33,6 @@ Last updated: 2026-08-28
 - [Permit drawing support](https://www.artimistproductions.com/permit-drawing-services)
 - [Construction documentation](https://www.artimistproductions.com/construction-documentation-services)
 - [Architectural visualization and motion](https://www.artimistproductions.com/visualization)
-- [Architectural visualization services](https://www.artimistproductions.com/architectural-visualization-services)
 - [Unreal Engine and interactive architecture](https://www.artimistproductions.com/unreal-engine)
 - [Residential portfolio](https://www.artimistproductions.com/residential)
 - [Studio process](https://www.artimistproductions.com/process)
