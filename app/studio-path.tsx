@@ -156,7 +156,7 @@ export function ServicesExperience({ settings }: { settings: SiteSettings }) {
       <section className="sp-hero sp-services-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-35.webp" alt="" /><img className="sp-day-image" src="/media/atlas/atlas-06.webp" alt="" /></div>
         <div className="sp-grid" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="sp-hero-copy" data-sp-reveal><SectionCode>01 / What we make</SectionCode><h1>Services</h1><p>One studio can shape the space, the image, the identity and the digital layer—without losing the idea between disciplines.</p></div>
+        <div className="sp-hero-copy" data-sp-reveal><SectionCode>01 / Six connected fields</SectionCode><h1>Six fields.<br /><em>One studio.</em></h1><p>Architecture, BIM, interiors, visualization, motion and digital production connected by one creative direction.</p><a className="sp-hero-jump" href={`#service-${services[0]?.code || "01"}`}>Explore the service worlds <Arrow /></a></div>
         <PathRail current="services" />
       </section>
 
