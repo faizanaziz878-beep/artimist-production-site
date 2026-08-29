@@ -7,29 +7,20 @@ import { getStudioOffices } from "../../lib/content";
 import { UiIcon } from "../ui-icon";
 
 function Arrow({ down = false }: { down?: boolean }) {
-  return <UiIcon className={down ? "ed-arrow-down" : "ui-icon"} name={down ? "chevron" : "arrow"} size={16} />;
+  return <UiIcon className={down ? "founderx-arrow-down" : "ui-icon"} name={down ? "chevron" : "arrow"} size={16} />;
 }
 
-function FounderTrace() {
-  return (
-    <svg className="ed-founder-trace" viewBox="0 0 680 820" fill="none" aria-hidden="true">
-      <g className="ed-founder-trace-main">
-        <path d="M68 692H608M108 692V186H565V692M108 248H565M108 517H565" />
-        <path d="M196 186V692M337 186V692M478 186V692" />
-        <path d="M108 186L337 84L565 186M196 248L337 132L478 248" />
-        <circle cx="337" cy="248" r="92" />
-      </g>
-      <g className="ed-founder-trace-dimensions">
-        <path d="M108 750H565M108 741V759M565 741V759M319 735V769M354 750H319" />
-        <path d="M52 186V692M43 186H61M43 692H61" />
-      </g>
-      <g className="ed-founder-trace-text">
-        <text x="306" y="791">24.60 M / AXIS</text>
-        <text x="23" y="483" transform="rotate(-90 23 483)">FOUNDER / SECTION 01</text>
-      </g>
-    </svg>
-  );
-}
+const values = [
+  ["01", "Question the obvious", "Research deeply enough to find the better direction."],
+  ["02", "Carry the idea through", "Concept means little if drawings, images and delivery lose the logic."],
+  ["03", "Make it human", "The work should be clear, memorable and useful to the people it serves."],
+] as const;
+
+const pageCss = `
+.founderx{--bg:#08090b;--text:#f0ebe5;--muted:rgba(240,235,229,.62);--line:rgba(255,255,255,.14);--paper:#e8e3dc;--ink:#111214;--wine:#a22f48;min-height:100vh;background:var(--bg);color:var(--text);font-family:"Artimist Geist","Helvetica Neue",Arial,sans-serif;overflow:hidden}.founderx *{box-sizing:border-box}.founderx a{color:inherit}.founderx h1,.founderx h2,.founderx h3,.founderx blockquote{font-family:"Bodoni 72",Didot,"Iowan Old Style",Baskerville,Georgia,serif;font-weight:400;text-wrap:balance}.founderx-shell{width:min(1540px,calc(100% - clamp(40px,7vw,112px)));margin:auto}.founderx-kicker{font:650 9px/1.3 "Artimist Mono",monospace;letter-spacing:.17em;text-transform:uppercase;color:#dc6279}.founderx-progress{position:fixed;z-index:500;left:0;top:0;width:calc(var(--ed-progress,0) * 100%);height:2px;background:#a22f48}.founderx-hero{position:relative;min-height:100svh;display:grid;grid-template-columns:.92fr 1.08fr;isolation:isolate;background:#09090a}.founderx-hero-copy{display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(120px,10vw,170px) clamp(36px,6vw,100px) 78px}.founderx-hero h1{margin:28px 0 28px;font-size:clamp(70px,8.8vw,142px);line-height:.81;letter-spacing:-.06em}.founderx-hero h1 em{color:#e5b3bd;font-weight:400}.founderx-hero-copy>p{max-width:600px;margin:0;color:rgba(255,255,255,.72);font-size:16px;line-height:1.72}.founderx-hero-copy>a{display:inline-flex;align-items:center;gap:10px;width:max-content;margin-top:36px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.45);text-decoration:none;font:650 9px/1.2 "Artimist Mono",monospace;letter-spacing:.12em;text-transform:uppercase}.founderx-portrait{position:relative;margin:0;overflow:hidden;background:#111}.founderx-portrait img{width:100%;height:100%;min-height:100svh;object-fit:cover;object-position:center 18%;display:block;filter:saturate(.88) contrast(1.02)}.founderx-portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,6,7,.72),transparent 42%)}.founderx-portrait figcaption{position:absolute;z-index:2;left:28px;right:28px;bottom:28px;display:flex;justify-content:space-between;gap:22px;align-items:end}.founderx-portrait figcaption span{font-family:"Bodoni 72",Didot,serif;font-size:clamp(24px,2.4vw,38px)}.founderx-portrait figcaption strong{font:600 8px/1.5 "Artimist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58);text-align:right}.founderx-letter{background:var(--paper);color:var(--ink);padding:clamp(110px,11vw,180px) 0}.founderx-letter-grid{display:grid;grid-template-columns:.42fr 1.58fr;gap:clamp(60px,9vw,150px)}.founderx-letter-aside{position:sticky;top:112px;height:max-content}.founderx-letter-aside figure{margin:30px 0 0;display:flex;align-items:center;gap:16px}.founderx-letter-aside img{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:center 22%}.founderx-letter-aside strong{display:block;font-family:"Bodoni 72",Didot,serif;font-size:22px;font-weight:400}.founderx-letter-aside small{display:block;margin-top:5px;color:rgba(17,18,20,.5);font:600 8px/1.4 "Artimist Mono",monospace;letter-spacing:.1em;text-transform:uppercase}.founderx-letter article{max-width:900px}.founderx-opening{margin:0 0 46px!important;font-family:"Bodoni 72",Didot,serif;font-size:clamp(36px,4.2vw,66px)!important;line-height:1.02!important;letter-spacing:-.03em}.founderx-letter article>p{max-width:760px;margin:0 0 26px;color:rgba(17,18,20,.68);font-size:16px;line-height:1.8}.founderx-letter blockquote{margin:70px 0;padding:48px 0;border-top:1px solid rgba(0,0,0,.22);border-bottom:1px solid rgba(0,0,0,.22);font-size:clamp(40px,5.2vw,82px);line-height:.98;letter-spacing:-.04em;color:#8f293e}.founderx-signoff{margin-top:58px;padding-top:26px;border-top:1px solid rgba(0,0,0,.2)}.founderx-signoff span{display:block;color:rgba(17,18,20,.48);font:600 8px/1.4 "Artimist Mono",monospace;letter-spacing:.12em;text-transform:uppercase}.founderx-signoff strong{display:block;margin-top:14px;font-family:"Bodoni 72",Didot,serif;font-size:42px;font-weight:400}.founderx-signoff small{display:block;margin-top:8px;color:rgba(17,18,20,.55);font-size:12px;line-height:1.5}.founderx-values{padding:clamp(110px,11vw,180px) 0}.founderx-section-head{display:grid;grid-template-columns:.3fr .7fr;gap:50px;align-items:start}.founderx-section-head h2{margin:0;font-size:clamp(58px,7vw,112px);line-height:.84;letter-spacing:-.055em}.founderx-section-head h2 em{color:#e4b2bc;font-weight:400}.founderx-value-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:80px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.founderx-value-grid article{min-height:380px;padding:30px;display:flex;flex-direction:column;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.founderx-value-grid article>span{font:600 8px/1 "Artimist Mono",monospace;color:#d95d74}.founderx-value-grid h3{margin:auto 0 16px;font-size:clamp(30px,3vw,47px);line-height:.98}.founderx-value-grid p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}.founderx-band{display:grid;grid-template-columns:1.2fr .8fr;min-height:720px;background:#0d0e10}.founderx-band-media{position:relative;overflow:hidden}.founderx-band-media img{width:100%;height:100%;display:block;object-fit:cover}.founderx-band-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(60px,8vw,120px)}.founderx-band-copy h2{margin:34px 0 20px;font-size:clamp(48px,6vw,94px);line-height:.87;letter-spacing:-.05em}.founderx-band-copy p{max-width:560px;margin:0;color:var(--muted);font-size:14px;line-height:1.75}.founderx-band-copy a{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;margin-top:36px;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;font-family:"Bodoni 72",Didot,serif;font-size:clamp(22px,2vw,31px)}.founderx-contact{padding:clamp(110px,11vw,180px) 0;background:radial-gradient(circle at 84% 18%,rgba(164,47,73,.22),transparent 34%),#0c0b0d}.founderx-contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(60px,9vw,150px)}.founderx-contact h2{margin:36px 0 0;font-size:clamp(58px,7.4vw,118px);line-height:.84;letter-spacing:-.055em}.founderx-contact h2 em{color:#e5b1bb;font-weight:400}.founderx-contact-links{align-self:end;border-top:1px solid var(--line)}.founderx-contact-links a{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none}.founderx-contact-links span{display:block;color:rgba(255,255,255,.45);font:600 8px/1.4 "Artimist Mono",monospace;letter-spacing:.11em;text-transform:uppercase}.founderx-contact-links strong{display:block;margin-top:6px;font-family:"Bodoni 72",Didot,serif;font-size:clamp(21px,2vw,30px);font-weight:400}.founderx-reveal{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}.founderx-reveal.is-seen{opacity:1;transform:none}@media(max-width:980px){.founderx-hero,.founderx-letter-grid,.founderx-section-head,.founderx-band,.founderx-contact-grid{grid-template-columns:1fr}.founderx-portrait{grid-row:1}.founderx-portrait img{min-height:82vw;height:82vw}.founderx-hero-copy{padding-top:80px}.founderx-letter-aside{position:static}.founderx-value-grid{grid-template-columns:1fr 1fr}.founderx-band-media{min-height:64vw}}
+@media(max-width:620px){.founderx-shell{width:calc(100% - 28px)}.founderx-portrait img{height:118vw;min-height:118vw}.founderx-portrait figcaption{left:16px;right:16px;bottom:16px}.founderx-hero-copy{padding:70px 20px 88px}.founderx-hero h1{font-size:clamp(58px,17vw,86px)}.founderx-letter,.founderx-values,.founderx-contact{padding-top:88px;padding-bottom:98px}.founderx-letter-grid{gap:50px}.founderx-opening{font-size:40px!important}.founderx-letter blockquote{font-size:46px;margin:52px 0;padding:38px 0}.founderx-section-head h2,.founderx-contact h2{font-size:clamp(52px,15vw,76px)}.founderx-value-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-left:0;scrollbar-width:none}.founderx-value-grid::-webkit-scrollbar{display:none}.founderx-value-grid article{flex:0 0 82vw;scroll-snap-align:center;border-left:1px solid var(--line)}.founderx-band-media{min-height:110vw}.founderx-band-copy{padding:72px 20px}.founderx-contact-links{margin-top:34px}.founderx-contact-links strong{font-size:22px;overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.founderx-reveal{opacity:1;transform:none;transition:none}}
+`;
 
 export function FounderMessageExperience({ settings }: { settings: SiteSettings }) {
   const locations = getStudioOffices(settings);
@@ -41,76 +32,33 @@ export function FounderMessageExperience({ settings }: { settings: SiteSettings 
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-seen")),
-      { threshold: 0.12 },
-    );
-    document.querySelectorAll("[data-ed-reveal]").forEach((node) => observer.observe(node));
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      observer.disconnect();
-    };
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-seen")), { threshold: 0.1 });
+    document.querySelectorAll(".founderx-reveal").forEach((node) => observer.observe(node));
+    return () => { window.removeEventListener("scroll", onScroll); observer.disconnect(); };
   }, []);
 
-  return (
-    <main className="editorial-site ed-founder">
-      <div className="ed-progress" aria-hidden="true" />
+  const network = locations.length ? locations.map((location) => location.label).join(" · ") : "Worldwide";
 
-      <section className="ed-founder-hero" id="top">
-        <img className="ed-founder-collage" src="/media/generated/founder-architectural-collage-v1.svg" alt="" aria-hidden="true" fetchPriority="high" />
-        <div className="ed-founder-hero-copy">
-          <div className="ed-section-code"><span>00</span><p>Founder&apos;s message</p></div>
-          <h1>A clear idea.<br /><em>Carried through.</em></h1>
-          <p>A founder’s note on why architecture, visualization, technology and delivery should protect the same central idea.</p>
-        </div>
-        <figure className="ed-founder-portrait">
-          <img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz, founder and creative director of Artimist Productions" fetchPriority="high" />
-          <figcaption><span>Faizan Aziz</span><strong>Founder / Architect / Creative Director</strong></figcaption>
-        </figure>
-        <FounderTrace />
-        <div className="ed-founder-meta"><span>Studio network / 04</span><span>Vancouver / Ohio / Stockholm / Lahore</span><span>Message / 01</span></div>
-        <a className="ed-founder-scroll" href="#letter">Read the message <Arrow down /></a>
-      </section>
+  return <main className="founderx" id="top">
+    <style dangerouslySetInnerHTML={{ __html: pageCss }} />
+    <div className="founderx-progress" aria-hidden="true" />
 
-      <section className="ed-founder-letter" id="letter">
-        <aside data-ed-reveal>
-          <span>01 / A connected practice</span>
-          <div><img src="/media/team/faizan-founder-hd.webp" alt="" loading="lazy" /><p><strong>Faizan Aziz</strong><small>Founder & Creative Director</small></p></div>
-        </aside>
-        <article data-ed-reveal>
-          <p className="ed-founder-opening">Artimist began with a simple frustration: creative work is too often divided into disconnected pieces.</p>
-          <p>Architecture happens in one room, visualization in another, branding arrives later, and digital experience is treated as the final layer. I wanted to build a practice where the central idea could survive every translation.</p>
-          <p>For us, design is a way of thinking before it is a style. A drawing must understand construction. An image must carry atmosphere. An identity must tell the truth about the work. Technology should deepen the human experience rather than become the spectacle.</p>
-          <blockquote>We are not building separate services. We are building one creative intelligence that can move between them.</blockquote>
-          <p>Our team is deliberately multidisciplinary. Architects, visualizers, BIM specialists, animators, graphics experts, real-time engineers and creative strategists sit around the same table. The people shown on this website are our main team—not the whole team. Artimist is strengthened by a wider network of trusted specialists, production partners and collaborators who join us according to the needs of each project.</p>
-          <p>We are young enough to question established habits and serious enough to deliver professionally. Whether we are shaping a building, an image, a brand, a film or an interactive product, we care about clarity, craft and the way the final work makes people feel.</p>
-          <p>To every client and collaborator: bring us honest ambition. We will bring curiosity, rigor and the determination to carry the idea all the way through.</p>
-          <footer><span>With intent,</span><strong>Faizan Aziz</strong><small>Founder & Creative Director<br />Artimist Productions</small></footer>
-        </article>
-      </section>
+    <section className="founderx-hero">
+      <div className="founderx-hero-copy founderx-reveal"><span className="founderx-kicker">Founder / Faizan Aziz</span><h1>A clear idea.<br/><em>Carried through.</em></h1><p>A personal note on why architecture, visualization, technology and delivery should protect the same central idea.</p><a href="#letter">Read the message <Arrow down /></a></div>
+      <figure className="founderx-portrait"><img src="/media/team/faizan-founder-hd.webp" alt="Faizan Aziz, founder and creative director of Artimist Productions" fetchPriority="high"/><figcaption><span>Faizan Aziz</span><strong>Founder / Architect<br/>Creative Director</strong></figcaption></figure>
+    </section>
 
-      <section className="ed-founder-values">
-        <div data-ed-reveal><div className="ed-section-code"><span>02</span><p>What guides the practice</p></div><h2>Curiosity.<br />Rigor.<br /><em>Feeling.</em></h2></div>
-        <div className="ed-founder-value-grid">
-          <article data-ed-reveal><span>01</span><h3>Question the obvious.</h3><p>Research deeply enough to discover a more intelligent direction.</p></article>
-          <article data-ed-reveal><span>02</span><h3>Resolve the idea.</h3><p>Carry concept into drawings, systems, coordination and production.</p></article>
-          <article data-ed-reveal><span>03</span><h3>Make it human.</h3><p>Measure success by the clarity, memory and emotion the work creates.</p></article>
-        </div>
-      </section>
+    <section className="founderx-letter" id="letter"><div className="founderx-shell founderx-letter-grid">
+      <aside className="founderx-letter-aside founderx-reveal"><span className="founderx-kicker">01 / A connected practice</span><figure><img src="/media/team/faizan-founder-hd.webp" alt="" loading="lazy"/><figcaption><strong>Faizan Aziz</strong><small>Founder & Creative Director</small></figcaption></figure></aside>
+      <article className="founderx-reveal"><p className="founderx-opening">Artimist began with a simple frustration: good creative work is too often divided into disconnected pieces.</p><p>Architecture happens in one room, visualization in another, branding arrives later, and digital experience becomes a final layer. I wanted to build a practice where the central idea could survive every translation.</p><p>For us, design is a way of thinking before it is a style. A drawing should understand construction. An image should carry atmosphere. Technology should deepen the experience rather than become the spectacle.</p><blockquote>We are not building separate services. We are building one creative intelligence that can move between them.</blockquote><p>Our main team spans architecture, visualization, BIM, animation, graphics, real-time engineering and studio operations. Around that core is a trusted specialist network that joins according to the project rather than pretending every brief needs the same structure.</p><p>We are young enough to question established habits and serious enough to deliver professionally. The ambition is simple: clarity, craft and work that makes the next decision easier.</p><p>Bring us honest ambition. We will bring curiosity, rigor and the determination to carry the idea all the way through.</p><footer className="founderx-signoff"><span>With intent,</span><strong>Faizan Aziz</strong><small>Founder & Creative Director<br/>Artimist Productions</small></footer></article>
+    </div></section>
 
-      <section className="ed-founder-team-note" data-ed-reveal>
-        <div className="ed-section-code"><span>03</span><p>The people behind the work</p></div>
-        <h2>Main team.<br /><em>Wider intelligence.</em></h2>
-        <p>The core team gives Artimist its continuity. Our extended network gives every project the exact specialist depth it needs.</p>
-        <Link href="/team">Meet the main team <Arrow /></Link>
-      </section>
+    <section className="founderx-values"><div className="founderx-shell"><header className="founderx-section-head founderx-reveal"><span className="founderx-kicker">02 / What guides the practice</span><h2>Curiosity.<br/>Rigor.<br/><em>Feeling.</em></h2></header><div className="founderx-value-grid">{values.map(([number,title,copy])=><article className="founderx-reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>
 
-      <section className="ed-founder-contact">
-        <div data-ed-reveal><span>Begin a conversation / 04</span><h2>Let&apos;s shape<br /><em>what comes next.</em></h2></div>
-        <div data-ed-reveal><div className="ed-founder-office-list"><span>Working locations</span>{locations.map((location) => <p key={location.code}><small>{location.code} / {location.region}</small><strong>{location.label}</strong></p>)}</div><a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}<Arrow /></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">WhatsApp {settings.whatsapp}<Arrow /></a><Link href="/contact">Start a project <Arrow /></Link></div>
-      </section>
+    <section className="founderx-band"><div className="founderx-band-media"><img src="/media/projects/music-campus.webp" alt="Harmonic Horizons cultural campus designed by Artimist Productions" loading="lazy"/></div><div className="founderx-band-copy founderx-reveal"><span className="founderx-kicker">03 / The people behind it</span><h2>Main team.<br/>Wider intelligence.</h2><p>The people shown on the website give Artimist continuity. The extended specialist network gives each project the exact additional depth it needs.</p><Link href="/team"><span>Meet the studio</span><Arrow/></Link></div></section>
 
-      <footer className="ed-footer"><div>ARTIMIST</div><span>© {new Date().getFullYear()} / {locations.map((location) => location.label).join(" · ")}</span><nav><Link href="/team">Team</Link><Link href="/about">About</Link><Link href="/">Selected work</Link><a href="#top">Back to top <UiIcon className="ed-arrow-up" name="chevron" size={14} /></a></nav></footer>
-    </main>
-  );
+    <section className="founderx-contact"><div className="founderx-shell founderx-contact-grid"><div className="founderx-reveal"><span className="founderx-kicker">04 / Begin a conversation</span><h2>Let&apos;s shape<br/><em>what comes next.</em></h2></div><div className="founderx-contact-links founderx-reveal"><Link href="/case-studies"><div><span>Project evidence</span><strong>See the work in context</strong></div><Arrow/></Link><Link href="/about"><div><span>The practice</span><strong>About Artimist</strong></div><Arrow/></Link><Link href="/contact"><div><span>New project</span><strong>Start a project</strong></div><Arrow/></Link><a href={`mailto:${settings.contactEmail}`}><div><span>Direct email</span><strong>{settings.contactEmail}</strong></div><Arrow/></a><a href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"><div><span>WhatsApp</span><strong>{settings.whatsapp}</strong></div><Arrow/></a></div></div></section>
+
+    <div style={{display:"none"}}>{network}</div>
+  </main>;
 }
