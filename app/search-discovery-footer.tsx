@@ -46,6 +46,7 @@ const groups = [
       ["Case studies", "/case-studies"],
       ["Visual archive", "/visual-archive"],
       ["Process", "/process"],
+      ["Client terms & legal", "/legal"],
       ["Start a project", "/contact"],
     ],
   },
