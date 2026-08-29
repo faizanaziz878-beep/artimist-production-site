@@ -216,3 +216,278 @@
     linear-gradient(90deg, rgba(8,7,9,.96), rgba(8,7,9,.62)),
     url('/media/generated-architecture/artimist-architecture-145.webp') center / cover no-repeat !important;
 }
+
+
+/* No-dead-space pass — visual-first pacing across every internal template */
+@media (min-width: 901px) {
+  /* Internal heroes keep impact without consuming an entire screen. */
+  .aboutx-hero,
+  .teamx-hero,
+  .studio-path .sp-hero,
+  .ue-page .ue-hero,
+  .visual-journey .vj-hero,
+  .founderx-hero,
+  .hd .hd-hero,
+  .hsp .hsp-hero,
+  .intl .intl-hero,
+  .market .market-hero,
+  .lp2 .lp2-hero,
+  .sv-root .sv-hero,
+  .csi .csi-hero,
+  .cs .cs-hero,
+  .ins .ins-hero,
+  .ap-root .ap-detail-hero {
+    min-height: clamp(620px, 74svh, 720px) !important;
+    height: auto !important;
+  }
+
+  /* Editorial pages: remove oversized top and bottom breathing room. */
+  .aboutx-intro,
+  .aboutx-principles,
+  .aboutx-services,
+  .aboutx-process,
+  .aboutx-contact,
+  .teamx-manifesto,
+  .teamx-roster,
+  .teamx-contact,
+  .founderx-letter,
+  .founderx-values,
+  .founderx-contact,
+  .sp-services-intro,
+  .sp-page-cta,
+  .sp-contact-workspace,
+  .sp-contact-direct,
+  .ue-page .ue-motion,
+  .ue-page .ue-capabilities,
+  .ue-page .ue-pipeline,
+  .ue-page .ue-market,
+  .ue-page .ue-cta {
+    padding-top: clamp(52px, 4.5vw, 70px) !important;
+    padding-bottom: clamp(52px, 4.5vw, 70px) !important;
+  }
+
+  .aboutx-founder { min-height: 590px !important; }
+  .teamx-member { min-height: 510px !important; }
+  .teamx-network { min-height: 560px !important; }
+  .founderx-band { min-height: 560px !important; }
+  .founderx-reveal { min-height: auto !important; }
+  .founderx-reveal:not(:has(img)) {
+    padding-top: clamp(44px, 4vw, 62px) !important;
+    padding-bottom: clamp(44px, 4vw, 62px) !important;
+  }
+
+  /* Service and process rows now read as a continuous visual sequence. */
+  .sp-service-chapters article,
+  .sp-phase-list article {
+    min-height: clamp(500px, 62svh, 590px) !important;
+  }
+
+  .sp-service-chapters figure,
+  .sp-phase-list figure {
+    min-height: 430px !important;
+  }
+
+  .sp-service-chapters article > div,
+  .sp-phase-list article > div {
+    padding: clamp(34px, 4vw, 60px) !important;
+  }
+
+  .sp-page-cta { min-height: auto !important; }
+
+  /* Unreal Engine: preserve cinematic images, remove blank vertical reserves. */
+  .ue-page .ue-direction,
+  .ue-page .ue-direction-grid {
+    min-height: 620px !important;
+  }
+
+  .ue-page .ue-cap-grid article {
+    min-height: 270px !important;
+  }
+
+  .ue-page .ue-showcase {
+    min-height: 680px !important;
+    height: 72svh !important;
+  }
+
+  .ue-page .ue-market,
+  .ue-page .ue-cta {
+    min-height: auto !important;
+  }
+
+  /* Residential visual journey: more imagery per scroll, no empty pauses. */
+  .visual-journey .vj-chapter {
+    padding-top: clamp(56px, 5vw, 72px) !important;
+  }
+
+  .visual-journey .vj-chapter-head {
+    min-height: auto !important;
+    padding-top: clamp(52px, 4.5vw, 70px) !important;
+    padding-bottom: clamp(36px, 3.5vw, 52px) !important;
+  }
+
+  .visual-journey .vj-scene {
+    min-height: 66svh !important;
+  }
+
+  .visual-journey .vj-end {
+    min-height: auto !important;
+    padding: clamp(56px, 5vw, 76px) !important;
+  }
+
+  /* Shared landing, market, service, case-study, archive and partner templates. */
+  .hd .hd-transform,
+  .hd .hd-proof-wrap,
+  .hsp .hsp-sec,
+  .hsp .hsp-visuals,
+  .intl .intl-section,
+  .market .market-sec,
+  .lp2 .lp2-intro,
+  .lp2 .lp2-opening-proof,
+  .lp2 .lp2-deliverables,
+  .lp2 .lp2-process,
+  .lp2 .lp2-proof,
+  .lp2 .lp2-related,
+  .lp2 .lp2-cta,
+  .sv-root .sv-story,
+  .sv-root .sv-proof-rail,
+  .sv-root .sv-body,
+  .csi .csi-grid,
+  .csi .csi-cta,
+  .cs .cs-section,
+  .proof .proof-section,
+  .vai .vai-section,
+  .article .article-sec,
+  .ap-root .section {
+    min-height: auto !important;
+    padding-top: clamp(54px, 4.5vw, 72px) !important;
+    padding-bottom: clamp(54px, 4.5vw, 72px) !important;
+  }
+
+  .hsp .ga-strip,
+  .ap-root .ap-visual-strip {
+    min-height: 560px !important;
+    height: 60svh !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .aboutx-hero,
+  .teamx-hero,
+  .studio-path .sp-hero,
+  .ue-page .ue-hero,
+  .visual-journey .vj-hero,
+  .founderx-hero,
+  .hd .hd-hero,
+  .hsp .hsp-hero,
+  .intl .intl-hero,
+  .market .market-hero,
+  .lp2 .lp2-hero,
+  .sv-root .sv-hero,
+  .csi .csi-hero,
+  .cs .cs-hero,
+  .ins .ins-hero,
+  .ap-root .ap-detail-hero {
+    min-height: clamp(520px, 72svh, 660px) !important;
+    height: auto !important;
+  }
+
+  .aboutx-intro,
+  .aboutx-principles,
+  .aboutx-services,
+  .aboutx-process,
+  .aboutx-contact,
+  .teamx-manifesto,
+  .teamx-roster,
+  .teamx-contact,
+  .founderx-letter,
+  .founderx-values,
+  .founderx-contact,
+  .sp-services-intro,
+  .sp-page-cta,
+  .sp-contact-workspace,
+  .sp-contact-direct,
+  .ue-page .ue-motion,
+  .ue-page .ue-capabilities,
+  .ue-page .ue-pipeline,
+  .ue-page .ue-market,
+  .ue-page .ue-cta,
+  .hd .hd-transform,
+  .hd .hd-proof-wrap,
+  .hsp .hsp-sec,
+  .hsp .hsp-visuals,
+  .intl .intl-section,
+  .market .market-sec,
+  .lp2 .lp2-intro,
+  .lp2 .lp2-opening-proof,
+  .lp2 .lp2-deliverables,
+  .lp2 .lp2-process,
+  .lp2 .lp2-proof,
+  .lp2 .lp2-related,
+  .lp2 .lp2-cta,
+  .sv-root .sv-story,
+  .sv-root .sv-proof-rail,
+  .sv-root .sv-body,
+  .csi .csi-grid,
+  .csi .csi-cta,
+  .cs .cs-section,
+  .proof .proof-section,
+  .vai .vai-section,
+  .article .article-sec,
+  .ap-root .section {
+    min-height: auto !important;
+    padding-top: 46px !important;
+    padding-bottom: 46px !important;
+  }
+
+  .sp-service-chapters article,
+  .sp-phase-list article,
+  .teamx-member,
+  .teamx-network,
+  .founderx-reveal,
+  .founderx-band,
+  .ue-page .ue-direction,
+  .ue-page .ue-direction-grid,
+  .ue-page .ue-market,
+  .ue-page .ue-cta {
+    min-height: auto !important;
+  }
+
+  .sp-service-chapters figure,
+  .sp-phase-list figure {
+    min-height: 50svh !important;
+  }
+
+  .sp-service-chapters article > div,
+  .sp-phase-list article > div {
+    padding: 34px 24px !important;
+  }
+
+  .ue-page .ue-showcase {
+    min-height: 560px !important;
+    height: 68svh !important;
+  }
+
+  .visual-journey .vj-chapter {
+    padding-top: 42px !important;
+  }
+
+  .visual-journey .vj-chapter-head {
+    min-height: auto !important;
+    padding: 42px 22px 30px !important;
+  }
+
+  .visual-journey .vj-scene {
+    min-height: 60svh !important;
+  }
+
+  .visual-journey .vj-end {
+    min-height: auto !important;
+    padding: 48px 22px !important;
+  }
+
+  .hsp .ga-strip,
+  .ap-root .ap-visual-strip {
+    min-height: 430px !important;
+    height: 54svh !important;
+  }
+}
