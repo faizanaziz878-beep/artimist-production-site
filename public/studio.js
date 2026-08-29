@@ -397,7 +397,7 @@ var ROWS = [
     if (!c.img) return '<div class="st-client is-word"><strong>' + esc(c.name) + '</strong></div>';
     return '<div class="st-client"><img src="' + c.img + '" alt="' + esc(c.name) + '" loading="lazy"><b>' + esc(c.name) + '</b></div>';
   }
-  marquee.innerHTML = CLIENTS.map(clientCell).join('');
+  marquee.innerHTML = CLIENTS.concat(CLIENTS).map(clientCell).join('');
 
   function indexRows(host, list, isPage) {
     var group = '';
