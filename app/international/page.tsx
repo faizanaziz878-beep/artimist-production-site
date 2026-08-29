@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Worldwide architecture, BIM, interior design, architectural visualization, animation and real-time production with focused support for the USA, UK, Canada and Sweden.",
     url: `${BASE}/international`,
     type: "website",
-    images: [{ url: "/graphics/international-architecture-bim-network.svg", alt: "Artimist Productions international architecture, BIM and visualization delivery network" }],
+    images: [{ url: "/media/projects/unesco.webp", alt: "International architectural project delivered by Artimist Productions" }],
   },
   twitter: {
     card: "summary_large_image",
