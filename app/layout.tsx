@@ -127,6 +127,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="Artimist Productions AI site guide" />
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Artimist Productions detailed AI reference" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Artimist Productions Insights" />
         <IntroScript />
         <Script src="/whatsapp-conversations.js" strategy="afterInteractive" />
         <Script src="/desktop-showcase-motion.js" strategy="afterInteractive" />
