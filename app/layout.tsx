@@ -40,6 +40,15 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
+const serviceOffers = [
+  ["Custom House Design", "/custom-house-design", "Custom house plans, floor-plan development and residential design support."],
+  ["3D Interior Design", "/3d-interior-design-service", "Interior design development and photoreal 3D visualization for residential spaces."],
+  ["BIM, Revit and Drafting", "/bim-drafting", "BIM modeling, Revit drafting, CAD production and coordinated architectural documentation."],
+  ["Architectural Visualization", "/visualization", "Photoreal architectural rendering, interior visualization and design communication."],
+  ["Architectural Animation", "/services/architectural-animation", "Cinematic architectural animation, walkthroughs and flythroughs."],
+  ["Unreal Engine and Real-Time", "/unreal-engine", "Interactive architectural environments and real-time visualization experiences."],
+] as const;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const founder = {
     "@context": "https://schema.org",
@@ -49,7 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     jobTitle: "Founder",
     url: `${SITE_URL}/founder-message`,
     worksFor: { "@id": `${SITE_URL}/#organization` },
-    knowsAbout: ["Architecture", "BIM", "Architectural Visualization", "Interior Design", "Creative Production"],
+    knowsAbout: ["Architecture", "Residential Design", "BIM", "Revit", "Architectural Visualization", "Interior Design", "Architectural Animation", "Real-Time Visualization", "Creative Production"],
   };
   const organization = {
     "@context": "https://schema.org",
@@ -59,11 +68,36 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: SITE_URL,
     logo: `${SITE_URL}/brand/mark-red.svg`,
     email: "Faizan@artimistproductions.com",
+    telephone: "+1-807-808-4181",
     founder: { "@id": `${SITE_URL}/founder-message#faizan-aziz` },
     sameAs: ["https://www.linkedin.com/company/artimist-productions"],
-    description: "International multidisciplinary design and creative production studio helping homeowners, architects, developers and brands with custom house design, interiors, plan modifications, residential drafting, BIM, architectural visualization, animation and real-time experiences.",
+    description: "International multidisciplinary architecture and creative production studio helping homeowners, architects, developers and brands with custom house design, interiors, plan modifications, residential drafting, BIM, architectural visualization, animation and real-time experiences.",
     areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"],
     knowsAbout: ["Custom house plans", "Floor plan design", "House plan modification", "Interior design", "Home renovation drawings", "Residential drafting", "BIM", "Revit", "Architectural visualization", "3D rendering", "Architectural animation", "Unreal Engine visualization"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "project enquiries",
+      email: "Faizan@artimistproductions.com",
+      telephone: "+1-807-808-4181",
+      url: `${SITE_URL}/contact`,
+      areaServed: "Worldwide",
+      availableLanguage: ["English"],
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Artimist Productions core services",
+      itemListElement: serviceOffers.map(([name, path, description]) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name,
+          description,
+          url: `${SITE_URL}${path}`,
+          provider: { "@id": `${SITE_URL}/#organization` },
+          areaServed: "Worldwide",
+        },
+      })),
+    },
   };
   const website = {
     "@context": "https://schema.org",
@@ -78,6 +112,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="Artimist Productions AI site guide" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Artimist Productions detailed AI reference" />
         <IntroScript />
         <Script src="/whatsapp-conversations.js" strategy="afterInteractive" />
         <Script src="/desktop-showcase-motion.js" strategy="afterInteractive" />
