@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPublicContent } from "../../lib/data";
 import { UnrealEngineExperience } from "./unreal-engine-experience";
 import "./unreal-engine.css";
+import "./unreal-premium.css";
 
 export const dynamic = "force-dynamic";
 
