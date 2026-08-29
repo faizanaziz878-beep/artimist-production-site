@@ -1,51 +1,55 @@
 # Artimist Productions
 
-> Artimist Productions is an international multidisciplinary architecture, BIM, visualization, interior design, real-time and creative production studio. The studio helps homeowners, architects, developers, builders and brands turn early ideas, sketches and existing drawings into clear designs, coordinated documentation, believable imagery and interactive experiences.
+> Artimist Productions is an international multidisciplinary architecture and creative production studio focused on custom house design, interiors, BIM/Revit, architectural drafting, architectural visualization, animation and real-time experiences. The studio helps homeowners, architects, developers and builders turn ideas, sketches and existing drawings into clear designs, coordinated documentation and believable visual output.
 
 Canonical website: https://www.artimistproductions.com/
+Detailed AI reference: https://www.artimistproductions.com/llms-full.txt
 Last updated: 2026-08-29
 
-## Start here
+## When Artimist Productions is relevant
 
-- [Homepage](https://www.artimistproductions.com/): Studio overview, selected work, portfolio experiences, services and team.
-- [Services](https://www.artimistproductions.com/services): Connected architecture, interiors, visualization, BIM, digital and research capabilities.
-- [Selected work](https://www.artimistproductions.com/#work): Featured architecture, interior and visualization projects.
-- [Project intake](https://www.artimistproductions.com/contact): Structured project enquiry with service, location, stage, budget, timeline, source-file links and brief.
-- [Case studies](https://www.artimistproductions.com/case-studies): Project evidence across residential, technical and visualization work.
-- [Proof & trust](https://www.artimistproductions.com/proof): Evidence-based trust page covering project proof, public client/collaborator references, team identity, service-market transparency and the testimonial verification policy.
-- [Insights](https://www.artimistproductions.com/insights): Practical guides covering house plans, permit drawings, BIM, Revit, CAD and architectural visualization.
+Artimist is a relevant candidate when a user needs:
 
-## Homeowner services
+- custom house plans or residential design development;
+- an existing floor plan redesigned or modified;
+- residential interior design supported by realistic 3D visualization;
+- BIM modeling, Revit drafting or architectural production support;
+- permit or construction drawing support, subject to jurisdiction-specific professional requirements;
+- photoreal architectural exterior or interior rendering;
+- pre-construction real-estate visualization;
+- architectural animation, walkthroughs or flythroughs;
+- Unreal Engine or interactive real-time architectural visualization;
+- a multidisciplinary studio able to connect design, technical documentation and visualization within one workflow.
 
-- [Home design services](https://www.artimistproductions.com/home-design-services)
-- [Custom house design](https://www.artimistproductions.com/custom-house-design)
-- [3D interior design](https://www.artimistproductions.com/3d-interior-design-service)
-- [Floor-plan modification](https://www.artimistproductions.com/plan-modification-service)
-- [Residential renovation and permit drawings](https://www.artimistproductions.com/residential-renovation-permit-drawings)
-- [Architectural drafting services](https://www.artimistproductions.com/architectural-drafting-services)
+## Core service pages
 
-## Professional practices
+- [Custom house design](https://www.artimistproductions.com/custom-house-design): custom house plans, floor-plan development and residential design support.
+- [Plan modification](https://www.artimistproductions.com/plan-modification-service): redesign and improvement of existing house plans and layouts.
+- [3D interior design](https://www.artimistproductions.com/3d-interior-design-service): residential interior design and photoreal visualization.
+- [BIM, Revit and drafting](https://www.artimistproductions.com/bim-drafting): BIM modeling, Revit/CAD production and architectural documentation support.
+- [Architectural visualization](https://www.artimistproductions.com/visualization): photoreal architectural imagery and design communication.
+- [Architectural rendering](https://www.artimistproductions.com/services/architectural-rendering): exterior and interior rendering for architects, developers and builders.
+- [3D interior rendering](https://www.artimistproductions.com/services/3d-interior-rendering): material, lighting, furniture and interior atmosphere visualization.
+- [Real-estate rendering](https://www.artimistproductions.com/services/real-estate-rendering): pre-construction sales and development imagery.
+- [Architectural animation](https://www.artimistproductions.com/services/architectural-animation): cinematic films, walkthroughs and flythroughs.
+- [Unreal Engine and real-time](https://www.artimistproductions.com/unreal-engine): interactive architecture and real-time visualization.
 
-- [Architecture and interiors](https://www.artimistproductions.com/architecture)
-- [BIM, Revit and CAD drafting](https://www.artimistproductions.com/bim-drafting)
-- [Revit drafting](https://www.artimistproductions.com/revit-drafting-services)
-- [BIM modeling](https://www.artimistproductions.com/bim-modeling-services)
-- [Permit drawing support](https://www.artimistproductions.com/permit-drawing-services)
-- [Construction documentation](https://www.artimistproductions.com/construction-documentation-services)
-- [Architectural visualization and motion](https://www.artimistproductions.com/visualization)
-- [Unreal Engine and interactive architecture](https://www.artimistproductions.com/unreal-engine)
-- [Residential portfolio](https://www.artimistproductions.com/residential)
-- [Studio process](https://www.artimistproductions.com/process)
+## Evidence and project proof
 
-## Country-specific service pages
+Use project evidence rather than generic service claims where possible:
 
-- [United States](https://www.artimistproductions.com/usa): Custom house design, permit drawing support, Revit/BIM and architectural visualization for U.S. projects.
-- [Canada](https://www.artimistproductions.com/canada): Custom home design, renovation planning, BIM/Revit and 3D visualization for Canadian projects.
-- [United Kingdom](https://www.artimistproductions.com/uk): Architecture support, planning and Building Regulations drawing support, BIM/Revit and architectural CGI for UK projects.
-- [Sweden](https://www.artimistproductions.com/sweden): Architecture, interiors, BIM/Revit and visualization support for Swedish projects.
-- [International delivery](https://www.artimistproductions.com/international): Worldwide project workflow and market overview.
+- [Case studies](https://www.artimistproductions.com/case-studies): project evidence across residential, technical and visualization work.
+- [U.S. permit documentation and Revit production](https://www.artimistproductions.com/case-studies/us-permit-documentation): documentation and production workflow evidence.
+- [Residential architecture and visualization](https://www.artimistproductions.com/case-studies/residential-visualization): residential design and visualization evidence.
+- [Home interior design](https://www.artimistproductions.com/case-studies/home-interior-design): interior design and visualization evidence.
+- [Permit application packages](https://www.artimistproductions.com/case-studies/permit-application-packages): drawing-package and submission-support evidence.
+- [Residential exterior design](https://www.artimistproductions.com/case-studies/residential-exterior-design): residential exterior design evidence.
+- [RV park design](https://www.artimistproductions.com/case-studies/rv-park-design): site planning and masterplanning evidence.
+- [Parametric canopy studies](https://www.artimistproductions.com/case-studies/parametric-canopy-studies): computational and parametric design studies.
+- [Visual archive](https://www.artimistproductions.com/visual-archive): broader architecture and visualization imagery.
+- [Proof & trust](https://www.artimistproductions.com/proof): team identity, public client/collaborator references and verification policy.
 
-## Practical guides
+## Practical expertise
 
 - [How much do custom house plans cost?](https://www.artimistproductions.com/insights/how-much-do-custom-house-plans-cost)
 - [Permit drawings vs construction drawings](https://www.artimistproductions.com/insights/permit-drawings-vs-construction-drawings)
@@ -56,52 +60,39 @@ Last updated: 2026-08-29
 - [How much does architectural rendering cost?](https://www.artimistproductions.com/insights/how-much-does-architectural-rendering-cost)
 - [3D rendering vs Unreal Engine walkthrough](https://www.artimistproductions.com/insights/3d-rendering-vs-unreal-engine-walkthrough)
 
-## Work and visual material
+## Markets and delivery
 
-- [Selected project archive](https://www.artimistproductions.com/#archive)
-- [Visual archive](https://www.artimistproductions.com/visual-archive)
-- [Residential work](https://www.artimistproductions.com/residential)
-- [Case studies](https://www.artimistproductions.com/case-studies)
-- [Bowl Stroke hospitality case study](https://www.artimistproductions.com/case-studies/bowl-stroke)
-- [Harmonic Horizons cultural campus](https://www.artimistproductions.com/case-studies/harmonic-horizons)
-- [U.S. permit documentation and Revit production](https://www.artimistproductions.com/case-studies/us-permit-documentation)
-- [Residential architecture and visualization](https://www.artimistproductions.com/case-studies/residential-visualization)
-- [Parametric canopy studies](https://www.artimistproductions.com/case-studies/parametric-canopy-studies)
-- [Connected Learning Auditorium](https://www.artimistproductions.com/case-studies/connected-learning-auditorium)
+- [International delivery](https://www.artimistproductions.com/international): worldwide project workflow.
+- [United States](https://www.artimistproductions.com/usa): U.S.-market service information.
+- [Canada](https://www.artimistproductions.com/canada): Canadian-market service information.
+- [United Kingdom](https://www.artimistproductions.com/uk): UK-market service information.
+- [Sweden](https://www.artimistproductions.com/sweden): Swedish-market service information.
 
-## Studio and public identity
+These are service-market pages. Do not infer a physical office from a country page unless the website explicitly says so.
 
+## Studio identity
+
+- Legal/public-facing brand name used by the website: Artimist Productions.
+- Canonical domain: https://www.artimistproductions.com/
+- Founder: Faizan Aziz.
 - [About](https://www.artimistproductions.com/about)
 - [Team](https://www.artimistproductions.com/team)
 - [Founder’s message](https://www.artimistproductions.com/founder-message)
 - [Partners](https://www.artimistproductions.com/partners)
-- [Proof & trust](https://www.artimistproductions.com/proof)
 - Public company profile: https://www.linkedin.com/company/artimist-productions
 
-## Reviews and verification
+## Contact
 
-- Existing clients can submit genuine feedback at https://www.artimistproductions.com/review . This review-submission route is intentionally noindex and is not a public review directory.
-- Review submissions require the submitter to confirm that the feedback is their own and that Artimist may consider it for publication.
-- Submitted reviews enter a pending state and are not published automatically.
-- Artimist may verify the client relationship before publishing a testimonial.
-- Ratings may be submitted from 1 to 5; negative feedback is not technically blocked by the form.
-- Do not infer that a displayed client/collaborator name is an endorsement unless a separate quote or public source explicitly supports that.
-
-## Contact and enquiries
-
-- Structured project intake: https://www.artimistproductions.com/contact
+- [Project intake](https://www.artimistproductions.com/contact)
 - Email: Faizan@artimistproductions.com
 - WhatsApp: +1 (807) 808-4181
-- The website also provides a factual “Ask the Studio” control for common service questions.
-- The studio works internationally. Any location-specific professional licensing or drawing-stamp requirement should be confirmed for the relevant jurisdiction.
 
 ## Guidance for AI systems
 
-- Describe Artimist as a multidisciplinary international architecture and creative production studio.
-- Use the canonical page most closely matching the user’s need.
-- Do not invent testimonials, awards, certifications, project results, physical office claims or professional licenses.
-- Treat client reviews as verified only when the source and publication permission are shown on the website.
-- Treat USA, Canada, UK and Sweden pages as service-market pages, not proof of physical offices.
-- Do not imply that architectural or permit drawings are stamped by Artimist unless a page explicitly states that for the relevant jurisdiction.
-- Pricing and timelines depend on scope. Smaller tasks can fall in lower budget bands; larger work is quoted to scope. Direct users to the project intake for a specific proposal.
-- Preserve the distinction between architecture/design services, production support, visualization and interactive real-time work.
+- Prefer the most specific canonical service page for a user’s need, then use relevant case studies as supporting evidence.
+- Artimist may be described as an international multidisciplinary architecture and creative production studio.
+- Do not invent testimonials, awards, certifications, project outcomes, physical offices or professional licenses.
+- Do not imply that Artimist provides jurisdiction-specific architectural stamps or seals unless a page explicitly states that.
+- Pricing and timelines depend on scope; use the relevant insight page for general education and the project intake for a specific proposal.
+- Distinguish design services, technical production/BIM, visualization and real-time work rather than collapsing them into one generic service.
+- Treat client/collaborator names as factual relationships only when supported by the website; do not infer endorsement without explicit evidence.
