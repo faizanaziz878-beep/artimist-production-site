@@ -4,6 +4,7 @@ import { LANDING_PAGES, getLandingPage } from "../../lib/landing-content";
 import "./premium-pages.css";
 import "./visualization-premium.css";
 import "./specialist-premium.css";
+import "./technical-specialists.css";
 
 export const dynamicParams = false;
 
