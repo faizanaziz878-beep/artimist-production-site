@@ -8,7 +8,7 @@ const groups = [
     title: "Home & interiors",
     links: [
       ["Custom house design", "/custom-house-design"],
-      ["Plan modification", "/plan-modification"],
+      ["Plan modification", "/plan-modification-service"],
       ["3D interior design", "/3d-interior-design-service"],
       ["Renovation & permit drawings", "/residential-renovation-permit-drawings"],
     ],
