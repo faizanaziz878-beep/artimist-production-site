@@ -67,6 +67,14 @@ const PAGES: Array<[string, string, string, string]> = [
   ["56", "Proof & Trust", "/proof", "Studio"],
   ["57", "Contact", "/contact", "Studio"],
   ["58", "Legal / Client Terms", "/legal", "Studio"],
+  ["59", "Sketch to Floor Plan", "/sketch-to-floor-plan-service", "Home design"],
+  ["60", "Floor Plan to 3D", "/floor-plan-to-3d-rendering", "Home design"],
+  ["61", "Home Addition Plans", "/home-addition-plans", "Home design"],
+  ["62", "House Exterior Design", "/house-exterior-design-service", "Home design"],
+  ["63", "Do House Plans Need a Stamp?", "/insights/do-house-plans-need-an-architect-stamp", "Insights"],
+  ["64", "Home Addition Permit Drawings", "/insights/what-drawings-are-needed-for-a-home-addition-permit", "Insights"],
+  ["65", "Turn a Sketch Into Floor Plans", "/insights/how-to-turn-a-hand-sketch-into-floor-plans", "Insights"],
+  ["66", "3D Rendering Brief Checklist", "/insights/what-to-send-for-a-3d-home-rendering", "Insights"],
 ];
 
 const PUBLIC_PAGE_COUNT = PAGES.filter(([, , href]) => !href.includes("#")).length;
@@ -187,7 +195,7 @@ export function SiteIndex() {
                 <b>{String(pages.length).padStart(2, "0")}</b>
                 <i aria-hidden="true">{expanded ? "−" : "+"}</i>
               </button>
-              <ul id={panelId} hidden={!expanded}>
+              {expanded && <ul id={panelId}>
                 {pages.map(([no, label, href]) => {
                   const base = href.split("#")[0];
                   const current = href === "/" ? pathname === "/" : !href.includes("#") && pathname === base;
@@ -197,7 +205,7 @@ export function SiteIndex() {
                     </Link>
                   </li>;
                 })}
-              </ul>
+              </ul>}
             </section>;
           })}
         </div>

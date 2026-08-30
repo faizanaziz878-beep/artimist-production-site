@@ -110,10 +110,10 @@ html[data-theme="light"] .ed-theme i { background: #a03149; box-shadow: 0 0 10px
 .ed-hero { position: relative; min-height: 100svh; overflow: hidden; color: #f4f0e9; background: #090909; isolation: isolate; }
 .ed-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(4, 4, 5, .72), rgba(5, 5, 6, .08) 61%, rgba(5, 5, 6, .24)), linear-gradient(0deg, rgba(5, 5, 6, .73), transparent 53%); }
 .ed-hero-image { position: absolute; z-index: -2; inset: -5%; background-position: center 46%; background-size: cover; transform: translateY(calc(var(--ed-scroll) * .032)) scale(1.055); transition: opacity 900ms ease; }
-.ed-hero-day { background-image: url("/media/hero-day.webp"); opacity: 0; }
+.ed-hero-day { background-image: none; opacity: 0; }
 .ed-hero-night { background-image: url("/media/atlas/atlas-35.webp"); opacity: .9; filter: saturate(.82) contrast(1.04); }
-html[data-theme="light"] .ed-hero-day { opacity: .88; filter: saturate(.66) contrast(.96) brightness(.78); }
-html[data-theme="light"] .ed-hero-night { opacity: 0; }
+html[data-theme="light"] .ed-hero-day { background-image: url("/media/hero-day.webp"); opacity: .88; filter: saturate(.66) contrast(.96) brightness(.78); }
+html[data-theme="light"] .ed-hero-night { background-image: none; opacity: 0; }
 .ed-drawing-grid { position: absolute; inset: 14px; pointer-events: none; border: 1px solid rgba(255, 255, 255, .18); }
 .ed-drawing-grid::before, .ed-drawing-grid::after, .ed-drawing-grid i { content: ""; position: absolute; background: rgba(255, 255, 255, .19); }
 .ed-drawing-grid::before { left: 11%; top: 0; bottom: 0; width: 1px; }
@@ -136,6 +136,7 @@ html[data-theme="light"] .ed-hero-night { opacity: 0; }
 .ed-hero-title p { width: max-content; margin: 22px 0 0; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .44); font-family: var(--ed-mono); font-size: clamp(10px, .9vw, 14px); text-transform: uppercase; letter-spacing: .15em; }
 .ed-hero-title .ed-hero-wordmark { display: block; margin: 0; font-family: var(--ed-serif); font-size: clamp(80px, 13.3vw, 218px); line-height: .82; font-weight: 400; letter-spacing: -.052em; white-space: nowrap; text-shadow: 0 15px 50px rgba(0, 0, 0, .24); }
 .ed-hero-title h1.ed-hero-positioning { width: max-content; max-width: min(88vw, 680px); margin: 22px 0 0; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .44); font-family: var(--ed-mono); font-size: clamp(10px, .9vw, 14px); font-weight: 400; text-transform: uppercase; letter-spacing: .15em; line-height: 1.45; white-space: normal; }
+.ed-hero-title p.ed-hero-support { width: min(88vw, 680px); margin: 12px 0 0; padding: 0; border: 0; color: rgba(255,255,255,.72); font-family: Arial,Helvetica,sans-serif; font-size: clamp(10px,.82vw,12px); line-height: 1.55; letter-spacing: .025em; text-transform: none; }
 .ed-hero-statement { position: absolute; left: 31%; right: auto; bottom: 10.5%; max-width: none; margin: 0; color: rgba(255, 255, 255, .88); font-family: var(--ed-serif); font-size: clamp(20px, 2.05vw, 34px); line-height: 1; white-space: nowrap; text-shadow: 0 4px 24px rgba(0, 0, 0, .48); animation: ed-fade 520ms ease both; }
 .ed-hero-coordinates { position: absolute; right: clamp(28px, 3vw, 54px); top: 14%; display: flex; flex-direction: column; align-items: flex-end; gap: 7px; color: rgba(255, 255, 255, .6); font-family: var(--ed-mono); font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
 .ed-hero-project-note { position: absolute; right: clamp(28px, 3vw, 54px); bottom: 10.5%; width: min(27vw, 340px); padding: 15px 0 0 18px; border-top: 1px solid rgba(255, 255, 255, .46); border-left: 1px solid rgba(255, 255, 255, .26); animation: ed-fade 520ms ease both; }
@@ -820,6 +821,7 @@ html[data-theme="light"] .ed-about-hero > img { filter: grayscale(.45) contrast(
   .ed-hero-title p { position: static; margin-top: 15px; font-size: 9px; }
   .ed-hero-title .ed-hero-wordmark { font-size: 19.6vw; line-height: .84; letter-spacing: -.055em; }
   .ed-hero-title h1.ed-hero-positioning { position: static; margin-top: 15px; font-size: 9px; max-width: 82vw; white-space: normal; }
+  .ed-hero-title p.ed-hero-support { width: 82vw; margin-top: 9px; font-size: 9px; line-height: 1.45; }
   .ed-hero-trace { right: -24%; top: 30%; width: 105vw; opacity: .45; }
   .ed-hero-statement { left: 20px; right: auto; bottom: 13%; width: 58vw; max-width: 245px; font-size: 20px; }
   .ed-hero-coordinates { left: 20px; right: auto; top: 13%; align-items: flex-start; }

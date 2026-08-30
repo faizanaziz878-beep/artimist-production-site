@@ -352,7 +352,8 @@ export function ArtimistExperience({ projects, team, testimonials, settings }: E
         <ArchitecturalTrace className="ed-hero-trace" />
         <div className="ed-hero-title" data-ed-reveal>
           <span className="ed-hero-wordmark"><span className="ed-a">A</span>RTIMIST</span>
-          <h1 className="ed-hero-positioning">Architecture, BIM &amp; Visualization Services</h1>
+          <h1 className="ed-hero-positioning">Architecture, Design, 3D Visualization &amp; Creative Production Studio</h1>
+          <p className="ed-hero-support">Artimist Productions is an international studio providing architecture, interiors, BIM and Revit, architectural rendering, animation, branding, web design and interactive experiences for homeowners, architects, developers and brands.</p>
         </div>
         <p className="ed-hero-statement" data-ed-reveal key={`statement-${theme}`}>{heroWorld.statement}</p>
         <div className="ed-hero-coordinates" aria-hidden="true">

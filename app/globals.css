@@ -680,3 +680,18 @@ select option { color: #111; background: #f5f1e9; }
 html { font-variant-emoji: text; }
 .ed-menu nav a span[aria-hidden="true"] { font-variant-emoji: text; font-size: 15px; color: rgba(255,255,255,.5); transition: color .3s, transform .3s; }
 .ed-menu nav a:hover span[aria-hidden="true"] { color: #c23349; transform: translate(3px,-3px); }
+/* Search-led audience routing on the home page. The visual language stays
+   editorial, while visitors and crawlers get a clear first decision. */
+.home-audience-router{background:#0a090a;color:#eee8e3;padding:clamp(62px,8vw,118px) clamp(22px,5vw,78px);border-top:1px solid rgba(255,255,255,.1)}
+.home-audience-router>header{display:grid;grid-template-columns:.35fr .65fr;gap:28px;align-items:end;margin-bottom:42px}
+.home-audience-router>header span,.home-audience-router small{font:700 9px/1.4 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d45e73}
+.home-audience-router h2{margin:8px 0 0;font:400 clamp(42px,6vw,82px)/.92 Georgia,serif;letter-spacing:-.045em}
+.home-audience-router>header p{max-width:58ch;margin:0;color:#aaa09a;font-size:15px;line-height:1.7}
+.home-audience-router>div{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.13)}
+.home-audience-router>div>a{position:relative;min-height:310px;padding:clamp(28px,4vw,58px);color:inherit;text-decoration:none;background:linear-gradient(145deg,rgba(255,255,255,.025),transparent);transition:background .25s ease}
+.home-audience-router>div>a+ a{border-left:1px solid rgba(255,255,255,.13)}
+.home-audience-router>div>a:hover{background:rgba(153,38,54,.13)}
+.home-audience-router strong{display:block;max-width:18ch;margin:36px 0 18px;font:400 clamp(30px,3.2vw,48px)/1 Georgia,serif}
+.home-audience-router>div p{max-width:52ch;margin:0;color:#9f9691;line-height:1.65}
+.home-audience-router svg{position:absolute;right:28px;bottom:28px}
+@media(max-width:760px){.home-audience-router>header{grid-template-columns:1fr}.home-audience-router>div{grid-template-columns:1fr}.home-audience-router>div>a{min-height:280px}.home-audience-router>div>a+ a{border-left:0;border-top:1px solid rgba(255,255,255,.13)}}

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 const BASE = 'https://www.artimistproductions.com'
-const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-29T11:40:00.000Z')
+const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-30T03:00:00.000Z')
 
 type Frequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
 
@@ -17,6 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/plan-modification-service', 'monthly'),
     entry('/3d-interior-design-service', 'monthly'),
     entry('/residential-renovation-permit-drawings', 'monthly'),
+    entry('/sketch-to-floor-plan-service', 'monthly'),
+    entry('/floor-plan-to-3d-rendering', 'monthly'),
+    entry('/home-addition-plans', 'monthly'),
+    entry('/house-exterior-design-service', 'monthly'),
 
     entry('/international', 'monthly'),
     entry('/usa', 'monthly'),
@@ -61,6 +65,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/insights/lod-200-vs-lod-300-vs-lod-400', 'monthly'),
     entry('/insights/how-much-does-architectural-rendering-cost', 'monthly'),
     entry('/insights/3d-rendering-vs-unreal-engine-walkthrough', 'monthly'),
+    entry('/insights/do-house-plans-need-an-architect-stamp', 'monthly'),
+    entry('/insights/what-drawings-are-needed-for-a-home-addition-permit', 'monthly'),
+    entry('/insights/how-to-turn-a-hand-sketch-into-floor-plans', 'monthly'),
+    entry('/insights/what-to-send-for-a-3d-home-rendering', 'monthly'),
 
     entry('/proof', 'monthly'),
     entry('/visual-archive', 'weekly'),

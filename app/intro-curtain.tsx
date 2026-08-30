@@ -10,6 +10,10 @@ import { IntroMark } from "./intro-mark";
 const decideScript = `(function(){
   var d = document.documentElement;
   var path = location.pathname || '/';
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem('artimist-editorial-theme'); } catch (e) {}
+  if (!savedTheme && window.matchMedia) savedTheme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  d.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
   var brandMoment = path === '/' || path === '/visual-archive';
   var play = brandMoment;
   try {

@@ -14,12 +14,16 @@ const FAMILY: Record<string, Family> = {
   architecture: "architecture",
   "permit-drawing-services": "architecture",
   "construction-documentation-services": "architecture",
+  "sketch-to-floor-plan-service": "architecture",
+  "home-addition-plans": "architecture",
   "bim-drafting": "bim",
   "architectural-drafting-services": "bim",
   "revit-drafting-services": "bim",
   "bim-modeling-services": "bim",
   visualization: "visualization",
   "architectural-visualization-services": "visualization",
+  "floor-plan-to-3d-rendering": "visualization",
+  "house-exterior-design-service": "visualization",
 };
 
 const HERO_IMAGE: Record<string, string> = {
@@ -32,6 +36,10 @@ const HERO_IMAGE: Record<string, string> = {
   "permit-drawing-services": "/img/permit01.webp",
   "construction-documentation-services": "/media/technical/board-19.webp",
   "architectural-visualization-services": "/media/atlas/atlas-06.webp",
+  "sketch-to-floor-plan-service": "/media/technical/board-16.webp",
+  "floor-plan-to-3d-rendering": "/img/homeint03.webp",
+  "home-addition-plans": "/img/permit04.webp",
+  "house-exterior-design-service": "/img/resext03.webp",
 };
 
 const PROOF: Record<Family, Shot[]> = {
@@ -72,6 +80,13 @@ const TRUST = [
   ["Native files stay yours", "Editable source files are handed back when they form part of the agreed scope."],
   ["Review before delivery", "The output is checked for consistency before it leaves the studio."],
   ["Local requirements stay honest", "Where local licensure or a professional seal is required, we coordinate rather than overclaim."],
+] as const;
+
+const COMMERCIAL = [
+  ["Quote after review", "Fees follow a review of the available files, required outputs and deadline. The written scope identifies what is included before production starts."],
+  ["Visible milestones", "The schedule identifies review points, client inputs and final delivery instead of leaving timing open-ended."],
+  ["Controlled revisions", "Unless the agreement states otherwise, the standard framework includes up to three reasonable revision rounds on Artimist's original work."],
+  ["Defined handover", "PDF, DWG, RVT, model, image, animation and editable-source delivery is listed explicitly in the agreed scope."],
 ] as const;
 
 export function landingMetadataV2(slug: string): Metadata {
@@ -175,7 +190,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(page)) }} />
 
     <section className="lp2-hero">
-      <img className="lp2-hero-image" src={hero} alt="" fetchPriority="high" />
+      <img className="lp2-hero-image" src={hero} alt={`${page.name} project work by Artimist Productions`} fetchPriority="high" />
       <div className="lp2-hero-shade" />
       <div className="lp2-hero-grid" aria-hidden="true"><i /><i /><i /><i /></div>
       <div className="lp2-hero-copy">
@@ -204,6 +219,10 @@ export function LandingPageV2({ slug }: { slug: string }) {
       {TRUST.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
     </section>
 
+    <section className="lp2-trust" aria-label="Commercial and delivery expectations">
+      {COMMERCIAL.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
+    </section>
+
     <section className="lp2-split">
       <div className="lp2-split-copy"><span className="lp2-kicker">Problems we solve</span><h2>Where we become useful.</h2><ul>{page.problems.map((item) => <li key={item}><UiIcon name="check" size={15}/><span>{item}</span></li>)}</ul></div>
       <div className="lp2-split-visual">
@@ -223,7 +242,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
 
     <section className="lp2-process">
       <header><span className="lp2-kicker">Working route</span><h2>How the project moves.</h2></header>
-      <div>{page.workflow.map((step,index)=><article key={step.h}><img className="lp2-step-art" src={PROOF[family][index % PROOF[family].length].src} alt="" loading="lazy" /><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>)}</div>
+      <div>{page.workflow.map((step,index)=><article key={step.h}><img className="lp2-step-art" src={PROOF[family][index % PROOF[family].length].src} alt={`${step.h} — ${page.name} workflow`} loading="lazy" /><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>)}</div>
       {page.quality && <aside><span className="lp2-kicker">Quality control</span><p>{page.quality}</p></aside>}
     </section>
 

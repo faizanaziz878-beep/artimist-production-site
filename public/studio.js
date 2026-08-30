@@ -154,6 +154,10 @@ var ROWS = [
     ['Plan Changes & Redraws', '/plan-modification-service', 'Home design'],
     ['3D Interior Design', '/3d-interior-design-service', 'Home design'],
     ['Renovation & Permit Drawings', '/residential-renovation-permit-drawings', 'Home design'],
+    ['Sketch to Floor Plan', '/sketch-to-floor-plan-service', 'Home design'],
+    ['Floor Plan to 3D', '/floor-plan-to-3d-rendering', 'Home design'],
+    ['Home Addition Plans', '/home-addition-plans', 'Home design'],
+    ['House Exterior Design', '/house-exterior-design-service', 'Home design'],
     ['Services', '/services', 'Professional studio'],
     ['Architecture', '/architecture', 'Professional studio'],
     ['BIM & Drafting', '/bim-drafting', 'Professional studio'],
@@ -183,6 +187,10 @@ var ROWS = [
     ['Insights', '/insights', 'Insights'],
     ['Custom House Plan Costs', '/insights/how-much-do-custom-house-plans-cost', 'Insights'],
     ['Permit vs Construction Drawings', '/insights/permit-drawings-vs-construction-drawings', 'Insights'],
+    ['Do House Plans Need a Stamp?', '/insights/do-house-plans-need-an-architect-stamp', 'Insights'],
+    ['Home Addition Permit Drawings', '/insights/what-drawings-are-needed-for-a-home-addition-permit', 'Insights'],
+    ['Turn a Sketch Into Floor Plans', '/insights/how-to-turn-a-hand-sketch-into-floor-plans', 'Insights'],
+    ['3D Rendering Brief Checklist', '/insights/what-to-send-for-a-3d-home-rendering', 'Insights'],
     ['How to Modify a Floor Plan', '/insights/how-to-modify-an-existing-floor-plan', 'Insights'],
     ['Revit Drafting vs CAD', '/insights/revit-drafting-vs-cad-drafting', 'Insights'],
     ['What Is Scan to BIM?', '/insights/what-is-scan-to-bim', 'Insights'],
@@ -221,7 +229,8 @@ var ROWS = [
   var scenesHost = byId('scenes');
   SCENES.forEach(function (s, i) {
     var d = el('div', 'st-hero-scene' + (i === 0 ? ' is-on' : ''));
-    d.style.backgroundImage = 'url(' + s.image + ')';
+    if (i === 0) d.style.backgroundImage = 'url(' + s.image + ')';
+    else d.setAttribute('data-background-image', s.image);
     d.setAttribute('role', 'img');
     d.setAttribute('aria-label', s.label);
     scenesHost.appendChild(d);
@@ -437,6 +446,11 @@ var ROWS = [
   var sceneNodes = scenesHost.children;
   var scene = 0, paused = false;
   function paintScene() {
+    var target = sceneNodes[scene];
+    if (target && target.dataset.backgroundImage) {
+      target.style.backgroundImage = 'url(' + target.dataset.backgroundImage + ')';
+      delete target.dataset.backgroundImage;
+    }
     for (var i = 0; i < sceneNodes.length; i++) {
       sceneNodes[i].classList.toggle('is-on', i === scene);
     }

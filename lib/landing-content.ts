@@ -313,21 +313,21 @@ export const LANDING_PAGES: LandingPage[] = [
     name: "Permit Documentation",
     primaryKeyword: "permit drawing services",
     title: "Permit Drawing & Documentation Services | Artimist",
-    desc: "Permit drawing and documentation services: complete, code-aware permit sets for residential and commercial projects, coordinated with your locally licensed professional.",
-    h1: "Permit Drawing & Documentation Services",
-    tagline: "A submittable permit set — nothing missing, nothing contradictory.",
+    desc: "Permit drawing production support for architects, builders and developers: coordinated plans, sections, elevations and submission packages aligned with local professional review.",
+    h1: "Professional Permit Drawing & Documentation Support",
+    tagline: "Coordinated permit-set production for professional project teams.",
     intro:
-      "A permit application fails on the details: a missing sheet, a section that does not match the plan, a schedule that was never filled in. We prepare complete, internally consistent permit sets so a submission clears review instead of bouncing back — and where a jurisdiction requires a stamp, we coordinate with your locally licensed professional.",
+      "Artimist supports architects, builders, developers and design teams that need reliable production capacity for permit documentation. We develop coordinated plans, sections, elevations, schedules and response revisions to the supplied standards, while the locally licensed professional retains the review, signature or seal responsibilities required by the jurisdiction.",
     forWho:
-      "Homeowners with serious residential projects, builders and contractors, developers, and designers who need a permit set prepared to a submittable standard.",
+      "Architecture practices, builders, developers and consultants that already understand the approval pathway and need a dependable production team to complete or revise the architectural drawing package.",
     problems: [
-      "A project is stuck because the permit set is incomplete or keeps getting rejected.",
-      "You have design drawings but not the documentation a permit office actually requires.",
+      "A professional team has the design direction but not enough production capacity to complete the architectural permit set.",
+      "A reviewer or local professional has issued markups that need to be incorporated accurately across the entire package.",
       "Sheets contradict each other and reviewers keep sending it back.",
     ],
     included: [
-      "Residential permit sets",
-      "Commercial permit documentation",
+      "Residential permit-set production",
+      "Commercial permit-set production",
       "Site & zoning plans",
       "Code-required plans, sections & elevations",
       "Schedules & general notes",
@@ -349,12 +349,12 @@ export const LANDING_PAGES: LandingPage[] = [
     quality:
       "Every permit set is checked sheet-against-sheet for the contradictions that trigger rejections — plan versus section, schedule versus drawing, note versus detail — before it goes anywhere near a submission.",
     faqs: [
-      { q: "Do you get the permit approved?", a: "We prepare a complete, submittable set and respond to reviewer markups. Approval and any required stamp rest with the locally licensed professional in your jurisdiction, whom we coordinate with." },
+      { q: "Is this page intended for homeowners?", a: "This service is structured for architects, builders, developers and professional teams needing permit-set production support. Homeowners planning an addition or renovation should begin with our Residential Renovation & Permit Plans service." },
       { q: "Can you stamp the drawings?", a: "We do not claim licensure we do not hold. Where a stamp is required we prepare drawings to a submittable standard and work alongside your licensed professional." },
       { q: "Do you handle resubmissions?", a: "Yes. If a set comes back with markups we respond to them and update the drawings so it clears on the next pass." },
-      { q: "Residential and commercial both?", a: "Both — from a home addition to a commercial fit-out." },
+      { q: "Residential and commercial both?", a: "Yes. The production scope can support residential or commercial packages when the jurisdiction, professional responsibilities and required deliverables are defined before work begins." },
     ],
-    related: ["construction-documentation-services", "architectural-drafting-services", "architecture"],
+    related: ["construction-documentation-services", "architectural-drafting-services", "residential-renovation-permit-drawings"],
     parentHub: "architecture",
   },
   {
@@ -457,6 +457,194 @@ export const LANDING_PAGES: LandingPage[] = [
     related: ["visualization", "unreal-engine"],
     parentHub: "visualization",
   },
+  {
+    slug: "sketch-to-floor-plan-service",
+    kind: "service",
+    name: "Sketch to Floor Plan",
+    primaryKeyword: "turn a sketch into a floor plan",
+    title: "Turn Your Sketch Into a Professional Floor Plan | Artimist",
+    desc: "Send a hand sketch, marked-up PDF or rough layout and receive a clean, scaled professional floor plan prepared for design, renovation or visualization.",
+    h1: "Turn Your Sketch Into a Professional Floor Plan",
+    tagline: "From a rough idea to a clear, scaled drawing you can actually use.",
+    intro:
+      "A hand sketch can communicate the idea without communicating enough information to design, price or coordinate the project. Artimist redraws sketches, screenshots and marked-up plans as clear digital floor plans, verifies the dimensions you provide and identifies what is still missing before the drawing is treated as reliable project information.",
+    forWho:
+      "Homeowners with a hand-drawn idea, builders documenting an early layout, real-estate teams needing a clean plan and designers who need rough information converted into editable CAD or Revit.",
+    problems: [
+      "The layout exists only as a notebook sketch, phone image or marked-up PDF.",
+      "An old plan is difficult to read and cannot be edited cleanly.",
+      "A floor plan is needed before design development, renovation pricing or 3D visualization can begin.",
+    ],
+    included: [
+      "Hand sketch to floor plan",
+      "PDF or image redraw",
+      "Room names and dimensions",
+      "Doors, windows and circulation",
+      "Furniture-aware layout cleanup",
+      "Existing-plan digitization",
+      "Optional CAD or Revit setup",
+      "Optional 3D visualization",
+    ],
+    deliverables: ["Scaled floor-plan PDF", "Editable DWG or RVT where included", "Marked assumptions and missing-information notes"],
+    inputs: ["Hand sketches", "Phone photos", "Marked-up PDFs", "Existing plans", "Known measurements and site photos"],
+    workflow: [
+      { h: "Send the rough information", p: "Share the sketch or old plan together with every reliable dimension, photograph and note you have. We separate measured information from assumptions before drawing begins." },
+      { h: "Redraw and clarify", p: "The layout is reconstructed as a clean digital floor plan with consistent walls, openings, room names and dimensions, then checked against the information supplied." },
+      { h: "Review and receive", p: "You review one clear draft, answer any remaining dimensional questions and receive the agreed PDF, DWG or Revit output with its intended use stated clearly." },
+    ],
+    software: ["AutoCAD", "Autodesk Revit", "SketchUp"],
+    quality:
+      "We do not silently invent missing dimensions. Assumptions and unresolved information are identified so a presentation plan is never mistaken for verified survey or construction information.",
+    faqs: [
+      { q: "Can you work from a photo of my hand sketch?", a: "Yes. A clear phone photo is enough to begin when you also provide the dimensions and notes needed to understand the layout." },
+      { q: "Will the result be ready for construction?", a: "Not automatically. A redraw records the information supplied. Construction or permit use requires verified dimensions, the appropriate drawing scope and any locally required professional review." },
+      { q: "Can you improve the layout while redrawing it?", a: "Yes, but layout design is separated from basic redraw work so the design responsibility, options and revision allowance stay clear." },
+      { q: "Can I receive an editable file?", a: "Yes. DWG or Revit delivery can be included in the written scope together with a print-ready PDF." },
+    ],
+    related: ["architectural-drafting-services", "floor-plan-to-3d-rendering", "custom-house-design"],
+    parentHub: "architecture",
+  },
+  {
+    slug: "floor-plan-to-3d-rendering",
+    kind: "service",
+    name: "Floor Plan to 3D",
+    primaryKeyword: "turn a floor plan into 3D",
+    title: "Turn a Floor Plan Into a 3D Rendering | Artimist",
+    desc: "Convert a floor plan, sketch or drawing set into a clear 3D model and photoreal interior or exterior render before construction or renovation.",
+    h1: "Turn Your Floor Plan Into a 3D Rendering",
+    tagline: "See the rooms, light and materials before committing on site.",
+    intro:
+      "A floor plan explains relationships but not how the finished space will feel. Artimist builds a coordinated 3D model from your plan, confirms the design information that affects height and appearance, and produces realistic views that help you judge proportion, furniture, material, lighting and exterior form before construction begins.",
+    forWho:
+      "Homeowners comparing renovation or new-home options, interior designers presenting a scheme, builders explaining a proposal and developers who need believable pre-construction imagery.",
+    problems: [
+      "The plan is difficult for the client or family to understand spatially.",
+      "Furniture, lighting and material decisions are being made without seeing the complete room.",
+      "A project needs realistic imagery for review, approval, marketing or investor presentation.",
+    ],
+    included: [
+      "Floor plan to 3D model",
+      "Interior 3D rendering",
+      "Exterior 3D rendering",
+      "Furniture and fixture placement",
+      "Material and finish direction",
+      "Daylight and evening options",
+      "Camera and composition review",
+      "Optional animation or walkthrough",
+    ],
+    deliverables: ["Photoreal still images", "Agreed image resolutions and crops", "3D model or source files where specifically included"],
+    inputs: ["Floor plans", "Elevations and sections", "Reference images", "Material selections", "Furniture or product references"],
+    workflow: [
+      { h: "Check the plan", p: "We review dimensions, levels, openings and any elevations or references needed to build the model honestly rather than guessing at missing design information." },
+      { h: "Build and review in 3D", p: "The model, cameras, furniture and early material direction are shared at draft quality so spatial decisions are made before final rendering." },
+      { h: "Resolve the final images", p: "Approved views are completed with accurate materials, lighting, landscape and post-production, then delivered in the formats named in the scope." },
+    ],
+    software: ["3ds Max", "Corona Renderer", "V-Ray", "Unreal Engine", "SketchUp", "Photoshop"],
+    quality:
+      "Every final image is tied back to the supplied plan and approved camera. Design changes and visualization corrections are separated so revision time remains predictable.",
+    faqs: [
+      { q: "Is a floor plan alone enough?", a: "It can be enough for an early interior study, but accurate exterior or detailed interior work normally also needs heights, elevations, material references and information about doors, windows and ceilings." },
+      { q: "Can you design the interior as well as render it?", a: "Yes. Interior design development can be included as a separate responsibility instead of treating unresolved design decisions as free rendering revisions." },
+      { q: "How many views will I receive?", a: "The view count is agreed before production. We recommend the smallest set that clearly explains the project rather than producing repetitive images." },
+      { q: "Can I receive the 3D model?", a: "Yes when editable model delivery is specifically included in the quotation and the intended software format is agreed before work begins." },
+    ],
+    related: ["visualization", "sketch-to-floor-plan-service", "architectural-visualization-services"],
+    parentHub: "visualization",
+  },
+  {
+    slug: "home-addition-plans",
+    kind: "service",
+    name: "Home Addition Plans",
+    primaryKeyword: "plans for a home addition",
+    title: "Home Addition Plans & Extension Drawings | Artimist",
+    desc: "Existing and proposed plans, elevations, sections and permit-documentation support for room additions, home extensions and residential remodeling projects.",
+    h1: "Home Addition Plans & Extension Drawings",
+    tagline: "Connect the new space to the existing home before construction begins.",
+    intro:
+      "A home addition is not only an extra room. It changes circulation, structure, roof form, daylight, exterior appearance and the relationship between existing and proposed work. Artimist develops the layout and coordinated architectural drawings needed to understand the addition, review it with local professionals and move toward permit or construction documentation.",
+    forWho:
+      "Homeowners planning a bedroom, family-room, kitchen, garage, second-story or rear addition and builders who need a clear architectural base for residential coordination.",
+    problems: [
+      "The required extra space is clear but its relationship to the existing floor plan is not.",
+      "A concept sketch needs to become existing and proposed architectural drawings.",
+      "The addition affects roof, structure, openings or exterior character and needs coordinated review.",
+    ],
+    included: [
+      "Existing-condition plans",
+      "Proposed addition plans",
+      "Room and circulation planning",
+      "Exterior elevations",
+      "Building sections",
+      "Roof-form coordination",
+      "Permit-documentation support",
+      "Optional exterior and interior 3D views",
+    ],
+    deliverables: ["Existing and proposed drawing package", "PDF issue set", "DWG or Revit files where included"],
+    inputs: ["Survey or measured drawings", "Existing plans", "Site photographs", "Room requirements", "Jurisdiction and property information"],
+    workflow: [
+      { h: "Understand the existing house", p: "We begin from reliable existing information and identify the structural, dimensional, access and planning constraints that shape the addition." },
+      { h: "Develop the addition", p: "Layout, circulation, openings, roof and exterior form are developed together so the new space does not solve one problem while creating another." },
+      { h: "Coordinate the drawing package", p: "The agreed plans, elevations and sections are prepared for their stated review purpose and coordinated with the locally required professionals or consultants." },
+    ],
+    software: ["AutoCAD", "Autodesk Revit", "SketchUp", "3ds Max"],
+    quality:
+      "Existing and proposed conditions are separated clearly, and locally required structure, energy, zoning, professional review and stamps are identified as responsibilities rather than hidden assumptions.",
+    faqs: [
+      { q: "Can you design a second-story addition?", a: "Yes, subject to reliable existing information and coordination with the locally required structural and licensed professionals." },
+      { q: "Do you measure the existing house?", a: "The scope can begin from a survey or measurements provided by the client or local surveyor. Remote delivery does not replace any field verification required for reliable construction information." },
+      { q: "Are the drawings automatically permit-ready?", a: "No. Permit requirements differ by location. The exact documentation, consultant and licensed-professional responsibilities are confirmed for the project before the package is represented for submission." },
+      { q: "Can you show the addition in 3D?", a: "Yes. Exterior and interior views can be included so massing, roof, materials and the connection to the existing home can be reviewed before documentation is finalized." },
+    ],
+    related: ["architecture", "permit-drawing-services", "floor-plan-to-3d-rendering"],
+    parentHub: "architecture",
+  },
+  {
+    slug: "house-exterior-design-service",
+    kind: "service",
+    name: "House Exterior Design",
+    primaryKeyword: "house exterior design service",
+    title: "House Exterior Design & 3D Facade Rendering | Artimist",
+    desc: "Professional house exterior design, facade updates, material studies and photoreal 3D rendering for new homes, renovations and curb-appeal improvements.",
+    h1: "House Exterior Design & 3D Facade Rendering",
+    tagline: "Resolve the form, openings and materials before changing the building.",
+    intro:
+      "Exterior design is more than selecting paint. Proportion, roof form, windows, entrances, materials, landscape and lighting need to read as one architectural decision. Artimist develops new-home facades and renovation options in 3D so homeowners and project teams can compare meaningful directions before documentation, purchasing or construction.",
+    forWho:
+      "Homeowners redesigning an outdated exterior, builders presenting a new-home elevation, architects needing visualization support and developers preparing residential marketing imagery.",
+    problems: [
+      "The floor plan works but the exterior elevation feels unresolved or generic.",
+      "Material and color decisions are being made from disconnected samples instead of a complete view.",
+      "A renovation needs to improve curb appeal without losing control of openings, roof and buildability.",
+    ],
+    included: [
+      "New-home exterior design",
+      "Facade renovation concepts",
+      "Entry and porch design",
+      "Window and opening studies",
+      "Roof and massing refinement",
+      "Material and color options",
+      "Landscape context",
+      "Photoreal day, dusk or night renders",
+    ],
+    deliverables: ["Selected exterior design direction", "Photoreal exterior views", "Annotated material direction or drawings where included"],
+    inputs: ["Plans and elevations", "Site photographs", "Existing exterior images", "Style references", "Preferred materials and budget priorities"],
+    workflow: [
+      { h: "Read the existing architecture", p: "We review the plan, elevations, photographs and constraints so the exterior direction responds to the real building instead of covering it with decoration." },
+      { h: "Compare focused options", p: "A small number of strong directions test form, openings, materials and entry sequence, with the differences explained clearly." },
+      { h: "Resolve and visualize", p: "The selected direction is refined into agreed exterior views and any additional drawing or material information named in the scope." },
+    ],
+    software: ["3ds Max", "Corona Renderer", "V-Ray", "Revit", "SketchUp", "Photoshop"],
+    quality:
+      "The image remains connected to the supplied building information. Products and finishes are represented accurately when specified, and conceptual substitutions are not presented as confirmed selections.",
+    faqs: [
+      { q: "Can you redesign an existing house from photographs?", a: "Photographs are useful, but accurate design normally also needs plans, key dimensions and information about the roof and openings. We identify what is missing before committing to a detailed result." },
+      { q: "Can you provide several material options?", a: "Yes. The number of options and review rounds is agreed in advance so comparisons stay meaningful and controlled." },
+      { q: "Does this include construction drawings?", a: "Not automatically. Exterior design and rendering can lead into architectural documentation, but the drawing deliverables and local professional requirements must be scoped separately." },
+      { q: "Can you match a specific American home style?", a: "Yes. We can work within contemporary, modern farmhouse, craftsman, coastal, traditional and other directions while adapting the references to the actual building rather than copying a stock facade." },
+    ],
+    related: ["visualization", "floor-plan-to-3d-rendering", "custom-house-design"],
+    parentHub: "visualization",
+  },
 ];
 
 export function getLandingPage(slug: string): LandingPage | undefined {
@@ -469,5 +657,7 @@ export function resolveLink(slug: string): { name: string; href: string } {
   const page = getLandingPage(slug);
   if (page) return { name: page.name, href: "/" + page.slug };
   if (slug === "unreal-engine") return { name: "Unreal Engine", href: "/unreal-engine" };
+  if (slug === "custom-house-design") return { name: "Custom House Design", href: "/custom-house-design" };
+  if (slug === "residential-renovation-permit-drawings") return { name: "Residential Renovation & Permit Plans", href: "/residential-renovation-permit-drawings" };
   return { name: slug, href: "/" + slug };
 }

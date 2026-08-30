@@ -9,6 +9,10 @@ const ITEMS = [
   ["LOD 200 vs LOD 300 vs LOD 400", "lod-200-vs-lod-300-vs-lod-400", "A plain-language guide to BIM levels of development and why model purpose matters."],
   ["How Much Does Architectural Rendering Cost?", "how-much-does-architectural-rendering-cost", "The main factors behind architectural rendering prices, including modeling, complexity, revisions and resolution."],
   ["3D Rendering vs Unreal Engine Walkthrough", "3d-rendering-vs-unreal-engine-walkthrough", "When still rendering, animation or real-time Unreal Engine visualization is the right presentation format."],
+  ["Do House Plans Need an Architect's Stamp?", "do-house-plans-need-an-architect-stamp", "Why U.S. residential stamping requirements vary and what to confirm with the local permitting authority."],
+  ["What Drawings Are Needed for a Home Addition Permit?", "what-drawings-are-needed-for-a-home-addition-permit", "A practical overview of common home-addition permit drawings and local professional requirements."],
+  ["How to Turn a Hand Sketch Into Floor Plans", "how-to-turn-a-hand-sketch-into-floor-plans", "The dimensions, photographs and project notes that help turn a rough sketch into a useful architectural plan."],
+  ["What to Send for a 3D Home Rendering", "what-to-send-for-a-3d-home-rendering", "A brief checklist covering drawings, materials, references, camera views, milestones and handover."],
 ] as const;
 
 function escapeXml(value: string) {

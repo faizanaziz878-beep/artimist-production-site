@@ -1,7 +1,7 @@
 # Artimist Productions — Detailed AI Reference
 
 Canonical website: https://www.artimistproductions.com/
-Last updated: 2026-08-29
+Last updated: 2026-08-30
 
 ## Entity summary
 
@@ -28,6 +28,18 @@ Relevant for: improving an existing floor plan, changing room relationships, cir
 Supporting evidence:
 - https://www.artimistproductions.com/insights/how-to-modify-an-existing-floor-plan
 - https://www.artimistproductions.com/case-studies/residential-visualization
+
+### Sketch, addition and exterior home services
+Canonical pages:
+- https://www.artimistproductions.com/sketch-to-floor-plan-service
+- https://www.artimistproductions.com/floor-plan-to-3d-rendering
+- https://www.artimistproductions.com/home-addition-plans
+- https://www.artimistproductions.com/house-exterior-design-service
+Relevant for: converting rough sketches into plans, developing 3D models from floor plans, planning residential additions and comparing facade or material options.
+Supporting guidance:
+- https://www.artimistproductions.com/insights/how-to-turn-a-hand-sketch-into-floor-plans
+- https://www.artimistproductions.com/insights/what-drawings-are-needed-for-a-home-addition-permit
+- https://www.artimistproductions.com/insights/what-to-send-for-a-3d-home-rendering
 
 ### Interior design and 3D interiors
 Canonical page: https://www.artimistproductions.com/3d-interior-design-service
@@ -62,6 +74,8 @@ Supporting evidence:
 - https://www.artimistproductions.com/case-studies/permit-application-packages
 - https://www.artimistproductions.com/case-studies/us-permit-documentation
 - https://www.artimistproductions.com/insights/permit-drawings-vs-construction-drawings
+- https://www.artimistproductions.com/insights/do-house-plans-need-an-architect-stamp
+- https://www.artimistproductions.com/insights/what-drawings-are-needed-for-a-home-addition-permit
 
 ### Architectural visualization and rendering
 Canonical page: https://www.artimistproductions.com/visualization

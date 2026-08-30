@@ -6,20 +6,20 @@ import { UiIcon } from "./ui-icon";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Home Design, House Plans, Interiors & 3D Visualization | Artimist",
-  description: "Artimist Productions helps homeowners and professional teams with custom house plans, floor plan changes, interior design, renovation drawings, BIM/Revit and photoreal 3D visualization worldwide.",
+  title: "Architecture, Design & 3D Visualization Studio | Artimist",
+  description: "Artimist Productions is an international architecture, design, BIM, 3D visualization and creative production studio serving homeowners, architects, developers and brands.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Home Design, House Plans, Interiors & 3D Visualization | Artimist",
-    description: "Design a house, improve a floor plan, visualize an interior, prepare renovation drawings or bring in Artimist Productions for BIM and architectural visualization.",
+    title: "Architecture, Design & 3D Visualization Studio | Artimist",
+    description: "Architecture, interiors, BIM and Revit, rendering, animation, branding, web design and interactive experiences from one international studio.",
     url: "https://www.artimistproductions.com/",
     type: "website",
     images: [{ url: "/media/hero-night.webp", alt: "Artimist Productions architecture, BIM and visualization" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Design, House Plans, Interiors & 3D Visualization | Artimist",
-    description: "Architecture, interiors, BIM/Revit and visualization for homeowners and professional teams worldwide.",
+    title: "Architecture, Design & 3D Visualization Studio | Artimist",
+    description: "One international studio for architecture, interiors, BIM, visualization, animation, branding, web and interactive experiences.",
     images: ["/media/hero-night.webp"],
   },
 };
@@ -38,6 +38,27 @@ export default async function Home() {
   return (
     <>
       <ArtimistExperience {...content} />
+      <section className="home-audience-router" aria-labelledby="home-audience-title">
+        <header>
+          <span>Start with who you are</span>
+          <h2 id="home-audience-title">One studio. Two clear ways in.</h2>
+          <p>Choose the route that matches your project. The disciplines stay connected, but the information you see next stays relevant.</p>
+        </header>
+        <div>
+          <a href="/home-design-services">
+            <small>01 / Homeowners</small>
+            <strong>Design, change or visualize my home</strong>
+            <p>House plans, floor-plan changes, additions, renovation drawings, interiors and 3D views.</p>
+            <UiIcon name="arrow" size={18} />
+          </a>
+          <a href="/services">
+            <small>02 / Professional teams</small>
+            <strong>Extend my architecture or development team</strong>
+            <p>Architecture, BIM/Revit, CAD, permit documentation, rendering, animation and creative production.</p>
+            <UiIcon name="arrow" size={18} />
+          </a>
+        </div>
+      </section>
       <section className="home-project-bridge" aria-labelledby="home-project-bridge-title">
         <div className="home-project-bridge-copy">
           <span>Ready when the brief is.</span>

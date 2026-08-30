@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const groups = [
-  { title: "Home & interiors", links: [["Custom house design", "/custom-house-design"],["Plan modification", "/plan-modification-service"],["3D interior design", "/3d-interior-design-service"],["Renovation & permit drawings", "/residential-renovation-permit-drawings"]] },
+  { title: "Home & interiors", links: [["Custom house design", "/custom-house-design"],["Sketch to floor plan", "/sketch-to-floor-plan-service"],["Floor plan to 3D", "/floor-plan-to-3d-rendering"],["Home addition plans", "/home-addition-plans"],["House exterior design", "/house-exterior-design-service"]] },
   { title: "Architecture & BIM", links: [["Architecture", "/architecture"],["BIM & drafting", "/bim-drafting"],["Revit drafting", "/revit-drafting-services"],["Construction documentation", "/construction-documentation-services"]] },
   { title: "Visualization", links: [["Architectural visualization", "/visualization"],["Architectural rendering", "/services/architectural-rendering"],["Interior rendering", "/services/3d-interior-rendering"],["Animation & Unreal", "/services/architectural-animation"]] },
   { title: "Markets", links: [["United States · remote delivery", "/usa"],["Canada · remote delivery", "/canada"],["United Kingdom · remote delivery", "/uk"],["Sweden · remote delivery", "/sweden"]] },
