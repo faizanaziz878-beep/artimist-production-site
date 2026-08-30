@@ -13,6 +13,7 @@ import "./completion-pass.css";
 import "./cinematic-density.css";
 import "./search-discovery-footer.css";
 import "./trust-layer.css";
+import "./visual-audit-pass.css";
 import { IntroCurtain, IntroScript } from "./intro-curtain";
 import { SiteIndex } from "./site-index";
 import { AskBot } from "./ask-bot";
