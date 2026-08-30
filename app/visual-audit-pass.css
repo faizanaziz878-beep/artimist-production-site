@@ -1,0 +1,298 @@
+/*
+ * VISUAL AUDIT PASS — 2026-08-30
+ * Goal: remove accidental emptiness/overlap, reduce simultaneous copy density,
+ * and make project evidence carry more of the page visually without deleting
+ * useful SEO or client information.
+ */
+
+:root{--artimist-header-h:64px}
+
+/* --------------------------------------------------------------------------
+   1. HEADER / HERO SAFETY
+   -------------------------------------------------------------------------- */
+
+/* The home-design hub already has a page eyebrow. Its extra rendered breadcrumb
+   duplicated orientation and physically collided with that eyebrow. Keep the
+   BreadcrumbList in structured data, but remove the redundant visible layer. */
+.hd-breadcrumb-shell{display:none!important}
+
+/* Hero content must always clear the fixed canonical navigation. */
+.hd.hd .hd-hero{
+  padding-top:clamp(108px,9vw,128px)!important;
+  padding-bottom:clamp(48px,5vw,70px)!important;
+  min-height:clamp(590px,70svh,690px)!important;
+}
+.hd.hd h1{
+  font-size:clamp(54px,6.4vw,92px)!important;
+  line-height:.94!important;
+  max-width:9.6ch!important;
+  margin-top:16px!important;
+  text-wrap:balance;
+}
+.hd.hd .hd-copy{align-self:center}
+.hd.hd .hd-lead{max-width:52ch!important}
+.hd.hd .hd-media{min-height:clamp(500px,58svh,590px)!important}
+
+/* Landing/service family: one orientation layer, then title and proof. */
+.lp2.lp2 .lp2-hero{
+  min-height:clamp(590px,72svh,720px)!important;
+  padding-top:calc(var(--artimist-header-h) + 42px)!important;
+  padding-bottom:clamp(42px,5vw,68px)!important;
+}
+.lp2.lp2 .lp2-crumbs{margin-bottom:20px!important;font-size:9px!important;opacity:.82}
+.lp2.lp2 .lp2-hero h1{
+  font-size:clamp(58px,8vw,126px)!important;
+  line-height:.88!important;
+  max-width:12ch!important;
+}
+.lp2.lp2 .lp2-tagline{max-width:28ch!important}
+
+/* Generic landing pages were rendering this proof figure without a stable base
+   style. Make it an intentional editorial inset instead of a browser-default
+   figure that can collide with the hero. */
+.lp2.lp2 .lp2-hero-proof{
+  position:absolute!important;
+  z-index:4!important;
+  right:clamp(22px,4vw,70px)!important;
+  bottom:clamp(28px,5vh,64px)!important;
+  width:min(30vw,430px)!important;
+  margin:0!important;
+  overflow:hidden!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  background:#0e0f11!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.44)!important;
+}
+.lp2.lp2 .lp2-hero-proof img{display:block!important;width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important}
+.lp2.lp2 .lp2-hero-proof figcaption{
+  position:absolute!important;left:10px!important;bottom:10px!important;
+  padding:7px 9px!important;background:rgba(7,8,10,.76)!important;
+  color:rgba(255,255,255,.8)!important;font-size:8px!important;
+  letter-spacing:.12em!important;text-transform:uppercase!important;
+  backdrop-filter:blur(10px)!important;
+}
+
+/* Country/international pages already have a clear kicker and large title.
+   Breadcrumb schema remains; redundant visible breadcrumb is removed. */
+.market .market-crumb,.intl .intl-crumb{display:none!important}
+.market.market{padding-top:var(--artimist-header-h)!important}
+.intl.intl{padding-top:var(--artimist-header-h)!important}
+.market.market .market-hero{padding-top:clamp(52px,6vw,78px)!important}
+.intl.intl .intl-hero{padding-top:clamp(44px,5vw,70px)!important;min-height:clamp(580px,70svh,690px)!important}
+
+/* --------------------------------------------------------------------------
+   2. IMAGE-LED RHYTHM / MORE VISUAL PROOF
+   -------------------------------------------------------------------------- */
+
+/* The opening project proof exists in the component on every landing page but
+   previously only the visualization runtime gave it a proper composition. */
+.lp2.lp2 .lp2-opening-proof{
+  display:grid!important;
+  grid-template-columns:1.25fr .75fr .75fr!important;
+  gap:1px!important;
+  padding:1px!important;
+  background:rgba(255,255,255,.12)!important;
+}
+.lp2.lp2 .lp2-opening-proof figure{
+  position:relative!important;
+  min-height:clamp(330px,43vw,500px)!important;
+  margin:0!important;
+  overflow:hidden!important;
+  background:#111317!important;
+}
+.lp2.lp2 .lp2-opening-proof figure:nth-child(2),
+.lp2.lp2 .lp2-opening-proof figure:nth-child(3){min-height:clamp(300px,37vw,430px)!important}
+.lp2.lp2 .lp2-opening-proof img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .75s cubic-bezier(.2,.7,.2,1)!important}
+.lp2.lp2 .lp2-opening-proof figure:hover img{transform:scale(1.022)!important}
+.lp2.lp2 .lp2-opening-proof figcaption{
+  position:absolute!important;left:12px!important;bottom:12px!important;
+  padding:7px 9px!important;background:rgba(8,9,11,.76)!important;
+  color:#fff!important;font:600 8px/1 "Artimist Mono",monospace!important;
+  letter-spacing:.12em!important;text-transform:uppercase!important;
+  backdrop-filter:blur(10px)!important;
+}
+
+/* Problems-we-solve section: the image now genuinely occupies its half instead
+   of sitting as an unbounded element inside a padded empty field. */
+.lp2.lp2 .lp2-split{min-height:clamp(560px,66svh,680px)!important}
+.lp2.lp2 .lp2-split-visual{position:relative!important;padding:0!important;overflow:hidden!important;place-items:stretch!important;background:#111317!important}
+.lp2.lp2 .lp2-generated-visual{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  min-height:100%!important;object-fit:cover!important;filter:saturate(.86) contrast(1.04)!important;
+}
+.lp2.lp2 .lp2-split-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,8,10,.55),transparent 48%);pointer-events:none}
+.lp2.lp2 .lp2-visual-caption{
+  position:absolute!important;z-index:3!important;right:20px!important;bottom:20px!important;
+  padding:8px 10px!important;background:rgba(7,8,10,.76)!important;color:#fff!important;
+  font:600 8px/1 "Artimist Mono",monospace!important;letter-spacing:.13em!important;text-transform:uppercase!important;
+  backdrop-filter:blur(10px)!important;
+}
+
+/* Workflow cards already contain real project images. Show them. This makes the
+   process legible visually instead of producing another uninterrupted text grid. */
+.lp2.lp2 .lp2-process>div{gap:1px!important;background:rgba(255,255,255,.13)!important;border:0!important}
+.lp2.lp2 .lp2-process article{
+  position:relative!important;min-height:410px!important;padding:218px 24px 24px!important;
+  overflow:hidden!important;background:#0f1012!important;border-color:rgba(255,255,255,.1)!important;
+}
+.lp2.lp2 .lp2-process .lp2-step-art{
+  position:absolute!important;z-index:0!important;inset:0 0 auto!important;width:100%!important;height:58%!important;
+  display:block!important;object-fit:cover!important;opacity:.72!important;filter:saturate(.72) contrast(1.02)!important;
+  -webkit-mask-image:linear-gradient(#000 70%,transparent 100%)!important;mask-image:linear-gradient(#000 70%,transparent 100%)!important;
+}
+.lp2.lp2 .lp2-process article small,.lp2.lp2 .lp2-process article h3,.lp2.lp2 .lp2-process article p{position:relative!important;z-index:2!important}
+.lp2.lp2 .lp2-process h3{margin:auto 0 14px!important}
+
+/* Home-design transformation: use the studio's own imagery as the diagrammatic
+   background rather than three dark text boxes. */
+.hd.hd .hd-flow article{min-height:260px!important;display:flex!important;flex-direction:column!important;background-position:center!important;background-size:cover!important;isolation:isolate!important;overflow:hidden!important}
+.hd.hd .hd-flow article:nth-child(1){background-image:linear-gradient(180deg,rgba(7,7,8,.22),rgba(7,7,8,.9)),url('/img/permit04.webp')!important}
+.hd.hd .hd-flow article:nth-child(2){background-image:linear-gradient(180deg,rgba(7,7,8,.2),rgba(7,7,8,.91)),url('/img/homeint03.webp')!important}
+.hd.hd .hd-flow article:nth-child(3){background-image:linear-gradient(180deg,rgba(7,7,8,.18),rgba(7,7,8,.91)),url('/img/resext03.webp')!important}
+.hd.hd .hd-flow h3{margin-top:auto!important}
+.hd.hd .hd-flow p{color:rgba(244,236,231,.77)!important}
+
+/* --------------------------------------------------------------------------
+   3. LESS SIMULTANEOUS COPY — KEEP THE WORDS, REDUCE THE WALL
+   -------------------------------------------------------------------------- */
+
+/* Tighten the repeated trust/commercial grids. The second grid remains fully
+   readable and crawlable, but no longer behaves like another full section. */
+.lp2.lp2 .lp2-trust article{min-height:190px!important;padding:24px!important}
+.lp2.lp2 .lp2-trust h3{font-size:clamp(22px,2.15vw,31px)!important}
+.lp2.lp2 .lp2-trust p{max-width:34ch!important}
+.lp2.lp2 .lp2-trust + .lp2-trust{background:#0d0e10!important}
+.lp2.lp2 .lp2-trust + .lp2-trust article{min-height:150px!important;padding:20px 22px!important}
+.lp2.lp2 .lp2-trust + .lp2-trust h3{margin:auto 0 8px!important;font-family:"Artimist Geist","Helvetica Neue",Arial,sans-serif!important;font-size:14px!important;font-weight:600!important;line-height:1.2!important}
+.lp2.lp2 .lp2-trust + .lp2-trust p{font-size:10.5px!important;line-height:1.55!important;color:rgba(238,233,226,.55)!important}
+
+.lp2.lp2 .lp2-intro,
+.lp2.lp2 .lp2-deliverables,
+.lp2.lp2 .lp2-process,
+.lp2.lp2 .lp2-proof,
+.lp2.lp2 .lp2-faq,
+.lp2.lp2 .lp2-cta{
+  padding-top:clamp(54px,5.5vw,78px)!important;
+  padding-bottom:clamp(54px,5.5vw,78px)!important;
+}
+.lp2.lp2 .lp2-deliverables header,
+.lp2.lp2 .lp2-process header,
+.lp2.lp2 .lp2-proof header{margin-bottom:42px!important}
+.lp2.lp2 .lp2-chip-grid>div{min-height:132px!important;padding:18px!important}
+.lp2.lp2 .lp2-input-output{margin-top:42px!important}
+.lp2.lp2 .lp2-process aside{margin-top:42px!important}
+.lp2.lp2 .lp2-faq summary{min-height:62px!important}
+.lp2.lp2 .lp2-related{padding-top:34px!important;padding-bottom:58px!important}
+
+/* Country pages: images already do the heavy lifting. Compress the supporting
+   explanation so the visual cards reappear sooner. */
+.market.market .market-sec{padding-top:48px!important;padding-bottom:48px!important}
+.market.market .market-step{padding-top:14px!important}
+.market.market .market-step b{font-size:38px!important;margin-bottom:9px!important}
+.market.market .market-audiences a,.market.market .market-decisions article{min-height:170px!important;padding:20px!important}
+.market.market .market-audiences h3,.market.market .market-decisions h3{margin-top:14px!important}
+.market.market .market-cta{margin-top:28px!important}
+
+.intl.intl .intl-section{padding-top:50px!important;padding-bottom:50px!important}
+.intl.intl .intl-market{padding-top:22px!important;padding-bottom:24px!important}
+.intl.intl .intl-market p{font-size:13px!important;line-height:1.6!important;max-width:58ch!important}
+.intl.intl .intl-process article{padding-top:14px!important}
+
+/* Editorial/person/service families: prevent ordinary copy sections from
+   reserving presentation-slide heights when they contain no major media. */
+@media(min-width:901px){
+  .aboutx.aboutx .aboutx-intro,.aboutx.aboutx .aboutx-principles,.aboutx.aboutx .aboutx-services,.aboutx.aboutx .aboutx-process,
+  .teamx.teamx .teamx-manifesto,.teamx.teamx .teamx-roster,
+  .founderx.founderx .founderx-letter,.founderx.founderx .founderx-values,
+  .studio-path.studio-path .sp-services-intro,.studio-path.studio-path .sp-process-map,
+  .hsp.hsp .hsp-sec,.intl.intl .intl-section,.market.market .market-sec,
+  .cs.cs .cs-section,.proof.proof .proof-section,.vai.vai .vai-section{
+    min-height:auto!important;
+    padding-top:clamp(44px,4.5vw,68px)!important;
+    padding-bottom:clamp(44px,4.5vw,68px)!important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. TYPOGRAPHIC / READING HIERARCHY
+   -------------------------------------------------------------------------- */
+
+/* Keep explanatory copy narrow; spare horizontal space belongs to media. */
+.lp2 .lp2-intro>div:last-child,
+.lp2 .lp2-split-copy,
+.lp2 .lp2-process aside p,
+.market .market-lead,
+.intl .intl-lead,
+.hd .hd-lead,
+.hd .hd-transform-copy,
+.hd .hd-proof-copy p{max-width:58ch}
+
+/* Metadata stays metadata — it should never compete with the display type. */
+.hd .hd-eyebrow,.lp2 .lp2-kicker,.market .market-kicker,.intl .intl-kicker{line-height:1.3!important}
+
+/* --------------------------------------------------------------------------
+   5. MOBILE — CLEAR HIERARCHY, NO DESKTOP SQUEEZE
+   -------------------------------------------------------------------------- */
+
+@media(max-width:760px){
+  :root{--artimist-header-h:66px}
+
+  .hd.hd .hd-hero{padding-top:94px!important;padding-bottom:42px!important;gap:28px!important;min-height:auto!important}
+  .hd.hd h1{font-size:clamp(46px,13.2vw,64px)!important;line-height:.96!important;max-width:9ch!important}
+  .hd.hd .hd-media{min-height:440px!important}
+  .hd.hd .hd-stat{display:none!important}
+  .hd.hd .hd-mini{margin-top:22px!important}
+
+  .lp2.lp2 .lp2-hero{min-height:clamp(540px,78svh,660px)!important;padding:94px 18px 38px!important;align-items:flex-end!important}
+  .lp2.lp2 .lp2-crumbs{display:none!important}
+  .lp2.lp2 .lp2-hero-copy{width:100%!important;padding-bottom:0!important}
+  .lp2.lp2 .lp2-hero h1{font-size:clamp(48px,14vw,72px)!important;line-height:.9!important;max-width:10.5ch!important;margin:18px 0 20px!important}
+  .lp2.lp2 .lp2-tagline{font-size:clamp(19px,6vw,28px)!important;max-width:18ch!important}
+  .lp2.lp2 .lp2-hero-actions{margin-top:26px!important}
+  .lp2.lp2 .lp2-hero-proof{display:none!important}
+  .lp2.lp2 .lp2-hero-grid{inset:76px 8px 8px!important}
+
+  .lp2.lp2 .lp2-opening-proof{grid-template-columns:1fr 1fr!important}
+  .lp2.lp2 .lp2-opening-proof figure{min-height:54vw!important}
+  .lp2.lp2 .lp2-opening-proof figure:first-child{grid-column:1/-1!important;min-height:76vw!important}
+  .lp2.lp2 .lp2-opening-proof figure:nth-child(2),.lp2.lp2 .lp2-opening-proof figure:nth-child(3){min-height:54vw!important}
+
+  .lp2.lp2 .lp2-trust{grid-template-columns:1fr 1fr!important}
+  .lp2.lp2 .lp2-trust article{min-height:150px!important;padding:18px!important}
+  .lp2.lp2 .lp2-trust + .lp2-trust article{min-height:130px!important}
+  .lp2.lp2 .lp2-trust h3{font-size:21px!important}
+  .lp2.lp2 .lp2-trust + .lp2-trust h3{font-size:13px!important}
+  .lp2.lp2 .lp2-trust p{font-size:10.5px!important}
+
+  .lp2.lp2 .lp2-split{grid-template-columns:1fr!important;min-height:auto!important}
+  .lp2.lp2 .lp2-split-copy{padding-top:54px!important;padding-bottom:54px!important}
+  .lp2.lp2 .lp2-split-visual{min-height:72vw!important;border-left:0!important;border-top:1px solid rgba(255,255,255,.1)!important}
+
+  .lp2.lp2 .lp2-process>div{grid-template-columns:1fr!important}
+  .lp2.lp2 .lp2-process article{min-height:380px!important;padding-top:205px!important}
+  .lp2.lp2 .lp2-chip-grid{grid-template-columns:1fr 1fr!important}
+  .lp2.lp2 .lp2-chip-grid>div{min-height:118px!important}
+  .lp2.lp2 .lp2-input-output{grid-template-columns:1fr!important}
+
+  .market.market .market-hero,.intl.intl .intl-hero{padding-top:36px!important}
+  .market.market .market-code{top:18px!important}
+  .intl.intl .intl-hero{min-height:auto!important}
+
+  /* Floating conversion controls have their own dock; leave breathing room at
+     page endings without creating blank bands through the body. */
+  .lp2 .lp2-related,.hd .hd-end,.market .market-cta,.intl .intl-cta,.aboutx .aboutx-contact,.teamx .teamx-contact,.founderx .founderx-contact{
+    margin-bottom:max(0px,env(safe-area-inset-bottom))!important;
+  }
+}
+
+@media(max-width:430px){
+  .lp2.lp2 .lp2-trust{grid-template-columns:1fr!important}
+  .lp2.lp2 .lp2-trust article,.lp2.lp2 .lp2-trust + .lp2-trust article{min-height:0!important;padding:18px!important}
+  .lp2.lp2 .lp2-trust h3,.lp2.lp2 .lp2-trust + .lp2-trust h3{margin:20px 0 8px!important}
+  .lp2.lp2 .lp2-chip-grid{grid-template-columns:1fr!important}
+  .lp2.lp2 .lp2-opening-proof{grid-template-columns:1fr!important}
+  .lp2.lp2 .lp2-opening-proof figure,.lp2.lp2 .lp2-opening-proof figure:first-child,.lp2.lp2 .lp2-opening-proof figure:nth-child(2),.lp2.lp2 .lp2-opening-proof figure:nth-child(3){grid-column:auto!important;min-height:68vw!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lp2 .lp2-opening-proof img,.lp2 .lp2-process .lp2-step-art,.hd .hd-card img{transition:none!important}
+}
