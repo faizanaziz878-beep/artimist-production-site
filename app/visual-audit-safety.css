@@ -1,0 +1,12 @@
+/* Final safety corrections for the visual audit pass. */
+@media (max-width:760px){
+  .lp2 .lp2-related,
+  .hd .hd-end,
+  .market .market-cta,
+  .intl .intl-cta,
+  .aboutx .aboutx-contact,
+  .teamx .teamx-contact,
+  .founderx .founderx-contact{
+    margin-bottom:max(110px,calc(92px + env(safe-area-inset-bottom)))!important;
+  }
+}
