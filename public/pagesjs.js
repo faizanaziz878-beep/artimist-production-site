@@ -130,6 +130,18 @@
   }
   document.getElementById('apMenu').addEventListener('click', function () { setIndex(!panel.classList.contains('is-open')); });
   document.getElementById('apClose').addEventListener('click', function () { setIndex(false); });
+  document.getElementById('apIndexList').addEventListener('click', function (event) {
+    var link = event.target.closest('a');
+    if (!link) return;
+    setIndex(false);
+    var destination = new URL(link.href, location.href);
+    if (destination.origin !== location.origin || destination.pathname !== location.pathname || !destination.hash) return;
+    var target = document.querySelector(destination.hash);
+    if (!target) return;
+    event.preventDefault();
+    history.pushState(null, '', destination.hash);
+    requestAnimationFrame(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setIndex(false); });
 
   var modeBtn = document.getElementById('apMode');

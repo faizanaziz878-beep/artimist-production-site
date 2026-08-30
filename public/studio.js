@@ -416,7 +416,7 @@ var ROWS = [
         host.insertAdjacentHTML('beforeend', '<p class="st-index-group">' + esc(group) + '</p>');
       }
       host.insertAdjacentHTML('beforeend',
-        '<a href="' + s[1] + '"' + (isPage ? '' : ' data-index-link') + '>' +
+        '<a href="' + s[1] + '" data-index-link>' +
         '<small>' + String(i + 1).padStart(2, '0') + '</small>' +
         '<span>' + esc(s[0]) + '</span>' +
         '<i aria-hidden="true">' + (isPage ? '&#8599;&#65038;' : '&#8595;') + '</i></a>');
@@ -511,7 +511,18 @@ var ROWS = [
   menuBtn.addEventListener('click', function () { setIndex(!panel.classList.contains('is-open')); });
   byId('indexClose').addEventListener('click', function () { setIndex(false); });
   panel.addEventListener('click', function (e) {
-    if (e.target.closest('[data-index-link]')) setIndex(false);
+    var link = e.target.closest('[data-index-link]');
+    if (!link) return;
+    setIndex(false);
+    var destination = new URL(link.href, location.href);
+    if (destination.origin !== location.origin || destination.pathname !== location.pathname || !destination.hash) return;
+    var target = document.querySelector(destination.hash);
+    if (!target) return;
+    e.preventDefault();
+    history.pushState(null, '', destination.hash);
+    requestAnimationFrame(function () {
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && panel.classList.contains('is-open')) setIndex(false);

@@ -149,7 +149,12 @@ export function SiteIndex() {
       <nav className="canonical-primary" aria-label="Primary navigation">
         {PRIMARY.map(([label, href]) => {
           const current = href === "/contact" ? pathname === "/contact" : false;
-          return <Link key={href} href={href} aria-current={current ? "page" : undefined}>{label}</Link>;
+          // Homepage anchors resolve through a route-handler rewrite. A normal
+          // document navigation is required so desktop browsers load that
+          // experience before applying the hash.
+          return href.includes("#")
+            ? <a key={href} href={href}>{label}</a>
+            : <Link key={href} href={href} aria-current={current ? "page" : undefined}>{label}</Link>;
         })}
       </nav>
       <div className="canonical-actions">
@@ -199,10 +204,11 @@ export function SiteIndex() {
                 {pages.map(([no, label, href]) => {
                   const base = href.split("#")[0];
                   const current = href === "/" ? pathname === "/" : !href.includes("#") && pathname === base;
+                  const content = <><small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={15} /></i></>;
                   return <li key={href}>
-                    <Link href={href} aria-current={current ? "page" : undefined}>
-                      <small>{no}</small><span>{label}</span><i aria-hidden="true"><UiIcon name="arrow" size={15} /></i>
-                    </Link>
+                    {href.includes("#")
+                      ? <a href={href} onClick={() => { setOpen(false); setOpenGroup(null); }}>{content}</a>
+                      : <Link href={href} aria-current={current ? "page" : undefined} onClick={() => { setOpen(false); setOpenGroup(null); }}>{content}</Link>}
                   </li>;
                 })}
               </ul>}
