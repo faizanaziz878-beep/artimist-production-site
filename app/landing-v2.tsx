@@ -193,6 +193,7 @@ export function LandingPageV2({ slug }: { slug: string }) {
       <img className="lp2-hero-image" src={hero} alt={`${page.name} project work by Artimist Productions`} fetchPriority="high" />
       <div className="lp2-hero-shade" />
       <div className="lp2-hero-grid" aria-hidden="true"><i /><i /><i /><i /></div>
+      <div className="lp2-hero-diagram" aria-hidden="true"><LandingDiagram family={family} /></div>
       <div className="lp2-hero-copy">
         <nav className="lp2-crumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span>/</span>{hub && <><Link href={`/${hub.slug}`}>{hub.name}</Link><span>/</span></>}<b>{page.name}</b>
