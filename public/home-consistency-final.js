@@ -8,6 +8,25 @@
     });
   }
 
+  function ensureVisualArchiveLink(){
+    var foot=document.querySelector('.st-seo-authority__foot');
+    if(foot&&!foot.querySelector('a[href="/visual-archive"]')){
+      var link=document.createElement('a');
+      link.href='/visual-archive';
+      link.textContent='Visual archive';
+      foot.appendChild(link);
+    }
+    var footerList=document.querySelector('.st-footer-grid ul:nth-of-type(2)');
+    if(footerList&&!footerList.querySelector('a[href="/visual-archive"]')){
+      var item=document.createElement('li');
+      var archive=document.createElement('a');
+      archive.href='/visual-archive';
+      archive.textContent='Visual archive';
+      item.appendChild(archive);
+      footerList.appendChild(item);
+    }
+  }
+
   function ensureDesktopMotion(){
     if(document.querySelector('script[data-artimist-desktop-showcase="1"]'))return;
     var script=document.createElement('script');
@@ -18,9 +37,8 @@
   }
 
   function install(){
-    var indexLabel=document.querySelector('.st-index-top>span');
-    if(indexLabel)indexLabel.textContent='INDEX / 56 PAGES';
     canonicalizeLinks();
+    ensureVisualArchiveLink();
 
     if(!document.getElementById('artimist-home-consistency-final')){
       var style=document.createElement('style');
@@ -78,5 +96,5 @@
     if(install()||tries>40)clearInterval(timer);
   },120);
 
-  new MutationObserver(function(){canonicalizeLinks();}).observe(document.documentElement,{childList:true,subtree:true});
+  new MutationObserver(function(){canonicalizeLinks();ensureVisualArchiveLink();}).observe(document.documentElement,{childList:true,subtree:true});
 })();
