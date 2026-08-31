@@ -27,6 +27,27 @@
     }
   }
 
+  function ensureOfficialProfileLinks(){
+    var footerList=document.querySelector('.st-footer-grid ul:nth-of-type(3)');
+    if(!footerList)return;
+    var profiles=[
+      ['Instagram','https://www.instagram.com/artimist.productions/'],
+      ['LinkedIn','https://www.linkedin.com/company/artimist-productions'],
+      ['Trustpilot','https://www.trustpilot.com/review/www.artimistproductions.com']
+    ];
+    profiles.forEach(function(profile){
+      if(footerList.querySelector('a[href="'+profile[1]+'"]'))return;
+      var item=document.createElement('li');
+      var link=document.createElement('a');
+      link.href=profile[1];
+      link.textContent=profile[0];
+      link.target='_blank';
+      link.rel='noopener noreferrer';
+      item.appendChild(link);
+      footerList.appendChild(item);
+    });
+  }
+
   function ensureDesktopMotion(){
     if(document.querySelector('script[data-artimist-desktop-showcase="1"]'))return;
     var script=document.createElement('script');
@@ -39,6 +60,7 @@
   function install(){
     canonicalizeLinks();
     ensureVisualArchiveLink();
+    ensureOfficialProfileLinks();
 
     if(!document.getElementById('artimist-home-consistency-final')){
       var style=document.createElement('style');
@@ -96,5 +118,5 @@
     if(install()||tries>40)clearInterval(timer);
   },120);
 
-  new MutationObserver(function(){canonicalizeLinks();ensureVisualArchiveLink();}).observe(document.documentElement,{childList:true,subtree:true});
+  new MutationObserver(function(){canonicalizeLinks();ensureVisualArchiveLink();ensureOfficialProfileLinks();}).observe(document.documentElement,{childList:true,subtree:true});
 })();
