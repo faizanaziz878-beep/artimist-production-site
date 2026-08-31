@@ -75,6 +75,7 @@ const PAGES: Array<[string, string, string, string]> = [
   ["64", "Home Addition Permit Drawings", "/insights/what-drawings-are-needed-for-a-home-addition-permit", "Insights"],
   ["65", "Turn a Sketch Into Floor Plans", "/insights/how-to-turn-a-hand-sketch-into-floor-plans", "Insights"],
   ["66", "3D Rendering Brief Checklist", "/insights/what-to-send-for-a-3d-home-rendering", "Insights"],
+  ["67", "ADU Design & Plans", "/adu-design-plans", "Home design"],
 ];
 
 const PUBLIC_PAGE_COUNT = PAGES.filter(([, , href]) => !href.includes("#")).length;
