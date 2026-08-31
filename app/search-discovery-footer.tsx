@@ -10,6 +10,7 @@ const groups = [
   { title: "Markets", links: [["United States · remote delivery", "/usa"],["Canada · remote delivery", "/canada"],["United Kingdom · remote delivery", "/uk"],["Sweden · remote delivery", "/sweden"]] },
   { title: "Proof & trust", links: [["Project evidence", "/proof"],["Case studies", "/case-studies"],["Visual archive", "/visual-archive"],["Team", "/team"],["Founder", "/founder-message"],["Process", "/process"]] },
   { title: "Client information", links: [["Client terms & legal", "/legal"],["Payments & deposit", "/legal#payments"],["NDA & confidentiality", "/legal#confidentiality"],["Data & privacy", "/legal#data"],["Permit & stamping boundaries", "/legal#stamps"],["Start a project", "/contact"]] },
+  { title: "Official profiles", links: [["Instagram", "https://www.instagram.com/artimist.productions/"],["LinkedIn", "https://www.linkedin.com/company/artimist-productions"],["Trustpilot", "https://www.trustpilot.com/review/www.artimistproductions.com"]] },
 ] as const;
 
 export function SearchDiscoveryFooter() {

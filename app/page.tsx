@@ -6,11 +6,11 @@ import { UiIcon } from "./ui-icon";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Architecture, Design & 3D Visualization Studio | Artimist",
+  title: "Artimist Productions — Architecture, BIM & 3D Visualization Studio",
   description: "Artimist Productions is an international architecture, design, BIM, 3D visualization and creative production studio serving homeowners, architects, developers and brands.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Architecture, Design & 3D Visualization Studio | Artimist",
+    title: "Artimist Productions — Architecture, BIM & 3D Visualization Studio",
     description: "Architecture, interiors, BIM and Revit, rendering, animation, branding, web design and interactive experiences from one international studio.",
     url: "https://www.artimistproductions.com/",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Architecture, Design & 3D Visualization Studio | Artimist",
+    title: "Artimist Productions — Architecture, BIM & 3D Visualization Studio",
     description: "One international studio for architecture, interiors, BIM, visualization, animation, branding, web and interactive experiences.",
     images: ["/media/hero-night.webp"],
   },
@@ -81,6 +81,12 @@ export default async function Home() {
             <UiIcon name="external" size={16} />
           </a>
           <small>Briefs can include Google Drive, Dropbox, OneDrive or WeTransfer links. Smaller scopes are welcome too.</small>
+          <small>
+            Official profiles: {" "}
+            <a href="https://www.instagram.com/artimist.productions/" target="_blank" rel="noreferrer" style={inlineServiceLink}>Instagram</a> · {" "}
+            <a href="https://www.linkedin.com/company/artimist-productions" target="_blank" rel="noreferrer" style={inlineServiceLink}>LinkedIn</a> · {" "}
+            <a href="https://www.trustpilot.com/review/www.artimistproductions.com" target="_blank" rel="noreferrer" style={inlineServiceLink}>Trustpilot</a>
+          </small>
         </div>
       </section>
     </>
