@@ -4,7 +4,7 @@ import path from "node:path";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const TITLE = "Architecture, Design & 3D Visualization Studio | Artimist";
+const TITLE = "Artimist Productions — Architecture, BIM & 3D Visualization Studio";
 const DESCRIPTION = "International architecture, design, BIM, 3D visualization and creative production studio serving homeowners, architects, developers and brands.";
 const GOOGLE_VERIFICATION = "lsk4HfeRzYO3lwG_jcZAoexrOwBkDMyneJKREIpOxvM";
 
@@ -13,11 +13,28 @@ const organization = {
   "@type": "Organization",
   "@id": "https://www.artimistproductions.com/#organization",
   name: "Artimist Productions",
+  alternateName: ["Artimist", "Artimist Production"],
+  legalName: "Artimist Productions",
   url: "https://www.artimistproductions.com",
   email: "Faizan@artimistproductions.com",
+  telephone: "+1-807-808-4181",
+  foundingLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Lahore",
+      addressRegion: "Punjab",
+      addressCountry: "PK",
+    },
+  },
+  sameAs: [
+    "https://www.instagram.com/artimist.productions/",
+    "https://www.linkedin.com/company/artimist-productions",
+    "https://www.trustpilot.com/review/www.artimistproductions.com",
+  ],
   description: "International multidisciplinary design and creative production studio helping homeowners, architects, developers and brands with house design, interiors, floor plan modifications, residential drafting, BIM, architectural visualization, animation and real-time experiences.",
   areaServed: ["Worldwide", "United States", "United Kingdom", "Canada", "Sweden"],
-  knowsAbout: ["Custom house plans", "Floor plan design", "House plan modification", "Interior design", "Home renovation drawings", "Residential drafting", "BIM", "Revit", "Architectural visualization", "3D rendering", "Architectural animation", "Unreal Engine visualization"],
+  knowsAbout: ["Custom house plans", "Floor plan design", "House plan modification", "Interior design", "Home renovation drawings", "Residential drafting", "Construction documentation", "Architectural documentation", "Permit drawings", "BIM", "Revit", "Revit MEP drafting", "Architectural visualization", "3D rendering", "Architectural animation", "Unreal Engine visualization"],
 };
 
 const website = {
@@ -89,6 +106,12 @@ function enhance(source: string) {
   html = html.replace(/ARTIMIST PRODUCTION(?!S)/g, 'ARTIMIST PRODUCTIONS');
   html = html.replace('<h1>Atmosphere begins<br>before <em>the door.</em></h1>', '<h1><span class="st-hero-accent">Architecture</span>, Design, 3D Visualization &amp; Creative Production Studio</h1>');
   html = html.replace('Architecture, visualization and creative production for places, products and worlds people can believe in.', 'Artimist Productions is an international studio providing architecture, interiors, BIM and Revit, architectural rendering, animation, branding, web design and interactive experiences for homeowners, architects, developers and brands.');
+
+  // Add verified official profile links to the homepage footer for bidirectional entity association.
+  html = html.replace(
+    '<li><a href="/contact">Start a project</a></li><li><a href="#plans">Monthly plans</a></li>\n        <li><a href="/contact">Contact</a></li>',
+    '<li><a href="/contact">Start a project</a></li><li><a href="#plans">Monthly plans</a></li>\n        <li><a href="/contact">Contact</a></li><li><a href="https://www.instagram.com/artimist.productions/">Instagram</a></li><li><a href="https://www.linkedin.com/company/artimist-productions">LinkedIn</a></li><li><a href="https://www.trustpilot.com/review/www.artimistproductions.com">Trustpilot</a></li>',
+  );
 
   // Keep the homepage brief useful but clearly lighter than the complete intake.
   html = html.replace(
