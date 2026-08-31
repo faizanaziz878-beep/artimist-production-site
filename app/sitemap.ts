@@ -1,85 +1,12 @@
 import type { MetadataRoute } from 'next'
-
-const BASE = 'https://www.artimistproductions.com'
-const LAST_MAJOR_SITE_UPDATE = new Date('2026-08-30T03:00:00.000Z')
-
-type Frequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
-
-function entry(path: string, changeFrequency: Frequency): MetadataRoute.Sitemap[number] {
-  return { url: `${BASE}${path}`, lastModified: LAST_MAJOR_SITE_UPDATE, changeFrequency }
-}
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    entry('/', 'weekly'),
-    entry('/home-design-services', 'monthly'),
-    entry('/custom-house-design', 'monthly'),
-    entry('/plan-modification-service', 'monthly'),
-    entry('/3d-interior-design-service', 'monthly'),
-    entry('/residential-renovation-permit-drawings', 'monthly'),
-    entry('/sketch-to-floor-plan-service', 'monthly'),
-    entry('/floor-plan-to-3d-rendering', 'monthly'),
-    entry('/home-addition-plans', 'monthly'),
-    entry('/house-exterior-design-service', 'monthly'),
-
-    entry('/international', 'monthly'),
-    entry('/usa', 'monthly'),
-    entry('/canada', 'monthly'),
-    entry('/uk', 'monthly'),
-    entry('/sweden', 'monthly'),
-
-    entry('/architecture', 'monthly'),
-    entry('/bim-drafting', 'monthly'),
-    entry('/visualization', 'monthly'),
-    entry('/architectural-drafting-services', 'monthly'),
-    entry('/revit-drafting-services', 'monthly'),
-    entry('/bim-modeling-services', 'monthly'),
-    entry('/permit-drawing-services', 'monthly'),
-    entry('/construction-documentation-services', 'monthly'),
-    entry('/services', 'monthly'),
-    entry('/services/architectural-rendering', 'monthly'),
-    entry('/services/3d-interior-rendering', 'monthly'),
-    entry('/services/real-estate-rendering', 'monthly'),
-    entry('/services/architectural-animation', 'monthly'),
-    entry('/residential', 'monthly'),
-    entry('/unreal-engine', 'monthly'),
-
-    entry('/case-studies', 'monthly'),
-    entry('/case-studies/rv-park-design', 'monthly'),
-    entry('/case-studies/permit-application-packages', 'monthly'),
-    entry('/case-studies/home-interior-design', 'monthly'),
-    entry('/case-studies/residential-exterior-design', 'monthly'),
-    entry('/case-studies/bowl-stroke', 'monthly'),
-    entry('/case-studies/harmonic-horizons', 'monthly'),
-    entry('/case-studies/us-permit-documentation', 'monthly'),
-    entry('/case-studies/residential-visualization', 'monthly'),
-    entry('/case-studies/parametric-canopy-studies', 'monthly'),
-    entry('/case-studies/connected-learning-auditorium', 'monthly'),
-
-    entry('/insights', 'weekly'),
-    entry('/insights/how-much-do-custom-house-plans-cost', 'monthly'),
-    entry('/insights/permit-drawings-vs-construction-drawings', 'monthly'),
-    entry('/insights/how-to-modify-an-existing-floor-plan', 'monthly'),
-    entry('/insights/revit-drafting-vs-cad-drafting', 'monthly'),
-    entry('/insights/what-is-scan-to-bim', 'monthly'),
-    entry('/insights/lod-200-vs-lod-300-vs-lod-400', 'monthly'),
-    entry('/insights/how-much-does-architectural-rendering-cost', 'monthly'),
-    entry('/insights/3d-rendering-vs-unreal-engine-walkthrough', 'monthly'),
-    entry('/insights/do-house-plans-need-an-architect-stamp', 'monthly'),
-    entry('/insights/what-drawings-are-needed-for-a-home-addition-permit', 'monthly'),
-    entry('/insights/how-to-turn-a-hand-sketch-into-floor-plans', 'monthly'),
-    entry('/insights/what-to-send-for-a-3d-home-rendering', 'monthly'),
-
-    entry('/proof', 'monthly'),
-    entry('/visual-archive', 'weekly'),
-    entry('/process', 'monthly'),
-    entry('/partners', 'monthly'),
-    entry('/partners/decoding-bits', 'monthly'),
-    entry('/partners/scallance', 'monthly'),
-    entry('/about', 'monthly'),
-    entry('/team', 'monthly'),
-    entry('/founder-message', 'yearly'),
-    entry('/legal', 'yearly'),
-    entry('/contact', 'monthly'),
-  ]
-}
+const BASE='https://www.artimistproductions.com'
+const LAST_MAJOR_SITE_UPDATE=new Date('2026-08-31T11:55:00.000Z')
+type Frequency='always'|'hourly'|'daily'|'weekly'|'monthly'|'yearly'|'never'
+function entry(path:string,changeFrequency:Frequency):MetadataRoute.Sitemap[number]{return{url:`${BASE}${path}`,lastModified:LAST_MAJOR_SITE_UPDATE,changeFrequency}}
+export default function sitemap():MetadataRoute.Sitemap{return [
+entry('/','weekly'),entry('/home-design-services','monthly'),entry('/custom-house-design','monthly'),entry('/plan-modification-service','monthly'),entry('/3d-interior-design-service','monthly'),entry('/residential-renovation-permit-drawings','monthly'),entry('/sketch-to-floor-plan-service','monthly'),entry('/floor-plan-to-3d-rendering','monthly'),entry('/home-addition-plans','monthly'),entry('/house-exterior-design-service','monthly'),
+entry('/home-renovation-plans','monthly'),entry('/garage-conversion-plans','monthly'),entry('/as-built-drawings','monthly'),entry('/3d-house-design','monthly'),entry('/house-extension-plans','monthly'),entry('/loft-conversion-plans','monthly'),
+entry('/international','monthly'),entry('/usa','monthly'),entry('/canada','monthly'),entry('/uk','monthly'),entry('/sweden','monthly'),entry('/architecture','monthly'),entry('/bim-drafting','monthly'),entry('/visualization','monthly'),entry('/architectural-drafting-services','monthly'),entry('/revit-drafting-services','monthly'),entry('/bim-modeling-services','monthly'),entry('/permit-drawing-services','monthly'),entry('/construction-documentation-services','monthly'),entry('/services','monthly'),entry('/services/architectural-rendering','monthly'),entry('/services/3d-interior-rendering','monthly'),entry('/services/real-estate-rendering','monthly'),entry('/services/architectural-animation','monthly'),entry('/residential','monthly'),entry('/unreal-engine','monthly'),
+entry('/case-studies','monthly'),entry('/case-studies/rv-park-design','monthly'),entry('/case-studies/permit-application-packages','monthly'),entry('/case-studies/home-interior-design','monthly'),entry('/case-studies/residential-exterior-design','monthly'),entry('/case-studies/bowl-stroke','monthly'),entry('/case-studies/harmonic-horizons','monthly'),entry('/case-studies/us-permit-documentation','monthly'),entry('/case-studies/residential-visualization','monthly'),entry('/case-studies/parametric-canopy-studies','monthly'),entry('/case-studies/connected-learning-auditorium','monthly'),
+entry('/insights','weekly'),entry('/insights/how-much-do-custom-house-plans-cost','monthly'),entry('/insights/permit-drawings-vs-construction-drawings','monthly'),entry('/insights/how-to-modify-an-existing-floor-plan','monthly'),entry('/insights/revit-drafting-vs-cad-drafting','monthly'),entry('/insights/what-is-scan-to-bim','monthly'),entry('/insights/lod-200-vs-lod-300-vs-lod-400','monthly'),entry('/insights/how-much-does-architectural-rendering-cost','monthly'),entry('/insights/3d-rendering-vs-unreal-engine-walkthrough','monthly'),entry('/insights/do-house-plans-need-an-architect-stamp','monthly'),entry('/insights/what-drawings-are-needed-for-a-home-addition-permit','monthly'),entry('/insights/how-to-turn-a-hand-sketch-into-floor-plans','monthly'),entry('/insights/what-to-send-for-a-3d-home-rendering','monthly'),
+entry('/proof','monthly'),entry('/visual-archive','weekly'),entry('/process','monthly'),entry('/partners','monthly'),entry('/partners/decoding-bits','monthly'),entry('/partners/scallance','monthly'),entry('/about','monthly'),entry('/team','monthly'),entry('/founder-message','yearly'),entry('/legal','yearly'),entry('/contact','monthly')]}
