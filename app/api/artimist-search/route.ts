@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { searchArtimist } from "../../../lib/artimist-search";
+import { searchArtimist } from "../../../lib/artimist-search-runtime";
 
 export const dynamic = "force-dynamic";
 
