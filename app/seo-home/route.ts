@@ -135,9 +135,13 @@ function enhance(source: string) {
   // before the team section rather than detached near the bottom of the page.
   html = html.replace('    <!-- TEAM -->', `${seoSection}\n    <!-- TEAM -->`);
 
+  // Homepage uses the legacy studio.js index, so add the FAQ destination there
+  // before client-showcase converts the raw index into grouped accordions.
+  const faqIndexPatch = `<script id="artimist-faq-index-patch">(function(){var host=document.getElementById('indexPages');if(!host||host.querySelector('a[href="/faqs"]'))return;var group=document.createElement('p');group.className='st-index-group';group.textContent='FAQs';host.appendChild(group);var link=document.createElement('a');link.href='/faqs';link.setAttribute('data-index-link','');link.innerHTML='<small>68</small><span>Frequently Asked Questions</span><i aria-hidden="true">${arrowUpRight}</i>';host.appendChild(link);})();</script>`;
+
   // Keep only source-stable enhancements. Buyer-journey and premium-plan scripts
   // previously injected large new sections after load and made mobile output vary.
-  html = html.replace('</body>', `<script>(function(){var loaded=false;function load(){if(loaded)return;loaded=true;var s=document.createElement('script');s.type='module';s.src='/spatial-model.js';document.head.appendChild(s)}var target=document.getElementById('portal');if('IntersectionObserver'in window&&target){var observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting})){observer.disconnect();load()}},{rootMargin:'500px'});observer.observe(target)}else if('requestIdleCallback'in window){requestIdleCallback(load,{timeout:4000})}else{setTimeout(load,2500)}})();</script><script src="/lead-attribution.js" defer></script><script src="/whatsapp-conversations.js" defer></script><script src="/client-showcase.js" defer></script><script src="/home-consistency-final.js" defer></script></body>`);
+  html = html.replace('</body>', `${faqIndexPatch}<script>(function(){var loaded=false;function load(){if(loaded)return;loaded=true;var s=document.createElement('script');s.type='module';s.src='/spatial-model.js';document.head.appendChild(s)}var target=document.getElementById('portal');if('IntersectionObserver'in window&&target){var observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting})){observer.disconnect();load()}},{rootMargin:'500px'});observer.observe(target)}else if('requestIdleCallback'in window){requestIdleCallback(load,{timeout:4000})}else{setTimeout(load,2500)}})();</script><script src="/lead-attribution.js" defer></script><script src="/whatsapp-conversations.js" defer></script><script src="/client-showcase.js" defer></script><script src="/home-consistency-final.js" defer></script></body>`);
   return html;
 }
 
