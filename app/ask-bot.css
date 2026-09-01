@@ -1,174 +1,28 @@
-/* Ask the Studio — factual, source-owned project guidance. */
-.askbot-launch {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 940;
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #f4f2ef;
-  color: #0b0b0b;
-  border: 0;
-  border-radius: 999px;
-  font-family: inherit;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  padding: 0 20px;
-  cursor: pointer;
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
-  transition: transform 0.22s ease, opacity 0.22s ease;
-}
-.askbot-launch:hover { transform: translateY(-2px); }
-.askbot-launch .ui-icon { transition: transform .2s ease; }
-.askbot-launch:hover .ui-icon { transform: translateX(2px); }
-.askbot-launch[aria-expanded="true"] .ui-icon { transform: none; }
+/* Artimist guided search — verified studio knowledge with a conversational search UI. */
+.askbot-launch{position:fixed;right:22px;bottom:22px;z-index:940;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#f4f2ef;color:#0b0b0b;border:0;border-radius:999px;font-family:inherit;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:0 20px;cursor:pointer;box-shadow:0 10px 34px rgba(0,0,0,.45);transition:transform .22s ease,opacity .22s ease}.askbot-launch:hover{transform:translateY(-2px)}.askbot-launch .ui-icon{transition:transform .2s ease}.askbot-launch:hover .ui-icon{transform:scale(1.06)}.askbot-launch[aria-expanded="true"] .ui-icon{transform:none}
 
-.askbot-panel {
-  position: fixed;
-  right: 22px;
-  bottom: 82px;
-  z-index: 941;
-  width: min(390px, calc(100vw - 44px));
-  max-height: min(590px, calc(100dvh - 132px));
-  display: flex;
-  flex-direction: column;
-  background: #0d0d0d;
-  border: 1px solid #272727;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
-  color: #e8e6e3;
-  animation: askbot-in 0.22s ease;
-  overflow: hidden;
-}
-@keyframes askbot-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.askbot-top-search{position:fixed;z-index:8950;top:75px;left:50%;transform:translateX(-50%);width:min(680px,calc(100vw - 44px));min-height:52px;display:flex;align-items:center;gap:12px;padding:7px 9px 7px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(11,11,13,.9);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);box-shadow:0 16px 50px rgba(0,0,0,.28);color:#f4f0eb;text-align:left;cursor:pointer;animation:askbot-dock-in .5s cubic-bezier(.2,.75,.2,1) both}.askbot-top-search>span:first-of-type{display:flex;flex-direction:column;min-width:0;flex:1}.askbot-top-search strong{font:550 12px/1.2 var(--font-geist-sans,"Helvetica Neue",Arial,sans-serif);letter-spacing:.01em}.askbot-top-search small{margin-top:3px;color:rgba(255,255,255,.52);font-size:9px;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.askbot-top-search>b{min-height:36px;display:inline-flex;align-items:center;padding:0 15px;border-radius:999px;background:#f1ede7;color:#111;font-size:8px;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}.askbot-top-search .ui-icon{color:#dc657b;flex:0 0 auto}@keyframes askbot-dock-in{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translate(-50%,0)}}
 
-.askbot-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 18px;
-  border-bottom: 1px solid #1e1e1e;
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #9e9a96;
-}
-.askbot-head button {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  background: none;
-  border: 1px solid #2a2a2a;
-  color: #aaa6a2;
-  cursor: pointer;
-  padding: 0;
-}
-.askbot-head button:hover { color: #fff; border-color: #4a4a4a; }
+.askbot-panel{position:fixed;right:22px;bottom:82px;z-index:941;width:min(510px,calc(100vw - 44px));max-height:min(720px,calc(100dvh - 110px));display:flex;flex-direction:column;background:#0b0c0e;border:1px solid #2a2b2f;border-radius:24px;box-shadow:0 28px 90px rgba(0,0,0,.62);color:#ebe7e2;animation:askbot-in .25s cubic-bezier(.2,.75,.2,1);overflow:hidden}@keyframes askbot-in{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
 
-.askbot-search { padding: 14px 18px 0; }
-.askbot-search input {
-  width: 100%;
-  min-height: 46px;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid #2b2b2b;
-  color: #e8e6e3;
-  font: inherit;
-  font-size: 14px;
-  padding: 11px 13px;
-}
-.askbot-search input::placeholder { color: #6c6965; }
-.askbot-search input:focus { outline: none; border-color: #744150; }
+.askbot-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 22px 18px;border-bottom:1px solid #202126;background:radial-gradient(circle at 8% 0,rgba(160,35,62,.2),transparent 38%)}.askbot-head>div{min-width:0}.askbot-head strong{display:block;margin-top:13px;color:#f4f0eb;font-family:Georgia,"Times New Roman",serif;font-size:31px;font-weight:400;line-height:.98;letter-spacing:-.035em}.askbot-status{display:flex;align-items:center;gap:7px;color:#9f9a95;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.askbot-status i{width:7px;height:7px;border-radius:50%;background:#c82f50;box-shadow:0 0 0 6px rgba(200,47,80,.1)}.askbot-head>button{width:40px;height:40px;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.02);border:1px solid #313238;border-radius:50%;color:#aaa6a2;cursor:pointer;padding:0}.askbot-head>button:hover{color:#fff;border-color:#5b5d63}
 
-.askbot-body { padding: 14px 18px 18px; overflow-y: auto; overscroll-behavior: contain; }
-.askbot-list { list-style: none; margin: 0; padding: 0; }
-.askbot-list li + li { border-top: 1px solid #1e1e1e; }
-.askbot-list button {
-  width: 100%;
-  min-height: 48px;
-  text-align: left;
-  background: none;
-  border: 0;
-  color: #d4d2cf;
-  font: inherit;
-  font-size: 14px;
-  line-height: 1.5;
-  padding: 11px 0;
-  cursor: pointer;
-}
-.askbot-list button:hover { color: #fff; }
+.askbot-search{padding:16px 18px 0}.askbot-input-wrap{min-height:54px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:5px 6px 5px 15px;border:1px solid #32343a;border-radius:16px;background:rgba(255,255,255,.04)}.askbot-input-wrap>.ui-icon{color:#807c78}.askbot-input-wrap:focus-within{border-color:#8b4556;box-shadow:0 0 0 3px rgba(139,69,86,.1)}.askbot-search input{width:100%;min-width:0;height:42px;box-sizing:border-box;background:transparent;border:0;color:#ede9e5;font:inherit;font-size:14px;padding:0}.askbot-search input::placeholder{color:#706d69}.askbot-search input:focus{outline:none}.askbot-search button{width:42px;height:42px;display:grid;place-items:center;border:0;border-radius:12px;background:#f1ede7;color:#121214;cursor:pointer}.askbot-search button:disabled{opacity:.35;cursor:default}
 
-.askbot-answer h4 { margin: 4px 0 10px; font-size: 17px; font-weight: 500; line-height: 1.4; color: #f4f2ef; }
-.askbot-answer p { margin: 0 0 16px; font-size: 14px; line-height: 1.7; color: #aaa6a2; }
-.askbot-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: none;
-  border: 0;
-  color: #7f7b77;
-  font: inherit;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0 0 12px;
-  cursor: pointer;
-}
-.askbot-back .ui-icon { transform: rotate(180deg); }
-.askbot-back:hover { color: #e8e6e3; }
+.askbot-body{padding:16px 18px 20px;overflow-y:auto;overscroll-behavior:contain}.askbot-welcome>p{margin:2px 4px 15px;color:#aaa6a2;font-size:13px;line-height:1.65}.askbot-prompts{display:grid;gap:7px}.askbot-prompts button{width:100%;min-height:44px;padding:10px 13px;border:1px solid #25262a;border-radius:12px;background:rgba(255,255,255,.018);color:#d7d3cf;text-align:left;font:inherit;font-size:12px;line-height:1.35;cursor:pointer;transition:border-color .18s ease,background .18s ease,color .18s ease}.askbot-prompts button:hover{border-color:#514049;background:rgba(127,32,54,.09);color:#fff}.askbot-guardrail{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.askbot-guardrail span{padding:6px 8px;border-radius:999px;background:#131418;color:#72706e;font-size:7px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}
 
-.askbot-wa {
-  display: block;
-  text-align: center;
-  background: #7f2036;
-  color: #fff;
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 14px 16px;
-  transition: background 0.2s ease;
-}
-.askbot-wa:hover { background: #9c2942; }
-.askbot-wa-quiet { margin-top: 10px; background: none; border: 1px solid #303030; color: #aaa6a2; }
-.askbot-wa-quiet:hover { background: rgba(255,255,255,.04); color: #fff; }
+.askbot-thinking{min-height:126px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#8d8985}.askbot-thinking p{margin:0;font-size:11px;letter-spacing:.05em}.askbot-loader{width:15px;height:15px;border:1.5px solid rgba(255,255,255,.2);border-top-color:currentColor;border-radius:50%;display:inline-block;animation:askbot-spin .8s linear infinite}@keyframes askbot-spin{to{transform:rotate(360deg)}}.askbot-search button .askbot-loader{color:#111;border-color:rgba(0,0,0,.18);border-top-color:#111}
 
-@media (max-width: 760px) {
-  .askbot-launch {
-    right: 12px;
-    bottom: calc(14px + env(safe-area-inset-bottom));
-    width: calc((100vw - 34px) / 2);
-    min-width: 0;
-    min-height: 52px;
-    height: 52px;
-    padding: 0 11px;
-    gap: 7px;
-    font-size: 8.2px;
-    letter-spacing: .065em;
-  }
-  .askbot-panel {
-    right: 12px;
-    left: 12px;
-    bottom: calc(82px + env(safe-area-inset-bottom));
-    width: auto;
-    max-height: calc(100dvh - 112px);
-  }
-  .askbot-search input { font-size: 16px; }
-}
+.askbot-answer{animation:askbot-answer-in .22s ease both}@keyframes askbot-answer-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.askbot-answer-top{display:flex;align-items:center;justify-content:space-between;gap:16px}.askbot-answer-top>button{border:0;background:none;color:#8d8985;font:650 8px/1 inherit;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;padding:5px}.askbot-answer-top>button:hover{color:#fff}.askbot-label{display:block;color:#c5576d;font-size:7px;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.askbot-query{margin:14px 0 12px!important;color:#f1ede8!important;font-family:Georgia,"Times New Roman",serif!important;font-size:20px!important;line-height:1.18!important}.askbot-response{margin:0!important;color:#bbb6b1!important;font-size:13px!important;line-height:1.72!important}.askbot-follow{margin:14px 0 0!important;padding:12px 13px;border-left:2px solid #7f2036;background:rgba(127,32,54,.08);color:#aaa6a2!important;font-size:11px!important;line-height:1.55!important}.askbot-follow strong{color:#ddd8d3;font-weight:600}
 
-@media (max-width: 390px) {
-  .askbot-launch { right: 10px; width: calc((100vw - 30px) / 2); font-size: 7.7px; letter-spacing: .05em; }
-  .askbot-launch .ui-icon { width: 13px; height: 13px; }
-}
+.askbot-routes{margin-top:19px;padding-top:16px;border-top:1px solid #202126}.askbot-routes>.askbot-label{margin-bottom:8px}.askbot-routes>a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:12px 3px;border-top:1px solid #1f2024;color:#ddd9d4;text-decoration:none}.askbot-routes>a:first-of-type{border-top:0}.askbot-routes>a:hover strong{color:#fff}.askbot-routes small{display:block;margin-bottom:3px;color:#77736f;font-size:7px;letter-spacing:.09em;text-transform:uppercase}.askbot-routes strong{display:block;font-size:13px;font-weight:550;line-height:1.25}.askbot-routes p{margin:3px 0 0;color:#77736f;font-size:10px;line-height:1.4}.askbot-routes .ui-icon{color:#77736f}
 
-@media (prefers-reduced-motion: reduce) {
-  .askbot-launch, .askbot-panel { animation: none; transition: none; }
-}
+.askbot-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.askbot-actions>a{min-height:44px;display:flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;background:#8a253b;color:#fff;text-decoration:none;text-align:center;font-size:8px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}.askbot-actions>a:hover{background:#a52d48}.askbot-actions>a.quiet{background:transparent;border:1px solid #303136;color:#aaa6a2}.askbot-actions>a.quiet:hover{background:rgba(255,255,255,.04);color:#fff}
+
+.askbot-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 18px calc(11px + env(safe-area-inset-bottom));border-top:1px solid #202126;background:#090a0c;color:#66635f;font-size:7px;line-height:1.35;letter-spacing:.03em}.askbot-foot a{flex:0 0 auto;color:#9e9994;text-decoration:none}.askbot-foot a:hover{color:#fff}
+
+@media(max-width:1180px){.askbot-top-search{width:min(520px,44vw)}.askbot-top-search>b{display:none}}
+@media(max-width:900px){.askbot-top-search{top:74px;width:min(560px,calc(100vw - 28px))}}
+@media(max-width:760px){.askbot-launch{right:12px;bottom:calc(14px + env(safe-area-inset-bottom));width:calc((100vw - 34px)/2);min-width:0;min-height:52px;height:52px;padding:0 11px;gap:7px;font-size:8.2px;letter-spacing:.065em}.askbot-top-search{top:74px;min-height:48px;padding:6px 7px 6px 12px;gap:9px}.askbot-top-search strong{font-size:10px}.askbot-top-search small{font-size:8px}.askbot-top-search>b{display:inline-flex;min-height:34px;padding:0 11px;font-size:7px}.askbot-panel{right:10px;left:10px;bottom:calc(76px + env(safe-area-inset-bottom));width:auto;max-height:calc(100dvh - 94px);border-radius:20px}.askbot-head{padding:18px 16px 15px}.askbot-head strong{font-size:27px}.askbot-search{padding:13px 12px 0}.askbot-search input{font-size:16px}.askbot-body{padding:14px 12px 17px}.askbot-foot{padding-left:13px;padding-right:13px}.askbot-actions{grid-template-columns:1fr}}
+@media(max-width:390px){.askbot-launch{right:10px;width:calc((100vw - 30px)/2);font-size:7.7px;letter-spacing:.05em}.askbot-launch .ui-icon{width:13px;height:13px}.askbot-top-search{width:calc(100vw - 20px)}.askbot-top-search small{max-width:185px}.askbot-top-search>b{padding:0 9px}}
+@media(prefers-reduced-motion:reduce){.askbot-launch,.askbot-panel,.askbot-top-search,.askbot-answer{animation:none;transition:none}.askbot-loader{animation:none}}
