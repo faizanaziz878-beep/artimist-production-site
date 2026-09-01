@@ -119,8 +119,8 @@ export function AskBot() {
 
   return (
     <>
-      {pathname === "/" && !open && (
-        <button type="button" className="askbot-top-search" onClick={() => openSearch("homepage_dock")} aria-label="Open Artimist AI search">
+      {!open && (
+        <button type="button" className="askbot-top-search" onClick={() => openSearch("top_search_bar")} aria-label="Open Artimist AI search">
           <UiIcon name="search" size={17} />
           <span><strong>Hello, I’m Artimist. How can I help you?</strong><small>Ask about your house, drawings, BIM, Revit, rendering or project.</small></span>
           <b>Ask me a question</b>
