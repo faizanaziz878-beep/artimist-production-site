@@ -1,4 +1,4 @@
-import { searchArtimist } from "../../lib/artimist-search";
+import { searchArtimist } from "../../lib/artimist-search-runtime";
 
 export const metadata = { robots: { index: false, follow: false }, title: "Artimist Search Preview Test" };
 
