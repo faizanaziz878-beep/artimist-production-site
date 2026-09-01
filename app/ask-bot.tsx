@@ -1,69 +1,33 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { UiIcon } from "./ui-icon";
 
-type Faq = { q: string; keywords: string[]; a: string };
+type SearchRoute = {
+  title: string;
+  path: string;
+  category: string;
+  reason: string;
+};
 
-const FAQS: Faq[] = [
-  {
-    q: "What does Artimist actually do?",
-    keywords: ["service", "services", "do", "offer", "what", "help", "work"],
-    a: "Architecture, interiors, BIM, drafting and visualization. That includes custom house design, plan development, Revit and BIM production, CAD drafting, permit and construction documentation support, 3D rendering, animation and real-time Unreal Engine experiences.",
-  },
-  {
-    q: "Do you work internationally?",
-    keywords: ["us", "usa", "united", "states", "america", "american", "canada", "uk", "sweden", "country", "where", "international", "remote"],
-    a: "Yes. Artimist Productions works remotely with homeowners, architects, developers, builders and brands across multiple markets. The project scope, deliverables, communication rhythm and file handover are agreed before production starts.",
-  },
-  {
-    q: "Can you produce permit or construction drawings?",
-    keywords: ["permit", "permits", "planning", "approval", "submission", "council", "city", "code", "construction", "drawing", "drawings"],
-    a: "Yes. Permit-support and construction-documentation production are part of the studio's work. Send the material you have—sketches, CAD, PDF, survey or model—and the studio will review what is usable and what still needs to be developed.",
-  },
-  {
-    q: "Do you do Revit, BIM or CAD drafting?",
-    keywords: ["revit", "bim", "cad", "autocad", "draft", "drafting", "model", "modeling", "modelling", "lod"],
-    a: "Yes. Revit drafting, BIM modeling, CAD drafting, CAD-to-Revit and PDF-to-CAD production, as-built documentation and coordinated drawing support are core technical services. Deliverables are defined in the quotation before work begins.",
-  },
-  {
-    q: "Can you work from my existing drawings or a point cloud?",
-    keywords: ["existing", "convert", "conversion", "pdf", "dwg", "scan", "point", "cloud", "survey", "as-built", "asbuilt", "sketch", "file", "files", "format", "formats"],
-    a: "Usually yes. The studio can review Revit, CAD/DWG, SketchUp, PDF sets, hand sketches, surveys and point-cloud data. If a source file is incomplete or unsuitable, that is identified during review instead of being hidden inside production.",
-  },
-  {
-    q: "Do you do 3D rendering and animation?",
-    keywords: ["render", "rendering", "3d", "visual", "visualization", "visualisation", "animation", "walkthrough", "image", "cgi", "interior", "exterior"],
-    a: "Yes. Exterior and interior stills, daylight and dusk variants, aerial/context views, architectural animation, walkthroughs and real-time experiences are all part of the visualization offer.",
-  },
-  {
-    q: "How are revisions handled?",
-    keywords: ["revision", "revisions", "change", "changes", "feedback", "round", "rounds", "edit", "edits"],
-    a: "The included revision allowance is written into the project quotation. Additional rounds, new directions or requests outside the agreed brief are treated as additional scope so the project remains clear for both sides.",
-  },
-  {
-    q: "Can you work under an NDA?",
-    keywords: ["nda", "confidential", "confidentiality", "private", "privacy", "secure", "secret", "sensitive"],
-    a: "Yes. NDA-based and confidential workflows are available. If the project is sensitive, request the NDA before sharing confidential drawings, links or source material.",
-  },
-  {
-    q: "What files do I receive at the end?",
-    keywords: ["handover", "deliver", "delivery", "source", "sources", "file", "files", "dwg", "rvt", "pdf", "image", "animation"],
-    a: "The handover is defined in the agreed scope. Depending on the project this may include PDFs, DWGs, RVTs, image files, animation outputs or agreed source files. Source-file delivery is included only where the quotation says so.",
-  },
-  {
-    q: "How do payment and project start work?",
-    keywords: ["cost", "price", "pricing", "budget", "fee", "rate", "charge", "payment", "deposit", "start", "quote", "quotation"],
-    a: "The studio reviews the brief, source files, deliverables and deadline before issuing a project-specific quotation. Scope, payment milestones and the production start point are agreed before work begins, rather than relying on a generic price that may not fit the project.",
-  },
-  {
-    q: "How do I start a project?",
-    keywords: ["start", "begin", "brief", "quote", "quotation", "enquiry", "inquiry", "contact", "process", "next", "step"],
-    a: "Use the project intake page and send the project as it stands today—a finished brief, rough idea, drawings or a difficult technical question. A real studio team member reviews project-specific enquiries and takes over when a quote, file review or decision is needed.",
-  },
+type SearchResult = {
+  answer: string;
+  intent: string;
+  confidence: "high" | "medium" | "low";
+  routes: SearchRoute[];
+  followUp?: string;
+  leadReady: boolean;
+};
+
+const EXAMPLES = [
+  "Turn my sketch into a floor plan",
+  "I need Revit drafting",
+  "Can you design an ADU?",
+  "How much does a rendering cost?",
+  "Do you stamp permit drawings?",
 ];
-
-const WHATSAPP_FALLBACK = "+1 (807) 808-4181";
 
 function track(name: string, params: Record<string, string>) {
   if (typeof window === "undefined") return;
@@ -71,25 +35,26 @@ function track(name: string, params: Record<string, string>) {
   if (typeof w.gtag === "function") w.gtag("event", name, params);
 }
 
-export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) {
+export function AskBot() {
+  const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [picked, setPicked] = useState<Faq | null>(null);
+  const [submittedQuery, setSubmittedQuery] = useState("");
+  const [result, setResult] = useState<SearchResult | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const waHref = useMemo(() => `https://wa.me/${whatsapp.replace(/\D/g, "")}`, [whatsapp]);
-
-  const matches = useMemo(() => {
-    const term = query.trim().toLowerCase();
-    if (!term) return FAQS;
-    const words = term.split(/\s+/).filter((word) => word.length > 2);
-    return FAQS.map((faq) => {
-      const haystack = `${faq.q} ${faq.keywords.join(" ")}`.toLowerCase();
-      let score = haystack.includes(term) ? 5 : 0;
-      for (const word of words) if (haystack.includes(word)) score += 2;
-      for (const keyword of faq.keywords) if (words.includes(keyword)) score += 3;
-      return { faq, score };
-    }).filter((entry) => entry.score > 0).sort((a, b) => b.score - a.score).map((entry) => entry.faq);
-  }, [query]);
+  useEffect(() => {
+    const onOpen = (event: Event) => {
+      const detail = (event as CustomEvent<{ query?: string }>).detail;
+      setOpen(true);
+      if (detail?.query) setQuery(detail.query);
+      window.setTimeout(() => inputRef.current?.focus(), 60);
+    };
+    window.addEventListener("artimist:ask-open", onOpen as EventListener);
+    return () => window.removeEventListener("artimist:ask-open", onOpen as EventListener);
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle("artimist-ask-open", open);
@@ -98,13 +63,53 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
       if (event.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
+    window.setTimeout(() => inputRef.current?.focus(), 80);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.classList.remove("artimist-ask-open");
     };
   }, [open]);
 
-  const unanswered = query.trim().length > 2 && matches.length === 0;
+  if (pathname.startsWith("/admin")) return null;
+
+  async function ask(value: string) {
+    const clean = value.trim();
+    if (!clean || loading) return;
+    setLoading(true);
+    setError("");
+    setSubmittedQuery(clean);
+    track("artimist_search", { query: clean.slice(0, 90), source: pathname });
+
+    try {
+      const response = await fetch("/api/artimist-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: clean }),
+      });
+      if (!response.ok) throw new Error("Search failed");
+      const data = await response.json() as SearchResult;
+      setResult(data);
+      track("artimist_search_result", { intent: data.intent, confidence: data.confidence, source: pathname });
+    } catch {
+      setError("I couldn’t search the studio knowledge just now. You can still browse the FAQs or send the project brief.");
+      setResult(null);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    void ask(query);
+  }
+
+  function reset() {
+    setQuery("");
+    setSubmittedQuery("");
+    setResult(null);
+    setError("");
+    window.setTimeout(() => inputRef.current?.focus(), 30);
+  }
 
   return (
     <>
@@ -116,60 +121,105 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
         onClick={() => {
           const next = !open;
           setOpen(next);
-          if (next) track("faq_open", { source: window.location.pathname });
+          if (next) {
+            track("artimist_search_open", { source: pathname, trigger: "floating" });
+            window.setTimeout(() => inputRef.current?.focus(), 60);
+          }
         }}
       >
-        <span>{open ? "Close studio" : "Ask the studio"}</span>
-        <UiIcon name={open ? "close" : "chevron"} size={15} />
+        <span>{open ? "Close Artimist" : "Ask Artimist"}</span>
+        <UiIcon name={open ? "close" : "search"} size={15} />
       </button>
 
       {open && (
         <div className="askbot-panel" id="askbot-panel" role="dialog" aria-modal="false" aria-label="Ask Artimist a question">
           <div className="askbot-head">
-            <span>Ask Artimist Productions</span>
-            <button type="button" onClick={() => setOpen(false)} aria-label="Close Ask the Studio"><UiIcon name="close" size={17} /></button>
+            <div>
+              <span className="askbot-status"><i /> ARTIMIST / STUDIO SEARCH</span>
+              <strong>Hello, I’m Artimist.<br />How can I help you?</strong>
+            </div>
+            <button type="button" onClick={() => setOpen(false)} aria-label="Close Artimist search"><UiIcon name="close" size={17} /></button>
           </div>
 
-          <div className="askbot-search">
-            <input
-              type="text"
-              value={query}
-              placeholder="What do you need help with?"
-              aria-label="Ask the studio a question"
-              onChange={(event) => {
-                setQuery(event.target.value);
-                setPicked(null);
-              }}
-            />
-          </div>
+          <form className="askbot-search" onSubmit={submit}>
+            <div className="askbot-input-wrap">
+              <UiIcon name="search" size={16} />
+              <input
+                ref={inputRef}
+                type="search"
+                value={query}
+                placeholder="Ask about your house, drawings, BIM or rendering…"
+                aria-label="Ask Artimist a question"
+                autoComplete="off"
+                onChange={(event) => setQuery(event.target.value)}
+              />
+              <button type="submit" disabled={!query.trim() || loading} aria-label="Search Artimist">
+                {loading ? <span className="askbot-loader" aria-hidden="true" /> : <UiIcon name="arrow" size={16} />}
+              </button>
+            </div>
+          </form>
 
           <div className="askbot-body">
-            {picked ? (
-              <div className="askbot-answer">
-                <button type="button" className="askbot-back" onClick={() => setPicked(null)}><UiIcon name="chevron" size={12} /> All questions</button>
-                <h4>{picked.q}</h4>
-                <p>{picked.a}</p>
-                <a className="askbot-wa" href={waHref} target="_blank" rel="noopener noreferrer">Continue with the studio on WhatsApp</a>
-              </div>
-            ) : unanswered ? (
-              <div className="askbot-answer">
-                <h4>That needs a project-specific answer.</h4>
-                <p>A real studio team member should review that rather than giving you a generic answer. Send the project details or continue directly on WhatsApp.</p>
-                <a className="askbot-wa" href="/contact">Start project intake</a>
-                <a className="askbot-wa askbot-wa-quiet" href={waHref} target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
-              </div>
-            ) : (
-              <>
-                <ul className="askbot-list">
-                  {matches.map((faq) => (
-                    <li key={faq.q}>
-                      <button type="button" onClick={() => { setPicked(faq); track("faq_question", { question: faq.q.slice(0, 90) }); }}>{faq.q}</button>
-                    </li>
+            {!submittedQuery && !result && !error && (
+              <div className="askbot-welcome">
+                <p>Describe the problem in normal language. I’ll answer from Artimist’s verified services, FAQs and working boundaries, then take you to the right page.</p>
+                <div className="askbot-prompts" aria-label="Example questions">
+                  {EXAMPLES.map((example) => (
+                    <button key={example} type="button" onClick={() => { setQuery(example); void ask(example); }}>{example}</button>
                   ))}
-                </ul>
-                <a className="askbot-wa askbot-wa-quiet" href="/contact">Have a project? Start the brief</a>
-              </>
+                </div>
+                <div className="askbot-guardrail"><span>Verified studio knowledge</span><span>No invented prices</span><span>No false permit promises</span></div>
+              </div>
             )}
+
+            {loading && (
+              <div className="askbot-thinking">
+                <span className="askbot-loader" aria-hidden="true" />
+                <p>Finding the right Artimist route…</p>
+              </div>
+            )}
+
+            {!loading && error && (
+              <div className="askbot-answer">
+                <span className="askbot-label">Search unavailable</span>
+                <p>{error}</p>
+                <div className="askbot-actions"><Link href="/faqs">Browse FAQs</Link><Link href="/contact">Start a project</Link></div>
+              </div>
+            )}
+
+            {!loading && result && (
+              <div className="askbot-answer">
+                <div className="askbot-answer-top">
+                  <span className="askbot-label">Artimist answer</span>
+                  <button type="button" onClick={reset}>New question</button>
+                </div>
+                <p className="askbot-query">“{submittedQuery}”</p>
+                <p className="askbot-response">{result.answer}</p>
+                {result.followUp && <p className="askbot-follow"><strong>Useful next detail:</strong> {result.followUp}</p>}
+
+                {result.routes.length > 0 && (
+                  <div className="askbot-routes">
+                    <span className="askbot-label">Recommended pages</span>
+                    {result.routes.map((route) => (
+                      <Link key={`${route.path}-${route.title}`} href={route.path} onClick={() => track("artimist_search_route", { route: route.path, intent: result.intent })}>
+                        <div><small>{route.category}</small><strong>{route.title}</strong><p>{route.reason}</p></div>
+                        <UiIcon name="arrow" size={15} />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                <div className="askbot-actions">
+                  <Link href="/contact">Show us the project</Link>
+                  <Link href="/faqs" className="quiet">Browse all FAQs</Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="askbot-foot">
+            <span>Answers are guidance, not local professional certification.</span>
+            <Link href="/legal">Boundaries →</Link>
           </div>
         </div>
       )}
