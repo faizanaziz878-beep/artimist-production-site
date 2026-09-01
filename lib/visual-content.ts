@@ -146,11 +146,16 @@ export const atlasChapters: VisualChapter[] = [
   },
 ];
 
-export const technicalBoards: VisualScene[] = Array.from({ length: 21 }, (_, index) => ({
-  src: `/media/technical/board-${String(index + 1).padStart(2, "0")}.webp`,
-  label: index < 7 ? "Parametric Pavilion" : index < 15 ? "Kinetic Origami Roof" : "Architectural Systems",
-  detail: `Technical plate ${String(index + 1).padStart(2, "0")} / 21`,
-}));
+// board-01 is intentionally excluded site-wide. The plate was retired from
+// the public Artimist visual archive and should not be presented again.
+export const technicalBoards: VisualScene[] = Array.from({ length: 20 }, (_, index) => {
+  const boardNumber = index + 2;
+  return {
+    src: `/media/technical/board-${String(boardNumber).padStart(2, "0")}.webp`,
+    label: boardNumber < 8 ? "Parametric Pavilion" : boardNumber < 16 ? "Kinetic Origami Roof" : "Architectural Systems",
+    detail: `Technical plate ${String(boardNumber).padStart(2, "0")} / 21`,
+  };
+});
 
 export const residentialSceneCount = residentialChapters.reduce((total, chapter) => total + chapter.scenes.length, 0);
 export const atlasSceneCount = atlasChapters.reduce((total, chapter) => total + chapter.scenes.length, 0);
