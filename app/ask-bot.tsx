@@ -111,8 +111,22 @@ export function AskBot() {
     window.setTimeout(() => inputRef.current?.focus(), 30);
   }
 
+  function openSearch(trigger: string) {
+    setOpen(true);
+    track("artimist_search_open", { source: pathname, trigger });
+    window.setTimeout(() => inputRef.current?.focus(), 60);
+  }
+
   return (
     <>
+      {pathname === "/" && !open && (
+        <button type="button" className="askbot-top-search" onClick={() => openSearch("homepage_dock")} aria-label="Open Artimist AI search">
+          <UiIcon name="search" size={17} />
+          <span><strong>Hello, I’m Artimist. How can I help you?</strong><small>Ask about your house, drawings, BIM, Revit, rendering or project.</small></span>
+          <b>Ask me a question</b>
+        </button>
+      )}
+
       <button
         type="button"
         className="askbot-launch"
@@ -121,10 +135,7 @@ export function AskBot() {
         onClick={() => {
           const next = !open;
           setOpen(next);
-          if (next) {
-            track("artimist_search_open", { source: pathname, trigger: "floating" });
-            window.setTimeout(() => inputRef.current?.focus(), 60);
-          }
+          if (next) openSearch("floating");
         }}
       >
         <span>{open ? "Close Artimist" : "Ask Artimist"}</span>
