@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export type UiIconName = "arrow" | "menu" | "sun" | "moon" | "close" | "upload" | "check" | "external" | "chevron";
+export type UiIconName = "arrow" | "menu" | "sun" | "moon" | "close" | "upload" | "check" | "external" | "chevron" | "search";
 
 type Props = SVGProps<SVGSVGElement> & { name: UiIconName; size?: number };
 
@@ -28,5 +28,6 @@ export function UiIcon({ name, size = 18, className = "ui-icon", ...props }: Pro
   if (name === "check") return <svg {...common}><path d="m4.2 10.1 3.5 3.5 8.1-8.2" /></svg>;
   if (name === "chevron") return <svg {...common}><path d="m7.5 4.5 5.5 5.5-5.5 5.5" /></svg>;
   if (name === "external") return <svg {...common}><path d="M7 5h8v8M15 5 6 14M14 11v4H5V6h4" /></svg>;
+  if (name === "search") return <svg {...common}><circle cx="8.6" cy="8.6" r="5.1" /><path d="m12.4 12.4 4.1 4.1" /></svg>;
   return <svg {...common}><path d="M5 15 15 5M7 5h8v8" /></svg>;
 }
