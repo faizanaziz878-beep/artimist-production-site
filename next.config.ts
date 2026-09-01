@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // Retire the old Parametric Pavilion presentation board everywhere.
+        // Any stale component/reference now resolves to the cleaner technical sequence instead.
+        { source: "/media/technical/board-01.webp", destination: "/media/walkthrough/canopy/technical-sequence.webp" },
         // The production homepage intentionally keeps the original spatial
         // experience because this template owns the live WebGL/GLB model.
         { source: "/", destination: "/seo-home" },
