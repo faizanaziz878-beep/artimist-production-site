@@ -76,7 +76,7 @@ const PAGES: Array<[string, string, string, string]> = [
   ["65", "Turn a Sketch Into Floor Plans", "/insights/how-to-turn-a-hand-sketch-into-floor-plans", "Insights"],
   ["66", "3D Rendering Brief Checklist", "/insights/what-to-send-for-a-3d-home-rendering", "Insights"],
   ["67", "ADU Design & Plans", "/adu-design-plans", "Home design"],
-  ["68", "Frequently Asked Questions", "/faqs", "Questions"],
+  ["68", "Frequently Asked Questions", "/faqs", "FAQs"],
 ];
 
 const PUBLIC_PAGE_COUNT = PAGES.filter(([, , href]) => !href.includes("#")).length;
