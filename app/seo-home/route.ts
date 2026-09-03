@@ -7,6 +7,8 @@ export const dynamic = "force-dynamic";
 const TITLE = "Artimist Productions — Architecture, BIM & 3D Visualization Studio";
 const DESCRIPTION = "International architecture, design, BIM, 3D visualization and creative production studio serving homeowners, architects, developers and brands.";
 const GOOGLE_VERIFICATION = "lsk4HfeRzYO3lwG_jcZAoexrOwBkDMyneJKREIpOxvM";
+const GOOGLE_TAG_ID = "G-1PWWCTSMW4";
+const googleTag = `<script async src="https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}"></script><script id="google-tag-init">window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GOOGLE_TAG_ID}");</script>`;
 
 const organization = {
   "@context": "https://schema.org",
@@ -129,7 +131,7 @@ function enhance(source: string) {
   html = html.replace(/&#8592;/g, arrowLeft);
   html = html.replace(/&#8595;/g, arrowDown);
 
-  html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${seoStyle}${webpageSchema}</head>`);
+  html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${googleTag}${seoStyle}${webpageSchema}</head>`);
 
   // Keep this conversion/SEO section in the main browsing flow, immediately
   // before the team section rather than detached near the bottom of the page.
