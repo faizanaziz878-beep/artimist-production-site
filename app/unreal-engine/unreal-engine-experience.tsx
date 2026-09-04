@@ -41,7 +41,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
       </header>
 
       <section className="ue-hero">
-        <div className="ue-hero-scene" aria-hidden="true"><video autoPlay muted loop playsInline preload="metadata" poster="/media/residential/residential-13.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><i /><i /><i /></div>
+        <div className="ue-hero-scene" aria-hidden="true"><video autoPlay muted loop playsInline preload="metadata" poster="/img/ue05.webp"><source src="/media/motion/residential-build.mp4" type="video/mp4" /></video><i /><i /><i /></div>
         <div className="ue-hero-grid" aria-hidden="true" />
         <div className="ue-hero-copy">
           <span>Real-time architecture / Interactive spatial media</span>
@@ -58,7 +58,7 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
 
       <section className="ue-direction" aria-labelledby="ue-direction-title">
         <div className="ue-direction-copy"><span>Creative direction / technical resolution</span><h2 id="ue-direction-title">Architecture remains the subject.</h2><p>Every environment begins with spatial intent, coordinated geometry and a defined presentation goal. Real-time technology supports the architecture; it does not replace it.</p><Link href="/case-studies">View architectural case studies <Arrow /></Link></div>
-        <div className="ue-direction-grid"><figure><img src="/media/atlas/atlas-34.webp" alt="Real-time architectural environment study" /><figcaption>01 / Spatial atmosphere</figcaption></figure><figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Computational pavilion real-time visualization" /><figcaption>02 / Geometry and light</figcaption></figure></div>
+        <div className="ue-direction-grid"><figure><img src="/img/ue01.webp" alt="Architectural environment inside the Unreal Engine production workspace" /><figcaption>01 / Real-time scene</figcaption></figure><figure><img src="/img/ue02.webp" alt="Unreal Engine architectural environment with live materials and lighting" /><figcaption>02 / Materials + light</figcaption></figure></div>
       </section>
 
       <section className="ue-capabilities" id="capabilities">
@@ -69,10 +69,10 @@ export function UnrealEngineExperience({ settings }: { settings: SiteSettings })
       </section>
 
       <section className="ue-showcase">
-        <figure className="ue-showcase-main"><img src="/media/residential/residential-13.webp" alt="Real-time residential visualization study" /><figcaption><span>Realtime architecture / atmosphere</span><strong>Move from model to lived experience.</strong></figcaption></figure>
+        <figure className="ue-showcase-main"><img src="/img/ue05.webp" alt="Real-time residential environment produced in Unreal Engine" /><figcaption><span>Unreal Engine / live environment</span><strong>Move from model to lived experience.</strong></figcaption></figure>
         <div className="ue-showcase-stack">
-          <figure><img src="/media/walkthrough/bowl/exterior-hero.webp" alt="Hospitality visualization" /><figcaption>Hospitality / cinematic light</figcaption></figure>
-          <figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Computational pavilion visualization" /><figcaption>Parametric / realtime translation</figcaption></figure>
+          <figure><img src="/img/ue03.webp" alt="Real-time architecture scene variation in Unreal Engine" /><figcaption>Scene / live variation</figcaption></figure>
+          <figure><img src="/img/ue04.webp" alt="Unreal Engine architecture workspace and interactive view" /><figcaption>Workspace / realtime review</figcaption></figure>
         </div>
       </section>
 

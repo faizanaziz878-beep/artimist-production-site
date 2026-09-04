@@ -68,7 +68,7 @@ const projectWalkthroughs: Record<string, WalkthroughMoment[]> = {
   ],
   "parametric-canopy-studies": [
     { src: "/media/walkthrough/canopy/pavilion-sunset.webp", label: "Pavilion / Final atmosphere" },
-    { src: "/media/technical/board-01.webp", label: "Logic / Concept", fit: "contain" },
+    { src: "/media/walkthrough/canopy/concept.webp", label: "Logic / Concept" },
     { src: "/media/technical/board-03.webp", label: "System / Parametric workflow", fit: "contain" },
     { src: "/media/technical/board-05.webp", label: "Study / Iterations", fit: "contain" },
     { src: "/media/walkthrough/canopy/pavilion-day.webp", label: "Pavilion / Human scale" },

@@ -7,7 +7,8 @@ export function proxy(request: NextRequest) {
   const forwardedProto = request.headers.get("x-forwarded-proto");
   const hostname = request.nextUrl.hostname.toLowerCase();
 
-  if (forwardedProto === "http" || hostname === "artimistproductions.com") {
+  const isProductionHost = hostname === CANONICAL_HOST || hostname === "artimistproductions.com";
+  if (isProductionHost && (forwardedProto === "http" || hostname === "artimistproductions.com")) {
     const url = request.nextUrl.clone();
     url.protocol = "https:";
     url.hostname = CANONICAL_HOST;

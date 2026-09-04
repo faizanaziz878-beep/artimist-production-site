@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import Link from "next/link";
 import { UiIcon } from "./ui-icon";
 
 type Faq = { q: string; keywords: string[]; a: string };
@@ -19,7 +21,7 @@ const FAQS: Faq[] = [
   {
     q: "Can you produce permit or construction drawings?",
     keywords: ["permit", "permits", "planning", "approval", "submission", "council", "city", "code", "construction", "drawing", "drawings"],
-    a: "Yes. Permit-support and construction-documentation production are part of the studio's work. Send the material you have—sketches, CAD, PDF, survey or model—and the studio will review what is usable and what still needs to be developed.",
+    a: "Yes. Permit-support and construction-documentation production are part of the studio's work. Send sketches, CAD, PDF, a survey or model for review. Artimist does not supply a regional architectural or engineering stamp or guarantee permit approval; any required stamp or certification must come from the appropriately licensed local professional.",
   },
   {
     q: "Do you do Revit, BIM or CAD drafting?",
@@ -75,6 +77,8 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [picked, setPicked] = useState<Faq | null>(null);
+  const launchRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const waHref = useMemo(() => `https://wa.me/${whatsapp.replace(/\D/g, "")}`, [whatsapp]);
 
@@ -92,15 +96,27 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
   }, [query]);
 
   useEffect(() => {
-    document.body.classList.toggle("artimist-ask-open", open);
-    if (!open) return () => document.body.classList.remove("artimist-ask-open");
+    if (!open) return;
+    document.body.classList.add("artimist-ask-open");
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    panelRef.current?.querySelector<HTMLInputElement>("input")?.focus();
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
+      if (event.key === "Tab") {
+        const elements = panelRef.current?.querySelectorAll<HTMLElement>('button, input, a[href]');
+        if (!elements?.length) return;
+        const first = elements[0], last = elements[elements.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.classList.remove("artimist-ask-open");
+      document.body.style.overflow = previousOverflow;
+      launchRef.current?.focus();
     };
   }, [open]);
 
@@ -109,6 +125,7 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
   return (
     <>
       <button
+        ref={launchRef}
         type="button"
         className="askbot-launch"
         aria-expanded={open}
@@ -119,12 +136,12 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
           if (next) track("faq_open", { source: window.location.pathname });
         }}
       >
-        <span>{open ? "Close studio" : "Ask the studio"}</span>
-        <UiIcon name={open ? "close" : "chevron"} size={15} />
+        <span className="askbot-label">{open ? "Close" : "Ask Artimist"}</span>
+        <UiIcon name={open ? "close" : "search"} size={15} />
       </button>
 
-      {open && (
-        <div className="askbot-panel" id="askbot-panel" role="dialog" aria-modal="false" aria-label="Ask Artimist a question">
+      {open && createPortal(
+        <div ref={panelRef} className="askbot-panel" id="askbot-panel" role="dialog" aria-modal="true" aria-label="Ask Artimist a question">
           <div className="askbot-head">
             <span>Ask Artimist Productions</span>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close Ask the Studio"><UiIcon name="close" size={17} /></button>
@@ -155,7 +172,7 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
               <div className="askbot-answer">
                 <h4>That needs a project-specific answer.</h4>
                 <p>A real studio team member should review that rather than giving you a generic answer. Send the project details or continue directly on WhatsApp.</p>
-                <a className="askbot-wa" href="/contact">Start project intake</a>
+                <Link className="askbot-wa" href="/contact" onClick={() => setOpen(false)}>Start project intake</Link>
                 <a className="askbot-wa askbot-wa-quiet" href={waHref} target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
               </div>
             ) : (
@@ -167,11 +184,11 @@ export function AskBot({ whatsapp = WHATSAPP_FALLBACK }: { whatsapp?: string }) 
                     </li>
                   ))}
                 </ul>
-                <a className="askbot-wa askbot-wa-quiet" href="/contact">Have a project? Start the brief</a>
+                <Link className="askbot-wa askbot-wa-quiet" href="/contact" onClick={() => setOpen(false)}>Have a project? Start the brief</Link>
               </>
             )}
           </div>
-        </div>
+        </div>, document.body
       )}
     </>
   );

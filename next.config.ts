@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
       // homepage returning 200 and being indexed independently.
       {
         source: "/:path*",
-        has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+        has: [{ type: "host", value: "www.artimistproductions.com" }, { type: "header", key: "x-forwarded-proto", value: "http" }],
         destination: "https://www.artimistproductions.com/:path*",
         permanent: true,
       },

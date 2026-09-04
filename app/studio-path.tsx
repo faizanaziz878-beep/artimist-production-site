@@ -74,6 +74,15 @@ const phases = [
   },
 ];
 
+const contactInputs = [
+  ["Sketch + rough plan", "Rough ideas, dimensions and annotations are enough to start. Illustrated concept example.", "/media/generated-architecture/artimist-architecture-043.webp"],
+  ["PDF or plan set", "Share existing plans, markups, surveys or permit documents.", "/img/cad03.webp"],
+  ["3D or BIM model", "RVT, DWG, SketchUp, Rhino and model links can be reviewed.", "/img/revit04.webp"],
+  ["Photos + references", "Site photos, material references and inspiration clarify intent.", "/img/resext02.webp"],
+] as const;
+
+const contactVisualCss = `.sp-input-gallery{padding:clamp(54px,6vw,88px) clamp(24px,5vw,88px);background:#090a0c;color:#eeeae3}.sp-input-gallery header{display:grid;grid-template-columns:.3fr 1fr;gap:40px;align-items:end;margin-bottom:34px}.sp-input-gallery h2{margin:0;font-family:var(--sp-serif);font-size:clamp(46px,5.6vw,88px);line-height:.88;font-weight:400;letter-spacing:-.045em}.sp-input-gallery header p{grid-column:2;max-width:590px;margin:16px 0 0;color:rgba(255,255,255,.58);font-size:13px;line-height:1.65}.sp-input-gallery>div{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.sp-input-gallery figure{position:relative;min-height:430px;margin:0;overflow:hidden;background:#15161a}.sp-input-gallery img{width:100%;height:100%;display:block;object-fit:cover}.sp-input-gallery figcaption{position:absolute;left:10px;right:10px;bottom:10px;padding:12px;background:rgba(7,7,8,.82);backdrop-filter:blur(9px)}.sp-input-gallery figcaption strong{display:block;font-family:var(--sp-serif);font-size:23px;font-weight:400}.sp-input-gallery figcaption span{display:block;margin-top:5px;color:rgba(255,255,255,.59);font-size:10px;line-height:1.5}@media(max-width:900px){.sp-input-gallery header{grid-template-columns:1fr}.sp-input-gallery header p{grid-column:auto}.sp-input-gallery>div{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(clamp(24px,5vw,88px) * -1);padding-right:clamp(24px,5vw,88px)}.sp-input-gallery>div::-webkit-scrollbar{display:none}.sp-input-gallery figure{flex:0 0 72vw;min-height:65vw;scroll-snap-align:center}}@media(max-width:620px){.sp-input-gallery{padding:48px 14px}.sp-input-gallery h2{font-size:54px}.sp-input-gallery>div{margin-right:-14px;padding-right:14px}.sp-input-gallery figure{flex-basis:84vw;min-height:110vw}}`;
+
 function useStudioShell() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
@@ -300,6 +309,7 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
 
   return (
     <main className="studio-path sp-contact-page">
+      <style dangerouslySetInnerHTML={{ __html: contactVisualCss }} />
       <PathHeader current="contact" theme={theme} onTheme={toggleTheme} />
       <section className="sp-hero sp-contact-hero">
         <div className="sp-hero-images" aria-hidden="true"><img className="sp-night-image" src="/media/atlas/atlas-34.webp" alt="" /><img className="sp-day-image" src="/media/atlas/atlas-27.webp" alt="" /></div>
@@ -307,6 +317,8 @@ export function ContactExperience({ settings }: { settings: SiteSettings }) {
         <div className="sp-hero-copy" data-sp-reveal><SectionCode>03 / New project brief</SectionCode><h1>Bring the brief.<br /><em>We’ll find the route.</em></h1><p>Share what you have. We’ll define the next useful step.</p><a className="sp-hero-jump" href="#project-intake">Open the project form <Arrow /></a></div>
         <PathRail current="contact" />
       </section>
+
+      <section className="sp-input-gallery" aria-labelledby="project-inputs-title"><header><SectionCode>What you can send</SectionCode><div><h2 id="project-inputs-title">Start with the files<br/><em>you already have.</em></h2><p>There is no need to prepare a perfect presentation first. Send a secure view or download link with the most useful source material.</p></div></header><div tabIndex={0} role="region" aria-label="Four project input examples, scroll to explore">{contactInputs.map(([title,copy,image])=><figure key={title}><img src={image} alt={`${title} accepted as an Artimist project input`} loading="lazy" decoding="async"/><figcaption><strong>{title}</strong><span>{copy}</span></figcaption></figure>)}</div></section>
 
       <section className="sp-contact-workspace" id="project-intake">
         <div className="sp-contact-intro" data-sp-reveal>

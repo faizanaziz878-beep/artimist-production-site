@@ -64,7 +64,7 @@ const CSS = `
 export function MarketServicePage(props: MarketServicePageProps) {
   const url = `${BASE}/${props.slug}`;
   const visuals = marketVisuals[props.slug] ?? marketVisuals.usa;
-  const shortIntro = props.intro.split(".")[0] + ".";
+  const shortIntro = `Design, drawings and visualization for ${props.country} projects. Remote delivery, with local professional responsibilities clearly defined.`;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -100,7 +100,7 @@ export function MarketServicePage(props: MarketServicePageProps) {
       <nav className="market-crumb" aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href="/international">International</Link> / {props.country}</nav>
       <section className="market-hero">
         <div className="market-code" aria-hidden="true">{props.slug}</div>
-        <div className="market-hero-copy"><div className="market-kicker">{props.kicker}</div><h1>{props.h1}</h1><p className="market-lead">{shortIntro}</p><div className="market-hero-actions"><Link className="market-btn" href="/contact">Brief the studio</Link><Link className="market-btn-quiet" href="/case-studies">See project evidence</Link></div></div>
+        <div className="market-hero-copy"><div className="market-kicker">{props.kicker}</div><h1>{props.h1}</h1><p className="market-lead">{shortIntro}</p><details className="market-note"><summary>Project scope & delivery</summary><p>{props.intro}</p></details><div className="market-hero-actions"><Link className="market-btn" href="/contact">Brief the studio</Link><Link className="market-btn-quiet" href="/case-studies">See project evidence</Link></div></div>
         <div className="market-visual-stack">
           <figure className="market-hero-figure"><img src={visuals[0].src} alt={visuals[0].alt} width="1600" height="1200" fetchPriority="high" /><figcaption>{visuals[0].label} / Artimist project</figcaption></figure>
           <aside className="market-panel"><div className="market-tags">{props.terms.map((term) => <span key={term}>{term}</span>)}</div></aside>

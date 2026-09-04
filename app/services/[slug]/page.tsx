@@ -28,11 +28,11 @@ const SERVICES: Service[] = [
     desc: "Photorealistic architectural rendering for architects, developers and builders. Exterior and interior 3D renders that communicate design intent before construction begins.",
     tagline: "Photorealistic images of buildings that do not exist yet.",
     intro: "We produce high-end architectural renderings that let clients, investors and planning boards see a building the way it will actually feel — light, material, atmosphere and context, resolved before construction begins.",
-    image: "/media/generated-architecture/artimist-architecture-151.webp", imageAlt: "Ultra-realistic urban infill duplex architectural rendering at blue hour",
+    image: "/img/resext03.webp", imageAlt: "Photoreal residential exterior architectural rendering by Artimist Productions",
     gallery: [
-      { src: "/media/generated-architecture/artimist-architecture-136.webp", alt: "Rain-washed compact courtyard house rendering", caption: "Material and daylight study" },
-      { src: "/media/generated-architecture/artimist-architecture-137.webp", alt: "Reclaimed-brick townhouse extension rendering", caption: "Atmosphere and context" },
-      { src: "/media/generated-architecture/artimist-architecture-155.webp", alt: "Rural stone meditation chapel rendering", caption: "Landscape integration" },
+      { src: "/img/resext01.webp", alt: "Residential exterior material and daylight rendering", caption: "Material and daylight study" },
+      { src: "/media/atlas/atlas-06.webp", alt: "Waterfront cultural architecture rendering at sunset", caption: "Atmosphere and context" },
+      { src: "/media/walkthrough/residential/twilight.webp", alt: "Residential twilight architectural rendering", caption: "Twilight and arrival" },
     ],
     sections: [
       { h: "What you receive", p: "Still images at print and presentation resolution, delivered in the aspect ratios you need: hero exteriors, entry approaches, key interiors, dusk and daylight variants, and context views that place the building in its surroundings." },
@@ -47,11 +47,11 @@ const SERVICES: Service[] = [
     desc: "3D interior rendering and interior visualization for designers, developers and hospitality brands. Photoreal rooms with accurate materials, lighting and furniture.",
     tagline: "Rooms you can feel before they are built.",
     intro: "Interior visualization is where material and light do the persuading. We render interiors at a level of finish where a client can judge a stone, a fabric or a lighting temperature and make a real decision from the image.",
-    image: "/media/generated-architecture/artimist-architecture-149.webp", imageAlt: "Ultra-realistic coastal cottage kitchen and dining visualization",
+    image: "/img/homeint03.webp", imageAlt: "Photoreal whole-home interior visualization by Artimist Productions",
     gallery: [
-      { src: "/media/generated-architecture/artimist-architecture-156.webp", alt: "North-lit converted stone artist studio interior", caption: "Material and daylight" },
-      { src: "/media/generated-architecture/artimist-architecture-153.webp", alt: "Rooflit townhouse bathroom visualization", caption: "Private-space study" },
-      { src: "/media/generated-architecture/artimist-architecture-159.webp", alt: "Small neighborhood restaurant interior visualization", caption: "Hospitality atmosphere" },
+      { src: "/img/homeint01.webp", alt: "Warm residential living-room visualization", caption: "Material and daylight" },
+      { src: "/img/homeint06.webp", alt: "Detailed residential interior visualization", caption: "Private-space study" },
+      { src: "/media/walkthrough/bowl/interior-dining.webp", alt: "Hospitality dining interior visualization", caption: "Hospitality atmosphere" },
     ],
     sections: [
       { h: "What you receive", p: "Room-by-room interior renders with correct furniture, finishes and fixtures. Options can be rendered as variants so the same camera shows alternative palettes, layouts or lighting states side by side." },
@@ -66,11 +66,11 @@ const SERVICES: Service[] = [
     desc: "Real estate rendering and 3D visualization for property developers: pre-construction marketing imagery, sales-suite visuals and investor presentation renders.",
     tagline: "Sell the building before it exists.",
     intro: "Pre-construction sales depend heavily on imagery. We produce the visual package a development needs to open sales — hero shots, amenity spaces, unit interiors and lifestyle context — consistent in style across every asset.",
-    image: "/media/generated-architecture/artimist-architecture-136.webp", imageAlt: "Ultra-realistic compact courtyard house real-estate visualization",
+    image: "/media/residential/residential-13.webp", imageAlt: "Residential development marketing visualization by Artimist Productions",
     gallery: [
-      { src: "/media/generated-architecture/artimist-architecture-151.webp", alt: "Urban infill duplex marketing visualization at blue hour", caption: "Arrival and street presence" },
-      { src: "/media/generated-architecture/artimist-architecture-152.webp", alt: "Converted shop neighborhood library visualization", caption: "Amenity and shared space" },
-      { src: "/media/generated-architecture/artimist-architecture-159.webp", alt: "Small neighborhood restaurant visualization", caption: "Hospitality and lifestyle" },
+      { src: "/media/walkthrough/residential/arrival.webp", alt: "Residential development arrival marketing visualization", caption: "Arrival and street presence" },
+      { src: "/media/walkthrough/residential/living.webp", alt: "Residential living space marketing visualization", caption: "Interior and shared space" },
+      { src: "/media/walkthrough/residential/twilight.webp", alt: "Residential twilight campaign visualization", caption: "Lifestyle and atmosphere" },
     ],
     sections: [
       { h: "What you receive", p: "A coordinated marketing set: signature exterior hero, amenity and lobby spaces, representative unit interiors, aerial context, and crops sized for brochure, hoarding, web and paid social." },
@@ -85,11 +85,11 @@ const SERVICES: Service[] = [
     desc: "Architectural animation, 3D walkthrough videos and cinematic flythroughs for developments, competitions and investor presentations.",
     tagline: "Move through the building before it is built.",
     intro: "Animation shows what a still cannot: sequence, scale and the experience of moving through a space. We produce cinematic architectural films and walkthroughs that carry a project's atmosphere, not just its geometry.",
-    image: "/media/generated-architecture/artimist-architecture-165.webp", imageAlt: "Ultra-realistic community garden pavilion prepared for an architectural animation",
+    image: "/media/projects/music-campus.webp", imageAlt: "Harmonic Horizons architectural animation by Artimist Productions",
     gallery: [
-      { src: "/media/generated-architecture/artimist-architecture-151.webp", alt: "Urban duplex environment prepared in Unreal Engine", caption: "Scene development" },
-      { src: "/media/generated-architecture/artimist-architecture-159.webp", alt: "Ray-traced restaurant lighting and materials", caption: "Lighting and materials" },
-      { src: "/media/generated-architecture/artimist-architecture-165.webp", alt: "Real-time garden pavilion environment review", caption: "Interactive review" },
+      { src: "/media/walkthrough/music/campus-overview.webp", alt: "Architectural film establishing view", caption: "Establishing frame" },
+      { src: "/media/walkthrough/music/campus-threshold.webp", alt: "Architectural animation threshold sequence", caption: "Camera and sequence" },
+      { src: "/media/walkthrough/music/campus-interior.webp", alt: "Architectural animation interior frame", caption: "Interior atmosphere" },
     ],
     motion: { src: "/media/motion/music-campus-teaser.mp4", poster: "/media/projects/music-campus.webp", label: "Architecture-only motion study", title: "Camera, sequence and atmosphere—not a slideshow of stills." },
     sections: [

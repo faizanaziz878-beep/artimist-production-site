@@ -19,7 +19,7 @@ const paths = [
     title: "Change my floor plan",
     text: "Improve circulation, resize rooms, open up spaces or rethink an existing plan before construction starts.",
     href: "/plan-modification-service",
-    image: "/img/permit04.webp",
+    image: "/img/cad03.webp",
     label: "Layout redesign",
   },
   {

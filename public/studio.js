@@ -748,12 +748,28 @@ var ROWS = [
     askPanel.hidden = !open;
     askBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     askBtn.classList.toggle('is-open', open);
-    if (open) byId('a-name').focus();
+    document.body.classList.toggle('artimist-ask-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) byId('studio-search').focus();
   }
   askBtn.addEventListener('click', function () { setAsk(askPanel.hidden); });
   byId('askClose').addEventListener('click', function () { setAsk(false); askBtn.focus(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !askPanel.hidden) { setAsk(false); askBtn.focus(); }
+    if (e.key === 'Tab' && !askPanel.hidden) {
+      var focusable = Array.prototype.filter.call(askPanel.querySelectorAll('button,input,textarea,summary,a[href]'), function (node) { return node.getClientRects().length > 0; });
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  byId('studio-search').addEventListener('input', function () {
+    var query = this.value.trim().toLowerCase();
+    var words = query.split(/\s+/).filter(Boolean);
+    var matches = PAGES.filter(function (page) { return words.every(function (word) { return (page[0] + ' ' + page[2]).toLowerCase().indexOf(word) !== -1; }); }).slice(0, 6);
+    byId('studio-search-results').innerHTML = query ? (matches.length ? matches.map(function (page) { return '<a href="' + esc(page[1]) + '">' + esc(page[0]) + '<span aria-hidden="true">↗</span></a>'; }).join('') : '<p>No exact match. <a href="/contact">Ask the studio about your project.</a></p>') : '';
+    askPanel.querySelectorAll('.st-ask-faq details').forEach(function (item) { item.hidden = query.length > 1 && !words.some(function (word) { return item.textContent.toLowerCase().indexOf(word) !== -1; }); });
   });
 
   askForm.addEventListener('submit', function (e) {

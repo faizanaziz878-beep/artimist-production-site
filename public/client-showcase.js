@@ -45,12 +45,8 @@
         #archive .st-index-rows{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))!important}
         .st-clients .st-partners{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))!important}
         .st-footer{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))!important}
-        .st>.st-ask-btn{left:auto!important;right:12px!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;width:calc((100vw - 34px)/2)!important;max-width:none!important;min-width:0!important;height:52px!important;min-height:52px!important;padding:0 11px!important;justify-content:center!important;gap:7px!important;white-space:nowrap!important}
-        .artimist-whatsapp{left:12px!important;right:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;width:calc((100vw - 34px)/2)!important;max-width:none!important;height:52px!important;min-height:52px!important;box-sizing:border-box!important;justify-content:center!important}
       }
       @media(max-width:390px){
-        .st>.st-ask-btn{right:10px!important;width:calc((100vw - 30px)/2)!important;font-size:7.7px!important;letter-spacing:.045em!important}
-        .artimist-whatsapp{left:10px!important;width:calc((100vw - 30px)/2)!important}
         .st-contact .st-h2{font-size:clamp(40px,12.2vw,50px)!important}
       }
     `;

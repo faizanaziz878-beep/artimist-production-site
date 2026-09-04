@@ -18,8 +18,8 @@ export default function RenovationPermitPage() {
     subtitle="Clear drawings for additions, remodels, conversions and the next step toward permit review."
     intro="Artimist provides residential drafting, home renovation drawings and permit documentation support for homeowners planning additions and remodeling work. We can document existing conditions, develop proposed layouts and prepare coordinated drawing sets for home additions, house extensions, basement renovations, garage conversions, kitchen remodels and bathroom remodels."
     audience="For homeowners who need clear plans for a renovation, addition, remodel, extension, basement project or garage conversion before local permit review or construction coordination."
-    image="/media/projects/permit-sets.webp"
-    imageAlt="Residential permit documentation set prepared by Artimist Productions"
+    image="/media/generated-architecture/artimist-architecture-012.webp"
+    imageAlt="Backyard studio plan, elevations and section concept study"
     included={["Home addition plans","House extension drawings","Home renovation drawings","Kitchen remodel drawings","Bathroom remodel drawings","Basement renovation plans","Garage conversion plans","Existing and proposed plans, elevations and sections"]}
     deliverables={["Existing-condition drawings as scoped","Proposed renovation or addition plans","Elevations and sections where required","Coordinated permit-documentation package as scoped","Print-ready PDF drawing set","CAD or Revit source files where included"]}
     steps={[

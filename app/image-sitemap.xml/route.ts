@@ -1,3 +1,4 @@
+import { SERVICE_VISUALS } from "../../lib/service-visuals";
 import { GENERATED_ARCHITECTURE_IMAGES } from "../../lib/generated-architecture";
 import { atlasChapters, residentialChapters, technicalBoards } from "../../lib/visual-content";
 
@@ -29,8 +30,8 @@ export function GET() {
     ["/home-design-services", ["/img/resext01.webp", "/img/homeint01.webp", "/img/permit01.webp", "/img/resid01.webp"]],
     ["/custom-house-design", ["/img/resext01.webp", "/img/resext03.webp", "/img/resid01.webp", "/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-019.webp", "/media/generated-architecture/artimist-architecture-063.webp"]],
     ["/3d-interior-design-service", ["/img/homeint01.webp", "/img/homeint03.webp", "/img/drive-09.webp", "/media/generated-architecture/artimist-architecture-015.webp", "/media/generated-architecture/artimist-architecture-050.webp", "/media/generated-architecture/artimist-architecture-089.webp"]],
-    ["/plan-modification-service", ["/img/permit04.webp", "/img/resid02.webp", "/img/homeint01.webp", "/media/generated-architecture/artimist-architecture-053.webp", "/media/generated-architecture/artimist-architecture-029.webp", "/media/generated-architecture/artimist-architecture-043.webp"]],
-    ["/residential-renovation-permit-drawings", ["/media/projects/permit-sets.webp", "/img/permit01.webp", "/img/permit04.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-022.webp"]],
+    ["/plan-modification-service", ["/img/cad03.webp", "/img/resid02.webp", "/img/homeint01.webp", "/img/cad01.webp", "/img/max04.webp", "/media/generated-architecture/artimist-architecture-053.webp", "/media/generated-architecture/artimist-architecture-087.webp"]],
+    ["/residential-renovation-permit-drawings", ["/img/cad03.webp", "/media/generated-architecture/artimist-architecture-012.webp", "/media/generated-architecture/artimist-architecture-088.webp", "/media/generated-architecture/artimist-architecture-021.webp", "/img/rhino02.webp", "/img/services/plan-renovation-premium-2026.jpg"]],
 
     ["/architecture", ["/media/atlas/atlas-11.webp", "/img/rvpark.webp", "/img/permit01.webp", "/media/atlas/atlas-16.webp", "/media/generated-architecture/artimist-architecture-035.webp", "/media/generated-architecture/artimist-architecture-155.webp", "/media/generated-architecture/artimist-architecture-165.webp"]],
     ["/bim-drafting", ["/media/atlas/atlas-08.webp", "/media/technical/board-16.webp", "/media/technical/board-19.webp", "/img/permit01.webp", "/media/generated-architecture/artimist-architecture-043.webp", "/media/generated-architecture/artimist-architecture-054.webp", "/media/generated-architecture/artimist-architecture-088.webp"]],
@@ -68,7 +69,12 @@ export function GET() {
     ["/visual-archive", archiveImages],
   ];
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${pageImages.map(([path, images]) => urlEntry(path, images)).join("")}</urlset>`;
+  // Keep service-image indexing aligned with the exact on-page curation.
+  const curated = Object.entries(SERVICE_VISUALS).map(([slug, plan]): [string, string[]] => [`/${slug}`, [plan.hero.src, ...plan.evidence.map(image => image.src), ...plan.process.map(image => image.src)]]);
+  const curatedPaths = new Set(curated.map(([path]) => path));
+  const indexedPages = [...pageImages.filter(([path]) => !curatedPaths.has(path)), ...curated];
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${indexedPages.map(([path, images]) => urlEntry(path, images)).join("")}</urlset>`;
 
   return new Response(xml, {
     headers: {

@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="/studiodesign.css">
 <script type="importmap">{"imports":{"three":"/media/vendor/three.module.js","three/addons/":"/media/vendor/jsm/"}}</script>
 <script type="module" src="/spatial-model.js"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.artimistproductions.com/#organization","name":"Artimist Production","url":"https://www.artimistproductions.com","email":"Faizan@artimistproductions.com","description":"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.","location":[{"@type":"Place","name":"Artimist Production — Vancouver","address":{"@type":"PostalAddress","addressLocality":"Vancouver","addressRegion":"British Columbia","addressCountry":"CA"}},{"@type":"Place","name":"Artimist Production — Ohio","address":{"@type":"PostalAddress","addressRegion":"Ohio","addressCountry":"US"}},{"@type":"Place","name":"Artimist Production — Stockholm","address":{"@type":"PostalAddress","addressLocality":"Stockholm","addressCountry":"SE"}},{"@type":"Place","name":"Artimist Production — Lahore","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressRegion":"Punjab","addressCountry":"PK"}}],"areaServed":["United States","Canada","Sweden","Pakistan","Worldwide"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.artimistproductions.com/#organization","name":"Artimist Production","url":"https://www.artimistproductions.com","email":"Faizan@artimistproductions.com","description":"Independent multidisciplinary creative studio working across architecture, interiors, visualization, Unreal Engine real-time experiences, identity, motion and digital products.","areaServed":["United States","Canada","Sweden","Pakistan","Worldwide"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.artimistproductions.com/#website","url":"https://www.artimistproductions.com","name":"Artimist Production","publisher":{"@id":"https://www.artimistproductions.com/#organization"},"inLanguage":"en"}</script>
 </head>
 <body>
@@ -34,6 +34,7 @@
       <a href="#work">Work</a><a href="#disciplines">Services</a><a href="#team">Team</a><a href="#plans">Plans</a><a href="#brief">Brief</a>
     </nav>
     <div class="st-head-right">
+      <button class="st-pill st-search-trigger" id="askBtn" type="button" aria-label="Ask Artimist" aria-expanded="false" aria-controls="askPanel"><span>ASK ARTIMIST</span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg></button>
       <button class="st-pill st-mode-switch" id="modeBtn" type="button" aria-pressed="false">
         <svg class="st-mode-icon st-sun-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.25"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.45 1.45M14.55 14.55L16 16M16 4l-1.45 1.45M5.45 14.55L4 16"/></svg>
         <svg class="st-mode-icon st-moon-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.8 12.9A6.8 6.8 0 0 1 7.1 4.2a6.8 6.8 0 1 0 8.7 8.7Z"/></svg>
@@ -62,7 +63,7 @@
       </nav>
     </div>
     <div class="st-index-foot">
-      <span>VANCOUVER &middot; OHIO &middot; STOCKHOLM &middot; LAHORE</span>
+      <span>WORLDWIDE &middot; USA &middot; UK &middot; CANADA &middot; SWEDEN</span>
       <a href="mailto:Faizan@artimistproductions.com">FAIZAN@ARTIMISTPRODUCTIONS.COM</a>
     </div>
   </div>
@@ -92,8 +93,8 @@
     </section>
 
     <section class="st-offices">
-      <span>YVR</span><span>OH</span><span>STO</span><span>LHE</span>
-      <p>04 OFFICES / WORKING WORLDWIDE</p>
+      <span>WORLDWIDE</span><span>USA</span><span>UK</span><span>CANADA</span><span>SWEDEN</span>
+      <p>INTERNATIONAL PROJECT DELIVERY</p>
       <a href="#brief">START A PROJECT &#8599;</a>
     </section>
 
@@ -195,7 +196,7 @@
 
     <!-- REAL-TIME -->
     <section class="st-realtime" id="realtime">
-      <img src="/img/marina-arts-center-01.webp" alt="Marina arts centre real-time environment">
+      <img src="/img/ue05.webp" alt="Residential real-time environment in Unreal Engine">
       <div class="st-veil"></div>
       <div class="st-realtime-body st-shell" data-reveal>
         <p class="st-eyebrow">05 / REAL-TIME &amp; UNREAL</p>
@@ -321,7 +322,7 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
       <ul>
-        <li>Vancouver</li><li>Ohio &middot; Stockholm</li>
+        <li>Worldwide project delivery</li><li>USA &middot; UK &middot; Canada &middot; Sweden</li>
         <li><a href="mailto:Faizan@artimistproductions.com">Email the studio</a></li>
       </ul>
     </div>
@@ -343,15 +344,14 @@
   </div>
 
   <!-- ASK THE STUDIO -->
-  <button class="st-ask-btn" id="askBtn" type="button" aria-expanded="false" aria-controls="askPanel">
-    <i aria-hidden="true">?</i> ASK THE STUDIO
-  </button>
-  <div class="st-ask" id="askPanel" role="dialog" aria-modal="false" aria-label="Ask the studio" hidden>
+  <div class="st-ask" id="askPanel" role="dialog" aria-modal="true" aria-label="Ask Artimist" hidden>
     <div class="st-ask-top">
-      <p>ASK THE STUDIO</p>
+      <p>ASK ARTIMIST</p>
       <button type="button" id="askClose" aria-label="Close">&times;</button>
     </div>
-    <p class="st-ask-lead">A person reads this, not a bot. Short questions are welcome &mdash; scope, budget, timelines, file formats.</p>
+    <label for="studio-search" class="st-ask-lead">Search services, projects and practical answers.</label>
+    <input id="studio-search" type="search" placeholder="Try house plans, BIM, permits…" autocomplete="off">
+    <nav id="studio-search-results" aria-label="Search results" aria-live="polite"></nav>
     <div class="st-ask-faq" aria-label="Quick answers">
       <p class="st-ask-faq-label">QUICK ANSWERS</p>
       <details>
@@ -370,7 +370,9 @@
         <summary>What files will I receive?</summary>
         <p>Deliverables are agreed before work begins and can include final images, drawings, models, video, web assets and editable source files. Ownership and handover are written into the scope.</p>
       </details>
+      <details><summary>Do you provide local stamps or guarantee permits?</summary><p>No. Artimist prepares and coordinates agreed permit-support documentation. Any required stamp, seal or certification must come from the appropriately licensed local professional; approval remains with the reviewing authority. <a href="/legal#stamps">Read the full boundary.</a></p></details>
     </div>
+    <details class="st-ask-human"><summary>Ask a person at the studio</summary><p class="st-ask-lead">Send a project-specific question. A real team member will reply.</p>
     <form id="askForm" novalidate>
       <label for="a-name">Your name</label>
       <input id="a-name" name="name" required autocomplete="name">
@@ -381,6 +383,7 @@
       <button type="submit" id="askSend">Send it</button>
       <p class="st-ask-note" id="askNote"></p>
     </form>
+    </details>
   </div>
 </div>
 <script src="/studio.js"></script>

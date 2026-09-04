@@ -11,4 +11,12 @@ const groups = [
   { title: "Client information", links: [["Client terms & legal", "/legal"],["NDA & confidentiality", "/legal#confidentiality"],["Permit & stamping boundaries", "/legal#stamps"],["Start a project", "/contact"]] },
   { title: "Official profiles", links: [["Instagram", "https://www.instagram.com/artimist.productions/"],["LinkedIn", "https://www.linkedin.com/company/artimist-productions"],["Trustpilot", "https://www.trustpilot.com/review/www.artimistproductions.com"]] },
 ] as const;
-export function SearchDiscoveryFooter() { const pathname=usePathname(); if(!pathname||pathname==="/"||pathname.startsWith("/admin")||pathname.startsWith("/api")) return null; return <footer className="search-discovery-footer" aria-label="Explore Artimist Productions"><div className="search-discovery-inner"><div className="search-discovery-intro"><p className="search-discovery-kicker">Explore Artimist Productions</p><h2>Design, renovation, drawings and visualization—connected.</h2><p>Find the service by the problem you are trying to solve, then move into project evidence, professional production services and the real commercial terms behind an engagement.</p></div><div className="search-discovery-groups">{groups.map(group=><nav key={group.title} aria-label={group.title}><h3>{group.title}</h3>{group.links.map(([label,href])=><Link key={`${group.title}-${href}`} href={href} aria-current={pathname===href?"page":undefined}>{label}</Link>)}</nav>)}</div><div className="search-discovery-mark">ARTIMIST PRODUCTIONS · HOME DESIGN · ADU DESIGN · RENOVATION · ARCHITECTURE · BIM · 3D VISUALIZATION · WORLDWIDE REMOTE DELIVERY</div></div></footer>; }
+export function SearchDiscoveryFooter() {
+  const pathname = usePathname();
+  if (!pathname || pathname === "/" || pathname.startsWith("/admin") || pathname.startsWith("/api")) return null;
+  return <footer className="search-discovery-footer" aria-label="Explore Artimist Productions"><div className="search-discovery-inner">
+    <div className="search-discovery-intro"><p className="search-discovery-kicker">Explore Artimist Productions</p><h2>Design, drawings and visualization—connected.</h2><p>Find a service, explore the work, or read the full client terms.</p></div>
+    <div className="search-discovery-groups">{groups.map(group => <details key={group.title}><summary>{group.title}</summary><nav aria-label={group.title}>{group.links.map(([label, href]) => <Link key={`${group.title}-${href}`} href={href} aria-current={pathname === href ? "page" : undefined}>{label}</Link>)}</nav></details>)}</div>
+    <div className="search-discovery-mark">ARTIMIST PRODUCTIONS · HOME DESIGN · ADU DESIGN · RENOVATION · ARCHITECTURE · BIM · 3D VISUALIZATION · WORLDWIDE REMOTE DELIVERY</div>
+  </div></footer>;
+}

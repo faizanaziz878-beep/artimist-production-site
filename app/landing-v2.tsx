@@ -1,98 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getLandingPage, resolveLink, type LandingPage } from "../lib/landing-content";
+import { serviceVisuals, type ServiceVisualFamily } from "../lib/service-visuals";
 import { UiIcon } from "./ui-icon";
 
 const BASE = "https://www.artimistproductions.com";
 const WHATSAPP_NUMBER = "18078084181";
 const EMAIL = "Faizan@artimistproductions.com";
 
-type Family = "architecture" | "bim" | "visualization";
-type Shot = { src: string; alt: string };
-
-const FAMILY: Record<string, Family> = {
-  architecture: "architecture",
-  "permit-drawing-services": "architecture",
-  "construction-documentation-services": "architecture",
-  "sketch-to-floor-plan-service": "architecture",
-  "home-addition-plans": "architecture",
-  "bim-drafting": "bim",
-  "architectural-drafting-services": "bim",
-  "revit-drafting-services": "bim",
-  "bim-modeling-services": "bim",
-  visualization: "visualization",
-  "architectural-visualization-services": "visualization",
-  "floor-plan-to-3d-rendering": "visualization",
-  "house-exterior-design-service": "visualization",
-};
-
-const HERO_IMAGE: Record<string, string> = {
-  architecture: "/media/atlas/atlas-11.webp",
-  "bim-drafting": "/media/atlas/atlas-08.webp",
-  visualization: "/media/atlas/atlas-07.webp",
-  "architectural-drafting-services": "/media/technical/board-16.webp",
-  "revit-drafting-services": "/media/atlas/atlas-13.webp",
-  "bim-modeling-services": "/media/atlas/atlas-14.webp",
-  "permit-drawing-services": "/img/permit01.webp",
-  "construction-documentation-services": "/media/technical/board-19.webp",
-  "architectural-visualization-services": "/media/atlas/atlas-06.webp",
-  "sketch-to-floor-plan-service": "/media/technical/board-16.webp",
-  "floor-plan-to-3d-rendering": "/img/homeint03.webp",
-  "home-addition-plans": "/img/permit04.webp",
-  "house-exterior-design-service": "/img/resext03.webp",
-};
-
-const PROOF: Record<Family, Shot[]> = {
-  architecture: [
-    { src: "/img/rvpark.webp", alt: "RV park site planning and architectural visualization by Artimist Productions" },
-    { src: "/img/permit01.webp", alt: "Permit application drawing package prepared by Artimist Productions" },
-    { src: "/media/atlas/atlas-16.webp", alt: "Community architecture study with landscape and arrival sequence" },
-  ],
-  bim: [
-    { src: "/media/technical/board-16.webp", alt: "Architectural systems technical drawing plate" },
-    { src: "/media/technical/board-19.webp", alt: "Coordinated architectural technical documentation plate" },
-    { src: "/img/permit01.webp", alt: "Permit documentation package prepared for project review" },
-  ],
-  visualization: [
-    { src: "/img/resext03.webp", alt: "Residential exterior architectural visualization among pine trees" },
-    { src: "/img/homeint03.webp", alt: "Warm contemporary residential interior visualization" },
-    { src: "/media/atlas/atlas-06.webp", alt: "Waterfront cultural architecture visualization at sunset" },
-  ],
-};
-
-const CASE_STUDIES: Record<Family, Array<[string, string]>> = {
-  architecture: [
-    ["RV park design and site planning", "/case-studies/rv-park-design"],
-    ["Permit application drawing packages", "/case-studies/permit-application-packages"],
-  ],
-  bim: [
-    ["Permit application drawing packages", "/case-studies/permit-application-packages"],
-    ["Residential exterior design and documentation", "/case-studies/residential-exterior-design"],
-  ],
-  visualization: [
-    ["Whole-home interior design and visualization", "/case-studies/home-interior-design"],
-    ["Residential exterior design and visualization", "/case-studies/residential-exterior-design"],
-  ],
-};
-
-const TRUST = [
-  ["Work to your standard", "Templates, title blocks, naming and output are aligned before production starts."],
-  ["Native files stay yours", "Editable source files are handed back when they form part of the agreed scope."],
-  ["Review before delivery", "The output is checked for consistency before it leaves the studio."],
-  ["Local requirements stay honest", "Where local licensure or a professional seal is required, we coordinate rather than overclaim."],
-] as const;
-
-const COMMERCIAL = [
-  ["Quote after review", "Fees follow a review of the available files, required outputs and deadline. The written scope identifies what is included before production starts."],
-  ["Visible milestones", "The schedule identifies review points, client inputs and final delivery instead of leaving timing open-ended."],
-  ["Controlled revisions", "Unless the agreement states otherwise, the standard framework includes up to three reasonable revision rounds on Artimist's original work."],
-  ["Defined handover", "PDF, DWG, RVT, model, image, animation and editable-source delivery is listed explicitly in the agreed scope."],
+const WORKING_STANDARD = [
+  ["Scope", "Agreed before production"],
+  ["Reviews", "Milestones and revisions defined"],
+  ["Handover", "Formats listed in writing"],
+  ["Local approvals", "Licensed stamps stay local"],
 ] as const;
 
 export function landingMetadataV2(slug: string): Metadata {
   const page = getLandingPage(slug);
   if (!page) return {};
-  const hero = HERO_IMAGE[page.slug] || "/media/hero-night.webp";
+  const hero = serviceVisuals(page.slug).hero.src;
   return {
     title: page.title,
     description: page.desc,
@@ -154,7 +80,7 @@ function structuredData(page: LandingPage) {
   };
 }
 
-function LandingDiagram({ family }: { family: Family }) {
+function LandingDiagram({ family }: { family: ServiceVisualFamily }) {
   if (family === "bim") {
     return <svg className="lp2-diagram" viewBox="0 0 720 460" role="img" aria-label="BIM coordination diagram">
       <g className="lp2-diagram-grid"><path d="M60 80H660M60 160H660M60 240H660M60 320H660M140 40V400M260 40V400M380 40V400M500 40V400M620 40V400" /></g>
@@ -178,19 +104,20 @@ function LandingDiagram({ family }: { family: Family }) {
 
 export function LandingPageV2({ slug }: { slug: string }) {
   const page = getLandingPage(slug)!;
-  const family = FAMILY[page.slug] || "architecture";
-  const hero = HERO_IMAGE[page.slug] || "/media/atlas/atlas-06.webp";
+  const visuals = serviceVisuals(page.slug);
+  const family = visuals.family;
+  const hero = visuals.hero.src;
   const hub = page.parentHub ? getLandingPage(page.parentHub) : undefined;
   const contactHref = `/contact?service=${encodeURIComponent(page.name)}`;
   const whatsapp = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi Artimist team — I am interested in ${page.name}. I would like to discuss my project.`)}`;
-  const shortIntro = page.intro.split(".")[0] + ".";
-  const shortAudience = page.forWho.split(".")[0] + ".";
+  const shortIntro = Array.from(new Intl.Segmenter("en", { granularity: "sentence" }).segment(page.intro))[0]?.segment.trim() ?? page.intro;
+  const shortAudience = Array.from(new Intl.Segmenter("en", { granularity: "sentence" }).segment(page.forWho))[0]?.segment.trim() ?? page.forWho;
 
   return <main className="lp2">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(page)) }} />
 
     <section className="lp2-hero">
-      <img className="lp2-hero-image" src={hero} alt={`${page.name} project work by Artimist Productions`} fetchPriority="high" />
+      <img className="lp2-hero-image" src={hero} alt={visuals.hero.alt} fetchPriority="high" />
       <div className="lp2-hero-shade" />
       <div className="lp2-hero-grid" aria-hidden="true"><i /><i /><i /><i /></div>
       <div className="lp2-hero-diagram" aria-hidden="true"><LandingDiagram family={family} /></div>
@@ -206,29 +133,28 @@ export function LandingPageV2({ slug }: { slug: string }) {
           <Link className="lp2-secondary" href="#scope">See scope <UiIcon name="chevron" size={15} /></Link>
         </div>
       </div>
-      <figure className="lp2-hero-proof"><img src={PROOF[family][1].src} alt={PROOF[family][1].alt} width="760" height="570" loading="eager" decoding="async" /><figcaption>Project evidence / Artimist Productions</figcaption></figure>
+      <figure className="lp2-hero-proof"><img src={visuals.evidence[0].src} alt={visuals.evidence[0].alt} width="760" height="570" loading="eager" decoding="async" /><figcaption>{visuals.evidence[0].caption}</figcaption></figure>
     </section>
 
     <section className="lp2-intro" id="scope">
       <div><span className="lp2-kicker">What this solves</span><h2>Clear scope.<br/><em>Useful output.</em></h2></div>
-      <div><p className="lp2-lead">{shortIntro}</p><p>{shortAudience}</p></div>
+      <div><p className="lp2-lead">{shortIntro}</p><p>{shortAudience}</p><details className="lp2-scope-details"><summary>Full service overview and audience</summary><p>{page.intro}</p><p>{page.forWho}</p></details></div>
     </section>
 
-    <section className="lp2-opening-proof" aria-label={`${page.name} project imagery`}>{PROOF[family].map((shot,index)=><figure key={shot.src}><img src={shot.src} alt={shot.alt} width="1200" height="900" loading={index === 0 ? "eager" : "lazy"} decoding="async" /><figcaption>0{index + 1} / Published work</figcaption></figure>)}</section>
+    <section className="lp2-opening-proof" tabIndex={0} aria-label={`${page.name} project imagery`}>{visuals.evidence.map((shot,index)=><figure key={`${shot.src}-${index}`}><img src={shot.src} alt={shot.alt} width="1200" height="900" loading={index === 0 ? "eager" : "lazy"} decoding="async" /><figcaption>0{index + 1} / {shot.caption}</figcaption></figure>)}</section>
+    <p className="lp2-swipe-hint" aria-hidden="true">Swipe to follow the visual sequence · 01—{String(visuals.evidence.length).padStart(2,"0")}</p>
 
-    <section className="lp2-trust" aria-label="Working commitments">
-      {TRUST.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
-    </section>
-
-    <section className="lp2-trust" aria-label="Commercial and delivery expectations">
-      {COMMERCIAL.map(([title, copy], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
+    <section className="lp2-standard" aria-label="Working and commercial standards">
+      <span className="lp2-kicker">Working standard</span>
+      <div>{WORKING_STANDARD.map(([title, copy]) => <p key={title}><strong>{title}</strong><span>{copy}</span></p>)}</div>
+      <Link href="/legal">Read full client terms <UiIcon name="arrow" size={14}/></Link>
     </section>
 
     <section className="lp2-split">
       <div className="lp2-split-copy"><span className="lp2-kicker">Problems we solve</span><h2>Where we become useful.</h2><ul>{page.problems.map((item) => <li key={item}><UiIcon name="check" size={15}/><span>{item}</span></li>)}</ul></div>
       <div className="lp2-split-visual">
-        <img className="lp2-generated-visual" src={PROOF[family][2].src} alt={PROOF[family][2].alt} loading="lazy" decoding="async" />
-        <span className="lp2-visual-caption">{family === "bim" ? "Model / coordinate / document" : family === "visualization" ? "Compose / light / resolve" : "Plan / test / coordinate"}</span>
+        <img className="lp2-generated-visual" src={visuals.evidence[1].src} alt={visuals.evidence[1].alt} loading="lazy" decoding="async" />
+        <span className="lp2-visual-caption">{visuals.visualCaption}</span>
       </div>
     </section>
 
@@ -242,17 +168,16 @@ export function LandingPageV2({ slug }: { slug: string }) {
     </section>
 
     <section className="lp2-process">
-      <header><span className="lp2-kicker">Working route</span><h2>How the project moves.</h2></header>
-      <div>{page.workflow.map((step,index)=><article key={step.h}><img className="lp2-step-art" src={PROOF[family][index % PROOF[family].length].src} alt={`${step.h} — ${page.name} workflow`} loading="lazy" /><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>)}</div>
+      <header><span className="lp2-kicker">Working route</span><h2>How the project moves.</h2></header><p className="lp2-example-note">Selected visuals illustrate the stages; they are not a single-project before-and-after sequence. Concept studies are not issued construction documents.</p>
+      <div>{page.workflow.map((step,index)=>{const shot=visuals.process[index];return <article key={step.h}><img className="lp2-step-art" src={shot.src} alt={shot.alt} loading="lazy" /><small>0{index+1}</small><h3>{step.h}</h3><p>{step.p}</p></article>;})}</div>
       {page.quality && <aside><span className="lp2-kicker">Quality control</span><p>{page.quality}</p></aside>}
     </section>
 
     {page.software && <section className="lp2-software"><span className="lp2-kicker">Software / capabilities</span><div>{page.software.map((item)=><span key={item}>{item}</span>)}</div></section>}
 
     <section className="lp2-proof">
-      <header><span className="lp2-kicker">Project evidence</span><h2>Real work, not stock proof.</h2></header>
-      <div className="lp2-proof-grid">{PROOF[family].map((shot,index)=><figure key={shot.src}><img src={shot.src} alt={shot.alt} loading="lazy"/><figcaption><small>0{index+1}</small><span>{shot.alt}</span></figcaption></figure>)}</div>
-      <div className="lp2-case-links">{CASE_STUDIES[family].map(([label,href])=><Link key={href} href={href}><span>{label}</span><UiIcon name="arrow" size={16}/></Link>)}</div>
+      <header><span className="lp2-kicker">Related projects</span><h2>Explore the work in context.</h2></header>
+      <div className="lp2-case-links">{visuals.caseStudies.map(([label,href])=><Link key={href} href={href}><span>{label}</span><UiIcon name="arrow" size={16}/></Link>)}</div>
     </section>
 
     <section className="lp2-faq">

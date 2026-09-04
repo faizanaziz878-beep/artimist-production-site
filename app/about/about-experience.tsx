@@ -31,6 +31,8 @@ const pageCss = `
 @media(prefers-reduced-motion:reduce){.aboutx-reveal{opacity:1;transform:none;transition:none}.aboutx-workband img{transition:none}}
 `;
 
+const visualCss = `.aboutx-workband{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,310px);gap:10px;padding:10px}.aboutx-workband figure:first-child{grid-row:auto}@media(max-width:620px){.aboutx-workband{display:flex}.aboutx-workband figure,.aboutx-workband figure:first-child{flex:0 0 86vw;height:112vw;grid-row:auto;scroll-snap-align:center}}`;
+
 export function AboutExperience({ settings }: { settings: SiteSettings }) {
   const locations = getStudioOffices(settings);
   const services = useMemo(() => {
@@ -58,6 +60,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
 
   return <main className="aboutx" id="top">
     <style dangerouslySetInnerHTML={{ __html: pageCss }} />
+    <style dangerouslySetInnerHTML={{ __html: visualCss }} />
     <div className="aboutx-progress" aria-hidden="true" />
 
     <section className="aboutx-hero">
@@ -76,7 +79,7 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
     </div></section>
 
     <section className="aboutx-founder">
-      <div className="aboutx-founder-media"><img src="/media/atlas/atlas-13.webp" alt="Artimist spatial study with material, daylight and water" loading="lazy" /></div>
+      <div className="aboutx-founder-media"><img src="/img/resid01.webp" alt="Residential architecture, interior and visualization developed as one project" loading="lazy" /></div>
       <div className="aboutx-founder-copy aboutx-reveal"><span className="aboutx-kicker">02 / Point of view</span><h2>Design should make the next decision easier.</h2><p>That principle shapes how the studio works across architecture, drawings, CGI and interactive environments. Every medium should clarify the project rather than decorate it.</p><Link href="/founder-message"><span>A note from Faizan Aziz</span><Arrow /></Link></div>
     </section>
 
@@ -85,10 +88,13 @@ export function AboutExperience({ settings }: { settings: SiteSettings }) {
       <div className="aboutx-principle-grid">{principles.map(([number,title,copy])=><article className="aboutx-reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </div></section>
 
-    <section className="aboutx-workband" aria-label="Selected Artimist work">
-      <figure><img src="/media/walkthrough/canopy/pavilion-sunset.webp" alt="Parametric pavilion architecture at sunset" loading="lazy"/><figcaption>Architecture / Atmosphere</figcaption></figure>
-      <figure><img src="/media/walkthrough/canopy/technical-sequence.webp" alt="Parametric architectural drawing and development sequence" loading="lazy"/><figcaption>Process / Drawing</figcaption></figure>
-      <figure><img src="/media/editorial/sound-to-form.webp" alt="Artimist sound-to-form architectural research study" loading="lazy"/><figcaption>Research / Form</figcaption></figure>
+    <section className="aboutx-workband" aria-label="Artimist multidisciplinary studio work">
+      <figure><img src="/media/walkthrough/music/campus-threshold.webp" alt="Cultural architecture by Artimist Productions" loading="lazy"/><figcaption>Architecture / Place</figcaption></figure>
+      <figure><img src="/img/homeint03.webp" alt="Residential interior design by Artimist Productions" loading="lazy"/><figcaption>Interiors / Material</figcaption></figure>
+      <figure><img src="/img/revit02.webp" alt="Coordinated Revit and BIM model by Artimist Productions" loading="lazy"/><figcaption>BIM + Revit / Coordination</figcaption></figure>
+      <figure><img src="/img/resext03.webp" alt="Architectural visualization by Artimist Productions" loading="lazy"/><figcaption>Visualization / Atmosphere</figcaption></figure>
+      <figure><img src="/img/ue05.webp" alt="Real-time architectural environment by Artimist Productions" loading="lazy"/><figcaption>Animation + Real-time / Experience</figcaption></figure>
+      <figure><img src="/media/walkthrough/identity/collection.webp" alt="Digital identity and production work by Artimist Productions" loading="lazy"/><figcaption>Digital / Systems</figcaption></figure>
     </section>
 
     <section className="aboutx-services"><div className="aboutx-shell">

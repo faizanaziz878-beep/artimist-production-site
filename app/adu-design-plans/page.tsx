@@ -90,7 +90,7 @@ export default function AduDesignPlansPage() {
             <p className="adu-kicker">USA · Accessory Dwelling Units</p>
             <h1>ADU Design <span>&amp; Drawing Support</span></h1>
             <p className="adu-lead">Design the ADU. Understand the plan. <strong>See it before you build it.</strong></p>
-            <p className="adu-intro">Artimist develops ADU floor plans, architectural drawings and realistic 3D views for backyard ADUs, detached or attached units and garage conversions. Start from a sketch, existing plan, PDF or site information—we turn the idea into a coordinated design package for the next project stage.</p>
+            <details className="adu-scope"><summary>Scope &amp; project inputs</summary><p className="adu-intro">Artimist develops ADU floor plans, architectural drawings and realistic 3D views for backyard ADUs, detached or attached units and garage conversions. Start from a sketch, existing plan, PDF or site information—we turn the idea into a coordinated design package for the next project stage.</p></details>
             <div className="adu-actions">
               <Link className="adu-btn adu-btn-primary" href="/contact">Send your ADU idea</Link>
               <a className="adu-btn adu-btn-ghost" href="#adu-drawings">See plans &amp; drawings</a>
@@ -115,8 +115,8 @@ export default function AduDesignPlansPage() {
       <section className="adu-section adu-types adu-wrap">
         <div className="adu-section-head">
           <p className="adu-kicker">What are you trying to build?</p>
-          <h2>One ADU page. Four real project problems.</h2>
-          <p>We are not building thin SEO pages for every keyword variation. These are distinct project types with different existing conditions, drawing needs and design decisions.</p>
+          <h2>Four ways to create more living space.</h2>
+          <p>Each project type has different existing conditions, drawing needs and design decisions.</p>
         </div>
         <div className="adu-type-grid">
           {aduTypes.map((type) => <article key={type.n} className="adu-type-card"><span>{type.n}</span><h3>{type.title}</h3><p>{type.text}</p></article>)}
@@ -130,7 +130,7 @@ export default function AduDesignPlansPage() {
             <figcaption>Backyard ADU · exterior design + visualization</figcaption>
           </figure>
           <div className="adu-cinema-copy">
-            <p className="adu-kicker">Normal-person search intent</p>
+            <p className="adu-kicker">See the design</p>
             <h2>“What will my ADU actually look like?”</h2>
             <p>Homeowners do not always search for “architectural visualization.” They search for a 3D picture of the house, a way to make a floor plan 3D, or a way to see the design before building. This service connects those questions directly to the drawings.</p>
             <Link href="/3d-house-design" className="adu-text-link">See our 3D house design service <span>↗</span></Link>
@@ -164,7 +164,7 @@ export default function AduDesignPlansPage() {
 
       <section className="adu-section adu-garage adu-wrap">
         <div className="adu-garage-copy">
-          <p className="adu-kicker">High-intent project type</p>
+          <p className="adu-kicker">Garage conversions</p>
           <h2>Already have a garage? Start there.</h2>
           <p>A garage conversion ADU starts with what already exists. We can turn verified dimensions, existing drawings and photographs into an existing-condition base, develop the proposed layout and coordinate the architectural drawings and 3D views around that conversion.</p>
           <Link href="/garage-conversion-plans" className="adu-btn adu-btn-primary">Garage conversion plans</Link>

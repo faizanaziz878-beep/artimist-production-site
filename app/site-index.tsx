@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UiIcon } from "./ui-icon";
+import { AskBot } from "./ask-bot";
 
 // Keep the site index as the canonical crawlable map of the public site.
 // The menu groups destinations first so visitors are not confronted with the
@@ -160,6 +161,7 @@ export function SiteIndex() {
         })}
       </nav>
       <div className="canonical-actions">
+        <AskBot />
         <button className="canonical-pill" type="button" onClick={toggleMode} aria-pressed={mode === "night"} aria-label={`Switch to ${mode === "night" ? "day" : "night"} mode`}>
           <UiIcon name={mode === "night" ? "moon" : "sun"} size={16} />
           <span>{mode === "night" ? "NIGHT" : "DAY"}</span>

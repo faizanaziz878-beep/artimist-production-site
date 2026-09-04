@@ -174,6 +174,7 @@ const css = `
 export default function FaqPage() {
   return <main className="faqp" id="top">
     <style dangerouslySetInnerHTML={{ __html: css }} />
+    <style dangerouslySetInnerHTML={{ __html: ".faqp-jump a,.faqp-links a{min-height:44px;display:flex;align-items:center}" }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
     <section className="faqp-hero">
