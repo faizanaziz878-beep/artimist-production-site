@@ -1,7 +1,7 @@
 # Artimist visual overhaul — preview review
 
 4 September 2026. Branch: `codex/visual-overhaul-preview-20260903`.
-Production is not approved for deployment. Do not merge, promote or assign the production domain without the owner's explicit approval.
+Release update: on 4 September 2026, the owner explicitly approved deployment to the original website. The reviewed website code is commit `dca1609`. This release-record update changes no website code; the preview review notes below remain the record of verification and asset limitations.
 
 ## What changed
 
