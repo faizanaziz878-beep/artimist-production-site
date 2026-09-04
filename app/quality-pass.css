@@ -24,7 +24,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .ui-icon { display:inline-block; flex:0 0 auto; vertical-align:middle; }
 
 /* The canonical header owns site navigation. */
-.tp-header,.ue-header,.ap-hub-head,.sp-header,.st-header,.ap-header,.vj-header,.ed-header { display:none !important; pointer-events:none; }
+.tp-header,.ue-header,.sp-header,.st-header,.ap-header,.vj-header,.ed-header { display:none !important; pointer-events:none; }
 .canonical-header { top: var(--artimist-safe-top); }
 .ed-menu { display:none !important; }
 .ed-footer a[href="/admin"] { display:none !important; }

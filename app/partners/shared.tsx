@@ -19,6 +19,7 @@ export type Partner = {
   services: string[];
   cta: string;
   visuals: PartnerVisual[];
+  workflow: string[];
 };
 
 export const PARTNER_ORDER = ["decoding-bits", "scallance"];
@@ -42,11 +43,9 @@ export const PARTNERS: Record<string, Partner> = {
       { h: "Why it matters", p: "Beautiful renders do not grow a studio on their own; the machine around them matters too. Partnering with a dedicated engineering team means Artimist can pair creative production with a delivery platform that is measurable, maintainable and built to scale." },
     ],
     visuals: [
-      { src: "/media/editorial/architectural-translation.webp", alt: "Architectural translation and digital systems study", caption: "Architecture translated into an interactive system" },
-      { src: "/media/editorial/kinetic-roof-technical.webp", alt: "Kinetic roof technical and parametric design plate", caption: "Parametric logic and technical structure" },
-      { src: "/media/editorial/sound-to-form.webp", alt: "Architecture process board connecting data to spatial form", caption: "Research, interface and spatial communication" },
-      { src: "/media/generated-architecture/artimist-architecture-083.webp", alt: "Timber grid-shell canopy structural study", caption: "A complex system made legible" },
+      { src: "/media/partners/furqan-a.jpg", alt: "Furqan A, founder of technology partner Decoding Bits", caption: "Furqan A · Decoding Bits" },
     ],
+    workflow: ["Define the product", "Design the interface", "Build the system", "Test and hand over"],
     services: ["Custom web development", "Web & mobile applications", "Automation & internal tooling", "Interactive & real-time front ends"],
     cta: "Discuss a digital project",
   },
@@ -68,11 +67,9 @@ export const PARTNERS: Record<string, Partner> = {
       { h: "Why it matters", p: "A strong product needs both credible creative presentation and disciplined marketplace execution. The Artimist–Scallance relationship connects those two parts without pretending they are the same discipline." },
     ],
     visuals: [
-      { src: "/media/generated-architecture/artimist-architecture-075.webp", alt: "Restored independent bookshop storefront", caption: "A clear storefront begins with a clear identity" },
-      { src: "/media/generated-architecture/artimist-architecture-080.webp", alt: "Independent bookshop interior and display environment", caption: "Product presentation within a coherent environment" },
-      { src: "/media/generated-architecture/artimist-architecture-065.webp", alt: "Retail reading room architectural plan and section", caption: "Planning the customer journey before launch" },
-      { src: "/media/generated-architecture/artimist-architecture-077.webp", alt: "Restored brick neighborhood cafe storefront", caption: "A focused commercial presence" },
+      { src: "/media/partners/abdullah-azzam.jpg", alt: "Abdullah Azzam, founder of e-commerce partner Scallance", caption: "Abdullah Azzam · Scallance LLC" },
     ],
+    workflow: ["Review the product", "Prepare brand assets", "Build the listing", "Review performance"],
     services: ["Amazon account management", "Listing & storefront optimization", "Amazon advertising (PPC)", "Brand launch & scaling"],
     cta: "Discuss an e-commerce project",
   },
@@ -102,9 +99,9 @@ export function PartnersHub() {
               <Link className="ap-card" href={`/partners/${p.slug}`} key={p.slug}>
                 <div className="ap-card-media">
                   <img src={p.visuals[0].src} alt={p.visuals[0].alt} width="1400" height="1000" loading="eager" decoding="async" fetchPriority={index === 0 ? "high" : "auto"} />
-                  <div className="ap-card-owner"><img src={p.ownerImage} alt={p.ownerImageAlt} width="160" height="160" loading="eager" decoding="async" /><div><small>Founder / CEO</small><strong>{p.ceo}</strong></div></div>
+                  <div className="ap-card-owner"><div><small>Founder / CEO</small><strong>{p.ceo}</strong></div></div>
                 </div>
-                <div className="ap-card-copy"><div className="ap-kicker">0{index + 1} / {p.kicker}</div><h2>{p.name}</h2><p>{p.tagline} {p.intro.slice(0, 118)}…</p><span className="ap-card-link">Open partnership story <UiIcon name="arrow" size={14} /></span></div>
+                <div className="ap-card-copy"><div className="ap-kicker">0{index + 1} / {p.kicker}</div><h2>{p.name}</h2><p>{p.tagline}</p><span className="ap-card-link">Open partnership story <UiIcon name="arrow" size={14} /></span></div>
               </Link>
             );
           })}
@@ -128,7 +125,7 @@ export function PartnerDetail({ p }: { p: Partner }) {
 
         <section className="ap-leadership" aria-label={`${p.name} leadership`}><img src={p.ownerImage} alt={p.ownerImageAlt} width="220" height="220" loading="lazy" decoding="async" /><div><div className="ap-kicker">Accountable partner</div><div className="ap-leadership-name">{p.ceo}</div><div className="ap-leadership-title">{p.ceoTitle}, {p.name}</div></div><p className="ap-leadership-note">A specialist collaboration with a named owner and a clear discipline. Artimist remains responsible for its own creative scope; {p.name} remains responsible for the specialist work it delivers.</p></section>
 
-        <section className="ap-visual-strip" aria-label={`${p.name} collaboration studies`}>{p.visuals.slice(1).map((visual) => <figure key={visual.src}><img src={visual.src} alt={visual.alt} width="1400" height="1000" loading="lazy" decoding="async" /><figcaption>{visual.caption}</figcaption></figure>)}</section>
+        <section className="ap-workflow" aria-label={`${p.name} collaboration route`}><p className="ap-kicker">A collaboration route · scope agreed per project</p><ol>{p.workflow.map((step,index)=><li key={step}><span>0{index+1}</span><h3>{step}</h3></li>)}</ol><p className="ap-workflow-note">Partner delivery examples are available subject to permission. These steps describe the collaboration, not a completed project or a performance guarantee.</p></section>
 
         <section><div className="ap-story-head"><div className="ap-kicker">How the partnership works</div><h2>Specialist depth without blurring responsibilities.</h2></div><div className="ap-story">{p.body.map((sec, index) => <article key={sec.h}><span className="ap-story-no">0{index + 1}</span><h3>{sec.h}</h3><p>{sec.p}</p></article>)}</div></section>
 

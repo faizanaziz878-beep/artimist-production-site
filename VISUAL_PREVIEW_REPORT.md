@@ -10,6 +10,7 @@ Production is not approved for deployment. Do not merge, promote or assign the p
 - **13 landing pages:** exact, reviewable hero/evidence/process mappings replace category-level reuse and slug-offset selection. House Exterior uses only residential facade, site, material and house-massing imagery. BIM, Revit, CAD, permit documentation and construction documentation now use their relevant models/drawings rather than research boards.
 - **Homeowner services:** custom house, plan modification, interior and renovation pages show a four-stage visual route. ADU keeps its dedicated plans/elevations/sections/render experience with a more compact opening.
 - **About / Team / Contact:** six multidisciplinary studio visuals on About; all 14 existing team members preserved before the studio-network section; four accepted input examples on Contact. Repeated terms are compact, with full legal links.
+- **Partners:** restored the hub heading that an old shared navigation rule incorrectly hid; unrelated architectural research and retail studies replaced by existing founder portraits and clearly labeled, partner-specific collaboration steps. No substitute project proof is fabricated.
 - **Insights / FAQs / markets:** article visuals are inserted between sections while retaining article copy; FAQs remain category-led accordions. Country drawing panels and decorative lettering no longer overflow narrow phones. Full country introductions remain in accessible disclosure.
 - **Shared layout:** readable image captions, visible swipe indicators, keyboard-scrollable galleries, less repeated legal/footer density, and a smaller mobile WhatsApp control.
 
@@ -43,7 +44,8 @@ This is browser-width verification, not physical iPhone/Safari testing or a fiel
 
 1. Genuine, permission-cleared source → plan → model → final sets from the same homeowner projects would replace the explicitly illustrative sequences.
 2. Original CAD/Revit files or high-resolution clean exports would improve detailed technical zooming, especially documentation examples with baked-in promotional text.
-3. Owner approval of image choices, concept labels, mobile layout and the preview as a whole is required before production. A measured performance pass and physical-device check are recommended at that gate.
+3. Partner-approved software/interface and e-commerce delivery screenshots are still needed; existing 200-pixel founder portraits identify the partners in the meantime and are displayed at their native size.
+4. Owner approval of image choices, concept labels, mobile layout and the preview as a whole is required before production. A measured performance pass and physical-device check are recommended at that gate.
 
 ## Reproduce the focused checks
 

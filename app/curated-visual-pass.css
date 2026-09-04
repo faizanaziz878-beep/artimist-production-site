@@ -1,4 +1,8 @@
 /* Final responsive rules for the curated visual system. */
+.ap-root .ap-card-media,.ap-root .ap-detail-media{background:radial-gradient(ellipse at 50% 35%,#5b2531,transparent 68%),#121015!important}.ap-root .ap-card-media>img,.ap-root .ap-detail-media img{position:absolute;left:50%;top:42%;width:200px!important;height:200px!important;object-fit:cover!important;object-position:center!important;transform:translate(-50%,-50%)!important;border:1px solid rgba(255,255,255,.35);border-radius:2px}
+.ap-root .ap-workflow{padding:64px 0}.ap-workflow ol{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;margin:28px 0;border-top:1px solid rgba(255,255,255,.18)}.ap-workflow li{padding:28px 22px;border-bottom:1px solid rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.18)}.ap-workflow li span{color:#d65b75;font-size:12px}.ap-workflow h3{font-size:30px;margin-top:32px!important}.ap-workflow-note{color:#a49a94;max-width:64ch;font-size:13px}
+@media(max-width:760px){.ap-workflow ol{grid-template-columns:1fr}.ap-workflow li{display:grid;grid-template-columns:40px 1fr;align-items:center;padding:20px 0;border-right:0}.ap-workflow h3{margin:0!important;font-size:28px}.ap-root .ap-card-media{height:100vw!important;min-height:0!important}}
+
 .lp2.lp2 .lp2-opening-proof{display:grid!important;grid-template-columns:minmax(0,1.38fr) minmax(0,.62fr)!important;grid-template-rows:repeat(3,220px)!important;gap:10px!important;padding:10px!important}
 .lp2.lp2 .lp2-opening-proof figure,.lp2.lp2 .lp2-opening-proof figure:nth-child(n){min-height:0!important;height:auto!important;grid-column:auto!important;grid-row:auto!important}
 .lp2.lp2 .lp2-opening-proof figure:first-child{grid-row:1/4!important}

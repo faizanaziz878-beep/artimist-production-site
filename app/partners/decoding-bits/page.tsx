@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Software engineering, web applications, interactive products and automation through Artimist Productions’ specialist technology partnership.",
     url: "https://www.artimistproductions.com/partners/decoding-bits",
     type: "website",
-    images: [{ url: "/media/editorial/architectural-translation.webp", alt: "Artimist Productions and Decoding Bits technology partnership" }],
+    images: [{ url: "/media/partners/furqan-a.jpg", alt: "Artimist Productions and Decoding Bits technology partnership" }],
   },
 };
 

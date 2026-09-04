@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Amazon marketplace execution, storefront optimization and e-commerce growth through Artimist Productions’ specialist partnership with Scallance LLC.",
     url: "https://www.artimistproductions.com/partners/scallance",
     type: "website",
-    images: [{ url: "/media/generated-architecture/artimist-architecture-075.webp", alt: "Artimist Productions and Scallance e-commerce partnership" }],
+    images: [{ url: "/media/partners/abdullah-azzam.jpg", alt: "Artimist Productions and Scallance e-commerce partnership" }],
   },
 };
 
