@@ -82,7 +82,7 @@
           <a class="st-underline" href="#work">ENTER SELECTED WORK <span aria-hidden="true">&#8599;</span></a>
         </div>
       </div>
-      <a class="st-scroll-cue" href="#portal" aria-label="Enter the spatial portal">&#8595;</a>
+      <a class="st-scroll-cue" href="#work" aria-label="Explore selected work">&#8595;</a>
       <div class="st-ticker">
         <button id="pauseBtn" type="button">PAUSE</button>
         <div class="st-ticker-bar"><i id="sceneBar" style="width:25%"></i></div>
@@ -96,49 +96,6 @@
       <span>WORLDWIDE</span><span>USA</span><span>UK</span><span>CANADA</span><span>SWEDEN</span>
       <p>INTERNATIONAL PROJECT DELIVERY</p>
       <a href="#brief">START A PROJECT &#8599;</a>
-    </section>
-
-    <!-- SPATIAL PORTAL -->
-    <section class="st-portal" id="portal">
-      <spatial-model id="model" src="/models/artimist-digital-campus.glb" mode="xray" storeys="3"></spatial-model>
-      <div class="st-portal-scrim" aria-hidden="true"></div>
-
-      <div class="st-portal-controls">
-        <p class="st-portal-label">01 / CHOOSE A VIEW</p>
-        <div class="st-chips">
-          <button class="st-chip" type="button" data-model-view="orbit" aria-pressed="true">Orbit</button>
-          <button class="st-chip" type="button" data-model-view="aerial" aria-pressed="false">Aerial</button>
-          <button class="st-chip" type="button" data-model-view="eye" aria-pressed="false">Eye level</button>
-          <button class="st-chip" type="button" data-model-view="detail" aria-pressed="false">Detail</button>
-        </div>
-        <div class="st-chips">
-          <button class="st-chip" type="button" data-model-mode="rendered" aria-pressed="false">Rendered</button>
-          <button class="st-chip" type="button" data-model-mode="xray" aria-pressed="true">X-ray</button>
-        </div>
-      </div>
-
-      <a class="st-scroll-cue st-portal-cue" href="#work" aria-label="Scroll to selected work">&#8595;</a>
-      <aside class="st-portal-note">
-        <p class="st-portal-note-title" id="viewTitle">01 / ORBIT</p>
-        <p id="viewCopy">Drag to rotate, scroll to change distance. The model keeps turning on its own until you take hold of it.</p>
-        <a class="st-underline" href="/unreal-engine">ENTER REAL-TIME PRODUCTION &#8599;</a>
-      </aside>
-
-      <div class="st-portal-head">
-        <p class="st-portal-label">ARTIMIST / SPATIAL PORTAL / LIVE MODEL</p>
-        <h2>Do not just see the work.<br><em>Move through it.</em></h2>
-      </div>
-
-      <div class="st-legend">
-        <span class="st-live"><i></i>LIVE WEBGL</span>
-        <span><i style="background:#4fc3f7"></i>HVAC</span>
-        <span><i style="background:#ffcf4a"></i>ELECTRICAL</span>
-        <span><i style="background:#ff4d4d"></i>FIRE</span>
-        <span><i style="background:#5fd39a"></i>PLUMBING</span>
-        <span><i style="background:#e6ded2"></i>STRUCTURE</span>
-        <span class="st-legend-meta">03 STOREYS</span>
-        <span class="st-legend-status" id="stageStatus">X-RAY / STRUCTURE</span>
-      </div>
     </section>
 
     <!-- SELECTED WORK -->
@@ -162,6 +119,49 @@
             <div class="st-feature-tabs" id="featTabs" role="tablist" aria-label="Selected work"></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- SPATIAL PORTAL -->
+    <section class="st-portal" id="portal">
+      <spatial-model id="model" src="/models/artimist-digital-campus.glb" mode="xray" storeys="3"></spatial-model>
+      <div class="st-portal-scrim" aria-hidden="true"></div>
+
+      <div class="st-portal-controls">
+        <p class="st-portal-label">01 / CHOOSE A VIEW</p>
+        <div class="st-chips">
+          <button class="st-chip" type="button" data-model-view="orbit" aria-pressed="true">Orbit</button>
+          <button class="st-chip" type="button" data-model-view="aerial" aria-pressed="false">Aerial</button>
+          <button class="st-chip" type="button" data-model-view="eye" aria-pressed="false">Eye level</button>
+          <button class="st-chip" type="button" data-model-view="detail" aria-pressed="false">Detail</button>
+        </div>
+        <div class="st-chips">
+          <button class="st-chip" type="button" data-model-mode="rendered" aria-pressed="false">Rendered</button>
+          <button class="st-chip" type="button" data-model-mode="xray" aria-pressed="true">X-ray</button>
+        </div>
+      </div>
+
+      <a class="st-scroll-cue st-portal-cue" href="#archive" aria-label="Explore the project index">&#8595;</a>
+      <aside class="st-portal-note">
+        <p class="st-portal-note-title" id="viewTitle">01 / ORBIT</p>
+        <p id="viewCopy">Drag to rotate, scroll to change distance. The model keeps turning on its own until you take hold of it.</p>
+        <a class="st-underline" href="/unreal-engine">ENTER REAL-TIME PRODUCTION &#8599;</a>
+      </aside>
+
+      <div class="st-portal-head">
+        <p class="st-portal-label">ARTIMIST / SPATIAL PORTAL / LIVE MODEL</p>
+        <h2>Do not just see the work.<br><em>Move through it.</em></h2>
+      </div>
+
+      <div class="st-legend">
+        <span class="st-live"><i></i>LIVE WEBGL</span>
+        <span><i style="background:#4fc3f7"></i>HVAC</span>
+        <span><i style="background:#ffcf4a"></i>ELECTRICAL</span>
+        <span><i style="background:#ff4d4d"></i>FIRE</span>
+        <span><i style="background:#5fd39a"></i>PLUMBING</span>
+        <span><i style="background:#e6ded2"></i>STRUCTURE</span>
+        <span class="st-legend-meta">03 STOREYS</span>
+        <span class="st-legend-status" id="stageStatus">X-RAY / STRUCTURE</span>
       </div>
     </section>
 

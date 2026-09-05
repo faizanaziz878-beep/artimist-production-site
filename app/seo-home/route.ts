@@ -106,7 +106,7 @@ function enhance(source: string) {
   html = html.replace('VANCOUVER &middot; OHIO &middot; STOCKHOLM &middot; LAHORE', 'WORLDWIDE &middot; USA &middot; UK &middot; CANADA &middot; SWEDEN');
   html = html.replace('<li>Vancouver</li><li>Ohio &middot; Stockholm</li>', '<li>Worldwide project delivery</li><li>USA &middot; UK &middot; Canada &middot; Sweden</li>');
   html = html.replace(/ARTIMIST PRODUCTION(?!S)/g, 'ARTIMIST PRODUCTIONS');
-  html = html.replace('<h1>Atmosphere begins<br>before <em>the door.</em></h1>', '<h1><span class="st-hero-accent">Architecture.</span><br>Design. <em>Visualization.</em></h1>');
+  html = html.replace('<h1>Atmosphere begins<br>before <em>the door.</em></h1>', '<h1><span class="st-hero-accent">Architecture.</span> <br>Design. <em>Visualization.</em></h1>');
   html = html.replace('Architecture, visualization and creative production for places, products and worlds people can believe in.', 'Design, drawings and immersive visuals — from first idea to a clearly defined deliverable.');
 
   // Add verified official profile links to the homepage footer for bidirectional entity association.
@@ -131,7 +131,7 @@ function enhance(source: string) {
   html = html.replace(/&#8592;/g, arrowLeft);
   html = html.replace(/&#8595;/g, arrowDown);
 
-  html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${googleTag}${seoStyle}${webpageSchema}</head>`);
+  html = html.replace('</head>', `<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">${googleTag}${seoStyle}<link rel="stylesheet" href="/astra-design.css">${webpageSchema}</head>`);
 
   // Keep this conversion/SEO section in the main browsing flow, immediately
   // before the team section rather than detached near the bottom of the page.
@@ -143,7 +143,7 @@ function enhance(source: string) {
 
   // Keep only source-stable enhancements. Buyer-journey and premium-plan scripts
   // previously injected large new sections after load and made mobile output vary.
-  html = html.replace('</body>', `${faqIndexPatch}<script>(function(){var loaded=false;function load(){if(loaded)return;loaded=true;var s=document.createElement('script');s.type='module';s.src='/spatial-model.js';document.head.appendChild(s)}var target=document.getElementById('portal');if('IntersectionObserver'in window&&target){var observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting})){observer.disconnect();load()}},{rootMargin:'500px'});observer.observe(target)}else if('requestIdleCallback'in window){requestIdleCallback(load,{timeout:4000})}else{setTimeout(load,2500)}})();</script><script src="/lead-attribution.js" defer></script><script src="/whatsapp-conversations.js" defer></script><script src="/client-showcase.js" defer></script><script src="/home-consistency-final.js" defer></script></body>`);
+  html = html.replace('</body>', `${faqIndexPatch}<script>(function(){var loaded=false;function load(){if(loaded)return;loaded=true;var s=document.createElement('script');s.type='module';s.src='/spatial-model.js';document.head.appendChild(s)}var target=document.getElementById('portal');if('IntersectionObserver'in window&&target){var observer=new IntersectionObserver(function(entries){if(entries.some(function(entry){return entry.isIntersecting})){observer.disconnect();load()}},{rootMargin:'500px'});observer.observe(target)}else if('requestIdleCallback'in window){requestIdleCallback(load,{timeout:4000})}else{setTimeout(load,2500)}})();</script><script src="/lead-attribution.js" defer></script><script src="/whatsapp-conversations.js" defer></script><script src="/client-showcase.js" defer></script><script src="/home-consistency-final.js" defer></script><script src="/studio-motion.js" defer></script></body>`);
   return html;
 }
 
