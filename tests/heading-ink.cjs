@@ -13,7 +13,7 @@ const routes = ["/", "/services", "/architecture", "/bim-drafting", "/visualizat
   try {
     for (const width of process.env.HEADING_MOTION_ONLY ? [] : [1440, 390, 360]) {
       await page.setViewportSize({ width, height: 1000 });
-      for (const route of routes) {
+      for (const route of routes.filter(route => !process.env.HEADING_PATHS || process.env.HEADING_PATHS.split(",").includes(route))) {
         await page.goto(base + route, { waitUntil: "load" });
         await page.evaluate(() => document.fonts.ready);
         await page.waitForFunction(() => document.querySelector(".artimist-reveal-heading.is-artimist-visible"));
@@ -21,10 +21,10 @@ const routes = ["/", "/services", "/architecture", "/bim-drafting", "/visualizat
         await page.waitForFunction(() => [...document.querySelectorAll(".artimist-reveal-heading")].every(el => {
           if (getComputedStyle(el).display === "none") return true;
           const clip = getComputedStyle(el).clipPath;
-          return el.classList.contains("is-artimist-visible") && (clip === "none" || /^inset\(-/.test(clip));
+          return el.classList.contains("is-artimist-visible") && (clip === "none" || /^inset\(-[\d.]+px\)$/.test(clip));
         }), { timeout: 10000 });
         const headings = await page.locator(".artimist-reveal-heading").evaluateAll(elements => elements.map(el => ({ text: el.textContent.trim(), clip: getComputedStyle(el).clipPath })));
-        for (const h of headings) assert.ok(h.clip === "none" || /^inset\(-/.test(h.clip), route + ": " + h.text);
+        for (const h of headings) assert.ok(h.clip === "none" || /^inset\(-[\d.]+px\)$/.test(h.clip), route + ": " + h.text);
         count += headings.length;
         if (route === "/") {
           const heading = page.locator("#global-services-title");
