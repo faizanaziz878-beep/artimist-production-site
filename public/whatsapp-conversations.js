@@ -53,8 +53,10 @@
       '.artimist-whatsapp__mark{width:9px;height:9px;border-radius:50%;background:#b71f3d;box-shadow:0 0 0 5px rgba(156,31,53,.14);flex:none}',
       'body.artimist-ask-open .artimist-whatsapp,body.artimist-dock-suppressed .artimist-whatsapp{opacity:0!important;pointer-events:none!important;transform:translateY(8px)!important}',
       '.st-scroll-cue{position:relative}.st-scroll-cue:empty::before,.st-scroll-cue:not(:has(svg))::before{content:"↓";display:grid;place-items:center;font:300 28px/1 Arial,sans-serif;color:currentColor}',
-      '.artimist-reveal-heading{opacity:0;transform:translateY(28px);clip-path:inset(0 0 100% 0);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),clip-path 1.05s cubic-bezier(.2,.8,.2,1)}',
-      '.artimist-reveal-heading.is-artimist-visible{opacity:1;transform:none;clip-path:inset(0)}',
+      // Leave font-relative ink room for descenders, accents and italic overhangs.
+      // The mask still reveals upward, but its settled edge must not crop glyphs.
+      '.artimist-reveal-heading{opacity:0;transform:translateY(28px);clip-path:inset(-.3em -.3em 100% -.3em);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),clip-path 1.05s cubic-bezier(.2,.8,.2,1)}',
+      '.artimist-reveal-heading.is-artimist-visible{opacity:1;transform:none;clip-path:inset(-.3em)}',
       '.artimist-reveal-heading em,.artimist-type{display:inline;color:#c73f58!important;white-space:normal}',
       '@media(max-width:760px){.artimist-whatsapp{left:auto;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:48px;min-height:48px;height:48px;padding:0}.artimist-whatsapp>span:last-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.artimist-whatsapp__mark{width:22px;height:22px;background:transparent;box-shadow:none;border:1.5px solid #fff;border-radius:50%}.artimist-whatsapp__mark:after{content:"";display:block;width:6px;height:6px;border-left:1.5px solid #fff;transform:translate(0,15px) rotate(22deg)}}',
       '@media(prefers-reduced-motion:reduce){.artimist-whatsapp,.artimist-reveal-heading{transition:none}.artimist-reveal-heading{opacity:1;transform:none;clip-path:none}}'
