@@ -6,7 +6,7 @@ Previous production source: 1509bf359f31e55e15cbf2616c64433b8a80a6ec.
 
 ## Visual decisions
 
-- Homepage: warm editorial opening, framed cinematic imagery, controlled title scale, improved captions and contrast. Selected work now precedes the interactive spatial model.
+- Homepage: restored to the pre-Astra version at the owner’s request. Original imagery, full-bleed layout, motion and section order are locked; future changes are limited to typography unless explicitly approved. The Astra stylesheet and motion script do not run on the homepage. The owner subsequently approved typography refinements: existing Geist and editorial serif fonts, controlled title scales and more readable line spacing, isolated in home-typography.css.
 - Services: keyboard-accessible DESIGN IT / DOCUMENT IT / SHOW IT explorer with deliberate image transitions and a compact mobile tab strip. All specialist links remain below.
 - Architecture, BIM, visualization and the indexed landing-page family: separate text and image areas, uncropped technical boards, balanced headings, shorter section spacing and mobile layouts.
 - Custom House, Plan Modification, Interior Design and Renovation: compact scope disclosure retains the full introductory SEO copy; cleaner image treatment and mobile actions.

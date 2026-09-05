@@ -4,6 +4,20 @@ import { access, readFile } from "node:fs/promises";
 import { SERVICE_VISUALS, serviceVisuals } from "../lib/service-visuals.ts";
 import { LANDING_PAGES } from "../lib/landing-content.ts";
 
+test("homepage visual composition is locked and isolated from the Astra redesign", async () => {
+  const home = await readFile(new URL("../public/studio.html", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/seo-home/route.ts", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../public/astra-design.css", import.meta.url), "utf8");
+  assert.ok(home.indexOf('id="portal"') < home.indexOf('id="work"'));
+  assert.match(home, /href="#portal" aria-label="Enter the spatial portal"/);
+  assert.doesNotMatch(route, /astra-design\.css|studio-motion\.js/);
+  assert.doesNotMatch(styles, /\.st\.st/);
+  const typography = await readFile(new URL("../public/home-typography.css", import.meta.url), "utf8");
+  const declarations = [...typography.matchAll(/\{([^{}]*)\}/g)].flatMap(match => match[1].split(";")).map(rule => rule.trim()).filter(Boolean);
+  const allowed = /^(font-family|font-size|font-weight|font-style|line-height|letter-spacing|text-transform):/;
+  for (const rule of declarations) assert.match(rule, allowed, "Homepage changes must be typography only: " + rule);
+});
+
 test("every indexed landing has an exact visual plan and one image per process step", () => {
   for (const page of LANDING_PAGES) {
     const visuals = serviceVisuals(page.slug);

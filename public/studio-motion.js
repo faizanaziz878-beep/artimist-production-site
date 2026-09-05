@@ -1,6 +1,8 @@
 /* Small, optional enhancements: no hidden content and no animation loop. */
 (() => {
   "use strict";
+  // The owner has locked homepage imagery, composition and motion.
+  if ((location.pathname.replace(/\/$/, "") || "/") === "/") return;
   if (window.__artimistStudioMotion) return;
   window.__artimistStudioMotion = true;
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
